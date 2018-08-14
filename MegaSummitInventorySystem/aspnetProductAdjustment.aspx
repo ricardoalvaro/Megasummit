@@ -198,7 +198,7 @@
                             window.location = "aspnetProductAdjustment.aspx";
                         },
                         error: function (response) {
-                            alert(response.status);
+                           // alert(response.status);
                         }
                     });
                 }
@@ -213,7 +213,7 @@
                             window.location = "aspnetProductAdjustment.aspx";
                         },
                         error: function (response) {
-                            alert(response.d);
+                           // alert(response.d);
                         }
                     });
                 }

@@ -88,7 +88,7 @@
             var table =  $("#tblMain");
             table.html(""); //Clear 
             
-            table.append("<tr id='rec-1'><td width='100%'><input type='text'  id='txt_search_product'  class='long search_class ui-autocomplete-input' /></td></tr>");
+            table.append("<tr id='rec-1'><td width='100%'><input type='text'  id='txt_search_product'  class='long search_class ui-autocomplete-input' style='border:transparent' /></td></tr>");
 
             table.append(defaultTableRow());
 

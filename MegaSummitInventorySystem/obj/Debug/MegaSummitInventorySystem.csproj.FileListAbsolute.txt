@@ -64,3 +64,10 @@ C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newt
 C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
 C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
 C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Users\sa\Desktop\MegaSummitInventorySystem\Megasummit\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb

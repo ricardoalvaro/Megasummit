@@ -11,6 +11,8 @@ namespace MegaSummitInventorySystem
     public partial class aspnetProductAssembly1 : System.Web.UI.Page
     {
 
+
+
         private DatabaseDataContext Database = new DatabaseDataContext();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -80,5 +82,42 @@ namespace MegaSummitInventorySystem
 
             return null;
         }
+
+        public string ProductDetail()
+        {
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._ProductSelect(0, string.Empty).ToList();
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+                //return auto;
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return null;
+        }
+
+        public string AssembleDetail()
+        {
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._ProductAssemblyDetails.ToList<_ProductAssemblyDetail>();
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+                //return auto;
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return null;
+        }
+
     }
 }

@@ -218,7 +218,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     Database._ProductStockInsert(ref refIDStock1, productID, locationID, quantity);
                 }
-                Database._ProductStockHistoryInsert(ref refIDStockHis1, referenceNo, DateTime.Now, "Product Assembly", "", locationID, quantity, 0, 0, "", 0, 0, productID);
+                Database._ProductStockHistoryInsert(ref refIDStockHis1, referenceNo + id.ToString(), DateTime.Now, "Product Assembly", "", locationID, quantity, 0, 0, "", 0, 0, productID);
                         
                 string[] lines = productList.Split('^');
 
@@ -228,11 +228,11 @@ namespace MegaSummitInventorySystem.Webservice
                     {
                         string[] p = l.Split(',');
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        string product_id = p[0];
+                        string location_id = p[1];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(product_id));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(location_id));
 
                         decimal qty = decimal.Parse(p[2]);
                         decimal amount = decimal.Parse(p[5]);
