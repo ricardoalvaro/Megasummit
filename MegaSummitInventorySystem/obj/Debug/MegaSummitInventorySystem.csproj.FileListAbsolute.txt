@@ -1,0 +1,66 @@
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.dll
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+Z:\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.dll
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Data_transfer\Al Ngo Inventory System\Solution\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Users\iworkonweb1.com\Desktop\Systems\MegaSummit\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Users\iworkonweb1.com\Desktop\Systems\MegaSummit\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Users\iworkonweb1.com\Desktop\Systems\MegaSummit\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Users\iworkonweb1.com\Desktop\Systems\MegaSummit\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Users\iworkonweb1.com\Desktop\Systems\MegaSummit\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.dll
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+Z:\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Users\Windows\Desktop\al ngo\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+\\HP-PC\Data_transfer\Al Ngo Inventory System\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.dll
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\MegaSummitInventorySystem.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.pdb
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\bin\Newtonsoft.Json.xml
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.csprojResolveAssemblyReference.cache
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.dll
+C:\Users\sa\Desktop\MegaSummitInventorySystem\MegaSummitInventorySystem\obj\Debug\MegaSummitInventorySystem.pdb

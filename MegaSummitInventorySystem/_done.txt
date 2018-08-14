@@ -1,0 +1,71 @@
+﻿
+on list municipalities 100 fixed textboxes
+---------------
+Location
+bank
+forwarder
+position
+employee class
+department
+categories
+unit
+sub unit
+terms
+reason of adjustment
+reason of return
+remarks
+holiday
+sales return
+sales order
+official receipt
+memo
+-----------------
+purchase return
+pucrchase order
+voucher
+memo
+commission voucer
+payslip
+employee commision
+assemble
+inventory adjustment
+opening balance
+deposit
+withdrawal
+return
+discounting
+banking memo
+packing list
+pick up slip
+counter receipt
+journal voucher
+------------------
+Wages
+Benefits
+Card Type
+----------------
+Customer default
+Supplier default
+Product default
+List Packing Done
+--------------
+deduction
+contribution
+taxes
+------------------------
+tax exemption
+region province
+Product Department
+sales tax
+bank account
+------------------------
+Mga hindi pa tapos
+-----------------------------------------
+
+
+----
+access privilages
+----
+sales
+----
+

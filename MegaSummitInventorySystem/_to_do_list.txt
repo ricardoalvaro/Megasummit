@@ -1,0 +1,21 @@
+﻿
+Product
+-Table Done
+-SP Done
+-dragging dbml done
+-webservice done
+
+
+Employee
+-Table Done
+-SP Done
+-dragging dbml done
+-webservice done
+
+
+
+Customer
+-Table Done
+-SP DOne
+-dragging dbml done
+-webservice done

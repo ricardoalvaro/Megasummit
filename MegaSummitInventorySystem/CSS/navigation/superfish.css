@@ -1,0 +1,119 @@
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	padding:		0;
+	list-style:		none;
+}
+.sf-menu {
+	line-height:	1.0;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	width:			10em; /* left offset of submenus need to match (see below) */
+}
+.sf-menu ul li {
+	width:			100%;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	left:			0;
+	top:			27px; /* match top ul list item height */
+	z-index:		99;
+	width:			137px;
+	background:		#FFF; 
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+
+/*** DEMO SKIN ***/
+.sf-menu {
+	float: left;
+	margin:0;
+}
+
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	display:block;
+	color:#FFF;
+	font-size:18px; 
+	text-decoration:none;
+	height:50px;
+	line-height:50px;
+	padding:0 45px 0 45px;
+	text-shadow: -1px -1px 1px #0471a4, 0 0 1px #0471a4;
+}
+ 
+.sf-menu li {
+	float:left;
+	margin:0;
+	padding:0 2px 0 0;
+	background:transparent url('images/nav-separator.jpg') no-repeat right center;		
+}
+
+.sf-menu li:last-child { margin:0; padding:0; background:none; }
+
+.sf-menu li li  { margin:0; border-top:1px solid #e5e5e5; }
+.sf-menu li li a { font-size:13px; color:#000 !important; height:auto; line-height:20px !important; padding:10px; }
+.sf-menu li li a:hover { color:#FFF; }
+
+.sf-menu li:hover a, .sf-menu li.sfHover a,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active, .sf-menu li.active a {
+	color:#FFF !important;
+	background:#026dc0 url('images/nav-arrow.png') no-repeat center bottom !important;
+}
+
+.sf-menu li li.sfHover a,
+.sf-menu li li a:focus, .sf-menu li li a:hover {	
+	color:#FFF !important;
+	background:#026dc0 !important;
+}
+
+.sf-sub-indicator { display:none; }
+
+@media screen and (max-width: 1024px) { .sf-menu a, .sf-menu a:visited { padding:0 45px 0 45px;  } }
+@media screen and (max-width: 960px) { .sf-menu a, .sf-menu a:visited { padding:0 43px 0 43px;  } }
+@media screen and (max-width: 950px) { .sf-menu a, .sf-menu a:visited { padding:0 42px 0 42px;  } }
+@media screen and (max-width: 940px) { .sf-menu a, .sf-menu a:visited { padding:0 41px 0 41px;  } }
+@media screen and (max-width: 930px) { .sf-menu a, .sf-menu a:visited { padding:0 40px 0 40px;  } }
+@media screen and (max-width: 920px) { .sf-menu a, .sf-menu a:visited { padding:0 39px 0 39px;  } }
+@media screen and (max-width: 910px) { .sf-menu a, .sf-menu a:visited { padding:0 38px 0 38px;  } }
+@media screen and (max-width: 900px) { .sf-menu a, .sf-menu a:visited { padding:0 36px 0 36px;  } }
+@media screen and (max-width: 890px) { .sf-menu a, .sf-menu a:visited { padding:0 35px 0 35px;  } }
+@media screen and (max-width: 880px) { .sf-menu a, .sf-menu a:visited { padding:0 33px 0 33px;  } }
+@media screen and (max-width: 870px) { .sf-menu a, .sf-menu a:visited { padding:0 32px 0 32px;  } }
+@media screen and (max-width: 860px) { .sf-menu a, .sf-menu a:visited { padding:0 31px 0 31px;  } }
+@media screen and (max-width: 850px) { .sf-menu a, .sf-menu a:visited { padding:0 30px 0 30px;  } }
+@media screen and (max-width: 840px) { .sf-menu a, .sf-menu a:visited { padding:0 29px 0 29px;  } }
+@media screen and (max-width: 830px) { .sf-menu a, .sf-menu a:visited { padding:0 28px 0 28px;  } }
+@media screen and (max-width: 820px) { .sf-menu a, .sf-menu a:visited { padding:0 27px 0 27px;  } }
+@media screen and (max-width: 810px) { .sf-menu a, .sf-menu a:visited { padding:0 26px 0 26px;  } }
+@media screen and (max-width: 800px) { .sf-menu a, .sf-menu a:visited { padding:0 25px 0 25px;  } }
+
