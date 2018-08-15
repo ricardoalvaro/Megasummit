@@ -57,9 +57,6 @@ namespace MegaSummitInventorySystem
     partial void Insert_Region(_Region instance);
     partial void Update_Region(_Region instance);
     partial void Delete_Region(_Region instance);
-    partial void Insert_RegionMunicipality(_RegionMunicipality instance);
-    partial void Update_RegionMunicipality(_RegionMunicipality instance);
-    partial void Delete_RegionMunicipality(_RegionMunicipality instance);
     partial void Insert_ProductDepartment(_ProductDepartment instance);
     partial void Update_ProductDepartment(_ProductDepartment instance);
     partial void Delete_ProductDepartment(_ProductDepartment instance);
@@ -159,6 +156,9 @@ namespace MegaSummitInventorySystem
     partial void Insert_OpeningBalanceSupplierCheck(_OpeningBalanceSupplierCheck instance);
     partial void Update_OpeningBalanceSupplierCheck(_OpeningBalanceSupplierCheck instance);
     partial void Delete_OpeningBalanceSupplierCheck(_OpeningBalanceSupplierCheck instance);
+    partial void Insert_RegionMunicipality(_RegionMunicipality instance);
+    partial void Update_RegionMunicipality(_RegionMunicipality instance);
+    partial void Delete_RegionMunicipality(_RegionMunicipality instance);
     #endregion
 		
 		public DatabaseDataContext() : 
@@ -260,14 +260,6 @@ namespace MegaSummitInventorySystem
 			get
 			{
 				return this.GetTable<_Region>();
-			}
-		}
-		
-		public System.Data.Linq.Table<_RegionMunicipality> _RegionMunicipalities
-		{
-			get
-			{
-				return this.GetTable<_RegionMunicipality>();
 			}
 		}
 		
@@ -543,6 +535,14 @@ namespace MegaSummitInventorySystem
 			}
 		}
 		
+		public System.Data.Linq.Table<_RegionMunicipality> _RegionMunicipalities
+		{
+			get
+			{
+				return this.GetTable<_RegionMunicipality>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_BankDelete]")]
 		public int _BankDelete([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD)
 		{
@@ -766,13 +766,6 @@ namespace MegaSummitInventorySystem
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, companyID, taxType, rate, taxCollectedAccount, taxPaidAccount);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_CompanySelect]")]
-		public ISingleResult<_CompanySelectResult> _CompanySelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="VarChar(MAX)")] string companyName)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, companyName);
-			return ((ISingleResult<_CompanySelectResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_CompanyTaxExemptionDelete]")]
@@ -1927,13 +1920,6 @@ namespace MegaSummitInventorySystem
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_CustomerSelect]")]
-		public ISingleResult<_CustomerSelectResult> _CustomerSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerName", DbType="VarChar(100)")] string customerName)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerName);
-			return ((ISingleResult<_CustomerSelectResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_ProductUpdatePicture]")]
@@ -3349,6 +3335,20 @@ namespace MegaSummitInventorySystem
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, productID);
 			return ((ISingleResult<_OpeningBalanceSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_CustomerSelect]")]
+		public ISingleResult<_CustomerSelectResult> _CustomerSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerName", DbType="VarChar(100)")] string customerName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerName);
+			return ((ISingleResult<_CustomerSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_CompanySelect]")]
+		public ISingleResult<_CompanySelectResult> _CompanySelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CompanyName", DbType="VarChar(MAX)")] string companyName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, companyName);
+			return ((ISingleResult<_CompanySelectResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5213,164 +5213,6 @@ namespace MegaSummitInventorySystem
 					this._RegionName = value;
 					this.SendPropertyChanged("RegionName");
 					this.OnRegionNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_RegionMunicipality]")]
-	public partial class _RegionMunicipality : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private string _RegionName;
-		
-		private string _MunicipalityName;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnRegionNameChanging(string value);
-    partial void OnRegionNameChanged();
-    partial void OnMunicipalityNameChanging(string value);
-    partial void OnMunicipalityNameChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _RegionMunicipality()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionName", DbType="VarChar(5000)")]
-		public string RegionName
-		{
-			get
-			{
-				return this._RegionName;
-			}
-			set
-			{
-				if ((this._RegionName != value))
-				{
-					this.OnRegionNameChanging(value);
-					this.SendPropertyChanging();
-					this._RegionName = value;
-					this.SendPropertyChanged("RegionName");
-					this.OnRegionNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityName", DbType="VarChar(5000)")]
-		public string MunicipalityName
-		{
-			get
-			{
-				return this._MunicipalityName;
-			}
-			set
-			{
-				if ((this._MunicipalityName != value))
-				{
-					this.OnMunicipalityNameChanging(value);
-					this.SendPropertyChanging();
-					this._MunicipalityName = value;
-					this.SendPropertyChanged("MunicipalityName");
-					this.OnMunicipalityNameChanged();
 				}
 			}
 		}
@@ -14763,6 +14605,164 @@ namespace MegaSummitInventorySystem
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_RegionMunicipality]")]
+	public partial class _RegionMunicipality : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _RegionID;
+		
+		private string _MunicipalityName;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnRegionIDChanging(System.Nullable<long> value);
+    partial void OnRegionIDChanged();
+    partial void OnMunicipalityNameChanging(string value);
+    partial void OnMunicipalityNameChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _RegionMunicipality()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionID", DbType="BigInt")]
+		public System.Nullable<long> RegionID
+		{
+			get
+			{
+				return this._RegionID;
+			}
+			set
+			{
+				if ((this._RegionID != value))
+				{
+					this.OnRegionIDChanging(value);
+					this.SendPropertyChanging();
+					this._RegionID = value;
+					this.SendPropertyChanged("RegionID");
+					this.OnRegionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityName", DbType="VarChar(5000)")]
+		public string MunicipalityName
+		{
+			get
+			{
+				return this._MunicipalityName;
+			}
+			set
+			{
+				if ((this._MunicipalityName != value))
+				{
+					this.OnMunicipalityNameChanging(value);
+					this.SendPropertyChanging();
+					this._MunicipalityName = value;
+					this.SendPropertyChanged("MunicipalityName");
+					this.OnMunicipalityNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class _BankSelectResult
 	{
 		
@@ -15628,230 +15628,6 @@ namespace MegaSummitInventorySystem
 				if ((this._TaxPaidAccount != value))
 				{
 					this._TaxPaidAccount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this._DateCreated = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this._DateModified = value;
-				}
-			}
-		}
-	}
-	
-	public partial class _CompanySelectResult
-	{
-		
-		private long _ID;
-		
-		private string _ImagePath;
-		
-		private string _CompanyName;
-		
-		private string _Address;
-		
-		private string _Telephone;
-		
-		private string _Fax;
-		
-		private string _VatNo;
-		
-		private string _TinNo;
-		
-		private string _Website;
-		
-		private string _Email;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-		public _CompanySelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(MAX)")]
-		public string ImagePath
-		{
-			get
-			{
-				return this._ImagePath;
-			}
-			set
-			{
-				if ((this._ImagePath != value))
-				{
-					this._ImagePath = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="VarChar(MAX)")]
-		public string CompanyName
-		{
-			get
-			{
-				return this._CompanyName;
-			}
-			set
-			{
-				if ((this._CompanyName != value))
-				{
-					this._CompanyName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(50)")]
-		public string Telephone
-		{
-			get
-			{
-				return this._Telephone;
-			}
-			set
-			{
-				if ((this._Telephone != value))
-				{
-					this._Telephone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="VarChar(50)")]
-		public string Fax
-		{
-			get
-			{
-				return this._Fax;
-			}
-			set
-			{
-				if ((this._Fax != value))
-				{
-					this._Fax = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VatNo", DbType="VarChar(50)")]
-		public string VatNo
-		{
-			get
-			{
-				return this._VatNo;
-			}
-			set
-			{
-				if ((this._VatNo != value))
-				{
-					this._VatNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinNo", DbType="VarChar(50)")]
-		public string TinNo
-		{
-			get
-			{
-				return this._TinNo;
-			}
-			set
-			{
-				if ((this._TinNo != value))
-				{
-					this._TinNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Website", DbType="VarChar(50)")]
-		public string Website
-		{
-			get
-			{
-				return this._Website;
-			}
-			set
-			{
-				if ((this._Website != value))
-				{
-					this._Website = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this._Email = value;
 				}
 			}
 		}
@@ -19954,428 +19730,6 @@ namespace MegaSummitInventorySystem
 				if ((this._DateModified != value))
 				{
 					this._DateModified = value;
-				}
-			}
-		}
-	}
-	
-	public partial class _CustomerSelectResult
-	{
-		
-		private long _ID;
-		
-		private string _CustomerName;
-		
-		private string _Address;
-		
-		private string _ContactPerson;
-		
-		private System.Nullable<long> _RegionID;
-		
-		private string _RegionName;
-		
-		private System.Nullable<long> _MunicipalityID;
-		
-		private string _MunicipalityName;
-		
-		private string _BusinessPhone;
-		
-		private string _HomePhone;
-		
-		private string _Fax;
-		
-		private string _MobilePhone;
-		
-		private string _Notes;
-		
-		private System.Nullable<long> _ShipToID;
-		
-		private string _PriceLevel;
-		
-		private string _Status;
-		
-		private string _TinNo;
-		
-		private string _VatNo;
-		
-		private System.Nullable<long> _SalesmanID;
-		
-		private string _EmployeeName;
-		
-		private System.Nullable<long> _TermID;
-		
-		private string _TermName;
-		
-		private System.Nullable<decimal> _CreditLimit;
-		
-		public _CustomerSelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="VarChar(100)")]
-		public string CustomerName
-		{
-			get
-			{
-				return this._CustomerName;
-			}
-			set
-			{
-				if ((this._CustomerName != value))
-				{
-					this._CustomerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this._Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="VarChar(100)")]
-		public string ContactPerson
-		{
-			get
-			{
-				return this._ContactPerson;
-			}
-			set
-			{
-				if ((this._ContactPerson != value))
-				{
-					this._ContactPerson = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionID", DbType="BigInt")]
-		public System.Nullable<long> RegionID
-		{
-			get
-			{
-				return this._RegionID;
-			}
-			set
-			{
-				if ((this._RegionID != value))
-				{
-					this._RegionID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionName", DbType="VarChar(MAX)")]
-		public string RegionName
-		{
-			get
-			{
-				return this._RegionName;
-			}
-			set
-			{
-				if ((this._RegionName != value))
-				{
-					this._RegionName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityID", DbType="BigInt")]
-		public System.Nullable<long> MunicipalityID
-		{
-			get
-			{
-				return this._MunicipalityID;
-			}
-			set
-			{
-				if ((this._MunicipalityID != value))
-				{
-					this._MunicipalityID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityName", DbType="VarChar(5000)")]
-		public string MunicipalityName
-		{
-			get
-			{
-				return this._MunicipalityName;
-			}
-			set
-			{
-				if ((this._MunicipalityName != value))
-				{
-					this._MunicipalityName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessPhone", DbType="VarChar(50)")]
-		public string BusinessPhone
-		{
-			get
-			{
-				return this._BusinessPhone;
-			}
-			set
-			{
-				if ((this._BusinessPhone != value))
-				{
-					this._BusinessPhone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="VarChar(50)")]
-		public string HomePhone
-		{
-			get
-			{
-				return this._HomePhone;
-			}
-			set
-			{
-				if ((this._HomePhone != value))
-				{
-					this._HomePhone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="VarChar(50)")]
-		public string Fax
-		{
-			get
-			{
-				return this._Fax;
-			}
-			set
-			{
-				if ((this._Fax != value))
-				{
-					this._Fax = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="VarChar(50)")]
-		public string MobilePhone
-		{
-			get
-			{
-				return this._MobilePhone;
-			}
-			set
-			{
-				if ((this._MobilePhone != value))
-				{
-					this._MobilePhone = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(MAX)")]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this._Notes = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShipToID", DbType="BigInt")]
-		public System.Nullable<long> ShipToID
-		{
-			get
-			{
-				return this._ShipToID;
-			}
-			set
-			{
-				if ((this._ShipToID != value))
-				{
-					this._ShipToID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceLevel", DbType="VarChar(50)")]
-		public string PriceLevel
-		{
-			get
-			{
-				return this._PriceLevel;
-			}
-			set
-			{
-				if ((this._PriceLevel != value))
-				{
-					this._PriceLevel = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(50)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinNo", DbType="VarChar(50)")]
-		public string TinNo
-		{
-			get
-			{
-				return this._TinNo;
-			}
-			set
-			{
-				if ((this._TinNo != value))
-				{
-					this._TinNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VatNo", DbType="VarChar(50)")]
-		public string VatNo
-		{
-			get
-			{
-				return this._VatNo;
-			}
-			set
-			{
-				if ((this._VatNo != value))
-				{
-					this._VatNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesmanID", DbType="BigInt")]
-		public System.Nullable<long> SalesmanID
-		{
-			get
-			{
-				return this._SalesmanID;
-			}
-			set
-			{
-				if ((this._SalesmanID != value))
-				{
-					this._SalesmanID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50)")]
-		public string EmployeeName
-		{
-			get
-			{
-				return this._EmployeeName;
-			}
-			set
-			{
-				if ((this._EmployeeName != value))
-				{
-					this._EmployeeName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermID", DbType="BigInt")]
-		public System.Nullable<long> TermID
-		{
-			get
-			{
-				return this._TermID;
-			}
-			set
-			{
-				if ((this._TermID != value))
-				{
-					this._TermID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermName", DbType="VarChar(5000)")]
-		public string TermName
-		{
-			get
-			{
-				return this._TermName;
-			}
-			set
-			{
-				if ((this._TermName != value))
-				{
-					this._TermName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditLimit", DbType="Money")]
-		public System.Nullable<decimal> CreditLimit
-		{
-			get
-			{
-				return this._CreditLimit;
-			}
-			set
-			{
-				if ((this._CreditLimit != value))
-				{
-					this._CreditLimit = value;
 				}
 			}
 		}
@@ -34706,6 +34060,670 @@ namespace MegaSummitInventorySystem
 				if ((this._TransactionDate != value))
 				{
 					this._TransactionDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this._DateModified = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _CustomerSelectResult
+	{
+		
+		private long _ID;
+		
+		private string _CustomerName;
+		
+		private string _Address;
+		
+		private string _ContactPerson;
+		
+		private System.Nullable<long> _RegionID;
+		
+		private string _RegionName;
+		
+		private System.Nullable<long> _MunicipalityID;
+		
+		private string _MunicipalityName;
+		
+		private string _BusinessPhone;
+		
+		private string _HomePhone;
+		
+		private string _Fax;
+		
+		private string _MobilePhone;
+		
+		private string _Notes;
+		
+		private System.Nullable<long> _ShipToID;
+		
+		private string _PriceLevel;
+		
+		private string _Status;
+		
+		private string _TinNo;
+		
+		private string _VatNo;
+		
+		private System.Nullable<long> _SalesmanID;
+		
+		private string _EmployeeName;
+		
+		private System.Nullable<long> _TermID;
+		
+		private string _TermName;
+		
+		private System.Nullable<decimal> _CreditLimit;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		public _CustomerSelectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="VarChar(100)")]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="VarChar(100)")]
+		public string ContactPerson
+		{
+			get
+			{
+				return this._ContactPerson;
+			}
+			set
+			{
+				if ((this._ContactPerson != value))
+				{
+					this._ContactPerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionID", DbType="BigInt")]
+		public System.Nullable<long> RegionID
+		{
+			get
+			{
+				return this._RegionID;
+			}
+			set
+			{
+				if ((this._RegionID != value))
+				{
+					this._RegionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionName", DbType="VarChar(MAX)")]
+		public string RegionName
+		{
+			get
+			{
+				return this._RegionName;
+			}
+			set
+			{
+				if ((this._RegionName != value))
+				{
+					this._RegionName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityID", DbType="BigInt")]
+		public System.Nullable<long> MunicipalityID
+		{
+			get
+			{
+				return this._MunicipalityID;
+			}
+			set
+			{
+				if ((this._MunicipalityID != value))
+				{
+					this._MunicipalityID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MunicipalityName", DbType="VarChar(5000)")]
+		public string MunicipalityName
+		{
+			get
+			{
+				return this._MunicipalityName;
+			}
+			set
+			{
+				if ((this._MunicipalityName != value))
+				{
+					this._MunicipalityName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BusinessPhone", DbType="VarChar(50)")]
+		public string BusinessPhone
+		{
+			get
+			{
+				return this._BusinessPhone;
+			}
+			set
+			{
+				if ((this._BusinessPhone != value))
+				{
+					this._BusinessPhone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="VarChar(50)")]
+		public string HomePhone
+		{
+			get
+			{
+				return this._HomePhone;
+			}
+			set
+			{
+				if ((this._HomePhone != value))
+				{
+					this._HomePhone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="VarChar(50)")]
+		public string Fax
+		{
+			get
+			{
+				return this._Fax;
+			}
+			set
+			{
+				if ((this._Fax != value))
+				{
+					this._Fax = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="VarChar(50)")]
+		public string MobilePhone
+		{
+			get
+			{
+				return this._MobilePhone;
+			}
+			set
+			{
+				if ((this._MobilePhone != value))
+				{
+					this._MobilePhone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(MAX)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShipToID", DbType="BigInt")]
+		public System.Nullable<long> ShipToID
+		{
+			get
+			{
+				return this._ShipToID;
+			}
+			set
+			{
+				if ((this._ShipToID != value))
+				{
+					this._ShipToID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceLevel", DbType="VarChar(50)")]
+		public string PriceLevel
+		{
+			get
+			{
+				return this._PriceLevel;
+			}
+			set
+			{
+				if ((this._PriceLevel != value))
+				{
+					this._PriceLevel = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinNo", DbType="VarChar(50)")]
+		public string TinNo
+		{
+			get
+			{
+				return this._TinNo;
+			}
+			set
+			{
+				if ((this._TinNo != value))
+				{
+					this._TinNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VatNo", DbType="VarChar(50)")]
+		public string VatNo
+		{
+			get
+			{
+				return this._VatNo;
+			}
+			set
+			{
+				if ((this._VatNo != value))
+				{
+					this._VatNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesmanID", DbType="BigInt")]
+		public System.Nullable<long> SalesmanID
+		{
+			get
+			{
+				return this._SalesmanID;
+			}
+			set
+			{
+				if ((this._SalesmanID != value))
+				{
+					this._SalesmanID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50)")]
+		public string EmployeeName
+		{
+			get
+			{
+				return this._EmployeeName;
+			}
+			set
+			{
+				if ((this._EmployeeName != value))
+				{
+					this._EmployeeName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermID", DbType="BigInt")]
+		public System.Nullable<long> TermID
+		{
+			get
+			{
+				return this._TermID;
+			}
+			set
+			{
+				if ((this._TermID != value))
+				{
+					this._TermID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermName", DbType="VarChar(5000)")]
+		public string TermName
+		{
+			get
+			{
+				return this._TermName;
+			}
+			set
+			{
+				if ((this._TermName != value))
+				{
+					this._TermName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditLimit", DbType="Money")]
+		public System.Nullable<decimal> CreditLimit
+		{
+			get
+			{
+				return this._CreditLimit;
+			}
+			set
+			{
+				if ((this._CreditLimit != value))
+				{
+					this._CreditLimit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _CompanySelectResult
+	{
+		
+		private long _ID;
+		
+		private string _ImagePath;
+		
+		private string _CompanyName;
+		
+		private string _Address;
+		
+		private string _Telephone;
+		
+		private string _Fax;
+		
+		private string _VatNo;
+		
+		private string _TinNo;
+		
+		private string _Website;
+		
+		private string _Email;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+		public _CompanySelectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="VarChar(MAX)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this._ImagePath = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="VarChar(MAX)")]
+		public string CompanyName
+		{
+			get
+			{
+				return this._CompanyName;
+			}
+			set
+			{
+				if ((this._CompanyName != value))
+				{
+					this._CompanyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="VarChar(50)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this._Telephone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="VarChar(50)")]
+		public string Fax
+		{
+			get
+			{
+				return this._Fax;
+			}
+			set
+			{
+				if ((this._Fax != value))
+				{
+					this._Fax = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VatNo", DbType="VarChar(50)")]
+		public string VatNo
+		{
+			get
+			{
+				return this._VatNo;
+			}
+			set
+			{
+				if ((this._VatNo != value))
+				{
+					this._VatNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinNo", DbType="VarChar(50)")]
+		public string TinNo
+		{
+			get
+			{
+				return this._TinNo;
+			}
+			set
+			{
+				if ((this._TinNo != value))
+				{
+					this._TinNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Website", DbType="VarChar(50)")]
+		public string Website
+		{
+			get
+			{
+				return this._Website;
+			}
+			set
+			{
+				if ((this._Website != value))
+				{
+					this._Website = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
 				}
 			}
 		}

@@ -13,11 +13,13 @@
         return vars;
     }
 
+    this.FormatDate = function (value) {
+        var date = new Date(value);
+        var jsonDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+        return jsonDate;
+    }
+
+
 }
 
 
-function FormatDate(value) {
-    var date = new Date(value);
-    var jsonDate = (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
-    return jsonDate;
-}

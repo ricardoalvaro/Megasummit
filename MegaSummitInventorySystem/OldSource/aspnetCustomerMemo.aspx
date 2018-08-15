@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetCustomerMemo_Old.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetCustomerMemo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetCustomerMemo.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetCustomerMemo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         .ym-form .submit {

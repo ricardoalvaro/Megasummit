@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetProductAdjustment.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetProductAdjustment" %>
 <%@ Register src="include/ProductSubMenu.ascx" tagname="ProductSubMenu" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+     
+
     <uc1:ProductSubMenu ID="ProductSubMenu1" runat="server" />
     <div id="main" class="products-product">
     
@@ -303,7 +306,7 @@
                     location_id = Number($("#location").val());
                     ActionSelectProductDetails();
                 }
-            })
+            }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
         }
 
         function ComputeDifference()

@@ -91,12 +91,17 @@
     <Content Include="aspnetCompany-Summary.aspx" />
     <Content Include="aspnetCompany-User.aspx" />
     <Content Include="aspnetCompany.aspx" />
-    <Content Include="aspnetCustomer_Old.aspx" />
-    <Content Include="aspnetCustomerMemo_Old.aspx" />
-    <Content Include="aspnetCustomerOfficialReceipt_Old.aspx" />
-    <Content Include="aspnetCustomerSales_Old.aspx" />
-    <Content Include="aspnetCustomerSalesOrder_Old.aspx" />
-    <Content Include="aspnetCustomerSalesReturn_Old.aspx" />
+    <Content Include="aspnetCustomer.aspx" />
+    <Content Include="aspnetCustomerInformation.aspx" />
+    <Content Include="aspnetCustomerInformationCustomerItem.aspx" />
+    <Content Include="include\CustomerSubMenu.ascx" />
+    <Content Include="include\CustomerSubMenuAjax.ascx" />
+    <Content Include="OldSource\aspnetCustomer.aspx" />
+    <Content Include="OldSource\aspnetCustomerMemo.aspx" />
+    <Content Include="OldSource\aspnetCustomerOfficialReceipt.aspx" />
+    <Content Include="OldSource\aspnetCustomerSales.aspx" />
+    <Content Include="OldSource\aspnetCustomerSalesOrder.aspx" />
+    <Content Include="OldSource\aspnetCustomerSalesReturn.aspx" />
     <Content Include="aspnetEmployee.aspx" />
     <Content Include="aspnetHome.aspx" />
     <Content Include="aspnetProduct.aspx" />
@@ -115,12 +120,12 @@
     <Content Include="OldSource\aspnetProduct_Old.aspx" />
     <Content Include="OldSource\aspnetProductAssembly.aspx" />
     <Content Include="OldSource\aspnetProductPreorder_Old.aspx" />
-    <Content Include="aspnetSuppliers.aspx" />
-    <Content Include="aspnetSuppliersMemo.aspx" />
-    <Content Include="aspnetSuppliersPurchase.aspx" />
-    <Content Include="aspnetSuppliersPurchaseOrder.aspx" />
-    <Content Include="aspnetSuppliersPurchaseReturn.aspx" />
-    <Content Include="aspnetSuppliersVoucher.aspx" />
+    <Content Include="OldSource\aspnetSuppliers.aspx" />
+    <Content Include="OldSource\aspnetSuppliersMemo.aspx" />
+    <Content Include="OldSource\aspnetSuppliersPurchase.aspx" />
+    <Content Include="OldSource\aspnetSuppliersPurchaseOrder.aspx" />
+    <Content Include="OldSource\aspnetSuppliersPurchaseReturn.aspx" />
+    <Content Include="OldSource\aspnetSuppliersVoucher.aspx" />
     <Content Include="OldSource\aspnetProductsAdjustment.aspx" />
     <Content Include="CSS\base.css" />
     <Content Include="CSS\base.min.css" />
@@ -305,7 +310,9 @@
     <Content Include="Script\CompanySettingProduct.js" />
     <Content Include="Script\CompanySettingSupplier.js" />
     <Content Include="Script\Customer.js" />
-    <Content Include="Script\CustomerMemo.js" />
+    <Content Include="Script\BackUp\Customer_old.js" />
+    <Content Include="Script\BackUp\CustomerMemo.js" />
+    <Content Include="Script\CustomerInformation.js" />
     <Content Include="Script\Employee.js" />
     <Content Include="Script\Helper.js" />
     <Content Include="Script\jsPopDiv.js" />
@@ -614,47 +621,82 @@
     <Compile Include="aspnetCompany.aspx.designer.cs">
       <DependentUpon>aspnetCompany.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomer_Old.aspx.cs">
-      <DependentUpon>aspnetCustomer_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomer.aspx.cs">
+      <DependentUpon>aspnetCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomer_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomer_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomer.aspx.designer.cs">
+      <DependentUpon>aspnetCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomerMemo_Old.aspx.cs">
-      <DependentUpon>aspnetCustomerMemo_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomerInformation.aspx.cs">
+      <DependentUpon>aspnetCustomerInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomerMemo_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomerMemo_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomerInformation.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomerOfficialReceipt_Old.aspx.cs">
-      <DependentUpon>aspnetCustomerOfficialReceipt_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomerInformationCustomerItem.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationCustomerItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomerOfficialReceipt_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomerOfficialReceipt_Old.aspx</DependentUpon>
+    <Compile Include="aspnetCustomerInformationCustomerItem.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationCustomerItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomerSales_Old.aspx.cs">
-      <DependentUpon>aspnetCustomerSales_Old.aspx</DependentUpon>
+    <Compile Include="include\CustomerSubMenu.ascx.cs">
+      <DependentUpon>CustomerSubMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomerSales_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomerSales_Old.aspx</DependentUpon>
+    <Compile Include="include\CustomerSubMenu.ascx.designer.cs">
+      <DependentUpon>CustomerSubMenu.ascx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomerSalesOrder_Old.aspx.cs">
-      <DependentUpon>aspnetCustomerSalesOrder_Old.aspx</DependentUpon>
+    <Compile Include="include\CustomerSubMenuAjax.ascx.cs">
+      <DependentUpon>CustomerSubMenuAjax.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomerSalesOrder_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomerSalesOrder_Old.aspx</DependentUpon>
+    <Compile Include="include\CustomerSubMenuAjax.ascx.designer.cs">
+      <DependentUpon>CustomerSubMenuAjax.ascx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetCustomerSalesReturn_Old.aspx.cs">
-      <DependentUpon>aspnetCustomerSalesReturn_Old.aspx</DependentUpon>
+    <Compile Include="OldSource\aspnetCustomer.aspx.cs">
+      <DependentUpon>aspnetCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetCustomerSalesReturn_Old.aspx.designer.cs">
-      <DependentUpon>aspnetCustomerSalesReturn_Old.aspx</DependentUpon>
+    <Compile Include="OldSource\aspnetCustomer.aspx.designer.cs">
+      <DependentUpon>aspnetCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerMemo.aspx.cs">
+      <DependentUpon>aspnetCustomerMemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerMemo.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerMemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerOfficialReceipt.aspx.cs">
+      <DependentUpon>aspnetCustomerOfficialReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerOfficialReceipt.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerOfficialReceipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSales.aspx.cs">
+      <DependentUpon>aspnetCustomerSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSales.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSalesOrder.aspx.cs">
+      <DependentUpon>aspnetCustomerSalesOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSalesOrder.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerSalesOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSalesReturn.aspx.cs">
+      <DependentUpon>aspnetCustomerSalesReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OldSource\aspnetCustomerSalesReturn.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerSalesReturn.aspx</DependentUpon>
     </Compile>
     <Compile Include="aspnetEmployee.aspx.cs">
       <DependentUpon>aspnetEmployee.aspx</DependentUpon>
@@ -782,46 +824,46 @@
     <Compile Include="OldSource\aspnetProductPreorder_Old.aspx.designer.cs">
       <DependentUpon>aspnetProductPreorder_Old.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliers.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliers.aspx.cs">
       <DependentUpon>aspnetSuppliers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliers.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliers.aspx.designer.cs">
       <DependentUpon>aspnetSuppliers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliersMemo.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliersMemo.aspx.cs">
       <DependentUpon>aspnetSuppliersMemo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliersMemo.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliersMemo.aspx.designer.cs">
       <DependentUpon>aspnetSuppliersMemo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchase.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchase.aspx.cs">
       <DependentUpon>aspnetSuppliersPurchase.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchase.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchase.aspx.designer.cs">
       <DependentUpon>aspnetSuppliersPurchase.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchaseOrder.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchaseOrder.aspx.cs">
       <DependentUpon>aspnetSuppliersPurchaseOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchaseOrder.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchaseOrder.aspx.designer.cs">
       <DependentUpon>aspnetSuppliersPurchaseOrder.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchaseReturn.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchaseReturn.aspx.cs">
       <DependentUpon>aspnetSuppliersPurchaseReturn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliersPurchaseReturn.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliersPurchaseReturn.aspx.designer.cs">
       <DependentUpon>aspnetSuppliersPurchaseReturn.aspx</DependentUpon>
     </Compile>
-    <Compile Include="aspnetSuppliersVoucher.aspx.cs">
+    <Compile Include="OldSource\aspnetSuppliersVoucher.aspx.cs">
       <DependentUpon>aspnetSuppliersVoucher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="aspnetSuppliersVoucher.aspx.designer.cs">
+    <Compile Include="OldSource\aspnetSuppliersVoucher.aspx.designer.cs">
       <DependentUpon>aspnetSuppliersVoucher.aspx</DependentUpon>
     </Compile>
     <Compile Include="AutoCompleteData.cs" />
@@ -853,6 +895,9 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CustomerVM.cs" />
+    <Compile Include="ViewModel\EmplyeeVM.cs" />
+    <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
     <Compile Include="Webservice\CompanyImageUploader.ashx.cs">
       <DependentUpon>CompanyImageUploader.ashx</DependentUpon>
     </Compile>

@@ -390,7 +390,7 @@
                     //==================
                     var pageUrl = '/Webservice/svr_Product.asmx';
                     var data_transfer = "{'product_picture':'{0}','product_name':'{1}','brand':'{2}','upc_sku':'{3}','product_department_id':'{4}','product_class_id':'{5}', 'location_id':'{6}' ,'reorder_point':'{7}','reorder_qty':'{8}','notes':'{9}','packing_id':'{10}','unit_id':'{11}','sub_unit_id':'{12}','price_a':'{13}','price_b':'{14}','price_c':'{15}','discount_a':'{16}','discount_b':'{17}','discount_c':'{18}'}"
-                    .f(product_picture,product_name,brand,upc_sku,product_department,product_class,location,reorder_product,reorder_qty,notes,packing,units,sub_units,price_a,price_b,price_c,discount_a,discount_b,discount_c);
+                    .f(filepath, product_name, brand, upc_sku, product_department, product_class, location, reorder_product, reorder_qty, notes, packing, units, sub_units, price_a, price_b, price_c, discount_a, discount_b, discount_c);
 
                     $.ajax({
                         type: "POST",
@@ -400,7 +400,7 @@
                         dataType: "json",
                         crossdomain: true,
                         success: function (response) {
-                            window.location.href = "aspnetProduct.aspx";
+                            window.location.href = "aspnetProductInformation.aspx?productID=" + response.d;
 
                         },
                         error: function (response) {
@@ -426,7 +426,7 @@
                         dataType: "json",
                         crossdomain: true,
                         success: function (response) {
-                            window.location.href = "aspnetProduct.aspx";
+                            window.location.href = "aspnetProductInformation.aspx?productID=" + response.d;
                         },
                         error: function (response) {
                             alert(response.status);
@@ -772,15 +772,18 @@
                 ImageDir.onload = function (e) {
                     $('#img_company').attr('src', e.target.result);
                     //upload sync here
-                    if (ProductID != 0) {
+                    //if (ProductID != 0) {
                         //alert(ProductID);
                         UploadData();
-                    }
+                    //}
                 }
 
                 ImageDir.readAsDataURL(input.files[0]);
             }
         }
+
+        var filepath = "";
+
         function UploadData() {
             var fileUpload = $("#uploadFile").get(0);
             var files = fileUpload.files;
@@ -797,7 +800,8 @@
                 contentType: false,
                 processData: false,
                 success: function (result) {
-
+                    filepath = result;
+                    //alert(filepath);
                     if (ProductID != 0)//update
                     {
 

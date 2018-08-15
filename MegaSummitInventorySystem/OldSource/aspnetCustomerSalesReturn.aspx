@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetCustomerSalesReturn_Old.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetCustomerSalesReturn" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetCustomerSalesReturn.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetCustomerSalesReturn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>

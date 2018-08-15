@@ -4,27 +4,33 @@
     <style>
         .product{
             width: 206px;
-            /*border: solid 1px transparent*/
+            border: solid 1px transparent;
+            background-color:transparent;
         }
         .location{
             width: 139px;
-            /*border: solid 1px transparent;*/
+            border: solid 1px transparent;
+            background-color:transparent;
         }
         .quantity{
             width: 75px;
-            /*border: solid 1px transparent;*/
+            border: solid 1px transparent;
+            background-color:transparent;
         }
         .unit{
             width: 75px;
-            /*border: solid 1px transparent;*/
+            border: solid 1px transparent;
+            background-color:transparent;
         }
         .ave_cost{
             width: 103px;
-            /*border: solid 1px transparent;*/
+            border: solid 1px transparent;
+            background-color:transparent;
         }
         .amount{
             width: 64px;
-            /*border: 1px solid transparent;*/
+            border: 1px solid transparent;
+            background-color:transparent;
         }
 
 
@@ -208,7 +214,7 @@
             GenerateDynamicProductAutoComplete();
 
 
-            $("#btn-new").removeClass("disabled");
+            $("#btn-save").removeClass("disabled");
             CreateDate();
             ProductAutoComplete();
             LocationAutoComplete();
@@ -311,7 +317,7 @@
         {
             var ret = "";
             for (var i = 0; i < 20; i++) {
-                ret +="<tr><td style='width: 30%'><input type='text' class='product'  /><input type='hidden' class='product_id' /></td><td><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td><input type='text' class='quantity' /></td><td><input type='text' class='unit' /></td><td><input type='text' class='ave_cost' /></td><td><input type='text' class='amount' value='0' /></td></tr>";
+                ret +="<tr><td style='width: 30%'><input type='text' class='product'  /><input type='hidden' class='product_id' /></td><td><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td><input type='text' class='quantity' /></td><td><input type='text' class='unit' /></td><td><input type='text' class='ave_cost' /></td><td><input type='text' class='amount'  /></td></tr>";
             }
 
             return ret;

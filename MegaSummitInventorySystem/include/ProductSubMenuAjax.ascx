@@ -1,11 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProductSubMenuAjax.ascx.cs" Inherits="MegaSummitInventorySystem.include.ProductSubMenuAjax" %>
 <div class="submenu ajax ">
 	<ul class="crossfade ym-clearfix">
-        <li class=" "><a data="aspnetProductInformation.aspx" onclick="Redirect('aspnetProductInformation.aspx')" >General Info</a></li>
-        <li class=" "><a data="aspnetProductInformationStockCard.aspx" onclick="Redirect('aspnetProductInformationStockCard.aspx')" >Stock Cards</a></li>
-        <li class=" "><a data="aspnetProductInformationCustomerItem.aspx" onclick="Redirect('aspnetProductInformationCustomerItem.aspx')">Customer Items</a></li>
-        <li class=" "><a data="aspnetProductInformationSupplierItem.aspx" onclick="Redirect('aspnetProductInformationSupplierItem.aspx')">Supplier Items</a></li>
-        <li class=" "><a data="aspnetProductInformationLocation.aspx" onclick="Redirect('aspnetProductInformationLocation.aspx')">Location</a></li>
+        <li class=" "><a data="aspnetProductInformation.aspx" onclick="Redirect('aspnetProductInformation.aspx')" style="cursor:default" >General Info</a></li>
+        <li class=" "><a data="aspnetProductInformationStockCard.aspx" onclick="Redirect('aspnetProductInformationStockCard.aspx')" style="cursor:default">Stock Cards</a></li>
+        <li class=" "><a data="aspnetProductInformationCustomerItem.aspx" onclick="Redirect('aspnetProductInformationCustomerItem.aspx')" style="cursor:default">Customer Items</a></li>
+        <li class=" "><a data="aspnetProductInformationSupplierItem.aspx" onclick="Redirect('aspnetProductInformationSupplierItem.aspx')" style="cursor:default">Supplier Items</a></li>
+        <li class=" "><a data="aspnetProductInformationLocation.aspx" onclick="Redirect('aspnetProductInformationLocation.aspx')" style="cursor:default">Location</a></li>
     </ul>
     <div class="ym-ie-clearing">&nbsp;</div>
 </div>

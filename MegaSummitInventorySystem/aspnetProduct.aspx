@@ -2,6 +2,14 @@
 <%@ Register src="include/ProductSubMenu.ascx" tagname="ProductSubMenu" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:ProductSubMenu ID="ProductSubMenu1" runat="server" />
+    <style>
+
+        input {
+             outline: none;
+        }
+
+    </style>
+
     <div id="main" class="products-product">
     <div class="ym-wrapper">    	   	
         <div class="ym-wbox"> 
@@ -108,7 +116,7 @@
                 select: function (a, b) {
                     RedirectToGeneralInfomation(b.item.id)
                 }
-            })
+            }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
 
         }
 

@@ -102,15 +102,6 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.[_RegionMunicipality]" Member="_RegionMunicipalities">
-    <Type Name="_RegionMunicipality">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RegionName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
-      <Column Name="MunicipalityName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.[_ProductDepartment]" Member="_ProductDepartments">
     <Type Name="_ProductDepartment">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -586,6 +577,15 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.[_RegionMunicipality]" Member="_RegionMunicipalities">
+    <Type Name="_RegionMunicipality">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RegionID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MunicipalityName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.[_BankDelete]" Method="_BankDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
@@ -852,24 +852,6 @@
     <Parameter Name="TaxCollectedAccount" Parameter="taxCollectedAccount" Type="System.String" DbType="VarChar(5000)" />
     <Parameter Name="TaxPaidAccount" Parameter="taxPaidAccount" Type="System.String" DbType="VarChar(5000)" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.[_CompanySelect]" Method="_CompanySelect">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="VarChar(MAX)" />
-    <ElementType Name="_CompanySelectResult">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="ImagePath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="CompanyName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="VatNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TinNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Website" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.[_CompanyTaxExemptionDelete]" Method="_CompanyTaxExemptionDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
@@ -2112,35 +2094,6 @@
   <Function Name="dbo.[_ProductDelete]" Method="_ProductDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.[_CustomerSelect]" Method="_CustomerSelect">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="CustomerName" Parameter="customerName" Type="System.String" DbType="VarChar(100)" />
-    <ElementType Name="_CustomerSelectResult">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ContactPerson" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="RegionID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="RegionName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="MunicipalityID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="MunicipalityName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
-      <Column Name="BusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="HomePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ShipToID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PriceLevel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TinNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="VatNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SalesmanID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TermID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="TermName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
-      <Column Name="CreditLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.[_ProductUpdatePicture]" Method="_ProductUpdatePicture">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
@@ -4252,6 +4205,54 @@
       <Column Name="Discount" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="TransactionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_CustomerSelect]" Method="_CustomerSelect">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerName" Parameter="customerName" Type="System.String" DbType="VarChar(100)" />
+    <ElementType Name="_CustomerSelectResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactPerson" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RegionID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RegionName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MunicipalityID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MunicipalityName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="BusinessPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HomePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShipToID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PriceLevel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TinNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VatNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SalesmanID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TermID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TermName" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="CreditLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_CompanySelect]" Method="_CompanySelect">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CompanyName" Parameter="companyName" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="_CompanySelectResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ImagePath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VatNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TinNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
