@@ -273,6 +273,8 @@
         </div>
         </div>
     </div>
+
+
     <script src="Script/CustomerInformation.js"></script>
     <script type="text/javascript">
         var RegionData = <%= RegionMunicipalityVM.Regions %>;
@@ -281,7 +283,7 @@
         var EmployeeData = <%= EmployeeVM.Employees(0, string.Empty, "Salesman") %>;
         var TermData =  <%= CustomerVM.Terms %>;
         var SettingData = <%= CustomerVM.CustomerSettings %>;
-        var CustomerSingleData =  <%= CustomerSingleData()  %>;
+        var CustomerSingleData   <%= CustomerSingleData()  %>;
     </script>
 
 </asp:Content>

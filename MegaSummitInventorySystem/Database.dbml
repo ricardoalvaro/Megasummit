@@ -2987,27 +2987,6 @@
       <Column Name="refNumber" Type="System.String" DbType="VarChar(5051)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.[_SalesOrderDetailsSelectToIV]" Method="_SalesOrderDetailsSelectToIV">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
-    <ElementType Name="_SalesOrderDetailsSelectToIVResult">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="SalesOrderID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="ProductID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="PackingName" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
-      <Column Name="ProductName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="LocationID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="LocationName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Served" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="UnitID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="UnitName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
-      <Column Name="UnitPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Discount" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.[_SalesOrderDetialsServedUpdate]" Method="_SalesOrderDetialsServedUpdate">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Parameter Name="Served" Parameter="served" Type="System.Decimal" DbType="Decimal(18,0)" />
@@ -3855,38 +3834,6 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.[_InvoiceInsert]" Method="_InvoiceInsert">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="InvoiceStatus" Parameter="invoiceStatus" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="ForwarderToID" Parameter="forwarderToID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="PreparedBy" Parameter="preparedBy" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="CheckedBy" Parameter="checkedBy" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="DeliveredBy" Parameter="deliveredBy" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="WayBillNo" Parameter="wayBillNo" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="ContainerNo" Parameter="containerNo" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="BillOfLanding" Parameter="billOfLanding" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="CommissionRate" Parameter="commissionRate" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="CommissionAmt" Parameter="commissionAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="RemarksID" Parameter="remarksID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(5000)" />
-    <Parameter Name="SubTotalAmt" Parameter="subTotalAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="TaxAmt" Parameter="taxAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="ShippingAmt" Parameter="shippingAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="PaymentAmt" Parameter="paymentAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="MemoAmt" Parameter="memoAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="AdjustmentAmt" Parameter="adjustmentAmt" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="InvoiceType" Parameter="invoiceType" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.[_PurchasedInvoiceInsert]" Method="_PurchasedInvoiceInsert">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
     <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
@@ -4256,5 +4203,98 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.[_ProductSelectPreOrder]" Method="_ProductSelectPreOrder">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="_ProductSelectPreOrderResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ProductPicture" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Brand" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UPCSKU" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProductDepartmentID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductClassID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LocationID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ReOrderPoint" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="ReOrderQty" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackingID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnitID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnitName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="SubUnitID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PriceA" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PriceB" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PriceC" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountA" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountB" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountC" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QtyOnHand" Type="System.Decimal" DbType="Decimal(38,0) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyOrder" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Discount" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="QtyDiff" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="QtyAvailable" Type="System.Decimal" DbType="Decimal(38,0) NOT NULL" CanBeNull="false" />
+      <Column Name="QtySO" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DateLastReceived" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateLastSold" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TotalUnitsIn" Type="System.Decimal" DbType="Decimal(38,4) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalUnitsOut" Type="System.Decimal" DbType="Decimal(38,4) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_SalesOrderDetailsSelectToIV]" Method="_SalesOrderDetailsSelectToIV">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="_SalesOrderDetailsSelectToIVResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SalesOrderID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PackingID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PackingName" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Served" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="UnitID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnitName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Discount" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_InvoiceInsert]" Method="_InvoiceInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InvoiceStatus" Parameter="invoiceStatus" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ForwarderToID" Parameter="forwarderToID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DeliveryDate" Parameter="deliveryDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="PreparedBy" Parameter="preparedBy" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="CheckedBy" Parameter="checkedBy" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="DeliveredBy" Parameter="deliveredBy" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="WayBillNo" Parameter="wayBillNo" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="ContainerNo" Parameter="containerNo" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="BillOfLanding" Parameter="billOfLanding" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="CommissionRate" Parameter="commissionRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="CommissionAmt" Parameter="commissionAmt" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="RemarksID" Parameter="remarksID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(5000)" />
+    <Parameter Name="SubTotalAmt" Parameter="subTotalAmt" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TaxType" Parameter="taxType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TaxRate" Parameter="taxRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TaxAmt" Parameter="taxAmt" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="InvoiceType" Parameter="invoiceType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

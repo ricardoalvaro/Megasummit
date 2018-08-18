@@ -22,7 +22,7 @@ namespace MegaSummitInventorySystem
         {
             try
             {
-                return CustomerVM.GetSingleCustomer(long.Parse(Request["customerID"]));
+                return "=" + CustomerVM.GetSingleCustomer(long.Parse(Request["customerID"]));
             }
             catch
             {

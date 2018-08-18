@@ -422,7 +422,7 @@ namespace MegaSummitInventorySystem.Webservice
 
         // ----------------------------------------------------------------- Saving Customer Opening Balance for Invoice
         [WebMethod]
-        public string InsertInvoice(string invoice_status, long customer_id, string address, long forwarder_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by, string checked_by, string delivered_by, string way_bill_no, string container_no, string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, string notes, decimal sub_total_amt, decimal tax_amt, decimal shipping_amt, decimal payment_amt, decimal memo_amt, decimal adjustment_amt, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
+        public string InsertInvoice(string invoice_status, long customer_id, string address, long forwarder_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by, string checked_by, string delivered_by, string way_bill_no, string container_no, string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, string notes, decimal sub_total_amt, decimal tax_amt, decimal total_amount, decimal shipping_amt, decimal payment_amt, decimal memo_amt, decimal adjustment_amt, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
         {
             try
             {
@@ -431,7 +431,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     
                     Database = new DatabaseDataContext();
-                    Database._InvoiceInsert(ref id, invoice_status, customer_id, address, forwarder_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, delivery_date, prepared_by, checked_by, delivered_by, way_bill_no, container_no, bill_of_landing, commission_rate, commission_amt, remarks_id, notes, sub_total_amt, tax_amt, shipping_amt, payment_amt, memo_amt, adjustment_amt, "OpeningBalance");
+                    //Database._InvoiceInsert(ref id, invoice_status, customer_id, address, forwarder_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, delivery_date, prepared_by, checked_by, delivered_by, way_bill_no, container_no, bill_of_landing, commission_rate, commission_amt, remarks_id, notes, sub_total_amt, tax_amt, "OpeningBalance", total_amount);
 
                     var data = Database._SalesSettings.SingleOrDefault(x => x.ID == long.Parse(ref_no));
                     if (data.Automatic.Value)

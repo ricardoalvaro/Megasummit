@@ -12,6 +12,11 @@ namespace MegaSummitInventorySystem
         private DatabaseDataContext Database = new DatabaseDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            decimal x = (7 / 100);
+            
+            decimal y = x * 20;
+
+
             if (!Page.IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request["productID"]))

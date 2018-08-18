@@ -10,7 +10,7 @@
 namespace MegaSummitInventorySystem {
     
     
-    public partial class aspnetCustomerInformationCustomerItem {
+    public partial class aspnetSales {
         
         /// <summary>
         /// CustomerSubMenu1 control.
@@ -22,12 +22,12 @@ namespace MegaSummitInventorySystem {
         protected global::MegaSummitInventorySystem.include.CustomerSubMenu CustomerSubMenu1;
         
         /// <summary>
-        /// CustomerSubMenuAjax1 control.
+        /// repMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MegaSummitInventorySystem.include.CustomerSubMenuAjax CustomerSubMenuAjax1;
+        protected global::System.Web.UI.WebControls.Repeater repMain;
     }
 }

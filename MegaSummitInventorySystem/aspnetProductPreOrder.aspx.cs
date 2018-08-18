@@ -21,7 +21,7 @@ namespace MegaSummitInventorySystem
 
         private void LoadData()
         {
-            var data = Database._ProductSelect(0, string.Empty);
+            var data = Database._ProductSelectPreOrder(0, string.Empty);
             repProduct.DataSource = data;
             repProduct.DataBind();
         }

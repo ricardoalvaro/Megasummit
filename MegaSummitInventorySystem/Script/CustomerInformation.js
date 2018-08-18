@@ -92,7 +92,6 @@ function SaveCustomer(customer_id, me)
     }
 }
 
-
 function ActionSelectSingleCustomer(customer_id)
 {
     var helper = new Helper();
@@ -105,7 +104,7 @@ function ActionSelectSingleCustomer(customer_id)
         $("#customer_name").val(data[i]["CustomerName"]);
         $("#address").val(data[i]["Address"]);
         $("#contact_person").val(data[i]["ContactPerson"]);
-        $("#region_province option:selected").val(data[i]["RegionID"]);
+        $("#region_province").val(data[i]["RegionID"]);
 
         municipality_id = data[i]["MunicipalityID"];
         region_id = data[i]["RegionID"];
@@ -150,7 +149,6 @@ function DeleteCustomer(customer_id, me)
 }
 
 
-
 function Fill()
 {
     FillRegion();
@@ -185,6 +183,8 @@ function FillMunicipalityPerRegion(id) {
     var data = MunicipalityData;
     var table = $("#municipality"); table.empty();
    
+    //alert(id);
+
     for (var i = 0; i < data.length; i++) {
 
         if (id == Number(data[i]["RegionID"])) {

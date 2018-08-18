@@ -12,7 +12,8 @@
     <link href="CSS/central.css" rel="stylesheet" type="text/css" />
     <link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
-    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+   <%-- <script src="http://code.jquery.com/jquery-1.12.4.js"></script>--%>
     <script src="Script/ValidateEntry.js"></script>
     <script src="Script/jsPopDiv.js"></script>
 
@@ -116,174 +117,14 @@
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
  <script src="js/plugins.js"></script>
   <script src="js/vendor/frontend.js"></script>
+    <script src="Script/Helper.js"></script>
+
+
 
     <script type="text/javascript">
 
-        $(function () {
-            var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
-
-            if (pgurl == "aspnetCompany-Summary.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Calendar.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Defaults-Customer.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Defaults-Employee.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Defaults-Product.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Defaults-Supplier.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Defaults.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-History.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List-Field.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List-Group.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List-Others.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List-PaymentType.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List-PayrollItem.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-List.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminder-UndepositFunds.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders-PreorderItems.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders-PurchaseOrder.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders-ReturnedCheck.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders-SalesOrder.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders-TodoList.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Reminders.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Accessories.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Accounts.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Banking.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Employees.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Products.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings-Suppliers.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Settings.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-Summary.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany-User.aspx") {
-                $("#iCompany").addClass("active");
-            }
-            else if (pgurl == "aspnetCompany.aspx") {
-                $("#iCompany").addClass("active");
-            }
-
-
-            else if (pgurl == "aspnetCustomer.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-            else if (pgurl == "aspnetCustomerMemo.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-            else if (pgurl == "aspnetCustomerOfficialReceipt.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-            else if (pgurl == "aspnetCustomerSales.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-            else if (pgurl == "aspnetCustomerSalesOrder.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-            else if (pgurl == "aspnetCustomerSalesReturn.aspx") {
-                $("#iCustomer").addClass("active");
-            }
-
-
-            else if (pgurl == "aspnetSuppliers.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-            else if (pgurl == "aspnetSuppliersMemo.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-            else if (pgurl == "aspnetSuppliersPurchase.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-            else if (pgurl == "aspnetSuppliersPurchaseOrder.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-            else if (pgurl == "aspnetSuppliersPurchaseReturn.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-            else if (pgurl == "aspnetSuppliersVoucher.aspx") {
-                $("#iSupplier").addClass("active");
-            }
-
-            else if (pgurl == "aspnetEmployee.aspx")
-            {
-                $("#iEmployee").addClass("active");
-            }
-
-
-            else if (pgurl == "aspnetProduct.aspx") {
-                $("#iProduct").addClass("active");
-            }
-            else if (pgurl == "aspnetProductPreorder.aspx") {
-                $("#iProduct").addClass("active");
-            }
-            else if (pgurl == "aspnetProductAssembly.aspx") {
-                $("#iProduct").addClass("active");
-            }
-            else if (pgurl == "aspnetProductsAdjustment.aspx") {
-                $("#iProduct").addClass("active");
-            }
-
-
-            //--------------
-            ///aspnetProduct.aspx
-            //aspnetProductPreorder.aspx
-            //aspnetProductAssembly.aspx
-            //aspnetProductsAdjustment.aspx
-
-
-        });
+        $(document).ready(function () { new Helper().ActivateMenu(); });
+       
 
         function dateToday() {
             var now = new Date();

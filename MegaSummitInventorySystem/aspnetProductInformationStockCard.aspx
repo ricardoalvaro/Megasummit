@@ -27,15 +27,15 @@
                                             <th width="7%">Ref. No.</th>
                                             <th width="8%">Date</th>
                                             <th width="12%">Transaction Type</th>
-                                            <th width="20%">Customer/Supplier Name</th>
-                                            <th width="10%">Location</th>
+                                            <th width="18%">Customer/Supplier Name</th>
+                                            <th width="9%">Location</th>
                                             <th width="5%">In</th>
                                             <th width="5%">Out</th>
                                             <%--<th width="5%">Qty.</th>--%>
                                             <th width="5%">Cost</th>
                                             <th width="8%">Discount</th>
-                                            <th width="5%">Price</th>
-                                            <th width="8%">Ave. Cost</th>
+                                            <th width="9%">Net Price</th>
+                                            <th width="9%">Ave. Cost</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tblMain" class="scroll">
@@ -45,15 +45,15 @@
                                     <td width="7%"><%# Eval("ReferenceNo") %></td>
                                     <td width="8%"><%# DateTime.Parse(Eval("DateTransaction").ToString()).ToString("MM/dd/yyyy") %></td>
                                     <td width="12%"><%# Eval("TransactionType") %></td>
-                                    <td width="20%"><%# Eval("CustomerSupplier") %></td>
-                                    <td width="10%"><%# Eval("LocationName") %></td>
+                                    <td width="18%"><%# Eval("CustomerSupplier") %></td>
+                                    <td width="9%"><%# Eval("LocationName") %></td>
                                     <td width="5%"><%# Decimal.Parse(Eval("QtyIN").ToString()).ToString("N") %></td>
                                     <td width="5%"><%# Decimal.Parse(Eval("QtyOUT").ToString()).ToString("N") %></td>
                                    <%-- <td width="5%"><%# Decimal.Parse(Eval("QtyOUT").ToString()).ToString("N") %></td>--%><%--need to edit--%>
                                     <td width="5%"><%# Decimal.Parse(Eval("ProductCost").ToString()).ToString("N") %></td>
                                     <td width="8%"><%# Eval("Discount").ToString() %></td>
-                                    <td width="5%"><%# Decimal.Parse(Eval("ProductPrice").ToString()).ToString("N") %></td>
-                                    <td width="8%"><%# Decimal.Parse(Eval("AveCost").ToString()).ToString("N") %></td>
+                                    <td width="9%"><%# ProductVM.ReturnNetPrice(Eval("Discount").ToString(),Decimal.Parse(Eval("ProductCost").ToString())) %></td>
+                                    <td width="9%"><%# Decimal.Parse(Eval("AveCost").ToString()).ToString("N") %></td>
                                 </tr>
                             </ItemTemplate>
                             <FooterTemplate>

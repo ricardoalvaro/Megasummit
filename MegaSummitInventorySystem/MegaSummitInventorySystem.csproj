@@ -94,6 +94,12 @@
     <Content Include="aspnetCustomer.aspx" />
     <Content Include="aspnetCustomerInformation.aspx" />
     <Content Include="aspnetCustomerInformationCustomerItem.aspx" />
+    <Content Include="aspnetCustomerInformationInvoices.aspx" />
+    <Content Include="aspnetCustomerInformationMemo.aspx" />
+    <Content Include="aspnetCustomerInformationSalesOrder.aspx" />
+    <Content Include="aspnetCustomerInformationPayment.aspx" />
+    <Content Include="aspnetSales.aspx" />
+    <Content Include="aspnetSalesInvoice.aspx" />
     <Content Include="include\CustomerSubMenu.ascx" />
     <Content Include="include\CustomerSubMenuAjax.ascx" />
     <Content Include="OldSource\aspnetCustomer.aspx" />
@@ -318,10 +324,11 @@
     <Content Include="Script\jsPopDiv.js" />
     <Content Include="Script\BackUp\ProductAdjustment.js" />
     <Content Include="Script\BackUp\ProductAssembly.js" />
+    <Content Include="Script\SalesInvoice.js" />
     <Content Include="Script\SupplierPurchased.js" />
     <Content Include="Script\OfficialReceipt.js" />
     <Content Include="Script\BackUp\Product.js" />
-    <Content Include="Script\Sales.js" />
+    <Content Include="Script\BackUp\Sales.js" />
     <Content Include="Script\SalesOrder.js" />
     <Content Include="Script\SalesReturn.js" />
     <Content Include="Script\Supplier.js" />
@@ -409,6 +416,7 @@
     <Content Include="yaml\index.html" />
     <Content Include="_done.txt" />
     <Content Include="_to_do_list.txt" />
+    <Content Include="_UnitTesting.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="aspnetCompany-Calendar.aspx.cs">
@@ -641,6 +649,48 @@
     </Compile>
     <Compile Include="aspnetCustomerInformationCustomerItem.aspx.designer.cs">
       <DependentUpon>aspnetCustomerInformationCustomerItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationInvoices.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationInvoices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationInvoices.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationInvoices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationMemo.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationMemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationMemo.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationMemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationSalesOrder.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationSalesOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationSalesOrder.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationSalesOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationPayment.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationPayment.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSales.aspx.cs">
+      <DependentUpon>aspnetSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSales.aspx.designer.cs">
+      <DependentUpon>aspnetSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSalesInvoice.aspx.cs">
+      <DependentUpon>aspnetSalesInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSalesInvoice.aspx.designer.cs">
+      <DependentUpon>aspnetSalesInvoice.aspx</DependentUpon>
     </Compile>
     <Compile Include="include\CustomerSubMenu.ascx.cs">
       <DependentUpon>CustomerSubMenu.ascx</DependentUpon>
@@ -895,9 +945,13 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CompanyVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\EmplyeeVM.cs" />
+    <Compile Include="ViewModel\LocationVM.cs" />
+    <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
+    <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="Webservice\CompanyImageUploader.ashx.cs">
       <DependentUpon>CompanyImageUploader.ashx</DependentUpon>
     </Compile>
@@ -1200,6 +1254,13 @@
       <DependentUpon>svr_Wage.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="_UnitTesting.aspx.cs">
+      <DependentUpon>_UnitTesting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_UnitTesting.aspx.designer.cs">
+      <DependentUpon>_UnitTesting.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SiteMaster.Master" />
@@ -1217,6 +1278,7 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="js\jquery-3.3.1.slim.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

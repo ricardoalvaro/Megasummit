@@ -11,6 +11,44 @@ public static class CustomerVM
 {
     private static DatabaseDataContext Database = new DatabaseDataContext();
 
+
+    public static string CustomerAutoComplete
+    {
+        get
+        {
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._CustomerSelect(0, string.Empty);
+
+
+                List<AutoCompleteData> auto = new List<AutoCompleteData>();
+                foreach (var item in data)
+                {
+                    auto.Add(new AutoCompleteData(item.ID, item.CustomerName, item.CustomerName));
+                }
+
+                return JsonConvert.SerializeObject(auto, Newtonsoft.Json.Formatting.None);
+
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+    }
+
+    public static string GetAllCustomer
+    {
+        get
+        {
+            Database = new DatabaseDataContext();
+            var data = Database._CustomerSelect(0, string.Empty);
+            return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.None);
+        }
+    }
+
+
     public static string GetSingleCustomer(long customer_id)
     {
         Database = new DatabaseDataContext();

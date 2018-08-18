@@ -218,7 +218,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     Database._ProductStockInsert(ref refIDStock1, productID, locationID, quantity);
                 }
-                Database._ProductStockHistoryInsert(ref refIDStockHis1, referenceNo + id.ToString(), DateTime.Now, "Product Assembly", "", locationID, quantity, 0, 0, "", 0, 0, productID);
+                Database._ProductStockHistoryInsert(ref refIDStockHis1, referenceNo + id.ToString(), DateTime.Now, "Product Assembly", "", locationID, quantity, 0, average_cost, "", 0, 0, productID);
                         
                 string[] lines = productList.Split('^');
 

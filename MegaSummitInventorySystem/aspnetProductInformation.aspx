@@ -528,7 +528,7 @@
                         
 
                         var dateLastReceived = FormatDate(data[i]["DateLastReceived"]);
-                        if (dateLastReceived != '5.27.1988') {
+                        if (dateLastReceived != '5/27/1988') {
                             $("#date_last_received").val(dateLastReceived);
                         } else {
                             $("#date_last_received").val('');
@@ -536,7 +536,7 @@
                         
                         var dateLastSold = FormatDate(data[i]["DateLastSold"]);
                       
-                        if (dateLastSold != '5.27.1988') {
+                        if (dateLastSold != '5/27/1988') {
                             $("#date_last_sold").val(dateLastSold);
                         }
                         else{
@@ -546,7 +546,7 @@
                         
                         $("#average_cost").val("wala pa data");
                         $("#sub_average_cost").val("wala pa data");
-                        $("#qty_difference").val("wala pa data");
+                        $("#qty_difference").val(data[i]["QtyDiff"]);
 
 
                     }

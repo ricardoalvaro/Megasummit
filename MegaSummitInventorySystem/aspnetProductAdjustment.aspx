@@ -54,7 +54,7 @@
                                                         <td class="lbl"><label for="quantity_difference">Quantity Difference</label></td>
                                                         <td class="obj"><input type="text" autocorrect="off" spellcheck="false" id="quantity_difference" name="quantity_difference" value="" class="short" disabled /></td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr style="visibility:hidden">
                                                         <td class="lbl"><label for="unit_price">*Unit Price</label></td>
                                                         <td class="obj"><input type="text" autocorrect="off" spellcheck="false" id="unit_price" name="unit_price" value="" class="short" /></td>
                                                     </tr>
@@ -118,7 +118,8 @@
                                 <ItemTemplate>
                                     <li>
                                         <a href="javascript:;" id="item-1" onclick="SelectFromList('<%# Eval("ID") %>')">
-                                            <span class="name"><%# Eval("ProductName") %>
+                                            <span class="name"><%# Eval("ProductName")  %>
+                                                <span class="float-right" style="font-size: 12px">IA<%# Eval("ID") %></span>
                     	                    <span><%#Eval("ReasonName") %></span>
                                             </span>
                                         </a>

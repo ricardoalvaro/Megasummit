@@ -88,7 +88,7 @@
                                                     </td>
                                                 </tr>                                                
                                                 <tr>
-                                                    <td class="lbl"><label for="average_cost">Average Cost</label></td>
+                                                    <td class="lbl"><label for="average_cost"> Cost</label></td>
                                                     <td class="obj"><input type="text" autocorrect="off" spellcheck="false" id="average_cost" name="average_cost" value="" class="short" disabled /></td>
                                                 </tr>                                    
                                             </table>
@@ -175,6 +175,7 @@
                                     <li>
                                         <a href="javascript:;" id="item-1" onclick="SelectFromList('<%# Eval("ID") %>')">
                                             <span class="name"><%# Eval("ProductName") %>
+                                                <span class="float-right" style="font-size: 12px">AS<%# Eval("ID") %></span>
                     	                    <span><%#Eval("LocationName") %></span>
                                             </span>
                                         </a>
@@ -294,7 +295,7 @@
 
         function GenerateProductTable() {
 
-            var counter = 0;
+            //var counter = 0;
             var productColletion = "";
             $('#tblMain tbody tr').each(function (i) {
 
@@ -495,7 +496,8 @@
             var date = new Date(value);
             var jsonDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
             return jsonDate;
-        }
+        }
+
 
  
 
@@ -630,9 +632,9 @@
 
 
 
-        var LocationAutoCompleteData = <%= AutoCompleteLocation() %>;
-        var ProductAutoCompleteData = <%= AutoCompleteProduct() %>;
-        var ProductData = <%= ProductDetail()%>;
+        var LocationAutoCompleteData = <%= LocationVM.AutoCompleteLocation %>;
+        var ProductAutoCompleteData = <%= ProductVM.AutoCompleteProduct %>;
+        var ProductData = <%= ProductVM.ProductDetail %>;
         var AssemblyDetails = <%= AssembleDetail()%>;
     </script>
 

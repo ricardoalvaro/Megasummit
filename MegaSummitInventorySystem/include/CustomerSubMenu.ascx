@@ -9,7 +9,7 @@
                     <div class="ym-gbox">
                         <ul class="menu ym-clearfix">
                             <li class=""><a href="aspnetCustomer.aspx">Customers</a></li>
-                            <li class=""><a href="#">Sales</a></li>
+                            <li class=""><a href="aspnetSales.aspx">Sales</a></li>
                             <li class=""><a href="#">Sales Return</a></li>
                             <li class=""><a href="#">Sales Order</a></li>
                             <li class=""><a href="#">Official Receipt</a></li>	

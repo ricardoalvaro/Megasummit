@@ -1,12 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CustomerSubMenuAjax.ascx.cs" Inherits="MegaSummitInventorySystem.include.CustomerSubMenuAjax" %>
-<div class="submenu ajax <?php echo (!empty($page['suboptions'])) ? 'nopad' : ''; ?>">
+<div class="submenu ajax padding-0">
 	<ul class="crossfade ym-clearfix">
         <li class=" "><a data="aspnetCustomerInformation.aspx" onclick="Redirect('aspnetCustomerInformation.aspx')" style="cursor:default">General Info</a></li>
         <li class=" "><a data="aspnetCustomerInformationCustomerItem.aspx" onclick="Redirect('aspnetCustomerInformationCustomerItem.aspx')" style="cursor:default">Customer Items</a></li>
-        <li class=" "><a data="aspnetCustomerInformation.aspx" onclick="Redirect('aspnetCustomerInformation.aspx')" style="cursor:default">Sales Order</a></li>
-        <li class=" "><a data="aspnetCustomerInformation.aspx" onclick="Redirect('aspnetCustomerInformation.aspx')" style="cursor:default">Invoices</a></li>
-        <li class=" "><a data="aspnetCustomerInformation.aspx" onclick="Redirect('aspnetCustomerInformation.aspx')" style="cursor:default">Payments</a></li>
-        <li class=" "><a data="aspnetCustomerInformation.aspx" onclick="Redirect('aspnetCustomerInformation.aspx')" style="cursor:default">Memo</a></li>
+        <li class=" "><a data="aspnetCustomerInformationSalesOrder.aspx" onclick="Redirect('aspnetCustomerInformationSalesOrder.aspx')" style="cursor:default">Sales Order</a></li>
+        <li class=" "><a data="aspnetCustomerInformationInvoices.aspx" onclick="Redirect('aspnetCustomerInformationInvoices.aspx')" style="cursor:default">Invoices</a></li>
+        <li class=" "><a data="aspnetCustomerInformationPayment.aspx" onclick="Redirect('aspnetCustomerInformationPayment.aspx')" style="cursor:default">Payments</a></li>
+        <li class=" "><a data="aspnetCustomerInformationMemo.aspx" onclick="Redirect('aspnetCustomerInformationMemo.aspx')" style="cursor:default">Memo</a></li>
     </ul>
     <div class="ym-ie-clearing">&nbsp;</div>
 </div>

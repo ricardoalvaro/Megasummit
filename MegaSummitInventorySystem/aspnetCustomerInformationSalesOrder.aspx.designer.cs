@@ -10,7 +10,7 @@
 namespace MegaSummitInventorySystem {
     
     
-    public partial class aspnetCustomerInformationCustomerItem {
+    public partial class aspnetCustomerInformationSalesOrder {
         
         /// <summary>
         /// CustomerSubMenu1 control.

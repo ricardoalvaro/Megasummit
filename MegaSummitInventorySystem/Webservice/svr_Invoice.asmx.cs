@@ -21,13 +21,40 @@ namespace MegaSummitInventorySystem.Webservice
         private DatabaseDataContext Database = new DatabaseDataContext();
 
         [WebMethod]
-        public string InsertInvoice(string invoice_status, long customer_id, string address, long forwarder_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by, string checked_by, string delivered_by, string way_bill_no, string container_no, string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, string notes, decimal sub_total_amt, decimal tax_amt, decimal shipping_amt, decimal payment_amt, decimal memo_amt, decimal adjustment_amt, string productList, string productListAD)
+        public string InsertInvoice(string invoice_status, long customer_id, string address, 
+            long forwarder_to_id, long salesman_id, string po_no, long term_id, string ref_no, 
+            string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by,
+            string checked_by, string delivered_by, string way_bill_no, string container_no, 
+            string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, 
+            string notes, decimal sub_total_amt, string tax_amt, decimal total_amount, 
+            string productList)
         {
             try
             {
+                decimal tax_amount = 0;
+                string tax_type = "Inclusive" ;
+                decimal tax_rate = Database._CompanySalesTaxes.FirstOrDefault().Rate.Value;
+
+                if (!tax_amt.Contains('%'))
+                {
+
+                      var total = Number($("#spnSubTotal").val());
+                    var dis_rate = Number(data[i]["Rate"]) / 100;
+                    var discount = (Number(total) * Number(dis_rate));
+
+
+                    tax_type = "Exclusive";
+                }
+
+           
+
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._InvoiceInsert(ref id, invoice_status, customer_id, address, forwarder_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, delivery_date, prepared_by, checked_by, delivered_by, way_bill_no, container_no, bill_of_landing, commission_rate, commission_amt, remarks_id, notes, sub_total_amt, tax_amt, shipping_amt, payment_amt, memo_amt, adjustment_amt, "Invoice");
+                Database._InvoiceInsert(ref id, invoice_status, customer_id, address, forwarder_to_id, 
+                    salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, 
+                    delivery_date, prepared_by, checked_by, delivered_by, way_bill_no, 
+                    container_no, bill_of_landing, commission_rate, commission_amt, 
+                    remarks_id, notes, sub_total_amt, tax_type, tax_rate, tax_amount, "Invoice", total_amount);
     
                 var data = Database._SalesSettings.SingleOrDefault(x => x.ID == long.Parse(ref_no));
                 if (data.Automatic.Value)
@@ -80,29 +107,29 @@ namespace MegaSummitInventorySystem.Webservice
                 #endregion
                 #region Adjustment product list
 
-                string[] lines2 = productListAD.Split('^');
+                //string[] lines2 = productListAD.Split('^');
 
-                foreach (var l in lines2)
-                {
-                    if (!string.IsNullOrEmpty(l))
-                    {
-                        string[] p = l.Split(',');
+                //foreach (var l in lines2)
+                //{
+                //    if (!string.IsNullOrEmpty(l))
+                //    {
+                //        string[] p = l.Split(',');
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                //        string productCode = p[0];
+                //        string locationCode = p[1];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                //        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
+                //        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
 
-                        decimal qty = decimal.Parse(p[2]);
-                        decimal price = decimal.Parse(p[4]);
-                        string discount = p[5];
-                        decimal amount = decimal.Parse(p[6]);
+                //        decimal qty = decimal.Parse(p[2]);
+                //        decimal price = decimal.Parse(p[4]);
+                //        string discount = p[5];
+                //        decimal amount = decimal.Parse(p[6]);
 
-                        long? refID = 0;
-                        Database._InvoiceDetailsAdjustmentInsert(ref refID, id, product.ID, location.ID, qty, product.UnitID.Value, price, discount, amount);
-                    }
-                }
+                //        long? refID = 0;
+                //        Database._InvoiceDetailsAdjustmentInsert(ref refID, id, product.ID, location.ID, qty, product.UnitID.Value, price, discount, amount);
+                //    }
+                //}
                 #endregion
                 return id.ToString();
             }

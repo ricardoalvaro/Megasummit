@@ -63,9 +63,14 @@ function Getgender(sex) {
 
 
 function FormatDate(date) {
-    var a = /^\/Date\((-?[0-9]+)\)\/$/.exec(date);
-    var dt = new Date(parseInt(a[1], 10));
-    return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+
+    var date = new Date(date);
+    var jsonDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+    return jsonDate;
+
+    //var a = /^\/Date\((-?[0-9]+)\)\/$/.exec(date);
+    //var dt = new Date(parseInt(a[1], 10));
+    //return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
 }
 
 function isDecimal(str) {

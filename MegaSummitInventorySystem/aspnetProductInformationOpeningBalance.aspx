@@ -152,7 +152,9 @@
                                 <ItemTemplate>
                                     <li>
                                         <a href="javascript:;" id="item-1" onclick="SelectFromList('<%# Eval("ID") %>')">
+                                            
                                             <span class="name"><%# Eval("ProductName") %>
+                                                <span class="float-right" style="font-size: 12px">OP<%# Eval("ID") %></span>
                     	                    <span><%#Eval("LocationName") %></span>
                                             </span>
                                         </a>
