@@ -509,8 +509,6 @@
         
         var SingleInvoiceData = <%= InvoiceVM.SingleInvoice(long.Parse( (Request["invoiceID"] == null ? "0" : Request["invoiceID"])  )) %>;
         var SingleInvoiceDetailsData = <%= InvoiceVM.SingleInvoiceDetails(long.Parse( (Request["invoiceID"] == null ? "0" : Request["invoiceID"])  )) %>;
-
-
         var ProductAutoCompleteData = <%= ProductVM.AutoCompleteProduct %>;
         var LocationAutoCompleteData = <%= LocationVM.AutoCompleteLocation %>;
         var PackingData = <%= ProductVM.Packings %>;

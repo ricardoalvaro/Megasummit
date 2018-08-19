@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetSalesOrderInformation.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetSalesOrderInformation" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetSalesReturnInformation.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetSalesReturnInformation" %>
 
 <%@ Register Src="include/CustomerSubMenu.ascx" TagName="CustomerSubMenu" TagPrefix="uc1" %>
 
@@ -14,7 +14,7 @@
                                 <div class="content">
                                     <div name="customer_sales_order_form" id="customer_sales_order_form" class="ym-form">
                                         <div class="addup">
-                                            <h1>Sales Order</h1>
+                                            <h1>Sales Return</h1>
                                             <div class="ym-grid grid3">
                                                 <div class="left ym-gl">
                                                     <div class="ym-gbox">
@@ -131,12 +131,10 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="lbl">
-                                                                        <label for="cancel_date">*Cancel Date</label></td>
+                                                                    <td class="lbl"></td>
+                                                                     
                                                                     <td class="obj">
-                                                                        <div class="dp xmedium">
-                                                                            <input type="text" autocorrect="off" spellcheck="false" id="cancel_date" name="cancel_date" class="date" />
-                                                                        </div>
+                                                                        
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -153,7 +151,6 @@
                                                         <th width="20%">Product Name</th>
                                                         <th width="10%">Location</th>
                                                         <th width="10%">Quantity</th>
-                                                        <th width="10%">Served</th>
                                                         <th width="10%">Unit</th>
                                                         <th width="10%">Unit Price</th>
                                                         <th width="10%">Discount</th>
@@ -196,7 +193,9 @@
                                                                             <td><span id="spnTotal">0.00</span></td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>Total Served</td>
+                                                                            <td>
+                                                                                <a href="apply-to-invoice" class="view btnlink"><img src="http://localhost:8181/megasummit/images/buttons/apply-invoice.png" width="87" height="20" alt="Void"></a>
+                                                                            </td>
                                                                             <td> <span id="spnServed">0.00</span> </td>
                                                                         </tr>
                                                                     </table>
@@ -212,9 +211,11 @@
                                                 <!-- Start of Two Grids -->
                                                 <div class="ym-grid ym-equalize linearize-level-1">
                                                     <div class="pane-left ym-gl">
-                                                        <div class="ym-gbox">
-                                                            <a href="aspnetSalesOrder.aspx"><img src="http://localhost:8181/megasummit/images/buttons/close.png" width="71" height="20" alt="Void" /></a>&nbsp;
-                                                            <%--<a href=""><img src="http://localhost:8181/megasummit/images/buttons/hold.png" width="71" height="20" alt="Hold" /></a>--%>
+                                                        <div class="ym-gbox"> &nbsp;
+                                                           <%-- <a href="">
+                                                                <img src="http://localhost:8181/megasummit/images/buttons/close.png" width="71" height="20" alt="Void" /></a>&nbsp;
+                                                    <a href="">
+                                                        <img src="http://localhost:8181/megasummit/images/buttons/hold.png" width="71" height="20" alt="Hold" /></a>--%>
                                                         </div>
                                                     </div>
                                                     <div class="pane-right ym-gr">
@@ -247,14 +248,9 @@
 
     </div>
 
-    <script src="Script/SalesOrder.js"></script>
+    <script src="Script/SalesREturn.js"></script>
 
     <script type="text/javascript">
-
-
-
-        var SingleSalesOrderData = <%= SalesOrderVM.SingleSalesOrder(long.Parse( (Request["salesOrderID"] == null ? "0" : Request["salesOrderID"])  )) %>;
-        var SingleSalesOrderDetailsData = <%= SalesOrderVM.SingleSalesOrderDetails(long.Parse( (Request["salesOrderID"] == null ? "0" : Request["salesOrderID"])  )) %>;
 
         var ProductAutoCompleteData = <%= ProductVM.AutoCompleteProduct %>;
         var LocationAutoCompleteData = <%= LocationVM.AutoCompleteLocation %>;

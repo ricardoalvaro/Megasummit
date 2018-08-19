@@ -10,7 +10,7 @@
                         <ul class="menu ym-clearfix">
                             <li class=""><a href="aspnetCustomer.aspx">Customers</a></li>
                             <li class=""><a href="aspnetSales.aspx">Sales</a></li>
-                            <li class=""><a href="#">Sales Return</a></li>
+                            <li class=""><a href="aspnetSalesReturn.aspx">Sales Return</a></li>
                             <li class=""><a href="aspnetSalesOrder.aspx">Sales Order</a></li>
                             <li class=""><a href="#">Official Receipt</a></li>	
                             <li class=""><a href="#">Memo</a></li>	

@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     $("#hold").click(function () { alert('Not Working'); });
 
-    $("#btn-save").removeClass("disabled").click(function () { SaveInvoice(this); });
+    $("#btn-save").removeClass("disabled").click(function () { SaveSalesOrder(this); });
 
     GenerateStaticInvoiceList();
     GenerateDynamicAutoComplete();
@@ -30,8 +30,191 @@ $(document).ready(function () {
     });
 
     Fill();
+    SelectSaleOrder();
 });
 
+function SelectSaleOrder() {
+    if (SalesOrderID > 0) {
+
+
+        var data = SingleSalesOrderData;
+
+        for (var i = 0; i < data.length; i++) {
+
+            if (data[i]["ID"] == SalesOrderID) {
+
+                CustomerID = data[i]["CustomerID"];
+                $("#customer").val(data[i]["CustomerName"]);
+                $('#address').val(data[i]["Address"]);
+                $('#deliver_to').val(data[i]["ForwarderToID"]);
+                $('#salesman').val(data[i]["SalesmanID"]);
+                $('#po_number').val(data[i]["PONo"]);
+                $('#terms').val(data[i]["TermID"]);
+
+                //$('#reference_no').text().attr('selected',data[i]["RefNo"];
+
+                $("#reference_no").val(data[i]["RefNo"]);//.filter(function () { return $(this).text() == data[i]["RefNo"]; }).prop('selected', true);
+                $('#reference_number').val(data[i]["ID"]);
+
+                $('#date').val(FormatDate(data[i]["CreatedDate"]));
+                $('#cancel').val(FormatDate(data[i]["CancelDate"]));
+                $('#notes').val(data[i]["Notes"]);
+               
+
+                $('#spnTotal').html(data[i]["TotalAmount"]);
+                $('#spnServed').html(data[i]["TotalServed"]);
+                $('#spnBalance').html(data[i]["Balance"]);
+
+
+                var detail = SingleSalesOrderDetailsData;
+
+                for (var d = 0; d < detail.length; d++) {
+
+                    $('#tblSalesOrder tbody tr').each(function (i) {
+
+                        var x2 = $(this).find("td .product").val();
+                        if (x2 == "") {
+
+                            $(this).find("td .order_detail_id").val(detail[d]["ID"]);
+                            $(this).find("td .product").val(detail[d]["ProductName"]).attr("disabled", "disabled");
+                            $(this).find("td .product_id").val(detail[d]["ProductID"]);
+                            $(this).find("td .location").val(detail[d]["LocationName"]).attr("disabled", "disabled");
+                            $(this).find("td .location_id").val(detail[d]["LocationID"]);
+                            $(this).find("td .quantity").val(detail[d]["Quantity"]);//.attr("disabled", "disabled");
+                            $(this).find("td .served").val(detail[d]["Served"]);//.attr("disabled", "disabled");
+                            $(this).find("td .unit").val(detail[d]["UnitName"]).attr("disabled", "disabled");
+                            $(this).find("td .price").val(detail[d]["UnitPrice"]);//.attr("disabled", "disabled");
+                            $(this).find("td .discount").val(detail[d]["Discount"]);//.attr("disabled", "disabled");
+                            $(this).find("td .amount").val(detail[d]["Amount"]);//.attr("disabled", "disabled");
+                            return false;
+                        }
+                    });
+
+
+                }
+            }
+        }
+
+    }
+}
+
+function SaveSalesOrder(me)
+{
+    if ($(me).hasClass("disabled") == false)
+    {
+        var pageUrl = '/Webservice/svr_SalesOrder.asmx';
+
+        var order_status = "Posted";
+        var customer_id = CustomerID;
+        var address = $('#address').val();
+        var forwarder_to_id = $('#deliver_to').val();
+        var salesman_id = $('#salesman').val();
+        var po_no = $('#po_number').val();
+        var term_id = $('#terms').val();
+        var ref_no = $('#reference_letter').val();
+        var ref_no_serial = $('#reference_number').val();
+        var created_date = $('#date').val();
+        var cancel_date = $('#cancel_date').val();
+        var notes = $('#notes').val();
+        var total_amt = $('#spnTotal').html();
+        var total_served = $('#spnServed').html();
+        var total_balance = $('#spnBalance').html();
+        var productList = GetSalesOrderDetails();
+
+        //InsertSalesOrder
+        //    (
+        //      customer_id, address, delivery_to_id, salesman_id,
+        //      po_no,  term_id,  ref_no,  ref_no_serial,
+        //      created_date,  cancel_date,  notes,  total_amount,
+        //      total_served, balance, productList, orderStatus
+        //     )
+
+
+        if (SalesOrderID == 0) {//insert 
+
+            var data_transfer = "{'customer_id':'{0}','address':'{1}', 'delivery_to_id':'{2}','salesman_id':'{3}','po_no':'{4}','term_id':'{5}','ref_no':'{6}','ref_no_serial':'{7}','created_date':'{8}','cancel_date':'{9}', 'notes':'{10}','total_amount':'{11}','total_served':'{12}', 'balance':'{13}', 'productList':'{14}', 'orderStatus':'{15}'}"
+            .f(CustomerID, address, forwarder_to_id, salesman_id,
+            po_no, term_id, ref_no, ref_no_serial,
+            created_date, cancel_date, notes, total_amt,
+            total_served, total_balance, productList, order_status
+           );
+
+            $.ajax({
+                type: "POST",
+                url: pageUrl + "/InsertSalesOrder",
+                data: data_transfer,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                crossdomain: true,
+                success: function (response) {
+
+                    window.location = "aspnetSalesOrder.aspx";
+                    //alert(response.d);
+
+                },
+                error: function (response) {
+                    alert(response.status);
+                }
+            });
+        }
+        else { // update
+
+            var data_transfer = "{'customer_id':'{0}','address':'{1}', 'delivery_to_id':'{2}','salesman_id':'{3}','po_no':'{4}','term_id':'{5}','ref_no':'{6}','ref_no_serial':'{7}','created_date':'{8}','cancel_date':'{9}', 'notes':'{10}','total_amount':'{11}','total_served':'{12}', 'balance':'{13}', 'productList':'{14}', 'orderStatus':'{15}', 'id':'{16}'}"
+             .f(CustomerID, address, forwarder_to_id, salesman_id,
+             po_no, term_id, ref_no, ref_no_serial,
+             created_date, cancel_date, notes, total_amt,
+             total_served, total_balance, productList, order_status,
+             SalesOrderID
+            );
+
+                $.ajax({
+                    type: "POST",
+                    url: pageUrl + "/UpdateSalesOrder",
+                    data: data_transfer,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    crossdomain: true,
+                    success: function (response) {
+
+                        window.location = "aspnetSalesOrder.aspx";
+                        //alert(response.d);
+
+                    },
+                    error: function (response) {
+                        alert(response.status);
+                    }
+                });
+
+        }
+    }
+
+}
+
+function GetSalesOrderDetails() {
+    var list = "";
+    $('#tblSalesOrder tbody tr').each(function (i) {
+
+        var order_details_id = $(this).find("td .order_detail_id").val();
+        var product = $(this).find("td .product").val();
+        var product_id = $(this).find("td .product_id").val();
+        var location = $(this).find("td .location").val();
+        var location_id = $(this).find("td .location_id").val();
+        var quantity = $(this).find("td .quantity").val();
+        var served = ($(this).find("td .served").val() == '') ? '0' : $(this).find("td .served").val();
+        var unit = $(this).find("td .unit").val();
+        var price = $(this).find("td .price").val();
+        var discount = ($(this).find("td .discount").val() == '') ? '0' : $(this).find("td .discount").val();
+        var amount = $(this).find("td .amount").val();
+
+
+        if (product_id != "") {
+
+            list += order_details_id + "," + product + "," + product_id + "," + location + "," + location_id + "," + quantity + "," + served + "," + unit + "," + price + "," + discount + "," + amount + "^";
+        }
+    });
+
+    return list;
+}
 
 
 function ClearCustomerData(me) {
@@ -78,7 +261,7 @@ function GenerateStaticInvoiceList() {
     
     var ret = "";
     for (var i = 0; i < 20; i++) {
-        $("#tblSalesOrder tbody").append("<tr><td width='20%'><input type='text' class='product' /><input type='hidden' class='product_id' /></td><td width='10%'><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td width='10%'><input type='text' class='quantity' /></td><td width='10%'><input type='text' class='served' /></td><td width='10%'><input type='text' class='unit' /></td><td width='10%'><input type='text' class='price' /></td><td width='10%'><input type='text' class='discount' /></td><td width='10%'><input type='text' class='amount' /></td></tr>");
+        $("#tblSalesOrder tbody").append("<tr><td width='20%'><input type='hidden' class='order_detail_id' value='0' /><input type='text' class='product' /><input type='hidden' class='product_id' /></td><td width='10%'><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td width='10%'><input type='text' class='quantity' /></td><td width='10%'><input type='text' class='served' /></td><td width='10%'><input type='text' class='unit' /></td><td width='10%'><input type='text' class='price' /></td><td width='10%'><input type='text' class='discount' /></td><td width='10%'><input type='text' class='amount' /></td></tr>");
     }
 }
 
@@ -278,7 +461,7 @@ function FillReference() {
 function FillDate() {
     var currentDate = new Date(); var day = currentDate.getDate(); var month = currentDate.getMonth() + 1; var year = currentDate.getFullYear();
     $('#date').val("0" + month + "/" + day + "/" + year);
-    $('#cancel_date').val("0" + month + "/" + day + "/" + year);
+   // $('#cancel_date').val("0" + month + "/" + day + "/" + year);
 
 }
 

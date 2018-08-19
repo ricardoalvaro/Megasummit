@@ -99,13 +99,16 @@ namespace MegaSummitInventorySystem.Webservice
         }
 
         [WebMethod]
-        public bool InsertSalesOrder(long customer_id, string address, long delivery_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime cancel_date, string notes, decimal total_amount, decimal total_served, decimal balance, string productList, string orderStatus)
+        public bool InsertSalesOrder(long customer_id, string address, long delivery_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, string cancel_date, string notes, decimal total_amount, decimal total_served, decimal balance, string productList, string orderStatus)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._SalesOrderInsert(ref id, customer_id, address, delivery_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, cancel_date, notes, total_amount, total_served, balance, orderStatus);
+                DateTime? _cancel_date = null;
+                if (cancel_date.Trim() != string.Empty) { _cancel_date = DateTime.Parse(cancel_date); }
+
+                Database._SalesOrderInsert(ref id, customer_id, address, delivery_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, _cancel_date, notes, total_amount, total_served, balance, orderStatus);
 
                 var data = Database._Settings.SingleOrDefault(x => x.ID == 2);
                 if (data.Automatic.Value)
@@ -121,19 +124,20 @@ namespace MegaSummitInventorySystem.Webservice
                     {
                         string[] p = l.Split(',');
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        string productID = p[2];
+                        string locationID = p[4];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
 
-                        decimal qty = decimal.Parse(p[2]);
-                        decimal price = decimal.Parse(p[5]);
-                        string discount = p[6];
-                        decimal amount = decimal.Parse(p[7]);
+                        decimal qty = decimal.Parse(p[5]);
+                        decimal served = decimal.Parse(p[6]);
+                        decimal price = decimal.Parse(p[8]);
+                        string discount = p[9];
+                        decimal amount = decimal.Parse(p[10]);
 
                         long? refID = 0;
-                        Database._SalesOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, 0, product.UnitID, price, discount, amount);
+                        Database._SalesOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, served, product.UnitID, price, discount, amount);
                     }
                 }
 
@@ -149,14 +153,16 @@ namespace MegaSummitInventorySystem.Webservice
         }
 
         [WebMethod]
-        public bool UpdateSalesOrder(long id, long customer_id, string address, long delivery_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime cancel_date, string notes, decimal total_amount, decimal total_served, decimal balance, string productList, string orderStatus)
+        public bool UpdateSalesOrder( long customer_id, string address, long delivery_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, string cancel_date, string notes, decimal total_amount, decimal total_served, decimal balance, string productList, string orderStatus,long id)
         {
             try
             {
-
+                DateTime? _cancel_date = null;
+                if (cancel_date.Trim() != string.Empty) { _cancel_date = DateTime.Parse(cancel_date); }
                 Database = new DatabaseDataContext();
-                Database._SalesOrderUpdate(id, customer_id, address, delivery_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, cancel_date, notes, total_amount, total_served, balance, orderStatus);
-                Database._SalesOrderDetailsDeletebyOrder(id);
+                Database._SalesOrderUpdate(id, customer_id, address, delivery_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, _cancel_date, notes, total_amount, total_served, balance, orderStatus);
+//             Database._SalesOrderDetailsDeletebyOrder(id);
+  
                 string[] lines = productList.Split('^');
 
                 foreach (var l in lines)
@@ -164,20 +170,30 @@ namespace MegaSummitInventorySystem.Webservice
                     if (!string.IsNullOrEmpty(l))
                     {
                         string[] p = l.Split(',');
+                        long sale_order_id = long.Parse(p[0]);
+                        string productID = p[2];
+                        string locationID = p[4];
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
+                        decimal qty = decimal.Parse(p[5]);
+                        decimal served = decimal.Parse(p[6]);
+                        decimal price = decimal.Parse(p[8]);
+                        string discount = p[9];
+                        decimal amount = decimal.Parse(p[10]);
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        if (p[0] == "0")
+                        {
+                            long? refID = 0;
+                            Database._SalesOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, served, product.UnitID, price, discount, amount);
+                        }
+                        else
+                        {
+                            Database._SalesOrderDetailsUpdate(sale_order_id , id, product.ID, location.ID, qty, served, product.UnitID, price, discount, amount);
+                        }
 
-                        decimal qty = decimal.Parse(p[3]);
-                        decimal price = decimal.Parse(p[5]);
-                        string discount = p[6];
-                        decimal amount = decimal.Parse(p[7]);
 
-                        long? refID = 0;
-                        Database._SalesOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, 0, product.UnitID, price, discount, amount);
+                        
                     }
                 }
 

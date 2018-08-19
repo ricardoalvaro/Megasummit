@@ -102,6 +102,8 @@
     <Content Include="aspnetSalesInvoice.aspx" />
     <Content Include="aspnetSalesOrder.aspx" />
     <Content Include="aspnetSalesOrderInformation.aspx" />
+    <Content Include="aspnetSalesReturn.aspx" />
+    <Content Include="aspnetSalesReturnInformation.aspx" />
     <Content Include="include\CustomerSubMenu.ascx" />
     <Content Include="include\CustomerSubMenuAjax.ascx" />
     <Content Include="OldSource\aspnetCustomer.aspx" />
@@ -328,12 +330,13 @@
     <Content Include="Script\BackUp\ProductAssembly.js" />
     <Content Include="Script\SalesInvoice.js" />
     <Content Include="Script\SalesOrder.js" />
+    <Content Include="Script\SalesReturn.js" />
     <Content Include="Script\SupplierPurchased.js" />
     <Content Include="Script\OfficialReceipt.js" />
     <Content Include="Script\BackUp\Product.js" />
     <Content Include="Script\BackUp\Sales.js" />
     <Content Include="Script\BackUp\SalesOrder.js" />
-    <Content Include="Script\SalesReturn.js" />
+    <Content Include="Script\BackUp\SalesReturn.js" />
     <Content Include="Script\Supplier.js" />
     <Content Include="Script\SupplierPurchasedOrder.js" />
     <Content Include="Script\SupplierReturn.js" />
@@ -709,6 +712,20 @@
     <Compile Include="aspnetSalesOrderInformation.aspx.designer.cs">
       <DependentUpon>aspnetSalesOrderInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetSalesReturn.aspx.cs">
+      <DependentUpon>aspnetSalesReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSalesReturn.aspx.designer.cs">
+      <DependentUpon>aspnetSalesReturn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSalesReturnInformation.aspx.cs">
+      <DependentUpon>aspnetSalesReturnInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSalesReturnInformation.aspx.designer.cs">
+      <DependentUpon>aspnetSalesReturnInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="include\CustomerSubMenu.ascx.cs">
       <DependentUpon>CustomerSubMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -969,6 +986,7 @@
     <Compile Include="ViewModel\LocationVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
+    <Compile Include="ViewModel\SalesOrderVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="Webservice\CompanyImageUploader.ashx.cs">
       <DependentUpon>CompanyImageUploader.ashx</DependentUpon>
