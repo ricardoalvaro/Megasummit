@@ -473,9 +473,9 @@
                                                 <div class="ym-grid ym-equalize linearize-level-1">
                                                     <div class="pane-left ym-gl">
                                                         <div class="ym-gbox">
-                                                            <a href="#">
+                                                            <a href="JavaScript:Void(0);" id="void">
                                                                 <img src="http://localhost:8181/megasummit/images/buttons/void.png" width="71" height="20" alt="Void" /></a>&nbsp;
-                                                    <a href="#">
+                                                    <a href="JavaScript:Void(0);" id="hold">
                                                         <img src="http://localhost:8181/megasummit/images/buttons/hold.png" width="71" height="20" alt="Hold" /></a>
                                                         </div>
                                                     </div>
@@ -507,6 +507,8 @@
     <script type="text/javascript">
 
         
+        var SingleInvoiceData = <%= InvoiceVM.SingleInvoice(long.Parse( (Request["invoiceID"] == null ? "0" : Request["invoiceID"])  )) %>;
+        var SingleInvoiceDetailsData = <%= InvoiceVM.SingleInvoiceDetails(long.Parse( (Request["invoiceID"] == null ? "0" : Request["invoiceID"])  )) %>;
 
 
         var ProductAutoCompleteData = <%= ProductVM.AutoCompleteProduct %>;

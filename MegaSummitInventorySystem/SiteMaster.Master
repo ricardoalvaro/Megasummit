@@ -16,7 +16,7 @@
    <%-- <script src="http://code.jquery.com/jquery-1.12.4.js"></script>--%>
     <script src="Script/ValidateEntry.js"></script>
     <script src="Script/jsPopDiv.js"></script>
-
+    <script src="Script/Helper.js"></script>
     <!--[if lte IE 7]>
     <link rel="stylesheet" href="CSS/core/iehacks.min.css" type="text/css">
 <![endif]-->

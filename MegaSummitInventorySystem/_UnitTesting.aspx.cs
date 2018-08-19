@@ -11,14 +11,34 @@ namespace MegaSummitInventorySystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string x = string.Empty;
+            var Database = new DatabaseDataContext();
+            decimal total_amount = 100;
+            string tax_amt = "12";
+            decimal tax_amount = 0;
+            string tax_type = "Inclusive";
+            decimal tax_rate = Database._CompanySalesTaxes.FirstOrDefault().Rate.Value;
 
-            for (int i = 0; i < 50000; i++)
+            if (!tax_amt.Contains('%'))
             {
-                x += "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+                var total = total_amount;
+                var dis_rate = tax_rate / 100;
+                tax_amount = ((total) * (dis_rate));
+
+
+                tax_type = "Exclusive";
             }
 
-            Response.Write(x);
+
+
+            //string x = string.Empty;
+
+            //for (int i = 0; i < 50000; i++)
+            //{
+            //    x += "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+            //}
+
+            //Response.Write(x);
 
 
             //var total_amount = 100;

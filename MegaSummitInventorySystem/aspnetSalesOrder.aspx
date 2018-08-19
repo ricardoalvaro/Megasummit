@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetSales.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetSales" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetSalesOrder.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetSalesOrder" %>
 <%@ Register src="include/CustomerSubMenu.ascx" tagname="CustomerSubMenu" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <uc1:CustomerSubMenu ID="CustomerSubMenu1" runat="server" />
@@ -35,14 +35,14 @@
                                             <tbody class="scroll">
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                            <tr id="rec-1" onclick="SelectInvoice('<%# Eval("ID").ToString() %> ')">
+                                            <tr id="rec-1" onclick="SelectSalesOrder('<%# Eval("ID").ToString() %> ')">
                                                 <td width="10%"><%# Eval("RefNo").ToString() %> </td>
                                                 <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
                                                 <td width="30%"><%# Eval("CustomerName").ToString() %></td>
                                                 <td width="15%"><%# Eval("Salesman").ToString() %></td>
                                                 <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
-                                                <td width="10%">x.xx</td>
-                                                <td width="10%"><%# Eval("InvoiceStatus").ToString() %></td>
+                                                <td width="10%"><%# decimal.Parse( Eval("Balance").ToString()).ToString("N") %></td>
+                                                <td width="10%"><%# Eval("OrderStatus").ToString() %></td>
                                             </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>
@@ -66,23 +66,22 @@
 
         $(document).ready(function () {
             $('#btn-new').removeClass('disabled').click(function () {
-                window.location = "aspnetSalesInvoice.aspx";
+                window.location = "aspnetSalesOrderInformation.aspx";
             });
-            FillSalesInvoiceDefault();
+            FillSalesOrderDefault();
         });
 
-        function SelectInvoice(id)
-        {
-            window.location = "aspnetSalesInvoice.aspx?invoiceID=" + id;
+        function SelectSalesOrder(id) {
+            window.location = "aspnetSalesOrderInformation.aspx?salesOrderID=" + id;
         }
 
 
-        function FillSalesInvoiceDefault() {
-            for (var i = 0; i < 20; i++) {
+        function FillSalesOrderDefault() {
+            for (var i = 0; i < 50; i++) {
                 $('#tblMain tbody:last').append("<tr><td width='30%'></td><td width='15%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td></tr>");
             }
         }
-      
+
 
     </script>
 

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="aspnetProductInformationOpeningBalance.aspx.cs" Inherits="MegaSummitInventorySystem.aspnetProductInformationOpeningBalance" %>
+
 <%@ Register Src="~/include/ProductSubMenu.ascx" TagPrefix="uc1" TagName="ProductSubMenu" %>
-<%@ Register src="include/ProductSubMenuAjax.ascx" tagname="ProductSubMenuAjax" tagprefix="uc2" %>
+<%@ Register Src="include/ProductSubMenuAjax.ascx" TagName="ProductSubMenuAjax" TagPrefix="uc2" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -29,7 +30,7 @@
                                                                         <td class="lbl">
                                                                             <label for="product_name">*Product Name</label></td>
                                                                         <td class="obj">
-                                                                             <input type="text" autocorrect="off" spellcheck="false" id="product_name"  value="" class="long" disabled />
+                                                                            <input type="text" autocorrect="off" spellcheck="false" id="product_name" value="" class="long" disabled />
                                                                             <%--<div class="select-arrow long">
                                                                                 <select name="product_name" id="product_name">
                                                                                     <option value=""></option>
@@ -143,39 +144,39 @@
                         <div class="ym-col3">
                             <div class="ym-cbox">
                                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 199px;">
-                                 
 
-                                <asp:Repeater runat="server" ID="repList">
-                                <HeaderTemplate>
-                                    <ul id="ulSidebar" class="sidebar sidelists2 crossfade scroll">
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <li>
-                                        <a href="javascript:;" id="item-1" onclick="SelectFromList('<%# Eval("ID") %>')">
-                                            
-                                            <span class="name"><%# Eval("ProductName") %>
-                                                <span class="float-right" style="font-size: 12px">OP<%# Eval("ID") %></span>
-                    	                    <span><%#Eval("LocationName") %></span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ItemTemplate>
-                                <FooterTemplate>
-                                    </ul>
-                                </FooterTemplate>
-                            </asp:Repeater>
+
+                                    <asp:Repeater runat="server" ID="repList">
+                                        <HeaderTemplate>
+                                            <ul id="ulSidebar" class="sidebar sidelists2 crossfade scroll">
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <li>
+                                                <a href="javascript:;" id="item-1" onclick="SelectFromList('<%# Eval("ID") %>')">
+
+                                                    <span class="name"><%# Eval("ProductName") %>
+                                                        <span class="float-right" style="font-size: 12px">OP<%# Eval("ID") %></span>
+                                                        <span><%#Eval("LocationName") %></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </ul>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
                             </div>
                         </div>
+
+
+
                     </div>
 
-
-
                 </div>
-
             </div>
         </div>
-    </div>
-        <script src="Script/Helper.js"></script>
+       <%-- <script src="Script/Helper.js"></script>--%>
         <script type="text/javascript">
 
       
@@ -368,10 +369,9 @@
             }
 
 
-           var LocationAutoCompleteData = <%= AutoCompleteLocation() %>;
-           var ProductAutoCompleteData = <%= AutoCompleteProduct() %>;
-           var ProductData = <%= ProductDetail()%>;
+            var LocationAutoCompleteData = <%= AutoCompleteLocation() %>;
+            var ProductAutoCompleteData = <%= AutoCompleteProduct() %>;
+            var ProductData = <%= ProductDetail()%>;
 
-    </script>
-
+        </script>
 </asp:Content>

@@ -7,9 +7,8 @@ using System.Web.UI.WebControls;
 
 namespace MegaSummitInventorySystem
 {
-    public partial class aspnetSales : System.Web.UI.Page
+    public partial class aspnetSalesOrder : System.Web.UI.Page
     {
-
         private DatabaseDataContext Database = new DatabaseDataContext();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -22,10 +21,9 @@ namespace MegaSummitInventorySystem
 
         private void LoadData()
         {
-            var data = Database._InvoiceSalesSelect(0);
+            var data = Database._SalesOrderSelect(0);
             repMain.DataSource = data;
             repMain.DataBind();
         }
-
     }
 }

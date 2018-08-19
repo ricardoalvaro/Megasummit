@@ -1,14 +1,23 @@
-﻿/// <reference path="../js/plugins.js" />
+﻿/// <reference path="../js/jquery-3.3.1.slim.min.js" />
 //--------Need refactoring----------
 
 var CustomerID = 0;
 var SalesInvoiceID = 0;
+var helper = new Helper();
 
 $(document).ready(function () {
 
+    SalesInvoiceID = Number(helper.GetQuerystring()["invoiceID"]);
+    if (!$.isNumeric(SalesInvoiceID) || SalesInvoiceID <= 0) {
+        SalesInvoiceID = 0;
+    }else    {
+        $("#void").click(function () {
+            VoidSalesInvoice();
+        });
+    }
+
+    $("#hold").click(function () { alert('Not Working'); });
    
-
-
     $("#btn-save").removeClass("disabled").click(function () { SaveInvoice(this); });
 
     GenerateStaticInvoiceList();
@@ -17,7 +26,6 @@ $(document).ready(function () {
 
     $("#customer").change(function (event) {
         ClearCustomerData(this);
-   
     });
 
     $("#order_number").change(function () {
@@ -61,12 +69,7 @@ $(document).ready(function () {
 
     $("#commission_rate").change(function () {
 
-        var rate = ($(this).val() =='') ? '0' : Number($(this).val());
-        var total_amount = ($("#spnTotalAmount").html() == '') ? '0' : Number($("#spnTotalAmount").html());
-
-        var comm_amount = (rate / 100) * total_amount;
-        
-        $("#commission_amount").val(comm_amount);
+        ComputeCommissionRate();
 
     });
 
@@ -74,21 +77,130 @@ $(document).ready(function () {
         this.value = this.value.replace(/(['"])/g, '');//  /[^\w]/g,"");
     });
 
-    Fill(); 
+    Fill();
+    SelectSaleInvoice();
+
 });
+
+function VoidSalesInvoice()
+{
+    var pageUrl = '/Webservice/svr_Invoice.asmx';
+    var data_transfer = "{'ID':'{0}'}".f(SalesInvoiceID);
+    //InvoiceVoid(long ID )
+    $.ajax({
+        type: "POST",
+        url: pageUrl + "/InvoiceVoid",
+        data: data_transfer,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        crossdomain: true,
+        success: function (response) {
+
+            window.location = "aspnetSales.aspx";
+
+        },
+        error: function (response) {
+            alert(response.status);
+        }
+    });
+}
+
+function SelectSaleInvoice()
+{
+    if (SalesInvoiceID > 0)
+    {
+       
+
+        var data = SingleInvoiceData;
+
+        for (var i = 0; i < data.length; i++)
+        {
+            
+            if (data[i]["ID"] == SalesInvoiceID) {
+
+                $("#customer").val(data[i]["CustomerName"]);
+                $('#address').val(data[i]["Address"]);
+                $('#deliver_to').val(data[i]["ForwarderToID"]);
+                $('#salesman').val(data[i]["SalesmanID"]);
+                $('#po_number').val(data[i]["PONo"]);
+                $('#terms').val(data[i]["TermID"]);
+
+                //$('#reference_no').text().attr('selected',data[i]["RefNo"];
+
+                $("#reference_no option").filter(function() {return $(this).text() == data[i]["RefNo"]; }).prop('selected', true);
+
+                $('#reference_number').val(data[i]["ID"]);
+
+                $('#date').val(FormatDate(data[i]["CreatedDate"]));
+                $('#delivery_date').val(FormatDate(data[i]["DeliveryDate"]));
+
+                $('#prepared').val(data[i]["PreparedBy"]);
+                $('#checked').val(data[i]["CheckedBy"]);
+                $('#delivered').val(data[i]["DeliveredBy"]);
+
+
+                $('#waybill_number').val(data[i]["WayBillNo"]);
+                $('#container_number').val(data[i]["ContainerNo"]);
+                $('#lading_bill').val(data[i]["BillOfLanding"]);
+
+                $('#commission_rate').val(data[i]["CommissionRate"]);
+                $('#commission_amount').val(data[i]["CommissionAmt"]);
+
+
+                $('#remarks').val(data[i]["RemarksID"]);
+                $('#notes').val(data[i]["Notes"]);
+                $('#spnInvoiceAmount').html(data[i]["SubTotalAmt"]);
+                $('#spnSubTotal').val(data[i]["SubTotalAmt"]);
+                $('#spnTax').html(data[i]["TaxAmt"]);
+                $('#shipping').val(data[i]["ShippingAmt"]);
+                $('#spnTotalAmount').html(data[i]["TotalAmount"].toFixed(2));
+
+                var detail = SingleInvoiceDetailsData;
+
+                for (var d = 0; d < detail.length; d++) {
+
+                    $('#tblSalesInvoice tbody tr').each(function (i) {
+
+                        var x2 = $(this).find("td .product").val();
+                        if (x2 == "") {
+
+                            $(this).find("td .sales_order_detail_id").val(detail[d]["ID"]);
+                            $(this).find("td .packing").val(detail[d]["Packing"]).attr("disabled", "disabled");
+                            $(this).find("td .packing_id").val(detail[d]["PackingID"]);
+                            $(this).find("td .product").val(detail[d]["ProductName"]).attr("disabled", "disabled");
+                            $(this).find("td .product_id").val(detail[d]["ProductID"]);
+                            $(this).find("td .location").val(detail[d]["LocationName"]).attr("disabled", "disabled");
+                            $(this).find("td .location_id").val(detail[d]["LocationID"]);
+                            $(this).find("td .quantity").val(detail[d]["Quantity"]).attr("disabled", "disabled");
+                            $(this).find("td .unit").val(detail[d]["UnitName"]).attr("disabled", "disabled");
+                            $(this).find("td .price").val(detail[d]["UnitPrice"]).attr("disabled", "disabled");
+                            $(this).find("td .discount").val(detail[d]["Discount"]).attr("disabled", "disabled");
+                            $(this).find("td .amount").val(detail[d]["Amount"]).attr("disabled", "disabled");
+                            return false;
+                        }
+                    });
+
+
+                }
+            }
+        }
+
+    }
+}
 
 function SaveInvoice(me)
 {
     if ($(me).hasClass("disabled") == false)
     {
-        
+        var pageUrl = '/Webservice/svr_Invoice.asmx';
+
         var invoice_status = "Invoice";
         var address = $('#address').val();
         var forwarder_to_id = $('#deliver_to').val();
         var salesman_id = $('#salesman').val();
         var po_no = $('#po_number').val();
         var term_id = $('#terms').val();
-        var ref_no = $('#reference_no').text();
+        var ref_no = $('#reference_no option:selected').text();
         var ref_no_serial = $('#reference_number').val();
         var created_date = $('#date').val();
         var delivery_date = $('#delivery_date').val();
@@ -98,31 +210,39 @@ function SaveInvoice(me)
         var way_bill_no = $('#waybill_number').val();
         var container_no = $('#container_number').val();
         var bill_of_landing = $('#lading_bill').val();
-        var commission_rate = $('#commission_rate').val();
-        var commission_amt = $('#commission_amount').val();
+        var commission_rate = ($('#commission_rate').val() == '') ? '0' : $('#commission_rate').val();
+        var commission_amt = ($('#commission_amount').val() == '') ? '0' : $('#commission_amount').val();
         var remarks_id = $('#remarks').val();
         var notes = $('#notes').val();
         var sub_total_amt = $('#spnInvoiceAmount').html().replace(",", "");
         var tax_amt = $('#spnTax').html();
         var shipping_amt = $('#shipping').val();
-        var total_amount = $('#spnTotalAmount').val();
+        var total_amount = $('#spnTotalAmount').html();
         var productList = GetSalesInvoiceDetails();
 
-        var x = "{'invoice_status':'{0}',  'customer_id':'{1}','address':'{2}', 'forwarder_to_id':'{3}','salesman_id':'{4}',  'po_no':'{5}','term_id':'{6}','ref_no':'{7}','ref_no_serial':'{8}','created_date':'{9}','delivery_date':'{10}','prepared_by':'{11}','checked_by':'{12}','delivered_by':'{13}','way_bill_no':'{14}','container_no':'{15}','bill_of_landing':'{16}','commission_rate':'{17}','commission_amt':'{18}','remarks_id':'{19}','notes':'{20}','sub_total_amt':'{21}','tax_amt':'{22}','total_amount':'{23}','productList':'{24}'}"
+        //var x = "{'invoice_status':'{0}',  'customer_id':'{1}','address':'{2}', 'forwarder_to_id':'{3}','salesman_id':'{4}',  'po_no':'{5}','term_id':'{6}','ref_no':'{7}','ref_no_serial':'{8}','created_date':'{9}','delivery_date':'{10}','prepared_by':'{11}','checked_by':'{12}','delivered_by':'{13}','way_bill_no':'{14}','container_no':'{15}','bill_of_landing':'{16}','commission_rate':'{17}','commission_amt':'{18}','remarks_id':'{19}','notes':'{20}','sub_total_amt':'{21}','tax_amt':'{22}','total_amount':'{23}','productList':'{24}'}"
+        //    .f(invoice_status, CustomerID, address,
+        //    forwarder_to_id, salesman_id,
+        //    po_no, term_id, ref_no,
+        //    ref_no_serial,created_date,
+        //    delivery_date, prepared_by,
+        //    checked_by, delivered_by,
+        //    way_bill_no, container_no,
+        //    bill_of_landing, commission_rate,
+        //    commission_amt,remarks_id,notes,sub_total_amt,tax_amt,total_amount,productList);
+
+        if (SalesInvoiceID == 0) {//insert 
+
+            var data_transfer = "{'invoice_status':'{0}',  'customer_id':'{1}','address':'{2}', 'forwarder_to_id':'{3}','salesman_id':'{4}',  'po_no':'{5}','term_id':'{6}','ref_no':'{7}','ref_no_serial':'{8}','created_date':'{9}','delivery_date':'{10}','prepared_by':'{11}','checked_by':'{12}','delivered_by':'{13}','way_bill_no':'{14}','container_no':'{15}','bill_of_landing':'{16}','commission_rate':'{17}','commission_amt':'{18}','remarks_id':'{19}','notes':'{20}','sub_total_amt':'{21}','tax_amt':'{22}', 'shipping_amt':'{23}','total_amount':'{24}','productList':'{25}'}"
             .f(invoice_status, CustomerID, address,
             forwarder_to_id, salesman_id,
             po_no, term_id, ref_no,
-            ref_no_serial,created_date,
+            ref_no_serial, created_date,
             delivery_date, prepared_by,
             checked_by, delivered_by,
             way_bill_no, container_no,
             bill_of_landing, commission_rate,
-            commission_amt,remarks_id,notes,sub_total_amt,tax_amt,total_amount,productList);
-
-        if (SalesInvoiceID == 0) {//insert 
-
-            var data_transfer = "{  'packing':'{0}', 'unit_id':'{1}','packing2':'{2}','sub_unit_id':'{3}'}"
-               .f(packing1, unit_type, packing2, sub_type);
+            commission_amt, remarks_id, notes, sub_total_amt, tax_amt, shipping_amt, total_amount, productList);
 
             $.ajax({
                 type: "POST",
@@ -133,6 +253,8 @@ function SaveInvoice(me)
                 crossdomain: true,
                 success: function (response) {
 
+                    window.location = "aspnetSales.aspx";
+                    //alert(response.d);
 
                 },
                 error: function (response) {
@@ -148,7 +270,6 @@ function SaveInvoice(me)
 
     }
 }
-
 
 function ClearCustomerData(me)
 {
@@ -259,7 +380,7 @@ function FillSalesInvoiceDetail(ID) {
                         $(this).find("td .unit").val(data[y]["UnitName"]);
                         $(this).find("td .price").val(data[y]["UnitPrice"]);
                         $(this).find("td .discount").val(data[y]["Discount"]);
-                       
+                        $(this).find("td .quantity").val(data[y]["Quantity"]).trigger('change');
                         return false;
                     }
                 });
@@ -377,11 +498,22 @@ function ComputeComponentAmount(me) {
 
     //alert(total_amount);
     $("#spnTotalAmount").html(total_amount);
-
+    ComputeCommissionRate();
 }
 
-function ComputeTotalAmountDue()
+function ComputeCommissionRate()
 {
+    var rate = ($("#commission_rate").val() == '') ? '0' : Number($("#commission_rate").val());
+    var total_amount = ($("#spnTotalAmount").html() == '') ? '0' : Number($("#spnTotalAmount").html());
+
+    var comm_amount = (rate / 100) * total_amount;
+
+    $("#commission_amount").val(comm_amount);
+}
+
+function ComputeTotalAmountDue() {
+
+    ComputeCommissionRate();
     var total = Number($("#spnSubTotal").val());
 
     var total_amount = 0;
@@ -392,9 +524,10 @@ function ComputeTotalAmountDue()
     else { total_amount = Number(total) + Number(tax) + Number(shipping); }
 
     $("#spnTotalAmount").html((total_amount));
+    ComputeCommissionRate();
 }
 
-function ComputeAmount( total, dis ) {
+function ComputeAmount(total, dis) {
     var textArr1 = new Array();
     var TotalPlus = 0;
     var TotalMinus = 0;
@@ -441,26 +574,25 @@ function ComputeAmount( total, dis ) {
 
 }
 
-function GenerateStaticInvoiceList()
-{   
+function GenerateStaticInvoiceList() {
     var ret = "";
     for (var i = 0; i < 20; i++) {
         $("#tblSalesInvoice tbody").append("<tr><td width='20%'><input type='hidden' class='sales_order_detail_id' /><input type='text' class='packing' /><input type='hidden' class='packing_id' /></td><td width='20%'><input type='text' class='product' /><input type='hidden' class='product_id' /></td><td width='10%'><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td width='10%'><input type='text' class='quantity' /></td><td width='10%'><input type='text' class='unit' /></td><td width='10%'><input type='text' class='price' /></td><td width='10%'><input type='text' class='discount' /></td><td width='10%'><input type='text' class='amount' /></td></tr>");
     }
 }
 
-//----------------------------------------------------------
-function Fill()
-{
+    //----------------------------------------------------------
+function Fill() {
     FillCustomerAutoComplete(); FillForwarder(); FillSalesman(); FillTerm(); FillDate(); FillRemarks(); FillEmployee(); FillReference(); FillDate(); FillCompanyTax();
 }
 
-function FillCustomerAutoComplete()
-{
-    $("#customer").autocomplete({ source: CustomerData, minLength: 0, minChars: 0, max: 12, autoFill: true,
+function FillCustomerAutoComplete() {
+    $("#customer").autocomplete({
+        source: CustomerData, minLength: 0, minChars: 0, max: 12, autoFill: true,
         matchContains: false, select: function (a, b) {
             //customer information
             FillCustomerDetails(b.item.id);
+            CustomerID = b.item.id;
         }
     }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
 }
@@ -473,7 +605,7 @@ function FillCustomerDetails(customer_id)
     //post dated check
     //available credit
 
-    $("#customer").val(''); $("#address").val(''); $('#po_number').val(''); $('#spnCreditLimit').html(''); $('#spnCreditLimit').html('');
+    $('#po_number').val(''); $('#spnCreditLimit').html(''); $('#spnCreditLimit').html('');
     $('#spnCreditLimit').html(''); $('#spnInvoiceBalance').html(''); $('#spnInvoiceBalance').html(''); $('#spnPostDateCheck').html(''); $('#spnAvailableCredit').html('');
     
 

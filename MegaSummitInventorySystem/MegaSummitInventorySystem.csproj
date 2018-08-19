@@ -100,6 +100,8 @@
     <Content Include="aspnetCustomerInformationPayment.aspx" />
     <Content Include="aspnetSales.aspx" />
     <Content Include="aspnetSalesInvoice.aspx" />
+    <Content Include="aspnetSalesOrder.aspx" />
+    <Content Include="aspnetSalesOrderInformation.aspx" />
     <Content Include="include\CustomerSubMenu.ascx" />
     <Content Include="include\CustomerSubMenuAjax.ascx" />
     <Content Include="OldSource\aspnetCustomer.aspx" />
@@ -325,11 +327,12 @@
     <Content Include="Script\BackUp\ProductAdjustment.js" />
     <Content Include="Script\BackUp\ProductAssembly.js" />
     <Content Include="Script\SalesInvoice.js" />
+    <Content Include="Script\SalesOrder.js" />
     <Content Include="Script\SupplierPurchased.js" />
     <Content Include="Script\OfficialReceipt.js" />
     <Content Include="Script\BackUp\Product.js" />
     <Content Include="Script\BackUp\Sales.js" />
-    <Content Include="Script\SalesOrder.js" />
+    <Content Include="Script\BackUp\SalesOrder.js" />
     <Content Include="Script\SalesReturn.js" />
     <Content Include="Script\Supplier.js" />
     <Content Include="Script\SupplierPurchasedOrder.js" />
@@ -692,6 +695,20 @@
     <Compile Include="aspnetSalesInvoice.aspx.designer.cs">
       <DependentUpon>aspnetSalesInvoice.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetSalesOrder.aspx.cs">
+      <DependentUpon>aspnetSalesOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSalesOrder.aspx.designer.cs">
+      <DependentUpon>aspnetSalesOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSalesOrderInformation.aspx.cs">
+      <DependentUpon>aspnetSalesOrderInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSalesOrderInformation.aspx.designer.cs">
+      <DependentUpon>aspnetSalesOrderInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="include\CustomerSubMenu.ascx.cs">
       <DependentUpon>CustomerSubMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -948,6 +965,7 @@
     <Compile Include="ViewModel\CompanyVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\EmplyeeVM.cs" />
+    <Compile Include="ViewModel\InvoiceVM.cs" />
     <Compile Include="ViewModel\LocationVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />

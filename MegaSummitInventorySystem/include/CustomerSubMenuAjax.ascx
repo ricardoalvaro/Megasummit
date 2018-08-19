@@ -11,7 +11,7 @@
     <div class="ym-ie-clearing">&nbsp;</div>
 </div>
 
-<script src="Script/Helper.js"></script>
+<%--<script src="Script/Helper.js"></script>--%>
 
 <script type="text/javascript">
 

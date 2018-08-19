@@ -55,7 +55,7 @@
 
     </div>
 </div></div>
-    <script src="Script/Helper.js"></script>
+    <%--<script src="Script/Helper.js"></script>--%>
     <script type="text/javascript">
         /// <reference path="https://code.jquery.com/jquery-3.3.1.slim.min.js" /> 
         //--------Need refactoring----------

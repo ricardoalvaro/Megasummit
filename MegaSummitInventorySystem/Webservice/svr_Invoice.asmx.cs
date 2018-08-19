@@ -26,7 +26,7 @@ namespace MegaSummitInventorySystem.Webservice
             string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by,
             string checked_by, string delivered_by, string way_bill_no, string container_no, 
             string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, 
-            string notes, decimal sub_total_amt, string tax_amt, decimal total_amount, 
+            string notes, decimal sub_total_amt, string tax_amt, decimal shipping_amt ,decimal total_amount, 
             string productList)
         {
             try
@@ -38,11 +38,9 @@ namespace MegaSummitInventorySystem.Webservice
                 if (!tax_amt.Contains('%'))
                 {
 
-                      var total = Number($("#spnSubTotal").val());
-                    var dis_rate = Number(data[i]["Rate"]) / 100;
-                    var discount = (Number(total) * Number(dis_rate));
-
-
+                    //var total = total_amount;
+                    //var dis_rate = (tax_rate / 100) * total_amount;
+                    tax_amount = (tax_rate / 100) * total_amount;
                     tax_type = "Exclusive";
                 }
 
@@ -54,13 +52,13 @@ namespace MegaSummitInventorySystem.Webservice
                     salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, 
                     delivery_date, prepared_by, checked_by, delivered_by, way_bill_no, 
                     container_no, bill_of_landing, commission_rate, commission_amt, 
-                    remarks_id, notes, sub_total_amt, tax_type, tax_rate, tax_amount, "Invoice", total_amount);
+                    remarks_id, notes, sub_total_amt, tax_type, tax_rate, tax_amount, "Posted", shipping_amt, total_amount);
     
-                var data = Database._SalesSettings.SingleOrDefault(x => x.ID == long.Parse(ref_no));
-                if (data.Automatic.Value)
-                {
-                    Database._SalesSettingRefUpdate(data.ID, data.LatestNo.Value + 1);
-                }
+                //var data = Database._SalesSettings.SingleOrDefault(x => x.ID == long.Parse(ref_no));
+                //if (data.Automatic.Value)
+                //{
+                //    Database._SalesSettingRefUpdate(data.ID, data.LatestNo.Value + 1);
+                //}
 
                 #region Regural product list
 
@@ -72,21 +70,22 @@ namespace MegaSummitInventorySystem.Webservice
                     {
                         string[] p = l.Split(',');
 
-                        string productCode = p[1];
-                        string locationCode = p[2];
+                        string productID = p[4];
+                        string locationID = p[6];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
                         var customerName = Database._Customers.SingleOrDefault(x => x.ID == customer_id);
 
-                        decimal qty = decimal.Parse(p[3]);
-                        decimal price = decimal.Parse(p[5]);
-                        string discount = p[6];
-                        decimal amount = decimal.Parse(p[7]);
+                        decimal qty = decimal.Parse(p[7]);
+                        decimal price = decimal.Parse(p[9]);
+                        string discount = p[10];
+                        decimal amount = decimal.Parse(p[11]);
 
-                        if (p[8] != " " && p[8] != null)
+
+                        if (!string.IsNullOrEmpty(p[0]))
                         {
-                            Database._SalesOrderDetialsServedUpdate(long.Parse(p[8]), qty);
+                            Database._SalesOrderDetialsServedUpdate(long.Parse(p[0]), qty);
                         }
 
                         long? refID = 0;
@@ -100,7 +99,7 @@ namespace MegaSummitInventorySystem.Webservice
                         {
                             Database._ProductStockUpdateDecrease(product.ID, location.ID, qty);
                         }
-                        Database._ProductStockHistoryInsert(ref refIDStockHis, ref_no + "" + ref_no_serial, DateTime.Now, "Purchase Invoice", customerName.CustomerName, location.ID, 0, qty, price, discount, 0, 0, product.ID);
+                        Database._ProductStockHistoryInsert(ref refIDStockHis, ref_no + id.ToString(), DateTime.Now, "Sales Invoice", customerName.CustomerName, location.ID, 0, qty, price, discount, 0, 0, product.ID);
                         #endregion 
                     }
                 }
@@ -464,5 +463,72 @@ namespace MegaSummitInventorySystem.Webservice
             return "";
         }
 
+
+
+        [WebMethod]
+        public string InvoiceVoid(long ID )
+        {
+
+            Database._InvoiceVoid(ID);
+
+
+            string CustomerName = string.Empty;
+            string RefNo = string.Empty;
+
+
+            var Invoice = Database._InvoiceSalesSelect(ID).ToList();
+            foreach (var item in Invoice)
+            {
+                RefNo = item.RefNo + item.ID.ToString();
+                CustomerName = item.CustomerName;
+            }
+
+            var Details = Database._InvoiceDetailsSalesSelect(ID).ToList();
+
+
+
+            foreach (var item in Details)
+            {
+                string productID = item.ProductID.Value.ToString();
+                string locationID = item.LocationID.Value.ToString();
+
+                var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
+                //var customerName = Database._Customers.SingleOrDefault(x => x.ID == customer_id);
+
+                decimal qty = item.Quantity.Value;
+                decimal price = item.UnitPrice.Value;
+                string discount = item.Discount;
+                decimal amount = item.Amount.Value;
+
+
+                //if (!string.IsNullOrEmpty(p[0]))
+                //{
+                //    Database._SalesOrderDetialsServedUpdate(long.Parse(p[0]), qty);
+                //}
+
+                //long? refID = 0;
+                //Database._InvoiceDetailsInsert(ref refID, id, product.PackingID.Value, product.ID, location.ID, qty, product.UnitID.Value, price, discount, amount);
+
+                // ----------------- Insert and Update Stock, Insert Stock History
+                #region Stock Processing
+                long? refIDStockHis = 0;
+                var dataStock = Database._ProductStocks.Where(x => x.ProductID == product.ID && x.LocationID == location.ID).Count();
+                if (dataStock > 0)
+                {
+                    Database._ProductStockUpdate(product.ID, location.ID, qty);
+                }
+                Database._ProductStockHistoryInsert(ref refIDStockHis, RefNo, DateTime.Now, "Void", CustomerName, location.ID, qty, 0, price, discount, 0, 0, product.ID);
+                #endregion
+            }
+            
+
+
+
+          
+            
+
+            return "";
+        }
     }
 }
