@@ -98,6 +98,8 @@
     <Content Include="aspnetCustomerInformationMemo.aspx" />
     <Content Include="aspnetCustomerInformationSalesOrder.aspx" />
     <Content Include="aspnetCustomerInformationPayment.aspx" />
+    <Content Include="aspnetCustomerMemo.aspx" />
+    <Content Include="aspnetOfficialReceipt.aspx" />
     <Content Include="aspnetSales.aspx" />
     <Content Include="aspnetSalesInvoice.aspx" />
     <Content Include="aspnetSalesOrder.aspx" />
@@ -375,6 +377,7 @@
     <Content Include="Webservice\svr_InvoicePaymentCheck.asmx" />
     <Content Include="Webservice\svr_InvoiceShipping.asmx" />
     <Content Include="Webservice\svr_Location.asmx" />
+    <Content Include="Webservice\svr_OfficialReceipt.asmx" />
     <Content Include="Webservice\svr_Packing.asmx" />
     <Content Include="Webservice\svr_Position.asmx" />
     <Content Include="Webservice\svr_Product.asmx" />
@@ -684,6 +687,20 @@
     <Compile Include="aspnetCustomerInformationPayment.aspx.designer.cs">
       <DependentUpon>aspnetCustomerInformationPayment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetCustomerMemo.aspx.cs">
+      <DependentUpon>aspnetCustomerMemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerMemo.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerMemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetOfficialReceipt.aspx.cs">
+      <DependentUpon>aspnetOfficialReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetOfficialReceipt.aspx.designer.cs">
+      <DependentUpon>aspnetOfficialReceipt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetSales.aspx.cs">
       <DependentUpon>aspnetSales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -984,6 +1001,7 @@
     <Compile Include="ViewModel\EmplyeeVM.cs" />
     <Compile Include="ViewModel\InvoiceVM.cs" />
     <Compile Include="ViewModel\LocationVM.cs" />
+    <Compile Include="ViewModel\OfficialReceiptVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
     <Compile Include="ViewModel\SalesOrderVM.cs" />
@@ -1116,6 +1134,10 @@
     </Compile>
     <Compile Include="Webservice\svr_Location.asmx.cs">
       <DependentUpon>svr_Location.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Webservice\svr_OfficialReceipt.asmx.cs">
+      <DependentUpon>svr_OfficialReceipt.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Webservice\svr_Packing.asmx.cs">

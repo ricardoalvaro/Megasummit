@@ -242,7 +242,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     if (item.InvoiceType == "OpeningBalance")
                     {
-                        dt.Rows.Add(item.ID, item.PrefixInitial + "" + item.RefNoSerial, item.CreatedDate.Value.ToShortDateString(), item.SubTotalAmt.Value.ToString("N"));
+                        dt.Rows.Add(item.ID, "" + item.RefNoSerial, item.CreatedDate.Value.ToShortDateString(), item.SubTotalAmt.Value.ToString("N"));
                     }
                 }
 

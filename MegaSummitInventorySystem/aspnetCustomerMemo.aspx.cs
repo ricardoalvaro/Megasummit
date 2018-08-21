@@ -7,21 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace MegaSummitInventorySystem
 {
-    public partial class aspnetSalesInvoice : System.Web.UI.Page
+    public partial class aspnetCustomerMemo1 : System.Web.UI.Page
     {
-       
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            
-
-
-
-
         }
-
-       
-
     }
 }

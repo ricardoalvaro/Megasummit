@@ -69,6 +69,34 @@ public class SalesOrderVM
 
     }
 
+    public static string CustomerSalesOrderDetails(long customer_id)
+    {
+
+        try
+        {
+            Database = new DatabaseDataContext();
+            if (customer_id == 0)
+            {
+                return "'Null'";
+            }
+
+            var data = Database._SalesOrderSelectByCustomer(customer_id).ToList();
+
+            if (data.Count <= 0)
+            {
+                return "'Null'";
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.None);
+            }
+        }
+        catch (Exception)
+        {
+            return string.Empty;
+        }
+
+    }
 
 
 }

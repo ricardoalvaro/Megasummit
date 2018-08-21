@@ -109,7 +109,7 @@
                                                                     <td class="obj">
                                                                         <div class="grid ym-clearfix">
                                                                             <div class="col-left">
-                                                                                <input type="text" value="SO" autocorrect="off" spellcheck="false" id="reference_letter" name="reference_letter" class="xxshort" />
+                                                                                <input type="text" value="SR" autocorrect="off" spellcheck="false" id="reference_letter" name="reference_letter" class="xxshort" disabled />
                                                                             </div>
                                                                             <div class="col-left">
                                                                                 &nbsp;&nbsp;

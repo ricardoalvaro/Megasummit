@@ -522,7 +522,7 @@
         var RemarksData = <%= SalesVM.Remarks %>; 
         var EmployeeData = <%= EmployeeVM.Employees(0, string.Empty, "Employee") %>;
         var CompanySalesTaxData = <%= CompanyVM.CompanySalesTax %>;
-
+        var TaxDefault = <%=  CompanyVM.CompanyDefaultTax %>;
     </script>
 
 

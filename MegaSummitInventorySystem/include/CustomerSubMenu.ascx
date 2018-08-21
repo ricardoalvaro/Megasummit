@@ -12,8 +12,8 @@
                             <li class=""><a href="aspnetSales.aspx">Sales</a></li>
                             <li class=""><a href="aspnetSalesReturn.aspx">Sales Return</a></li>
                             <li class=""><a href="aspnetSalesOrder.aspx">Sales Order</a></li>
-                            <li class=""><a href="#">Official Receipt</a></li>	
-                            <li class=""><a href="#">Memo</a></li>	
+                            <li class=""><a href="aspnetOfficialReceipt.aspx">Official Receipt</a></li>	
+                            <li class=""><a href="aspnetCustomerMemo.aspx">Memo</a></li>	
                         </ul>
                         <div class="ym-ie-clearing">&nbsp;</div>
                     </div>

@@ -463,11 +463,11 @@ namespace MegaSummitInventorySystem.Webservice
                 dt.Columns.Add("DatePay");
                 dt.Columns.Add("TotalAmount");
 
-                var data = Database._InvoicePaymentSelect(id);
-                foreach (var item in data)
-                {
-                    dt.Rows.Add(item.ID, item.RefereneNo, item.PaymentDate.Value.ToShortDateString(), item.TotalAmount.Value.ToString("N")); 
-                }
+                //var data = Database._InvoicePaymentSelect(id);
+                //foreach (var item in data)
+                //{
+                //    dt.Rows.Add(item.ID, item.RefereneNo, item.PaymentDate.Value.ToShortDateString(), item.TotalAmount.Value.ToString("N")); 
+                //}
 
                 return JsonConvert.SerializeObject(dt, Newtonsoft.Json.Formatting.Indented);
             }

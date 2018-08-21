@@ -50,4 +50,69 @@ public class CompanyVM
             }
         }
     }
+
+
+    public static string CompanyBankAutoComplete
+    {
+        get
+        {
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._Banks.ToList();
+
+
+                List<AutoCompleteData> auto = new List<AutoCompleteData>();
+                foreach (var item in data)
+                {
+                    auto.Add(new AutoCompleteData(item.ID, item.BankName, item.BankName));
+                }
+
+
+                return JsonConvert.SerializeObject(auto, Newtonsoft.Json.Formatting.None);
+                //return auto;
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return null;
+        }
+    }
+
+    public static string CompanyBankDetails
+    {
+        get
+        {
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._CompanyBankAccounts.ToList();
+
+
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.None);
+                //return auto;
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return null;
+        }
+    }
+
+    public static string CompanyDefaultTax
+    {
+        get 
+        {
+            return new DatabaseDataContext()._CompanySalesTaxes.FirstOrDefault().Rate.Value.ToString("#");
+
+        }
+    }
+
+
 }

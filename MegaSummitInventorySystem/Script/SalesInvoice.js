@@ -151,7 +151,16 @@ function SelectSaleInvoice()
                 $('#notes').val(data[i]["Notes"]);
                 $('#spnInvoiceAmount').html(data[i]["SubTotalAmt"]);
                 $('#spnSubTotal').val(data[i]["SubTotalAmt"]);
-                $('#spnTax').html(data[i]["TaxAmt"]);
+            
+                if (data[i]["TaxAmt"] == '0') {
+                    $('#spnTax').html(TaxDefault + '%');
+                }
+                else {
+                    $('#spnTax').html(data[i]["TaxAmt"]);
+                }
+                
+
+
                 $('#shipping').val(data[i]["ShippingAmt"]);
                 $('#spnTotalAmount').html(data[i]["TotalAmount"].toFixed(2));
 

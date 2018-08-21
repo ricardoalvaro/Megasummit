@@ -18,8 +18,8 @@
                         <div id="tab-content-holder">
                             <div class="content tabular">        
                                  
-                                <asp:Repeater runat="server" ID="repMain">
-                                    <HeaderTemplate>
+                                
+                                    
                                         <table id="tblMain" class="tblholder main">
                                             <thead>
                                                 <tr>
@@ -33,7 +33,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="scroll">
-                                    </HeaderTemplate>
+                                <asp:Repeater runat="server" ID="repMain">   
                                     <ItemTemplate>
                                             <tr id="rec-1" onclick="SelectSalesOrder('<%# Eval("ID").ToString() %> ')">
                                                 <td width="10%"><%# Eval("RefNo").ToString() %> </td>
@@ -42,14 +42,13 @@
                                                 <td width="15%"><%# Eval("Salesman").ToString() %></td>
                                                 <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
                                                 <td width="10%"><%# decimal.Parse( Eval("Balance").ToString()).ToString("N") %></td>
-                                                <td width="10%"><%# Eval("OrderStatus").ToString() %></td>
+                                                <td width="10%"><%# Eval("Status").ToString() %></td>
                                             </tr>
                                     </ItemTemplate>
-                                    <FooterTemplate>
-                                        </tbody>
-                                        </table>	
-                                    </FooterTemplate>
-                                </asp:Repeater>    
+                                    
+                                        	
+                                </asp:Repeater>  </tbody>
+                                        </table>  
                                 
                             </div>
                             <div class="addup"><div class="space20"></div></div>
@@ -68,7 +67,7 @@
             $('#btn-new').removeClass('disabled').click(function () {
                 window.location = "aspnetSalesReturnInformation.aspx";
             });
-            FillSalesOrderDefault();
+            FillSalesReturnDefault();
         });
 
         function SelectSalesReturn(id) {

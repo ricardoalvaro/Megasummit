@@ -110,11 +110,11 @@ namespace MegaSummitInventorySystem.Webservice
 
                 Database._SalesOrderInsert(ref id, customer_id, address, delivery_to_id, salesman_id, po_no, term_id, ref_no, ref_no_serial, created_date, _cancel_date, notes, total_amount, total_served, balance, orderStatus);
 
-                var data = Database._Settings.SingleOrDefault(x => x.ID == 2);
-                if (data.Automatic.Value)
-                {
-                    Database._SettingRefNoUpdate(data.ID, data.LatestNo.Value + 1);
-                }
+                //var data = Database._Settings.SingleOrDefault(x => x.ID == 2);
+                //if (data.Automatic.Value)
+                //{
+                //    Database._SettingRefNoUpdate(data.ID, data.LatestNo.Value + 1);
+                //}
 
                 string[] lines = productList.Split('^');
 
@@ -129,6 +129,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                         var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
                         var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
+
 
                         decimal qty = decimal.Parse(p[5]);
                         decimal served = decimal.Parse(p[6]);
