@@ -330,11 +330,12 @@
     <Content Include="Script\jsPopDiv.js" />
     <Content Include="Script\BackUp\ProductAdjustment.js" />
     <Content Include="Script\BackUp\ProductAssembly.js" />
+    <Content Include="Script\OfficialReceipt.js" />
     <Content Include="Script\SalesInvoice.js" />
     <Content Include="Script\SalesOrder.js" />
     <Content Include="Script\SalesReturn.js" />
     <Content Include="Script\SupplierPurchased.js" />
-    <Content Include="Script\OfficialReceipt.js" />
+    <Content Include="Script\BackUp\OfficialReceipt.js" />
     <Content Include="Script\BackUp\Product.js" />
     <Content Include="Script\BackUp\Sales.js" />
     <Content Include="Script\BackUp\SalesOrder.js" />

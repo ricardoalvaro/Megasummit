@@ -72,7 +72,7 @@ namespace MegaSummitInventorySystem.Webservice
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._InvoicePaymentCheckInsert(ref id, invoice_id, bank_name, check_no, check_date, check_type, amount);
+                //Database._InvoicePaymentCheckInsert(ref id, invoice_id, bank_name, check_no, check_date, check_type, amount);
                 return true;
             }
             catch (Exception)
@@ -90,7 +90,7 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                Database._InvoicePaymentCheckUpdate( id, invoice_id, bank_name, check_no, check_date, check_type, amount);
+                //Database._InvoicePaymentCheckUpdate( id, invoice_id, bank_name, check_no, check_date, check_type, amount);
                 return true;
             }
             catch (Exception)

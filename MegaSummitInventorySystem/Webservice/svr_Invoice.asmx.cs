@@ -259,7 +259,7 @@ namespace MegaSummitInventorySystem.Webservice
                 long? refID2 = 0;
                 Database = new DatabaseDataContext();
                 Database._InvoicePaymentReferenceInsert(ref refID, invoiceid, 3, refNo, totalAmount, true);
-                Database._InvoicePaymentInsert(ref refID2, invoiceid, refID, totalAmount);
+                //Database._InvoicePaymentInsert(ref refID2, invoiceid, refID, totalAmount);
                 var data = Database._Settings.SingleOrDefault(x => x.ID == 3);
                 if (data.Automatic.Value)
                 {
@@ -284,7 +284,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                         long? idcheck = 0;
                         Database = new DatabaseDataContext();
-                        Database._InvoicePaymentCheckInsert(ref idcheck, refID, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
+                        //Database._InvoicePaymentCheckInsert(ref idcheck, refID, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
                     }
                 }
                 #endregion
@@ -293,7 +293,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     long? idcard = 0;
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCardInsert(ref idcard, refID, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard, DateTime.Now);
+                    //Database._InvoicePaymentCardInsert(ref idcard, refID, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard, DateTime.Now);
                 }
                 #endregion
                 return "";
@@ -317,7 +317,7 @@ namespace MegaSummitInventorySystem.Webservice
                 if (amount != 0 && amount != null)
                 {
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCashUpdate(id, amount, DateTime.Now);
+                    //Database._InvoicePaymentCashUpdate(id, amount, DateTime.Now);
                 }
                 #endregion
                 #region Check Payment
@@ -331,7 +331,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                         long? idcheck = 0;
                         Database = new DatabaseDataContext();
-                        Database._InvoicePaymentCheckInsert(ref idcheck, id, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
+                        //Database._InvoicePaymentCheckInsert(ref idcheck, id, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
                     }
                 }
                 #endregion
@@ -340,7 +340,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     long? idcard = 0;
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCardUpdate(id, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard);
+                    //Database._InvoicePaymentCardUpdate(id, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard);
                 }
                 #endregion
             }
@@ -369,7 +369,7 @@ namespace MegaSummitInventorySystem.Webservice
                     if (!string.IsNullOrEmpty(l))
                     {
                         string[] p = l.Split(',');
-                        Database._InvoicePaymentInsert(ref refID2, long.Parse(p[1]), refID, long.Parse(p[0]));
+                        //Database._InvoicePaymentInsert(ref refID2, long.Parse(p[1]), refID, long.Parse(p[0]));
                     }
                 }
                 #endregion
@@ -398,7 +398,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                         long? idcheck = 0;
                         Database = new DatabaseDataContext();
-                        Database._InvoicePaymentCheckInsert(ref idcheck, refID, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
+                        //Database._InvoicePaymentCheckInsert(ref idcheck, refID, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
                     }
                 }
                 #endregion
@@ -407,7 +407,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     long? idcard = 0;
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCardInsert(ref idcard, refID, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard, DateTime.Now);
+                    ///Database._InvoicePaymentCardInsert(ref idcard, refID, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard, DateTime.Now);
                 }
                 #endregion
                 return "";
@@ -429,7 +429,7 @@ namespace MegaSummitInventorySystem.Webservice
                 if (amount != 0 && amount != null)
                 {
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCashUpdate(id, amount, DateTime.Now);
+                    //Database._InvoicePaymentCashUpdate(id, amount, DateTime.Now);
                 }
                 #endregion
                 #region Check Payment
@@ -443,7 +443,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                         long? idcheck = 0;
                         Database = new DatabaseDataContext();
-                        Database._InvoicePaymentCheckInsert(ref idcheck, id, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
+                        //Database._InvoicePaymentCheckInsert(ref idcheck, id, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]));
                     }
                 }
                 #endregion
@@ -452,7 +452,7 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     long? idcard = 0;
                     Database = new DatabaseDataContext();
-                    Database._InvoicePaymentCardUpdate(id, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard);
+                    //Database._InvoicePaymentCardUpdate(id, cardID, cardNumber, nameCard, expMonth, expYear, AppCode, amountCard);
                 }
                 #endregion
             }

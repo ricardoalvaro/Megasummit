@@ -448,7 +448,7 @@ namespace MegaSummitInventorySystem.Webservice
                         long? refID2 = 0;
                         Database = new DatabaseDataContext();
                         Database._InvoicePaymentReferenceInsert(ref refID, id, 3, "0", totalPaid, false);
-                        Database._InvoicePaymentInsert(ref refID2, id, refID, totalPaid);
+                        //Database._InvoicePaymentInsert(ref refID2, id, refID, totalPaid);
                         var data2 = Database._Settings.SingleOrDefault(x => x.ID == 3);
                         if (data2.Automatic.Value)
                         {

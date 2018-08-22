@@ -23,7 +23,14 @@ $(document).ready(function () {
         ClearCustomerData(this);
     });
 
+    $('#applyToInvoice').click(function () {
 
+        FillInvoiceList(CustomerID);
+        $('#tblSalesReturn').height(125.1);
+        $('#tblReference').show();
+         
+
+    });
 
     $(':input').on('input', function () { // do not allow single quote and double quote 
         this.value = this.value.replace(/(['"])/g, '');//  /[^\w]/g,"");
@@ -32,6 +39,42 @@ $(document).ready(function () {
     Fill();
 });
 
+
+function FillInvoiceList(customer_id) {
+
+    var pageUrl = '/Webservice/svr_OfficialReceipt.asmx';
+    //GetInvoiceBalance(long customer_id)
+    $.ajax({
+        type: "POST", url: pageUrl + "/GetInvoiceBalance", data: "{'customer_id':'" + customer_id + "' }",
+        contentType: "application/json; charset=utf-8", dataType: "json", crossdomain: true,
+        success: function (response) {
+
+            $('#tbl_apply_invoices tbody').empty();
+            var data = eval(response.d);
+            for (var i = 0; i < data.length; i++) {
+
+                $("#tblInvoices tbody").append(ListInvoiceFormat(data[i]['ID'], data[i]['RefNo'], FormatDate(data[i]['CreatedDate']), data[i]['Description'], data[i]['Salesman'], data[i]['Balance']));
+
+            }
+
+            for (var i = 0; i < 20; i++) {
+                $("#tblInvoices tbody").append("<tr><td width='15%'></td><td width='10%'></td><td width='23%'></td><td width='15%'></td><td width='12%'></td><td width='20%'></td></tr>");
+            }
+
+
+
+
+        },
+        error: function (response) {
+        }
+    });
+
+
+}
+
+function ListInvoiceFormat(invoice_id, ref_no, date, description, salesman, balance) {
+    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='10%'>" + date + "</td><td width='23%'>" + description + "</td><td width='15%'>" + salesman + "</td><td width='12%'><span class='spn_balance'>" + balance + "</span></td><td width='20%'><input type='text' class='apply' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
+}
 
 
 function ClearCustomerData(me) {
@@ -42,7 +85,7 @@ function ClearCustomerData(me) {
 }
 
 function GenerateDynamicAutoComplete() {
-    $("#tblSalesOrder tbody tr").find('td').each(function () {
+    $("#tblSalesReturn tbody tr").find('td').each(function () {
 
         $(this).find(".product").autocomplete({
             source: ProductAutoCompleteData, minLength: 0, minChars: 0, max: 12, autoFill: true, matchContains: false,
@@ -71,14 +114,12 @@ function GenerateDynamicAutoComplete() {
     });
 }
 
-
-
 function GenerateStaticInvoiceList() {
 
 
     var ret = "";
     for (var i = 0; i < 20; i++) {
-        $("#tblSalesOrder tbody").append("<tr><td width='20%'><input type='text' class='product' /><input type='hidden' class='product_id' /></td><td width='10%'><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td width='10%'><input type='text' class='quantity' /></td><td width='10%'><input type='text' class='unit' /></td><td width='10%'><input type='text' class='price' /></td><td width='10%'><input type='text' class='discount' /></td><td width='10%'><input type='text' class='amount' /></td></tr>");
+        $("#tblSalesReturn tbody").append("<tr><td width='20%'><input type='text' class='product' /><input type='hidden' class='product_id' /></td><td width='10%'><input type='text' class='location' /><input type='hidden' class='location_id' /></td><td width='10%'><input type='text' class='quantity' /></td><td width='10%'><input type='text' class='unit' /></td><td width='10%'><input type='text' class='price' /></td><td width='10%'><input type='text' class='discount' /></td><td width='10%'><input type='text' class='amount' /></td></tr>");
     }
 }
 
@@ -111,7 +152,7 @@ function ComputeComponentAmount(me) {
 
     var total = 0;
     var serve = 0;
-    $("#tblSalesOrder tbody tr").find('td').each(function () {
+    $("#tblSalesReturn tbody tr").find('td').each(function () {
         if (!isNaN($(this).find(".amount").val())) {
             var component_amount = $(this).find(".amount").val();
 
@@ -132,10 +173,15 @@ function ComputeComponentAmount(me) {
     });
 
 
+
+
     //alert(total_amount);
     $("#spnTotal").html(total);
    // $("#spnServed").html(serve);
-    //$("#spnBalance").html(total - serve);
+    // $("#spnBalance").html(total - serve);
+
+
+    ComputeApplytoInvoice();
 }
 
 function ComputeAmount(total, dis) {
@@ -192,6 +238,132 @@ function ComputeAmount(total, dis) {
 }
 
 //-----------------
+
+function ApplyToAllCheck(me) {
+
+    if (!$(me).is(':checked')) {
+        //$(me).closest('tr').find('.apply').val('0');
+        $("#tblInvoices tbody tr").find('td').each(function () {
+
+            if (!isNaN($(this).find('.apply').val())) {
+                // alert('x');
+
+
+                $(this).closest('tr').find('.apply').val('0');
+                $(this).find('.chk').prop('checked', false);
+            }
+        });
+
+    }
+    else {
+        $("#tblInvoices tbody tr").find('td').each(function () {
+
+            if (!isNaN($(this).find('.apply').val())) {
+
+                var current_total = GetCurrentTotal();
+                var bal = 0;
+
+                bal = Number($(this).closest('tr').find('.spn_balance').html());
+
+                if (current_total < bal) {
+                    $(this).closest('tr').find('.apply').val(current_total);
+                }
+                else if (current_total == bal) {
+                    $(this).closest('tr').find('.apply').val(current_total)
+                }
+                else if (current_total > bal) {
+                    $(this).closest('tr').find('.apply').val(bal);
+
+                }
+
+
+                $(this).find('.chk').prop('checked', true);
+            }
+        });
+    }
+
+
+    ComputeApplytoInvoice();
+
+}
+
+
+function ComputeApplytoInvoice()
+{
+   
+    var apply = 0;
+
+    $("#tblInvoices tbody tr").find('td').each(function () {
+        if (!isNaN($(this).find(".apply").val())) {
+            var component_amount = $(this).find(".apply").val();
+
+            apply = Number(apply) + Number(component_amount);
+          //  alert(apply);
+        }
+    });
+
+
+    //--------------
+
+  //  alert(apply);
+    $('#spnApplyToInvoice').html('0');
+    var total = Number($('#spnTotal').html());
+
+    $('#spnApplyToInvoice').html(apply);
+    $('#spnBalance').html(total - apply);
+
+
+
+}
+
+function ValidateEntry(me) {
+    if (!$(me).is(':checked')) {
+        $(me).closest('tr').find('.apply').val('0');
+        ComputeApplytoInvoice();
+        return;
+    }
+
+    var current_total = GetCurrentTotal();
+    var bal = 0;
+
+
+    if (!isNaN($(me).closest('tr').find('.spn_balance').html())) {
+
+        bal = Number($(me).closest('tr').find('.spn_balance').html());
+
+        if (current_total < bal) {
+            $(me).closest('tr').find('.apply').val(current_total);
+        }
+        else if (current_total == bal) {
+            $(me).closest('tr').find('.apply').val(current_total);
+        }
+        else if (current_total > bal) {
+            $(me).closest('tr').find('.apply').val(bal);
+
+        }
+
+    }
+
+    ComputeApplytoInvoice();
+
+}
+
+function GetCurrentTotal() {
+    var ret = 0;
+    $("#tblInvoices tbody tr").find('td').each(function () {
+
+        if (!isNaN($(this).find('.apply').val())) {
+            ret += Number($(this).find('.apply').val());
+        }
+    });
+
+    var current_total = Number($('#spnTotal').html());
+
+    return current_total - Number(ret);
+
+
+   // return Number($('#spnTotal').html());
+}
 
 function Fill() {
     FillCustomerAutoComplete();

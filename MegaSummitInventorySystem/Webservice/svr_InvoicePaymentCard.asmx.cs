@@ -74,7 +74,7 @@ namespace MegaSummitInventorySystem.Webservice
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._InvoicePaymentCardInsert(ref id, invoice_id, card_type_id, card_number, name_on_card, expiration_month, expiration_year, approval_code, amount, created_date);
+                //Database._InvoicePaymentCardInsert(ref id, invoice_id, card_type_id, card_number, name_on_card, expiration_month, expiration_year, approval_code, amount, created_date);
                 return true;
             }
             catch (Exception)

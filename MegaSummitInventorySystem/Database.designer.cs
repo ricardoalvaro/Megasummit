@@ -78,18 +78,6 @@ namespace MegaSummitInventorySystem
     partial void Insert_Setting(_Setting instance);
     partial void Update_Setting(_Setting instance);
     partial void Delete_Setting(_Setting instance);
-    partial void Insert_InvoicePaymentCard(_InvoicePaymentCard instance);
-    partial void Update_InvoicePaymentCard(_InvoicePaymentCard instance);
-    partial void Delete_InvoicePaymentCard(_InvoicePaymentCard instance);
-    partial void Insert_InvoicePaymentCash(_InvoicePaymentCash instance);
-    partial void Update_InvoicePaymentCash(_InvoicePaymentCash instance);
-    partial void Delete_InvoicePaymentCash(_InvoicePaymentCash instance);
-    partial void Insert_InvoicePaymentCheck(_InvoicePaymentCheck instance);
-    partial void Update_InvoicePaymentCheck(_InvoicePaymentCheck instance);
-    partial void Delete_InvoicePaymentCheck(_InvoicePaymentCheck instance);
-    partial void Insert_InvoicePayment(_InvoicePayment instance);
-    partial void Update_InvoicePayment(_InvoicePayment instance);
-    partial void Delete_InvoicePayment(_InvoicePayment instance);
     partial void Insert_PurchasedPaymentCash(_PurchasedPaymentCash instance);
     partial void Update_PurchasedPaymentCash(_PurchasedPaymentCash instance);
     partial void Delete_PurchasedPaymentCash(_PurchasedPaymentCash instance);
@@ -135,9 +123,6 @@ namespace MegaSummitInventorySystem
     partial void Insert_Department(_Department instance);
     partial void Update_Department(_Department instance);
     partial void Delete_Department(_Department instance);
-    partial void Insert_Invoice(_Invoice instance);
-    partial void Update_Invoice(_Invoice instance);
-    partial void Delete_Invoice(_Invoice instance);
     partial void Insert_InvoicePaymentReference(_InvoicePaymentReference instance);
     partial void Update_InvoicePaymentReference(_InvoicePaymentReference instance);
     partial void Delete_InvoicePaymentReference(_InvoicePaymentReference instance);
@@ -159,6 +144,27 @@ namespace MegaSummitInventorySystem
     partial void Insert_RegionMunicipality(_RegionMunicipality instance);
     partial void Update_RegionMunicipality(_RegionMunicipality instance);
     partial void Delete_RegionMunicipality(_RegionMunicipality instance);
+    partial void Insert_InvoiceOfficialReceipt(_InvoiceOfficialReceipt instance);
+    partial void Update_InvoiceOfficialReceipt(_InvoiceOfficialReceipt instance);
+    partial void Delete_InvoiceOfficialReceipt(_InvoiceOfficialReceipt instance);
+    partial void Insert_InvoicePayment(_InvoicePayment instance);
+    partial void Update_InvoicePayment(_InvoicePayment instance);
+    partial void Delete_InvoicePayment(_InvoicePayment instance);
+    partial void Insert_InvoicePaymentCard(_InvoicePaymentCard instance);
+    partial void Update_InvoicePaymentCard(_InvoicePaymentCard instance);
+    partial void Delete_InvoicePaymentCard(_InvoicePaymentCard instance);
+    partial void Insert_InvoicePaymentCash(_InvoicePaymentCash instance);
+    partial void Update_InvoicePaymentCash(_InvoicePaymentCash instance);
+    partial void Delete_InvoicePaymentCash(_InvoicePaymentCash instance);
+    partial void Insert_InvoicePaymentCheck(_InvoicePaymentCheck instance);
+    partial void Update_InvoicePaymentCheck(_InvoicePaymentCheck instance);
+    partial void Delete_InvoicePaymentCheck(_InvoicePaymentCheck instance);
+    partial void Insert_Invoice(_Invoice instance);
+    partial void Update_Invoice(_Invoice instance);
+    partial void Delete_Invoice(_Invoice instance);
+    partial void Insert_invoicePaymentSalesReturn(_invoicePaymentSalesReturn instance);
+    partial void Update_invoicePaymentSalesReturn(_invoicePaymentSalesReturn instance);
+    partial void Delete_invoicePaymentSalesReturn(_invoicePaymentSalesReturn instance);
     #endregion
 		
 		public DatabaseDataContext() : 
@@ -319,38 +325,6 @@ namespace MegaSummitInventorySystem
 			}
 		}
 		
-		public System.Data.Linq.Table<_InvoicePaymentCard> _InvoicePaymentCards
-		{
-			get
-			{
-				return this.GetTable<_InvoicePaymentCard>();
-			}
-		}
-		
-		public System.Data.Linq.Table<_InvoicePaymentCash> _InvoicePaymentCashes
-		{
-			get
-			{
-				return this.GetTable<_InvoicePaymentCash>();
-			}
-		}
-		
-		public System.Data.Linq.Table<_InvoicePaymentCheck> _InvoicePaymentChecks
-		{
-			get
-			{
-				return this.GetTable<_InvoicePaymentCheck>();
-			}
-		}
-		
-		public System.Data.Linq.Table<_InvoicePayment> _InvoicePayments
-		{
-			get
-			{
-				return this.GetTable<_InvoicePayment>();
-			}
-		}
-		
 		public System.Data.Linq.Table<_PurchasedPaymentCash> _PurchasedPaymentCashes
 		{
 			get
@@ -479,14 +453,6 @@ namespace MegaSummitInventorySystem
 			}
 		}
 		
-		public System.Data.Linq.Table<_Invoice> _Invoices
-		{
-			get
-			{
-				return this.GetTable<_Invoice>();
-			}
-		}
-		
 		public System.Data.Linq.Table<_InvoicePaymentReference> _InvoicePaymentReferences
 		{
 			get
@@ -540,6 +506,70 @@ namespace MegaSummitInventorySystem
 			get
 			{
 				return this.GetTable<_RegionMunicipality>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_InvoiceOfficialReceipt> _InvoiceOfficialReceipts
+		{
+			get
+			{
+				return this.GetTable<_InvoiceOfficialReceipt>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_InvoicePayment> _InvoicePayments
+		{
+			get
+			{
+				return this.GetTable<_InvoicePayment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_InvoicePaymentCard> _InvoicePaymentCards
+		{
+			get
+			{
+				return this.GetTable<_InvoicePaymentCard>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_InvoicePaymentCash> _InvoicePaymentCashes
+		{
+			get
+			{
+				return this.GetTable<_InvoicePaymentCash>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_InvoicePaymentCheck> _InvoicePaymentChecks
+		{
+			get
+			{
+				return this.GetTable<_InvoicePaymentCheck>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_Employee> _Employees
+		{
+			get
+			{
+				return this.GetTable<_Employee>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_Invoice> _Invoices
+		{
+			get
+			{
+				return this.GetTable<_Invoice>();
+			}
+		}
+		
+		public System.Data.Linq.Table<_invoicePaymentSalesReturn> _invoicePaymentSalesReturns
+		{
+			get
+			{
+				return this.GetTable<_invoicePaymentSalesReturn>();
 			}
 		}
 		
@@ -2058,13 +2088,6 @@ namespace MegaSummitInventorySystem
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCheckUpdate]")]
-		public int _InvoicePaymentCheckUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="VarChar(5000)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckNo", DbType="VarChar(100)")] string checkNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckDate", DbType="Date")] System.Nullable<System.DateTime> checkDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckType", DbType="VarChar(50)")] string checkType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoiceID, bankName, checkNo, checkDate, checkType, amount);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoiceShippingDelete]")]
 		public int _InvoiceShippingDelete([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD)
 		{
@@ -2623,44 +2646,6 @@ namespace MegaSummitInventorySystem
 			return ((ISingleResult<_SalesOrderDetailsInvoiceSelectResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCashInsert]")]
-		public int _InvoicePaymentCashInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoicePaymentID, amount, createdDate);
-			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCardInsert]")]
-		public int _InvoicePaymentCardInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardTypeID", DbType="BigInt")] System.Nullable<long> cardTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardNumber", DbType="VarChar(500)")] string cardNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NameOnCard", DbType="VarChar(500)")] string nameOnCard, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationMonth", DbType="VarChar(500)")] string expirationMonth, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationYear", DbType="VarChar(500)")] string expirationYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalCode", DbType="VarChar(500)")] string approvalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreateDate", DbType="Date")] System.Nullable<System.DateTime> createDate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoicePaymentID, cardTypeID, cardNumber, nameOnCard, expirationMonth, expirationYear, approvalCode, amount, createDate);
-			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCheckInsert]")]
-		public int _InvoicePaymentCheckInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="VarChar(5000)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckNo", DbType="VarChar(100)")] string checkNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckDate", DbType="Date")] System.Nullable<System.DateTime> checkDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckType", DbType="VarChar(50)")] string checkType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoicePaymentID, bankName, checkNo, checkDate, checkType, amount);
-			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCardUpdate]")]
-		public int _InvoicePaymentCardUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardTypeID", DbType="BigInt")] System.Nullable<long> cardTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardNumber", DbType="VarChar(500)")] string cardNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NameOnCard", DbType="VarChar(500)")] string nameOnCard, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationMonth", DbType="VarChar(500)")] string expirationMonth, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationYear", DbType="VarChar(500)")] string expirationYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalCode", DbType="VarChar(500)")] string approvalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoicePaymentID, cardTypeID, cardNumber, nameOnCard, expirationMonth, expirationYear, approvalCode, amount);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCashUpdate]")]
-		public int _InvoicePaymentCashUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoicePaymentID, amount, createdDate);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentcheckDeleteByRef]")]
 		public int _InvoicePaymentcheckDeleteByRef([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID)
 		{
@@ -2700,14 +2685,6 @@ namespace MegaSummitInventorySystem
 		public int _InvoiceReturnUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApplyAmount", DbType="Decimal(18,0)")] System.Nullable<decimal> applyAmount)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), invoiceID, applyAmount);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentInsert]")]
-		public int _InvoicePaymentInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoicePaymentID", DbType="BigInt")] System.Nullable<long> invoicePaymentID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> applyAmount)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoiceID, invoicePaymentID, applyAmount);
-			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -3351,18 +3328,100 @@ namespace MegaSummitInventorySystem
 			return ((ISingleResult<_InvoiceSalesCustomerSelectResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentSelect]")]
-		public ISingleResult<_InvoicePaymentSelectResult> _InvoicePaymentSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoiceID, customerID);
-			return ((ISingleResult<_InvoicePaymentSelectResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesReturnSelect]")]
 		public ISingleResult<_SalesReturnSelectResult> _SalesReturnSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD);
 			return ((ISingleResult<_SalesReturnSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoiceOfficialReceiptInsert]")]
+		public int _InvoiceOfficialReceiptInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefSerial", DbType="VarChar(50)")] string refSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, refNo, refSerial, createdDate, totalAmount);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoiceOfficialReceiptUpdate]")]
+		public int _InvoiceOfficialReceiptUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefSerial", DbType="VarChar(50)")] string refSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, refNo, refSerial, createdDate, totalAmount);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentInsert]")]
+		public int _InvoicePaymentInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceOfficialReceiptID", DbType="BigInt")] System.Nullable<long> invoiceOfficialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefSerial", DbType="VarChar(50)")] string refSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoiceOfficialReceiptID, invoiceID, customerID, refNo, refSerial, createdDate, amount);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentUpdate]")]
+		public int _InvoicePaymentUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceOfficialReceiptID", DbType="BigInt")] System.Nullable<long> invoiceOfficialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefSerial", DbType="VarChar(50)")] string refSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, invoiceOfficialReceiptID, invoiceID, customerID, refNo, refSerial, createdDate, amount);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCardInsert]")]
+		public int _InvoicePaymentCardInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardType", DbType="VarChar(100)")] string cardType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardNumber", DbType="VarChar(500)")] string cardNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NameOnCard", DbType="VarChar(500)")] string nameOnCard, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationMonth", DbType="VarChar(500)")] string expirationMonth, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationYear", DbType="VarChar(500)")] string expirationYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalCode", DbType="VarChar(500)")] string approvalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, cardType, cardNumber, nameOnCard, expirationMonth, expirationYear, approvalCode, amount);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCardUpdate]")]
+		public int _InvoicePaymentCardUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardType", DbType="VarChar(100)")] string cardType, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CardNumber", DbType="VarChar(500)")] string cardNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NameOnCard", DbType="VarChar(500)")] string nameOnCard, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationMonth", DbType="VarChar(500)")] string expirationMonth, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ExpirationYear", DbType="VarChar(500)")] string expirationYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApprovalCode", DbType="VarChar(500)")] string approvalCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, cardType, cardNumber, nameOnCard, expirationMonth, expirationYear, approvalCode, amount);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCashInsert]")]
+		public int _InvoicePaymentCashInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, amount, createdDate);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCashUpdate]")]
+		public int _InvoicePaymentCashUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, amount, createdDate);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCheckUpdate]")]
+		public int _InvoicePaymentCheckUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="VarChar(5000)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckNo", DbType="VarChar(100)")] string checkNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckDate", DbType="Date")] System.Nullable<System.DateTime> checkDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, bankName, checkNo, checkDate, amount);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentCheckInsert]")]
+		public int _InvoicePaymentCheckInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceiptID", DbType="BigInt")] System.Nullable<long> officialReceiptID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BankName", DbType="VarChar(5000)")] string bankName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckNo", DbType="VarChar(100)")] string checkNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CheckDate", DbType="Date")] System.Nullable<System.DateTime> checkDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceiptID, bankName, checkNo, checkDate, amount);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentSelect]")]
+		public ISingleResult<_InvoicePaymentSelectResult> _InvoicePaymentSelect([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID);
+			return ((ISingleResult<_InvoicePaymentSelectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_InvoicePaymentSelectCustomer]")]
+		public ISingleResult<_InvoicePaymentSelectCustomerResult> _InvoicePaymentSelectCustomer([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OfficialReceipt", DbType="BigInt")] System.Nullable<long> officialReceipt, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceipt, invoiceID, customerID);
+			return ((ISingleResult<_InvoicePaymentSelectCustomerResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -7078,950 +7137,6 @@ namespace MegaSummitInventorySystem
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCard]")]
-	public partial class _InvoicePaymentCard : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private System.Nullable<long> _InvoicePaymentID;
-		
-		private System.Nullable<long> _CardTypeID;
-		
-		private string _CardNumber;
-		
-		private string _NameOnCard;
-		
-		private string _ExpirationMonth;
-		
-		private string _ExpirationYear;
-		
-		private string _ApprovalCode;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInvoicePaymentIDChanging(System.Nullable<long> value);
-    partial void OnInvoicePaymentIDChanged();
-    partial void OnCardTypeIDChanging(System.Nullable<long> value);
-    partial void OnCardTypeIDChanged();
-    partial void OnCardNumberChanging(string value);
-    partial void OnCardNumberChanged();
-    partial void OnNameOnCardChanging(string value);
-    partial void OnNameOnCardChanged();
-    partial void OnExpirationMonthChanging(string value);
-    partial void OnExpirationMonthChanged();
-    partial void OnExpirationYearChanging(string value);
-    partial void OnExpirationYearChanged();
-    partial void OnApprovalCodeChanging(string value);
-    partial void OnApprovalCodeChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _InvoicePaymentCard()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoicePaymentID", DbType="BigInt")]
-		public System.Nullable<long> InvoicePaymentID
-		{
-			get
-			{
-				return this._InvoicePaymentID;
-			}
-			set
-			{
-				if ((this._InvoicePaymentID != value))
-				{
-					this.OnInvoicePaymentIDChanging(value);
-					this.SendPropertyChanging();
-					this._InvoicePaymentID = value;
-					this.SendPropertyChanged("InvoicePaymentID");
-					this.OnInvoicePaymentIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardTypeID", DbType="BigInt")]
-		public System.Nullable<long> CardTypeID
-		{
-			get
-			{
-				return this._CardTypeID;
-			}
-			set
-			{
-				if ((this._CardTypeID != value))
-				{
-					this.OnCardTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._CardTypeID = value;
-					this.SendPropertyChanged("CardTypeID");
-					this.OnCardTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardNumber", DbType="VarChar(500)")]
-		public string CardNumber
-		{
-			get
-			{
-				return this._CardNumber;
-			}
-			set
-			{
-				if ((this._CardNumber != value))
-				{
-					this.OnCardNumberChanging(value);
-					this.SendPropertyChanging();
-					this._CardNumber = value;
-					this.SendPropertyChanged("CardNumber");
-					this.OnCardNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOnCard", DbType="VarChar(500)")]
-		public string NameOnCard
-		{
-			get
-			{
-				return this._NameOnCard;
-			}
-			set
-			{
-				if ((this._NameOnCard != value))
-				{
-					this.OnNameOnCardChanging(value);
-					this.SendPropertyChanging();
-					this._NameOnCard = value;
-					this.SendPropertyChanged("NameOnCard");
-					this.OnNameOnCardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpirationMonth", DbType="VarChar(500)")]
-		public string ExpirationMonth
-		{
-			get
-			{
-				return this._ExpirationMonth;
-			}
-			set
-			{
-				if ((this._ExpirationMonth != value))
-				{
-					this.OnExpirationMonthChanging(value);
-					this.SendPropertyChanging();
-					this._ExpirationMonth = value;
-					this.SendPropertyChanged("ExpirationMonth");
-					this.OnExpirationMonthChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpirationYear", DbType="VarChar(500)")]
-		public string ExpirationYear
-		{
-			get
-			{
-				return this._ExpirationYear;
-			}
-			set
-			{
-				if ((this._ExpirationYear != value))
-				{
-					this.OnExpirationYearChanging(value);
-					this.SendPropertyChanging();
-					this._ExpirationYear = value;
-					this.SendPropertyChanged("ExpirationYear");
-					this.OnExpirationYearChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalCode", DbType="VarChar(500)")]
-		public string ApprovalCode
-		{
-			get
-			{
-				return this._ApprovalCode;
-			}
-			set
-			{
-				if ((this._ApprovalCode != value))
-				{
-					this.OnApprovalCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ApprovalCode = value;
-					this.SendPropertyChanged("ApprovalCode");
-					this.OnApprovalCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCash]")]
-	public partial class _InvoicePaymentCash : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private System.Nullable<long> _InvoicePaymentID;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInvoicePaymentIDChanging(System.Nullable<long> value);
-    partial void OnInvoicePaymentIDChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedDateChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _InvoicePaymentCash()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoicePaymentID", DbType="BigInt")]
-		public System.Nullable<long> InvoicePaymentID
-		{
-			get
-			{
-				return this._InvoicePaymentID;
-			}
-			set
-			{
-				if ((this._InvoicePaymentID != value))
-				{
-					this.OnInvoicePaymentIDChanging(value);
-					this.SendPropertyChanging();
-					this._InvoicePaymentID = value;
-					this.SendPropertyChanged("InvoicePaymentID");
-					this.OnInvoicePaymentIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this.OnCreatedDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedDate = value;
-					this.SendPropertyChanged("CreatedDate");
-					this.OnCreatedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCheck]")]
-	public partial class _InvoicePaymentCheck : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private System.Nullable<long> _InvoicePaymentID;
-		
-		private string _BankName;
-		
-		private string _CheckNo;
-		
-		private System.Nullable<System.DateTime> _CheckDate;
-		
-		private string _CheckType;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInvoicePaymentIDChanging(System.Nullable<long> value);
-    partial void OnInvoicePaymentIDChanged();
-    partial void OnBankNameChanging(string value);
-    partial void OnBankNameChanged();
-    partial void OnCheckNoChanging(string value);
-    partial void OnCheckNoChanged();
-    partial void OnCheckDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckDateChanged();
-    partial void OnCheckTypeChanging(string value);
-    partial void OnCheckTypeChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _InvoicePaymentCheck()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoicePaymentID", DbType="BigInt")]
-		public System.Nullable<long> InvoicePaymentID
-		{
-			get
-			{
-				return this._InvoicePaymentID;
-			}
-			set
-			{
-				if ((this._InvoicePaymentID != value))
-				{
-					this.OnInvoicePaymentIDChanging(value);
-					this.SendPropertyChanging();
-					this._InvoicePaymentID = value;
-					this.SendPropertyChanged("InvoicePaymentID");
-					this.OnInvoicePaymentIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="VarChar(5000)")]
-		public string BankName
-		{
-			get
-			{
-				return this._BankName;
-			}
-			set
-			{
-				if ((this._BankName != value))
-				{
-					this.OnBankNameChanging(value);
-					this.SendPropertyChanging();
-					this._BankName = value;
-					this.SendPropertyChanged("BankName");
-					this.OnBankNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckNo", DbType="VarChar(100)")]
-		public string CheckNo
-		{
-			get
-			{
-				return this._CheckNo;
-			}
-			set
-			{
-				if ((this._CheckNo != value))
-				{
-					this.OnCheckNoChanging(value);
-					this.SendPropertyChanging();
-					this._CheckNo = value;
-					this.SendPropertyChanged("CheckNo");
-					this.OnCheckNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CheckDate
-		{
-			get
-			{
-				return this._CheckDate;
-			}
-			set
-			{
-				if ((this._CheckDate != value))
-				{
-					this.OnCheckDateChanging(value);
-					this.SendPropertyChanging();
-					this._CheckDate = value;
-					this.SendPropertyChanged("CheckDate");
-					this.OnCheckDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckType", DbType="VarChar(50)")]
-		public string CheckType
-		{
-			get
-			{
-				return this._CheckType;
-			}
-			set
-			{
-				if ((this._CheckType != value))
-				{
-					this.OnCheckTypeChanging(value);
-					this.SendPropertyChanging();
-					this._CheckType = value;
-					this.SendPropertyChanged("CheckType");
-					this.OnCheckTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePayment]")]
-	public partial class _InvoicePayment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private System.Nullable<long> _InvoiceID;
-		
-		private System.Nullable<long> _InvoicePaymentID;
-		
-		private System.Nullable<decimal> _applyAmount;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInvoiceIDChanging(System.Nullable<long> value);
-    partial void OnInvoiceIDChanged();
-    partial void OnInvoicePaymentIDChanging(System.Nullable<long> value);
-    partial void OnInvoicePaymentIDChanged();
-    partial void OnapplyAmountChanging(System.Nullable<decimal> value);
-    partial void OnapplyAmountChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _InvoicePayment()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceID", DbType="BigInt")]
-		public System.Nullable<long> InvoiceID
-		{
-			get
-			{
-				return this._InvoiceID;
-			}
-			set
-			{
-				if ((this._InvoiceID != value))
-				{
-					this.OnInvoiceIDChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceID = value;
-					this.SendPropertyChanged("InvoiceID");
-					this.OnInvoiceIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoicePaymentID", DbType="BigInt")]
-		public System.Nullable<long> InvoicePaymentID
-		{
-			get
-			{
-				return this._InvoicePaymentID;
-			}
-			set
-			{
-				if ((this._InvoicePaymentID != value))
-				{
-					this.OnInvoicePaymentIDChanging(value);
-					this.SendPropertyChanging();
-					this._InvoicePaymentID = value;
-					this.SendPropertyChanged("InvoicePaymentID");
-					this.OnInvoicePaymentIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_applyAmount", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> applyAmount
-		{
-			get
-			{
-				return this._applyAmount;
-			}
-			set
-			{
-				if ((this._applyAmount != value))
-				{
-					this.OnapplyAmountChanging(value);
-					this.SendPropertyChanging();
-					this._applyAmount = value;
-					this.SendPropertyChanged("applyAmount");
-					this.OnapplyAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="Date")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="Date")]
 		public System.Nullable<System.DateTime> DateModified
 		{
 			get
@@ -12265,788 +11380,6 @@ namespace MegaSummitInventorySystem
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_Invoice]")]
-	public partial class _Invoice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private string _InvoiceStatus;
-		
-		private System.Nullable<long> _CustomerID;
-		
-		private string _Address;
-		
-		private System.Nullable<long> _ForwarderToID;
-		
-		private System.Nullable<long> _SalesmanID;
-		
-		private string _PONo;
-		
-		private System.Nullable<long> _TermID;
-		
-		private string _RefNo;
-		
-		private string _RefNoSerial;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<System.DateTime> _DeliveryDate;
-		
-		private string _PreparedBy;
-		
-		private string _CheckedBy;
-		
-		private string _DeliveredBy;
-		
-		private string _WayBillNo;
-		
-		private string _ContainerNo;
-		
-		private string _BillOfLanding;
-		
-		private System.Nullable<decimal> _CommissionRate;
-		
-		private System.Nullable<decimal> _CommissionAmt;
-		
-		private System.Nullable<long> _RemarksID;
-		
-		private string _Notes;
-		
-		private System.Nullable<decimal> _SubTotalAmt;
-		
-		private System.Nullable<decimal> _TaxAmt;
-		
-		private System.Nullable<decimal> _ShippingAmt;
-		
-		private System.Nullable<decimal> _PaymentAmt;
-		
-		private System.Nullable<decimal> _MemoAmt;
-		
-		private System.Nullable<decimal> _AdjustmentAmt;
-		
-		private string _InvoiceType;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnInvoiceStatusChanging(string value);
-    partial void OnInvoiceStatusChanged();
-    partial void OnCustomerIDChanging(System.Nullable<long> value);
-    partial void OnCustomerIDChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
-    partial void OnForwarderToIDChanging(System.Nullable<long> value);
-    partial void OnForwarderToIDChanged();
-    partial void OnSalesmanIDChanging(System.Nullable<long> value);
-    partial void OnSalesmanIDChanged();
-    partial void OnPONoChanging(string value);
-    partial void OnPONoChanged();
-    partial void OnTermIDChanging(System.Nullable<long> value);
-    partial void OnTermIDChanged();
-    partial void OnRefNoChanging(string value);
-    partial void OnRefNoChanged();
-    partial void OnRefNoSerialChanging(string value);
-    partial void OnRefNoSerialChanged();
-    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedDateChanged();
-    partial void OnDeliveryDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDeliveryDateChanged();
-    partial void OnPreparedByChanging(string value);
-    partial void OnPreparedByChanged();
-    partial void OnCheckedByChanging(string value);
-    partial void OnCheckedByChanged();
-    partial void OnDeliveredByChanging(string value);
-    partial void OnDeliveredByChanged();
-    partial void OnWayBillNoChanging(string value);
-    partial void OnWayBillNoChanged();
-    partial void OnContainerNoChanging(string value);
-    partial void OnContainerNoChanged();
-    partial void OnBillOfLandingChanging(string value);
-    partial void OnBillOfLandingChanged();
-    partial void OnCommissionRateChanging(System.Nullable<decimal> value);
-    partial void OnCommissionRateChanged();
-    partial void OnCommissionAmtChanging(System.Nullable<decimal> value);
-    partial void OnCommissionAmtChanged();
-    partial void OnRemarksIDChanging(System.Nullable<long> value);
-    partial void OnRemarksIDChanged();
-    partial void OnNotesChanging(string value);
-    partial void OnNotesChanged();
-    partial void OnSubTotalAmtChanging(System.Nullable<decimal> value);
-    partial void OnSubTotalAmtChanged();
-    partial void OnTaxAmtChanging(System.Nullable<decimal> value);
-    partial void OnTaxAmtChanged();
-    partial void OnShippingAmtChanging(System.Nullable<decimal> value);
-    partial void OnShippingAmtChanged();
-    partial void OnPaymentAmtChanging(System.Nullable<decimal> value);
-    partial void OnPaymentAmtChanged();
-    partial void OnMemoAmtChanging(System.Nullable<decimal> value);
-    partial void OnMemoAmtChanged();
-    partial void OnAdjustmentAmtChanging(System.Nullable<decimal> value);
-    partial void OnAdjustmentAmtChanged();
-    partial void OnInvoiceTypeChanging(string value);
-    partial void OnInvoiceTypeChanged();
-    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateCreatedChanged();
-    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateModifiedChanged();
-    #endregion
-		
-		public _Invoice()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceStatus", DbType="VarChar(50)")]
-		public string InvoiceStatus
-		{
-			get
-			{
-				return this._InvoiceStatus;
-			}
-			set
-			{
-				if ((this._InvoiceStatus != value))
-				{
-					this.OnInvoiceStatusChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceStatus = value;
-					this.SendPropertyChanged("InvoiceStatus");
-					this.OnInvoiceStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
-		public System.Nullable<long> CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					this.OnCustomerIDChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerID = value;
-					this.SendPropertyChanged("CustomerID");
-					this.OnCustomerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ForwarderToID", DbType="BigInt")]
-		public System.Nullable<long> ForwarderToID
-		{
-			get
-			{
-				return this._ForwarderToID;
-			}
-			set
-			{
-				if ((this._ForwarderToID != value))
-				{
-					this.OnForwarderToIDChanging(value);
-					this.SendPropertyChanging();
-					this._ForwarderToID = value;
-					this.SendPropertyChanged("ForwarderToID");
-					this.OnForwarderToIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesmanID", DbType="BigInt")]
-		public System.Nullable<long> SalesmanID
-		{
-			get
-			{
-				return this._SalesmanID;
-			}
-			set
-			{
-				if ((this._SalesmanID != value))
-				{
-					this.OnSalesmanIDChanging(value);
-					this.SendPropertyChanging();
-					this._SalesmanID = value;
-					this.SendPropertyChanged("SalesmanID");
-					this.OnSalesmanIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PONo", DbType="VarChar(50)")]
-		public string PONo
-		{
-			get
-			{
-				return this._PONo;
-			}
-			set
-			{
-				if ((this._PONo != value))
-				{
-					this.OnPONoChanging(value);
-					this.SendPropertyChanging();
-					this._PONo = value;
-					this.SendPropertyChanged("PONo");
-					this.OnPONoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermID", DbType="BigInt")]
-		public System.Nullable<long> TermID
-		{
-			get
-			{
-				return this._TermID;
-			}
-			set
-			{
-				if ((this._TermID != value))
-				{
-					this.OnTermIDChanging(value);
-					this.SendPropertyChanging();
-					this._TermID = value;
-					this.SendPropertyChanged("TermID");
-					this.OnTermIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
-		public string RefNo
-		{
-			get
-			{
-				return this._RefNo;
-			}
-			set
-			{
-				if ((this._RefNo != value))
-				{
-					this.OnRefNoChanging(value);
-					this.SendPropertyChanging();
-					this._RefNo = value;
-					this.SendPropertyChanged("RefNo");
-					this.OnRefNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNoSerial", DbType="VarChar(50)")]
-		public string RefNoSerial
-		{
-			get
-			{
-				return this._RefNoSerial;
-			}
-			set
-			{
-				if ((this._RefNoSerial != value))
-				{
-					this.OnRefNoSerialChanging(value);
-					this.SendPropertyChanging();
-					this._RefNoSerial = value;
-					this.SendPropertyChanged("RefNoSerial");
-					this.OnRefNoSerialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this.OnCreatedDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedDate = value;
-					this.SendPropertyChanged("CreatedDate");
-					this.OnCreatedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryDate", DbType="Date")]
-		public System.Nullable<System.DateTime> DeliveryDate
-		{
-			get
-			{
-				return this._DeliveryDate;
-			}
-			set
-			{
-				if ((this._DeliveryDate != value))
-				{
-					this.OnDeliveryDateChanging(value);
-					this.SendPropertyChanging();
-					this._DeliveryDate = value;
-					this.SendPropertyChanged("DeliveryDate");
-					this.OnDeliveryDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreparedBy", DbType="VarChar(5000)")]
-		public string PreparedBy
-		{
-			get
-			{
-				return this._PreparedBy;
-			}
-			set
-			{
-				if ((this._PreparedBy != value))
-				{
-					this.OnPreparedByChanging(value);
-					this.SendPropertyChanging();
-					this._PreparedBy = value;
-					this.SendPropertyChanged("PreparedBy");
-					this.OnPreparedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckedBy", DbType="VarChar(5000)")]
-		public string CheckedBy
-		{
-			get
-			{
-				return this._CheckedBy;
-			}
-			set
-			{
-				if ((this._CheckedBy != value))
-				{
-					this.OnCheckedByChanging(value);
-					this.SendPropertyChanging();
-					this._CheckedBy = value;
-					this.SendPropertyChanged("CheckedBy");
-					this.OnCheckedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveredBy", DbType="VarChar(5000)")]
-		public string DeliveredBy
-		{
-			get
-			{
-				return this._DeliveredBy;
-			}
-			set
-			{
-				if ((this._DeliveredBy != value))
-				{
-					this.OnDeliveredByChanging(value);
-					this.SendPropertyChanging();
-					this._DeliveredBy = value;
-					this.SendPropertyChanged("DeliveredBy");
-					this.OnDeliveredByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WayBillNo", DbType="VarChar(5000)")]
-		public string WayBillNo
-		{
-			get
-			{
-				return this._WayBillNo;
-			}
-			set
-			{
-				if ((this._WayBillNo != value))
-				{
-					this.OnWayBillNoChanging(value);
-					this.SendPropertyChanging();
-					this._WayBillNo = value;
-					this.SendPropertyChanged("WayBillNo");
-					this.OnWayBillNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContainerNo", DbType="VarChar(5000)")]
-		public string ContainerNo
-		{
-			get
-			{
-				return this._ContainerNo;
-			}
-			set
-			{
-				if ((this._ContainerNo != value))
-				{
-					this.OnContainerNoChanging(value);
-					this.SendPropertyChanging();
-					this._ContainerNo = value;
-					this.SendPropertyChanged("ContainerNo");
-					this.OnContainerNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillOfLanding", DbType="VarChar(5000)")]
-		public string BillOfLanding
-		{
-			get
-			{
-				return this._BillOfLanding;
-			}
-			set
-			{
-				if ((this._BillOfLanding != value))
-				{
-					this.OnBillOfLandingChanging(value);
-					this.SendPropertyChanging();
-					this._BillOfLanding = value;
-					this.SendPropertyChanged("BillOfLanding");
-					this.OnBillOfLandingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommissionRate", DbType="Money")]
-		public System.Nullable<decimal> CommissionRate
-		{
-			get
-			{
-				return this._CommissionRate;
-			}
-			set
-			{
-				if ((this._CommissionRate != value))
-				{
-					this.OnCommissionRateChanging(value);
-					this.SendPropertyChanging();
-					this._CommissionRate = value;
-					this.SendPropertyChanged("CommissionRate");
-					this.OnCommissionRateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommissionAmt", DbType="Money")]
-		public System.Nullable<decimal> CommissionAmt
-		{
-			get
-			{
-				return this._CommissionAmt;
-			}
-			set
-			{
-				if ((this._CommissionAmt != value))
-				{
-					this.OnCommissionAmtChanging(value);
-					this.SendPropertyChanging();
-					this._CommissionAmt = value;
-					this.SendPropertyChanged("CommissionAmt");
-					this.OnCommissionAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarksID", DbType="BigInt")]
-		public System.Nullable<long> RemarksID
-		{
-			get
-			{
-				return this._RemarksID;
-			}
-			set
-			{
-				if ((this._RemarksID != value))
-				{
-					this.OnRemarksIDChanging(value);
-					this.SendPropertyChanging();
-					this._RemarksID = value;
-					this.SendPropertyChanged("RemarksID");
-					this.OnRemarksIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(5000)")]
-		public string Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				if ((this._Notes != value))
-				{
-					this.OnNotesChanging(value);
-					this.SendPropertyChanging();
-					this._Notes = value;
-					this.SendPropertyChanged("Notes");
-					this.OnNotesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubTotalAmt", DbType="Money")]
-		public System.Nullable<decimal> SubTotalAmt
-		{
-			get
-			{
-				return this._SubTotalAmt;
-			}
-			set
-			{
-				if ((this._SubTotalAmt != value))
-				{
-					this.OnSubTotalAmtChanging(value);
-					this.SendPropertyChanging();
-					this._SubTotalAmt = value;
-					this.SendPropertyChanged("SubTotalAmt");
-					this.OnSubTotalAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxAmt", DbType="Money")]
-		public System.Nullable<decimal> TaxAmt
-		{
-			get
-			{
-				return this._TaxAmt;
-			}
-			set
-			{
-				if ((this._TaxAmt != value))
-				{
-					this.OnTaxAmtChanging(value);
-					this.SendPropertyChanging();
-					this._TaxAmt = value;
-					this.SendPropertyChanged("TaxAmt");
-					this.OnTaxAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippingAmt", DbType="Money")]
-		public System.Nullable<decimal> ShippingAmt
-		{
-			get
-			{
-				return this._ShippingAmt;
-			}
-			set
-			{
-				if ((this._ShippingAmt != value))
-				{
-					this.OnShippingAmtChanging(value);
-					this.SendPropertyChanging();
-					this._ShippingAmt = value;
-					this.SendPropertyChanged("ShippingAmt");
-					this.OnShippingAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentAmt", DbType="Money")]
-		public System.Nullable<decimal> PaymentAmt
-		{
-			get
-			{
-				return this._PaymentAmt;
-			}
-			set
-			{
-				if ((this._PaymentAmt != value))
-				{
-					this.OnPaymentAmtChanging(value);
-					this.SendPropertyChanging();
-					this._PaymentAmt = value;
-					this.SendPropertyChanged("PaymentAmt");
-					this.OnPaymentAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MemoAmt", DbType="Money")]
-		public System.Nullable<decimal> MemoAmt
-		{
-			get
-			{
-				return this._MemoAmt;
-			}
-			set
-			{
-				if ((this._MemoAmt != value))
-				{
-					this.OnMemoAmtChanging(value);
-					this.SendPropertyChanging();
-					this._MemoAmt = value;
-					this.SendPropertyChanged("MemoAmt");
-					this.OnMemoAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdjustmentAmt", DbType="Money")]
-		public System.Nullable<decimal> AdjustmentAmt
-		{
-			get
-			{
-				return this._AdjustmentAmt;
-			}
-			set
-			{
-				if ((this._AdjustmentAmt != value))
-				{
-					this.OnAdjustmentAmtChanging(value);
-					this.SendPropertyChanging();
-					this._AdjustmentAmt = value;
-					this.SendPropertyChanged("AdjustmentAmt");
-					this.OnAdjustmentAmtChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceType", DbType="VarChar(50)")]
-		public string InvoiceType
-		{
-			get
-			{
-				return this._InvoiceType;
-			}
-			set
-			{
-				if ((this._InvoiceType != value))
-				{
-					this.OnInvoiceTypeChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceType = value;
-					this.SendPropertyChanged("InvoiceType");
-					this.OnInvoiceTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this.OnDateCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._DateCreated = value;
-					this.SendPropertyChanged("DateCreated");
-					this.OnDateCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this.OnDateModifiedChanging(value);
-					this.SendPropertyChanging();
-					this._DateModified = value;
-					this.SendPropertyChanged("DateModified");
-					this.OnDateModifiedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentReference]")]
 	public partial class _InvoicePaymentReference : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -14712,6 +13045,2633 @@ namespace MegaSummitInventorySystem
 					this._MunicipalityName = value;
 					this.SendPropertyChanged("MunicipalityName");
 					this.OnMunicipalityNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoiceOfficialReceipt]")]
+	public partial class _InvoiceOfficialReceipt : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private string _RefNo;
+		
+		private string _RefSerial;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<decimal> _TotalAmount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnCustomerIDChanging(System.Nullable<long> value);
+    partial void OnCustomerIDChanged();
+    partial void OnRefNoChanging(string value);
+    partial void OnRefNoChanged();
+    partial void OnRefSerialChanging(string value);
+    partial void OnRefSerialChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnTotalAmountChanging(System.Nullable<decimal> value);
+    partial void OnTotalAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _InvoiceOfficialReceipt()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
+		public string RefNo
+		{
+			get
+			{
+				return this._RefNo;
+			}
+			set
+			{
+				if ((this._RefNo != value))
+				{
+					this.OnRefNoChanging(value);
+					this.SendPropertyChanging();
+					this._RefNo = value;
+					this.SendPropertyChanged("RefNo");
+					this.OnRefNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefSerial", DbType="VarChar(50)")]
+		public string RefSerial
+		{
+			get
+			{
+				return this._RefSerial;
+			}
+			set
+			{
+				if ((this._RefSerial != value))
+				{
+					this.OnRefSerialChanging(value);
+					this.SendPropertyChanging();
+					this._RefSerial = value;
+					this.SendPropertyChanged("RefSerial");
+					this.OnRefSerialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Money")]
+		public System.Nullable<decimal> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this.OnTotalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._TotalAmount = value;
+					this.SendPropertyChanged("TotalAmount");
+					this.OnTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePayment]")]
+	public partial class _InvoicePayment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _InvoiceOfficialReceiptID;
+		
+		private System.Nullable<long> _InvoiceID;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private string _RefNo;
+		
+		private string _RefSerial;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnInvoiceOfficialReceiptIDChanging(System.Nullable<long> value);
+    partial void OnInvoiceOfficialReceiptIDChanged();
+    partial void OnInvoiceIDChanging(System.Nullable<long> value);
+    partial void OnInvoiceIDChanged();
+    partial void OnCustomerIDChanging(System.Nullable<long> value);
+    partial void OnCustomerIDChanged();
+    partial void OnRefNoChanging(string value);
+    partial void OnRefNoChanged();
+    partial void OnRefSerialChanging(string value);
+    partial void OnRefSerialChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _InvoicePayment()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceOfficialReceiptID", DbType="BigInt")]
+		public System.Nullable<long> InvoiceOfficialReceiptID
+		{
+			get
+			{
+				return this._InvoiceOfficialReceiptID;
+			}
+			set
+			{
+				if ((this._InvoiceOfficialReceiptID != value))
+				{
+					this.OnInvoiceOfficialReceiptIDChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceOfficialReceiptID = value;
+					this.SendPropertyChanged("InvoiceOfficialReceiptID");
+					this.OnInvoiceOfficialReceiptIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceID", DbType="BigInt")]
+		public System.Nullable<long> InvoiceID
+		{
+			get
+			{
+				return this._InvoiceID;
+			}
+			set
+			{
+				if ((this._InvoiceID != value))
+				{
+					this.OnInvoiceIDChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceID = value;
+					this.SendPropertyChanged("InvoiceID");
+					this.OnInvoiceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
+		public string RefNo
+		{
+			get
+			{
+				return this._RefNo;
+			}
+			set
+			{
+				if ((this._RefNo != value))
+				{
+					this.OnRefNoChanging(value);
+					this.SendPropertyChanging();
+					this._RefNo = value;
+					this.SendPropertyChanged("RefNo");
+					this.OnRefNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefSerial", DbType="VarChar(50)")]
+		public string RefSerial
+		{
+			get
+			{
+				return this._RefSerial;
+			}
+			set
+			{
+				if ((this._RefSerial != value))
+				{
+					this.OnRefSerialChanging(value);
+					this.SendPropertyChanging();
+					this._RefSerial = value;
+					this.SendPropertyChanged("RefSerial");
+					this.OnRefSerialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCard]")]
+	public partial class _InvoicePaymentCard : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _OfficialReceiptID;
+		
+		private string _CardType;
+		
+		private string _CardNumber;
+		
+		private string _NameOnCard;
+		
+		private string _ExpirationMonth;
+		
+		private string _ExpirationYear;
+		
+		private string _ApprovalCode;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnOfficialReceiptIDChanging(System.Nullable<long> value);
+    partial void OnOfficialReceiptIDChanged();
+    partial void OnCardTypeChanging(string value);
+    partial void OnCardTypeChanged();
+    partial void OnCardNumberChanging(string value);
+    partial void OnCardNumberChanged();
+    partial void OnNameOnCardChanging(string value);
+    partial void OnNameOnCardChanged();
+    partial void OnExpirationMonthChanging(string value);
+    partial void OnExpirationMonthChanged();
+    partial void OnExpirationYearChanging(string value);
+    partial void OnExpirationYearChanged();
+    partial void OnApprovalCodeChanging(string value);
+    partial void OnApprovalCodeChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _InvoicePaymentCard()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficialReceiptID", DbType="BigInt")]
+		public System.Nullable<long> OfficialReceiptID
+		{
+			get
+			{
+				return this._OfficialReceiptID;
+			}
+			set
+			{
+				if ((this._OfficialReceiptID != value))
+				{
+					this.OnOfficialReceiptIDChanging(value);
+					this.SendPropertyChanging();
+					this._OfficialReceiptID = value;
+					this.SendPropertyChanged("OfficialReceiptID");
+					this.OnOfficialReceiptIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardType", DbType="VarChar(100)")]
+		public string CardType
+		{
+			get
+			{
+				return this._CardType;
+			}
+			set
+			{
+				if ((this._CardType != value))
+				{
+					this.OnCardTypeChanging(value);
+					this.SendPropertyChanging();
+					this._CardType = value;
+					this.SendPropertyChanged("CardType");
+					this.OnCardTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardNumber", DbType="VarChar(500)")]
+		public string CardNumber
+		{
+			get
+			{
+				return this._CardNumber;
+			}
+			set
+			{
+				if ((this._CardNumber != value))
+				{
+					this.OnCardNumberChanging(value);
+					this.SendPropertyChanging();
+					this._CardNumber = value;
+					this.SendPropertyChanged("CardNumber");
+					this.OnCardNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOnCard", DbType="VarChar(500)")]
+		public string NameOnCard
+		{
+			get
+			{
+				return this._NameOnCard;
+			}
+			set
+			{
+				if ((this._NameOnCard != value))
+				{
+					this.OnNameOnCardChanging(value);
+					this.SendPropertyChanging();
+					this._NameOnCard = value;
+					this.SendPropertyChanged("NameOnCard");
+					this.OnNameOnCardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpirationMonth", DbType="VarChar(500)")]
+		public string ExpirationMonth
+		{
+			get
+			{
+				return this._ExpirationMonth;
+			}
+			set
+			{
+				if ((this._ExpirationMonth != value))
+				{
+					this.OnExpirationMonthChanging(value);
+					this.SendPropertyChanging();
+					this._ExpirationMonth = value;
+					this.SendPropertyChanged("ExpirationMonth");
+					this.OnExpirationMonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpirationYear", DbType="VarChar(500)")]
+		public string ExpirationYear
+		{
+			get
+			{
+				return this._ExpirationYear;
+			}
+			set
+			{
+				if ((this._ExpirationYear != value))
+				{
+					this.OnExpirationYearChanging(value);
+					this.SendPropertyChanging();
+					this._ExpirationYear = value;
+					this.SendPropertyChanged("ExpirationYear");
+					this.OnExpirationYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovalCode", DbType="VarChar(500)")]
+		public string ApprovalCode
+		{
+			get
+			{
+				return this._ApprovalCode;
+			}
+			set
+			{
+				if ((this._ApprovalCode != value))
+				{
+					this.OnApprovalCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovalCode = value;
+					this.SendPropertyChanged("ApprovalCode");
+					this.OnApprovalCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCash]")]
+	public partial class _InvoicePaymentCash : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _OfficialReceiptID;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnOfficialReceiptIDChanging(System.Nullable<long> value);
+    partial void OnOfficialReceiptIDChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _InvoicePaymentCash()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficialReceiptID", DbType="BigInt")]
+		public System.Nullable<long> OfficialReceiptID
+		{
+			get
+			{
+				return this._OfficialReceiptID;
+			}
+			set
+			{
+				if ((this._OfficialReceiptID != value))
+				{
+					this.OnOfficialReceiptIDChanging(value);
+					this.SendPropertyChanging();
+					this._OfficialReceiptID = value;
+					this.SendPropertyChanged("OfficialReceiptID");
+					this.OnOfficialReceiptIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_InvoicePaymentCheck]")]
+	public partial class _InvoicePaymentCheck : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _OfficialReceiptID;
+		
+		private string _BankName;
+		
+		private string _CheckNo;
+		
+		private System.Nullable<System.DateTime> _CheckDate;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnOfficialReceiptIDChanging(System.Nullable<long> value);
+    partial void OnOfficialReceiptIDChanged();
+    partial void OnBankNameChanging(string value);
+    partial void OnBankNameChanged();
+    partial void OnCheckNoChanging(string value);
+    partial void OnCheckNoChanged();
+    partial void OnCheckDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCheckDateChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _InvoicePaymentCheck()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficialReceiptID", DbType="BigInt")]
+		public System.Nullable<long> OfficialReceiptID
+		{
+			get
+			{
+				return this._OfficialReceiptID;
+			}
+			set
+			{
+				if ((this._OfficialReceiptID != value))
+				{
+					this.OnOfficialReceiptIDChanging(value);
+					this.SendPropertyChanging();
+					this._OfficialReceiptID = value;
+					this.SendPropertyChanged("OfficialReceiptID");
+					this.OnOfficialReceiptIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="VarChar(5000)")]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this.OnBankNameChanging(value);
+					this.SendPropertyChanging();
+					this._BankName = value;
+					this.SendPropertyChanged("BankName");
+					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckNo", DbType="VarChar(100)")]
+		public string CheckNo
+		{
+			get
+			{
+				return this._CheckNo;
+			}
+			set
+			{
+				if ((this._CheckNo != value))
+				{
+					this.OnCheckNoChanging(value);
+					this.SendPropertyChanging();
+					this._CheckNo = value;
+					this.SendPropertyChanged("CheckNo");
+					this.OnCheckNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CheckDate
+		{
+			get
+			{
+				return this._CheckDate;
+			}
+			set
+			{
+				if ((this._CheckDate != value))
+				{
+					this.OnCheckDateChanging(value);
+					this.SendPropertyChanging();
+					this._CheckDate = value;
+					this.SendPropertyChanged("CheckDate");
+					this.OnCheckDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_Employee]")]
+	public partial class _Employee
+	{
+		
+		private long _ID;
+		
+		private string _EmployeePicture;
+		
+		private string _EmployeeName;
+		
+		private string _Address;
+		
+		private string _ContactPerson;
+		
+		private string _SpouseName;
+		
+		private string _Phone;
+		
+		private string _MobilePhone;
+		
+		private string _CivilStatus;
+		
+		private System.Nullable<System.DateTime> _DateOfBirth;
+		
+		private string _Email;
+		
+		private string _Notes;
+		
+		private string _EmployeeType;
+		
+		private System.Nullable<long> _EmployeeClassID;
+		
+		private System.Nullable<long> _DepartmentID;
+		
+		private string _Status;
+		
+		private System.Nullable<decimal> _CashBond;
+		
+		private string _TaxStatus;
+		
+		private string _TinNo;
+		
+		private string _SSSNo;
+		
+		private string _PhilHealthNo;
+		
+		private string _PagIbigNo;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+		public _Employee()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="BigInt NOT NULL IDENTITY", IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeePicture", DbType="VarChar(MAX)")]
+		public string EmployeePicture
+		{
+			get
+			{
+				return this._EmployeePicture;
+			}
+			set
+			{
+				if ((this._EmployeePicture != value))
+				{
+					this._EmployeePicture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50)")]
+		public string EmployeeName
+		{
+			get
+			{
+				return this._EmployeeName;
+			}
+			set
+			{
+				if ((this._EmployeeName != value))
+				{
+					this._EmployeeName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPerson", DbType="VarChar(50)")]
+		public string ContactPerson
+		{
+			get
+			{
+				return this._ContactPerson;
+			}
+			set
+			{
+				if ((this._ContactPerson != value))
+				{
+					this._ContactPerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpouseName", DbType="VarChar(50)")]
+		public string SpouseName
+		{
+			get
+			{
+				return this._SpouseName;
+			}
+			set
+			{
+				if ((this._SpouseName != value))
+				{
+					this._SpouseName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(50)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="VarChar(50)")]
+		public string MobilePhone
+		{
+			get
+			{
+				return this._MobilePhone;
+			}
+			set
+			{
+				if ((this._MobilePhone != value))
+				{
+					this._MobilePhone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CivilStatus", DbType="VarChar(50)")]
+		public string CivilStatus
+		{
+			get
+			{
+				return this._CivilStatus;
+			}
+			set
+			{
+				if ((this._CivilStatus != value))
+				{
+					this._CivilStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOfBirth", DbType="Date")]
+		public System.Nullable<System.DateTime> DateOfBirth
+		{
+			get
+			{
+				return this._DateOfBirth;
+			}
+			set
+			{
+				if ((this._DateOfBirth != value))
+				{
+					this._DateOfBirth = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(MAX)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeType", DbType="VarChar(50)")]
+		public string EmployeeType
+		{
+			get
+			{
+				return this._EmployeeType;
+			}
+			set
+			{
+				if ((this._EmployeeType != value))
+				{
+					this._EmployeeType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeClassID", DbType="BigInt")]
+		public System.Nullable<long> EmployeeClassID
+		{
+			get
+			{
+				return this._EmployeeClassID;
+			}
+			set
+			{
+				if ((this._EmployeeClassID != value))
+				{
+					this._EmployeeClassID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentID", DbType="BigInt")]
+		public System.Nullable<long> DepartmentID
+		{
+			get
+			{
+				return this._DepartmentID;
+			}
+			set
+			{
+				if ((this._DepartmentID != value))
+				{
+					this._DepartmentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashBond", DbType="Money")]
+		public System.Nullable<decimal> CashBond
+		{
+			get
+			{
+				return this._CashBond;
+			}
+			set
+			{
+				if ((this._CashBond != value))
+				{
+					this._CashBond = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxStatus", DbType="VarChar(50)")]
+		public string TaxStatus
+		{
+			get
+			{
+				return this._TaxStatus;
+			}
+			set
+			{
+				if ((this._TaxStatus != value))
+				{
+					this._TaxStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TinNo", DbType="VarChar(50)")]
+		public string TinNo
+		{
+			get
+			{
+				return this._TinNo;
+			}
+			set
+			{
+				if ((this._TinNo != value))
+				{
+					this._TinNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SSSNo", DbType="VarChar(50)")]
+		public string SSSNo
+		{
+			get
+			{
+				return this._SSSNo;
+			}
+			set
+			{
+				if ((this._SSSNo != value))
+				{
+					this._SSSNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhilHealthNo", DbType="VarChar(50)")]
+		public string PhilHealthNo
+		{
+			get
+			{
+				return this._PhilHealthNo;
+			}
+			set
+			{
+				if ((this._PhilHealthNo != value))
+				{
+					this._PhilHealthNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PagIbigNo", DbType="VarChar(50)")]
+		public string PagIbigNo
+		{
+			get
+			{
+				return this._PagIbigNo;
+			}
+			set
+			{
+				if ((this._PagIbigNo != value))
+				{
+					this._PagIbigNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this._DateModified = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_Invoice]")]
+	public partial class _Invoice : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private string _InvoiceStatus;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private string _Address;
+		
+		private System.Nullable<long> _ForwarderToID;
+		
+		private System.Nullable<long> _SalesmanID;
+		
+		private string _PONo;
+		
+		private System.Nullable<long> _TermID;
+		
+		private string _RefNo;
+		
+		private string _RefNoSerial;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<System.DateTime> _DeliveryDate;
+		
+		private string _PreparedBy;
+		
+		private string _CheckedBy;
+		
+		private string _DeliveredBy;
+		
+		private string _WayBillNo;
+		
+		private string _ContainerNo;
+		
+		private string _BillOfLanding;
+		
+		private System.Nullable<decimal> _CommissionRate;
+		
+		private System.Nullable<decimal> _CommissionAmt;
+		
+		private System.Nullable<long> _RemarksID;
+		
+		private string _Notes;
+		
+		private System.Nullable<decimal> _SubTotalAmt;
+		
+		private string _TaxType;
+		
+		private System.Nullable<decimal> _TaxRate;
+		
+		private System.Nullable<decimal> _TaxAmt;
+		
+		private string _InvoiceType;
+		
+		private System.Nullable<decimal> _ShippingAmt;
+		
+		private System.Nullable<decimal> _TotalAmount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnInvoiceStatusChanging(string value);
+    partial void OnInvoiceStatusChanged();
+    partial void OnCustomerIDChanging(System.Nullable<long> value);
+    partial void OnCustomerIDChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnForwarderToIDChanging(System.Nullable<long> value);
+    partial void OnForwarderToIDChanged();
+    partial void OnSalesmanIDChanging(System.Nullable<long> value);
+    partial void OnSalesmanIDChanged();
+    partial void OnPONoChanging(string value);
+    partial void OnPONoChanged();
+    partial void OnTermIDChanging(System.Nullable<long> value);
+    partial void OnTermIDChanged();
+    partial void OnRefNoChanging(string value);
+    partial void OnRefNoChanged();
+    partial void OnRefNoSerialChanging(string value);
+    partial void OnRefNoSerialChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnDeliveryDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDeliveryDateChanged();
+    partial void OnPreparedByChanging(string value);
+    partial void OnPreparedByChanged();
+    partial void OnCheckedByChanging(string value);
+    partial void OnCheckedByChanged();
+    partial void OnDeliveredByChanging(string value);
+    partial void OnDeliveredByChanged();
+    partial void OnWayBillNoChanging(string value);
+    partial void OnWayBillNoChanged();
+    partial void OnContainerNoChanging(string value);
+    partial void OnContainerNoChanged();
+    partial void OnBillOfLandingChanging(string value);
+    partial void OnBillOfLandingChanged();
+    partial void OnCommissionRateChanging(System.Nullable<decimal> value);
+    partial void OnCommissionRateChanged();
+    partial void OnCommissionAmtChanging(System.Nullable<decimal> value);
+    partial void OnCommissionAmtChanged();
+    partial void OnRemarksIDChanging(System.Nullable<long> value);
+    partial void OnRemarksIDChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    partial void OnSubTotalAmtChanging(System.Nullable<decimal> value);
+    partial void OnSubTotalAmtChanged();
+    partial void OnTaxTypeChanging(string value);
+    partial void OnTaxTypeChanged();
+    partial void OnTaxRateChanging(System.Nullable<decimal> value);
+    partial void OnTaxRateChanged();
+    partial void OnTaxAmtChanging(System.Nullable<decimal> value);
+    partial void OnTaxAmtChanged();
+    partial void OnInvoiceTypeChanging(string value);
+    partial void OnInvoiceTypeChanged();
+    partial void OnShippingAmtChanging(System.Nullable<decimal> value);
+    partial void OnShippingAmtChanged();
+    partial void OnTotalAmountChanging(System.Nullable<decimal> value);
+    partial void OnTotalAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _Invoice()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceStatus", DbType="VarChar(50)")]
+		public string InvoiceStatus
+		{
+			get
+			{
+				return this._InvoiceStatus;
+			}
+			set
+			{
+				if ((this._InvoiceStatus != value))
+				{
+					this.OnInvoiceStatusChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceStatus = value;
+					this.SendPropertyChanged("InvoiceStatus");
+					this.OnInvoiceStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(MAX)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ForwarderToID", DbType="BigInt")]
+		public System.Nullable<long> ForwarderToID
+		{
+			get
+			{
+				return this._ForwarderToID;
+			}
+			set
+			{
+				if ((this._ForwarderToID != value))
+				{
+					this.OnForwarderToIDChanging(value);
+					this.SendPropertyChanging();
+					this._ForwarderToID = value;
+					this.SendPropertyChanged("ForwarderToID");
+					this.OnForwarderToIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesmanID", DbType="BigInt")]
+		public System.Nullable<long> SalesmanID
+		{
+			get
+			{
+				return this._SalesmanID;
+			}
+			set
+			{
+				if ((this._SalesmanID != value))
+				{
+					this.OnSalesmanIDChanging(value);
+					this.SendPropertyChanging();
+					this._SalesmanID = value;
+					this.SendPropertyChanged("SalesmanID");
+					this.OnSalesmanIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PONo", DbType="VarChar(50)")]
+		public string PONo
+		{
+			get
+			{
+				return this._PONo;
+			}
+			set
+			{
+				if ((this._PONo != value))
+				{
+					this.OnPONoChanging(value);
+					this.SendPropertyChanging();
+					this._PONo = value;
+					this.SendPropertyChanged("PONo");
+					this.OnPONoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TermID", DbType="BigInt")]
+		public System.Nullable<long> TermID
+		{
+			get
+			{
+				return this._TermID;
+			}
+			set
+			{
+				if ((this._TermID != value))
+				{
+					this.OnTermIDChanging(value);
+					this.SendPropertyChanging();
+					this._TermID = value;
+					this.SendPropertyChanged("TermID");
+					this.OnTermIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
+		public string RefNo
+		{
+			get
+			{
+				return this._RefNo;
+			}
+			set
+			{
+				if ((this._RefNo != value))
+				{
+					this.OnRefNoChanging(value);
+					this.SendPropertyChanging();
+					this._RefNo = value;
+					this.SendPropertyChanged("RefNo");
+					this.OnRefNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNoSerial", DbType="VarChar(50)")]
+		public string RefNoSerial
+		{
+			get
+			{
+				return this._RefNoSerial;
+			}
+			set
+			{
+				if ((this._RefNoSerial != value))
+				{
+					this.OnRefNoSerialChanging(value);
+					this.SendPropertyChanging();
+					this._RefNoSerial = value;
+					this.SendPropertyChanged("RefNoSerial");
+					this.OnRefNoSerialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryDate", DbType="Date")]
+		public System.Nullable<System.DateTime> DeliveryDate
+		{
+			get
+			{
+				return this._DeliveryDate;
+			}
+			set
+			{
+				if ((this._DeliveryDate != value))
+				{
+					this.OnDeliveryDateChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryDate = value;
+					this.SendPropertyChanged("DeliveryDate");
+					this.OnDeliveryDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreparedBy", DbType="VarChar(5000)")]
+		public string PreparedBy
+		{
+			get
+			{
+				return this._PreparedBy;
+			}
+			set
+			{
+				if ((this._PreparedBy != value))
+				{
+					this.OnPreparedByChanging(value);
+					this.SendPropertyChanging();
+					this._PreparedBy = value;
+					this.SendPropertyChanged("PreparedBy");
+					this.OnPreparedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckedBy", DbType="VarChar(5000)")]
+		public string CheckedBy
+		{
+			get
+			{
+				return this._CheckedBy;
+			}
+			set
+			{
+				if ((this._CheckedBy != value))
+				{
+					this.OnCheckedByChanging(value);
+					this.SendPropertyChanging();
+					this._CheckedBy = value;
+					this.SendPropertyChanged("CheckedBy");
+					this.OnCheckedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveredBy", DbType="VarChar(5000)")]
+		public string DeliveredBy
+		{
+			get
+			{
+				return this._DeliveredBy;
+			}
+			set
+			{
+				if ((this._DeliveredBy != value))
+				{
+					this.OnDeliveredByChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveredBy = value;
+					this.SendPropertyChanged("DeliveredBy");
+					this.OnDeliveredByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WayBillNo", DbType="VarChar(5000)")]
+		public string WayBillNo
+		{
+			get
+			{
+				return this._WayBillNo;
+			}
+			set
+			{
+				if ((this._WayBillNo != value))
+				{
+					this.OnWayBillNoChanging(value);
+					this.SendPropertyChanging();
+					this._WayBillNo = value;
+					this.SendPropertyChanged("WayBillNo");
+					this.OnWayBillNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContainerNo", DbType="VarChar(5000)")]
+		public string ContainerNo
+		{
+			get
+			{
+				return this._ContainerNo;
+			}
+			set
+			{
+				if ((this._ContainerNo != value))
+				{
+					this.OnContainerNoChanging(value);
+					this.SendPropertyChanging();
+					this._ContainerNo = value;
+					this.SendPropertyChanged("ContainerNo");
+					this.OnContainerNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillOfLanding", DbType="VarChar(5000)")]
+		public string BillOfLanding
+		{
+			get
+			{
+				return this._BillOfLanding;
+			}
+			set
+			{
+				if ((this._BillOfLanding != value))
+				{
+					this.OnBillOfLandingChanging(value);
+					this.SendPropertyChanging();
+					this._BillOfLanding = value;
+					this.SendPropertyChanged("BillOfLanding");
+					this.OnBillOfLandingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommissionRate", DbType="Money")]
+		public System.Nullable<decimal> CommissionRate
+		{
+			get
+			{
+				return this._CommissionRate;
+			}
+			set
+			{
+				if ((this._CommissionRate != value))
+				{
+					this.OnCommissionRateChanging(value);
+					this.SendPropertyChanging();
+					this._CommissionRate = value;
+					this.SendPropertyChanged("CommissionRate");
+					this.OnCommissionRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommissionAmt", DbType="Money")]
+		public System.Nullable<decimal> CommissionAmt
+		{
+			get
+			{
+				return this._CommissionAmt;
+			}
+			set
+			{
+				if ((this._CommissionAmt != value))
+				{
+					this.OnCommissionAmtChanging(value);
+					this.SendPropertyChanging();
+					this._CommissionAmt = value;
+					this.SendPropertyChanged("CommissionAmt");
+					this.OnCommissionAmtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemarksID", DbType="BigInt")]
+		public System.Nullable<long> RemarksID
+		{
+			get
+			{
+				return this._RemarksID;
+			}
+			set
+			{
+				if ((this._RemarksID != value))
+				{
+					this.OnRemarksIDChanging(value);
+					this.SendPropertyChanging();
+					this._RemarksID = value;
+					this.SendPropertyChanged("RemarksID");
+					this.OnRemarksIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(5000)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubTotalAmt", DbType="Money")]
+		public System.Nullable<decimal> SubTotalAmt
+		{
+			get
+			{
+				return this._SubTotalAmt;
+			}
+			set
+			{
+				if ((this._SubTotalAmt != value))
+				{
+					this.OnSubTotalAmtChanging(value);
+					this.SendPropertyChanging();
+					this._SubTotalAmt = value;
+					this.SendPropertyChanged("SubTotalAmt");
+					this.OnSubTotalAmtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxType", DbType="VarChar(50)")]
+		public string TaxType
+		{
+			get
+			{
+				return this._TaxType;
+			}
+			set
+			{
+				if ((this._TaxType != value))
+				{
+					this.OnTaxTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TaxType = value;
+					this.SendPropertyChanged("TaxType");
+					this.OnTaxTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxRate", DbType="Money")]
+		public System.Nullable<decimal> TaxRate
+		{
+			get
+			{
+				return this._TaxRate;
+			}
+			set
+			{
+				if ((this._TaxRate != value))
+				{
+					this.OnTaxRateChanging(value);
+					this.SendPropertyChanging();
+					this._TaxRate = value;
+					this.SendPropertyChanged("TaxRate");
+					this.OnTaxRateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxAmt", DbType="Money")]
+		public System.Nullable<decimal> TaxAmt
+		{
+			get
+			{
+				return this._TaxAmt;
+			}
+			set
+			{
+				if ((this._TaxAmt != value))
+				{
+					this.OnTaxAmtChanging(value);
+					this.SendPropertyChanging();
+					this._TaxAmt = value;
+					this.SendPropertyChanged("TaxAmt");
+					this.OnTaxAmtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceType", DbType="VarChar(50)")]
+		public string InvoiceType
+		{
+			get
+			{
+				return this._InvoiceType;
+			}
+			set
+			{
+				if ((this._InvoiceType != value))
+				{
+					this.OnInvoiceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceType = value;
+					this.SendPropertyChanged("InvoiceType");
+					this.OnInvoiceTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShippingAmt", DbType="Money")]
+		public System.Nullable<decimal> ShippingAmt
+		{
+			get
+			{
+				return this._ShippingAmt;
+			}
+			set
+			{
+				if ((this._ShippingAmt != value))
+				{
+					this.OnShippingAmtChanging(value);
+					this.SendPropertyChanging();
+					this._ShippingAmt = value;
+					this.SendPropertyChanged("ShippingAmt");
+					this.OnShippingAmtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Money")]
+		public System.Nullable<decimal> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this.OnTotalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._TotalAmount = value;
+					this.SendPropertyChanged("TotalAmount");
+					this.OnTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this.OnDateCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._DateCreated = value;
+					this.SendPropertyChanged("DateCreated");
+					this.OnDateCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this.OnDateModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._DateModified = value;
+					this.SendPropertyChanged("DateModified");
+					this.OnDateModifiedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[_invoicePaymentSalesReturn]")]
+	public partial class _invoicePaymentSalesReturn : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private System.Nullable<long> _InvoiceID;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnInvoiceIDChanging(System.Nullable<long> value);
+    partial void OnInvoiceIDChanged();
+    partial void OnCustomerIDChanging(System.Nullable<long> value);
+    partial void OnCustomerIDChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnDateCreatedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateCreatedChanged();
+    partial void OnDateModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateModifiedChanged();
+    #endregion
+		
+		public _invoicePaymentSalesReturn()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceID", DbType="BigInt")]
+		public System.Nullable<long> InvoiceID
+		{
+			get
+			{
+				return this._InvoiceID;
+			}
+			set
+			{
+				if ((this._InvoiceID != value))
+				{
+					this.OnInvoiceIDChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceID = value;
+					this.SendPropertyChanged("InvoiceID");
+					this.OnInvoiceIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this.OnCustomerIDChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerID = value;
+					this.SendPropertyChanged("CustomerID");
+					this.OnCustomerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
 				}
 			}
 		}
@@ -34731,194 +35691,6 @@ namespace MegaSummitInventorySystem
 		}
 	}
 	
-	public partial class _InvoicePaymentSelectResult
-	{
-		
-		private long _ID;
-		
-		private System.Nullable<long> _InvoiceID;
-		
-		private System.Nullable<long> _CustomerID;
-		
-		private string _CustomerName;
-		
-		private string _RefNo;
-		
-		private string _RefSerial;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private System.Nullable<System.DateTime> _DateCreated;
-		
-		private System.Nullable<System.DateTime> _DateModified;
-		
-		public _InvoicePaymentSelectResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceID", DbType="BigInt")]
-		public System.Nullable<long> InvoiceID
-		{
-			get
-			{
-				return this._InvoiceID;
-			}
-			set
-			{
-				if ((this._InvoiceID != value))
-				{
-					this._InvoiceID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
-		public System.Nullable<long> CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					this._CustomerID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="VarChar(100)")]
-		public string CustomerName
-		{
-			get
-			{
-				return this._CustomerName;
-			}
-			set
-			{
-				if ((this._CustomerName != value))
-				{
-					this._CustomerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
-		public string RefNo
-		{
-			get
-			{
-				return this._RefNo;
-			}
-			set
-			{
-				if ((this._RefNo != value))
-				{
-					this._RefNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefSerial", DbType="VarChar(50)")]
-		public string RefSerial
-		{
-			get
-			{
-				return this._RefSerial;
-			}
-			set
-			{
-				if ((this._RefSerial != value))
-				{
-					this._RefSerial = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this._CreatedDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this._Amount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateCreated
-		{
-			get
-			{
-				return this._DateCreated;
-			}
-			set
-			{
-				if ((this._DateCreated != value))
-				{
-					this._DateCreated = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DateModified
-		{
-			get
-			{
-				return this._DateModified;
-			}
-			set
-			{
-				if ((this._DateModified != value))
-				{
-					this._DateModified = value;
-				}
-			}
-		}
-	}
-	
 	public partial class _SalesReturnSelectResult
 	{
 		
@@ -35282,6 +36054,364 @@ namespace MegaSummitInventorySystem
 				if ((this._Status != value))
 				{
 					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _InvoicePaymentSelectResult
+	{
+		
+		private long _ID;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private string _CustomerName;
+		
+		private string _RefNo;
+		
+		private string _RefSerial;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<decimal> _TotalAmount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+		public _InvoicePaymentSelectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this._CustomerID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="VarChar(100)")]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(MAX)")]
+		public string RefNo
+		{
+			get
+			{
+				return this._RefNo;
+			}
+			set
+			{
+				if ((this._RefNo != value))
+				{
+					this._RefNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefSerial", DbType="VarChar(50)")]
+		public string RefSerial
+		{
+			get
+			{
+				return this._RefSerial;
+			}
+			set
+			{
+				if ((this._RefSerial != value))
+				{
+					this._RefSerial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this._CreatedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalAmount", DbType="Money")]
+		public System.Nullable<decimal> TotalAmount
+		{
+			get
+			{
+				return this._TotalAmount;
+			}
+			set
+			{
+				if ((this._TotalAmount != value))
+				{
+					this._TotalAmount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this._DateModified = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _InvoicePaymentSelectCustomerResult
+	{
+		
+		private long _ID;
+		
+		private System.Nullable<long> _InvoiceOfficialReceiptID;
+		
+		private System.Nullable<long> _InvoiceID;
+		
+		private System.Nullable<long> _CustomerID;
+		
+		private string _RefNo;
+		
+		private string _RefSerial;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _DateCreated;
+		
+		private System.Nullable<System.DateTime> _DateModified;
+		
+		public _InvoicePaymentSelectCustomerResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceOfficialReceiptID", DbType="BigInt")]
+		public System.Nullable<long> InvoiceOfficialReceiptID
+		{
+			get
+			{
+				return this._InvoiceOfficialReceiptID;
+			}
+			set
+			{
+				if ((this._InvoiceOfficialReceiptID != value))
+				{
+					this._InvoiceOfficialReceiptID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceID", DbType="BigInt")]
+		public System.Nullable<long> InvoiceID
+		{
+			get
+			{
+				return this._InvoiceID;
+			}
+			set
+			{
+				if ((this._InvoiceID != value))
+				{
+					this._InvoiceID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="BigInt")]
+		public System.Nullable<long> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this._CustomerID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefNo", DbType="VarChar(50)")]
+		public string RefNo
+		{
+			get
+			{
+				return this._RefNo;
+			}
+			set
+			{
+				if ((this._RefNo != value))
+				{
+					this._RefNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefSerial", DbType="VarChar(50)")]
+		public string RefSerial
+		{
+			get
+			{
+				return this._RefSerial;
+			}
+			set
+			{
+				if ((this._RefSerial != value))
+				{
+					this._RefSerial = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this._CreatedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreated", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateCreated
+		{
+			get
+			{
+				return this._DateCreated;
+			}
+			set
+			{
+				if ((this._DateCreated != value))
+				{
+					this._DateCreated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateModified
+		{
+			get
+			{
+				return this._DateModified;
+			}
+			set
+			{
+				if ((this._DateModified != value))
+				{
+					this._DateModified = value;
 				}
 			}
 		}

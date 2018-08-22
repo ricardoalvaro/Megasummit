@@ -542,7 +542,7 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._InvoicePaymentCashes.Where(x => x.InvoicePaymentID == id);
+                var data = Database._InvoicePaymentCashes.Where(x => x.OfficialReceiptID == id);
 
                 return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
             }
@@ -561,7 +561,7 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._InvoicePaymentChecks.Where(x => x.InvoicePaymentID == id);
+                var data = Database._InvoicePaymentChecks.Where(x => x.OfficialReceiptID == id);
 
                 return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
             }
@@ -580,7 +580,7 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._InvoicePaymentCards.Where(x => x.InvoicePaymentID == id);
+                var data = Database._InvoicePaymentCards.Where(x => x.OfficialReceiptID == id);
 
                 return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
             }
