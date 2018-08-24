@@ -153,11 +153,11 @@
                                         <thead>
                                             <tr>
                                                 <th width="15%">Reference No.</th>
-                                                <th width="10%">Date</th>
-                                                <th width="23%">Description</th>
-                                                <th width="15%">Salesman</th>
-                                                <th width="12%">Balance</th>
-                                                <th width="12%"><input type="checkbox" id="applied" class="lblleft" onchange="ApplyToAllCheck(this)"/><label for="apply">Apply</label></th>
+                                                <th width="15%">Date</th>
+                                                <th width="20%">Description</th>
+                                                <th width="20%">Salesman</th>
+                                                <th width="15%">Balance</th>
+                                                <th width="15%"><input type="checkbox" id="applied" class="lblleft" onchange="ApplyToAllCheck(this)"/><label for="apply">Apply</label></th>
                                             </tr>
                                         </thead>
                                         <tbody class="scroll">
@@ -252,8 +252,41 @@
     margin: 4px 0 0 1px;
     z-index: 9;
         }
-        
-
+        input.chk {
+    margin: 0 9px 0 !important;
+}
+        input.apply {
+            width: 70%;
+            float: left;
+        }
+        .product {
+    border: none;
+    background: none;
+}
+        .location {
+    border: none;
+    background: none;
+}
+        .quantity {
+    border: none;
+    background: none;
+}
+        .unit {
+    border: none;
+    background: none;
+}
+        .price {
+    border: none;
+    background: none;
+}
+        .discount {
+    border: none;
+    background: none;
+}
+        .amount {
+    border: none;
+    background: none;
+}
     </style>
     
 
@@ -269,6 +302,8 @@
         var ForwarderData = <%= CustomerVM.Forwarders %>;
         var SalesmanData = <%= EmployeeVM.Employees(0, string.Empty, "Salesman") %>;
         var TermData = <%= CustomerVM.Terms %>;
+        var SalesReturnSingleData =  <%= SalesReturnVM.SelectSingleSalesReturn(long.Parse( (Request["salesReturnID"] == null ? "0" : Request["salesReturnID"])  )) %>;
+
 
     </script>
 

@@ -503,6 +503,41 @@
         
     </div>
 
+    <style>
+        input.packing {
+    border: none;
+    background: none;
+}
+        input.product {
+    border: none;
+    background: none;
+}
+        input.location {
+            border: none;
+    background: none;
+}
+        input.quantity {
+            border: none;
+    background: none;
+}
+        input.unit {
+            border: none;
+    background: none;
+}
+        input.price {
+            border: none;
+    background: none;
+}
+        input.discount {
+            border: none;
+    background: none;
+}
+        input.amount {
+            border: none;
+    background: none;
+}
+    </style>
+
     <script src="Script/SalesInvoice.js"></script>
     <script type="text/javascript">
 

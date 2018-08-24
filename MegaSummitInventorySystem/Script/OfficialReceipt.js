@@ -236,7 +236,7 @@ function FillInvoiceList(customer_id) {
             }
 
             for (var i = 0; i < 20; i++) {
-                $("#tbl_apply_invoices tbody").append("<tr><td width='15%'></td><td width='10%'></td><td width='23%'></td><td width='15%'></td><td width='12%'></td><td width='20%'></td></tr>");
+                $("#tbl_apply_invoices tbody").append("<tr><td width='15%'></td></tr>");
             }
 
 
@@ -344,12 +344,12 @@ function GetCurrentTotal() {
 
 
 function ListInvoiceFormatEdit(invoice_id, ref_no, date, description, salesman, total, payment) {
-    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='10%'>" + date + "</td><td width='23%'>" + description + "</td><td width='15%'>" + salesman + "</td><td width='12%'><span class='spn_balance'>" + total + "</span></td><td width='20%'><input type='text' class='apply' value='" + payment + "' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
+    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='15%'>" + date + "</td><td width='20%'>" + description + "</td><td width='20%'>" + salesman + "</td><td width='15%'><span class='spn_balance'>" + total + "</span></td><td width='15%'><input type='text' class='apply' value='" + payment + "' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
 }
 
 
 function ListInvoiceFormat(invoice_id, ref_no, date, description, salesman, balance) {
-    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='10%'>" + date + "</td><td width='23%'>" + description + "</td><td width='15%'>" + salesman + "</td><td width='12%'><span class='spn_balance'>" + balance + "</span></td><td width='20%'><input type='text' class='apply' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
+    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='15%'>" + date + "</td><td width='20%'>" + description + "</td><td width='20%'>" + salesman + "</td><td width='15%'><span class='spn_balance'>" + balance + "</span></td><td width='15%'><input type='text' class='apply' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
 }
 
 

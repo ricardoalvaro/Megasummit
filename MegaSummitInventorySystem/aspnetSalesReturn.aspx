@@ -35,7 +35,7 @@
                                             <tbody class="scroll">
                                 <asp:Repeater runat="server" ID="repMain">   
                                     <ItemTemplate>
-                                            <tr id="rec-1" onclick="SelectSalesOrder('<%# Eval("ID").ToString() %> ')">
+                                            <tr id="rec-1" onclick="SelectSalesReturn('<%# Eval("ID").ToString() %> ')">
                                                 <td width="10%"><%# Eval("RefNo").ToString() %> </td>
                                                 <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
                                                 <td width="30%"><%# Eval("CustomerName").ToString() %></td>

@@ -1006,6 +1006,7 @@
     <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
     <Compile Include="ViewModel\SalesOrderVM.cs" />
+    <Compile Include="ViewModel\SalesReturnVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="Webservice\CompanyImageUploader.ashx.cs">
       <DependentUpon>CompanyImageUploader.ashx</DependentUpon>

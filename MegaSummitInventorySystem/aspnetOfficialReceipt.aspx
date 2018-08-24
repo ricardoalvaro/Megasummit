@@ -291,11 +291,11 @@
                                                         <thead>
                                                             <tr>
                                                                 <th width="15%">Reference No.</th>
-                                                                <th width="10%">Date</th>
-                                                                <th width="23%">Description</th>
-                                                                <th width="15%">Salesman</th>
-                                                                <th width="12%">Balance</th>
-                                                                <th width="12%">
+                                                                <th width="15%">Date</th>
+                                                                <th width="20%">Description</th>
+                                                                <th width="20%">Salesman</th>
+                                                                <th width="15%">Balance</th>
+                                                                <th width="15%">
                                                                 <input type="checkbox" id="applied" class="lblleft" style="display:block;opacity:1" onchange="ApplyToAllCheck(this)"><label for="apply">Apply</label></th>
                                                             </tr>
                                                         </thead>
@@ -415,7 +415,7 @@
     <style>
         input[type="radio"], input[type="checkbox"] {
             display: inline !important;
-    opacity: 1 !important;
+    opacity: 0 !important;
     float: right !important;
         }
         .bank {
@@ -443,7 +443,16 @@
             width: 96%;
         }
         input.apply {
-    width: 70%;
+    width: 68%;
+    float: left;
+}
+        .apply {
+            border:none;
+            background:none;
+        }
+        input.chk {
+    opacity: 1 !important;
+    margin: 3.5px 7px;
 }
     </style>
 

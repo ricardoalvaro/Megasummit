@@ -2117,13 +2117,6 @@ namespace MegaSummitInventorySystem
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesReturnUpdate]")]
-		public int _SalesReturnUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliverToID", DbType="BigInt")] System.Nullable<long> deliverToID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesmanID", DbType="BigInt")] System.Nullable<long> salesmanID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PONo", DbType="VarChar(50)")] string pONo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TermID", DbType="BigInt")] System.Nullable<long> termID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNoSerial", DbType="VarChar(50)")] string refNoSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(MAX)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApplyToInvoiceAmount", DbType="Money")] System.Nullable<decimal> applyToInvoiceAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Balance", DbType="Money")] System.Nullable<decimal> balance)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, address, deliverToID, salesmanID, pONo, termID, refNo, refNoSerial, createdDate, notes, totalAmount, applyToInvoiceAmount, balance);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesOrderDetailsDelete]")]
 		public int _SalesOrderDetailsDelete([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD)
 		{
@@ -2194,14 +2187,6 @@ namespace MegaSummitInventorySystem
 		public int _SalesReturnDetailsUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesReturnID", DbType="BigInt")] System.Nullable<long> salesReturnID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProductID", DbType="BigInt")] System.Nullable<long> productID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LocationID", DbType="BigInt")] System.Nullable<long> locationID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Quantity", DbType="Money")] System.Nullable<decimal> quantity, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UnitID", DbType="BigInt")] System.Nullable<long> unitID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UnitPrice", DbType="Money")] System.Nullable<decimal> unitPrice, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Discount", DbType="VarChar(100)")] string discount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, salesReturnID, productID, locationID, quantity, unitID, unitPrice, discount, amount);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesReturnInsert]")]
-		public int _SalesReturnInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliverToID", DbType="BigInt")] System.Nullable<long> deliverToID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesmanID", DbType="BigInt")] System.Nullable<long> salesmanID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PONo", DbType="VarChar(50)")] string pONo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TermID", DbType="BigInt")] System.Nullable<long> termID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNoSerial", DbType="VarChar(50)")] string refNoSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(MAX)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ApplyToInvoiceAmount", DbType="Money")] System.Nullable<decimal> applyToInvoiceAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Balance", DbType="Money")] System.Nullable<decimal> balance)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, address, deliverToID, salesmanID, pONo, termID, refNo, refNoSerial, createdDate, notes, totalAmount, applyToInvoiceAmount, balance);
-			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -3422,6 +3407,36 @@ namespace MegaSummitInventorySystem
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, officialReceipt, invoiceID, customerID);
 			return ((ISingleResult<_InvoicePaymentSelectCustomerResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesReturnInsert]")]
+		public int _SalesReturnInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliverToID", DbType="BigInt")] System.Nullable<long> deliverToID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesmanID", DbType="BigInt")] System.Nullable<long> salesmanID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PONo", DbType="VarChar(50)")] string pONo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TermID", DbType="BigInt")] System.Nullable<long> termID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNoSerial", DbType="VarChar(50)")] string refNoSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(MAX)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="VarChar(50)")] string status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, address, deliverToID, salesmanID, pONo, termID, refNo, refNoSerial, createdDate, notes, totalAmount, status);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_SalesReturnUpdate]")]
+		public int _SalesReturnUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Address", DbType="VarChar(MAX)")] string address, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DeliverToID", DbType="BigInt")] System.Nullable<long> deliverToID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesmanID", DbType="BigInt")] System.Nullable<long> salesmanID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PONo", DbType="VarChar(50)")] string pONo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TermID", DbType="BigInt")] System.Nullable<long> termID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNo", DbType="VarChar(50)")] string refNo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RefNoSerial", DbType="VarChar(50)")] string refNoSerial, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedDate", DbType="Date")] System.Nullable<System.DateTime> createdDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Notes", DbType="VarChar(MAX)")] string notes, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="TotalAmount", DbType="Money")] System.Nullable<decimal> totalAmount, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Status", DbType="VarChar(50)")] string status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, customerID, address, deliverToID, salesmanID, pONo, termID, refNo, refNoSerial, createdDate, notes, totalAmount, status);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_invoicePaymentSalesReturnInsert]")]
+		public int _invoicePaymentSalesReturnInsert([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] ref System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesReturnID", DbType="BigInt")] System.Nullable<long> salesReturnID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, salesReturnID, invoiceID, customerID, amount);
+			iD = ((System.Nullable<long>)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_invoicePaymentSalesReturnUpdate]")]
+		public int _invoicePaymentSalesReturnUpdate([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="BigInt")] System.Nullable<long> iD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="SalesReturnID", DbType="BigInt")] System.Nullable<long> salesReturnID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="InvoiceID", DbType="BigInt")] System.Nullable<long> invoiceID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CustomerID", DbType="BigInt")] System.Nullable<long> customerID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Amount", DbType="Money")] System.Nullable<decimal> amount)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), iD, salesReturnID, invoiceID, customerID, amount);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -15563,6 +15578,8 @@ namespace MegaSummitInventorySystem
 		
 		private long _ID;
 		
+		private System.Nullable<long> _SalesReturnID;
+		
 		private System.Nullable<long> _InvoiceID;
 		
 		private System.Nullable<long> _CustomerID;
@@ -15579,6 +15596,8 @@ namespace MegaSummitInventorySystem
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
+    partial void OnSalesReturnIDChanging(System.Nullable<long> value);
+    partial void OnSalesReturnIDChanged();
     partial void OnInvoiceIDChanging(System.Nullable<long> value);
     partial void OnInvoiceIDChanged();
     partial void OnCustomerIDChanging(System.Nullable<long> value);
@@ -15612,6 +15631,26 @@ namespace MegaSummitInventorySystem
 					this._ID = value;
 					this.SendPropertyChanged("ID");
 					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReturnID", DbType="BigInt")]
+		public System.Nullable<long> SalesReturnID
+		{
+			get
+			{
+				return this._SalesReturnID;
+			}
+			set
+			{
+				if ((this._SalesReturnID != value))
+				{
+					this.OnSalesReturnIDChanging(value);
+					this.SendPropertyChanging();
+					this._SalesReturnID = value;
+					this.SendPropertyChanged("SalesReturnID");
+					this.OnSalesReturnIDChanged();
 				}
 			}
 		}

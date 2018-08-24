@@ -41,8 +41,8 @@
                                                 <td width="30%"><%# Eval("CustomerName").ToString() %></td>
                                                 <td width="15%"><%# Eval("Salesman").ToString() %></td>
                                                 <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
-                                                <td width="10%">x.xx</td>
-                                                <td width="10%"><%# Eval("InvoiceStatus").ToString() %></td>
+                                                <td width="10%"><%# decimal.Parse(Eval("Balance").ToString()).ToString("N") %></td>
+                                                <td width="10%"><%# Eval("Status").ToString() %></td>
                                             </tr>
                                     </ItemTemplate>
                                     <FooterTemplate>

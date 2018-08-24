@@ -278,10 +278,10 @@
         <elementListCompartment Id="4cd46a2f-ee2e-4857-a96b-d557e5cd296c" absoluteBounds="2.515, 5.96, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="47e00737-d84f-4917-9b4b-583b4a219bee" isExpanded="false" absoluteBounds="0.5, 5.125, 2, 0.45">
+    <classShape Id="e10a0895-9006-4147-86cf-a0dd8f8166b5" isExpanded="false" absoluteBounds="0.5, 5.125, 2, 0.45">
       <DataClassMoniker Name="/DatabaseDataContext/_invoicePaymentSalesReturn" />
       <nestedChildShapes>
-        <elementListCompartment Id="c58efbb0-71b5-4a0a-a2b1-4fadfdaf686d" absoluteBounds="0.51499999999999968, 5.5850000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e64be915-2b3c-46a6-bd65-1f94d72c607d" absoluteBounds="0.51499999999999968, 5.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

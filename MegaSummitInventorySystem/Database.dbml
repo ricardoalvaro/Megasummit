@@ -631,6 +631,7 @@
   <Table Name="dbo.[_invoicePaymentSalesReturn]" Member="_invoicePaymentSalesReturns">
     <Type Name="_invoicePaymentSalesReturn">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SalesReturnID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="CustomerID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
@@ -2309,23 +2310,6 @@
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.[_SalesReturnUpdate]" Method="_SalesReturnUpdate">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="DeliverToID" Parameter="deliverToID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="ApplyToInvoiceAmount" Parameter="applyToInvoiceAmount" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Money" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.[_SalesOrderDetailsDelete]" Method="_SalesOrderDetailsDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
@@ -2410,23 +2394,6 @@
     <Parameter Name="UnitPrice" Parameter="unitPrice" Type="System.Decimal" DbType="Money" />
     <Parameter Name="Discount" Parameter="discount" Type="System.String" DbType="VarChar(100)" />
     <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.[_SalesReturnInsert]" Method="_SalesReturnInsert">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="DeliverToID" Parameter="deliverToID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="ApplyToInvoiceAmount" Parameter="applyToInvoiceAmount" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="Balance" Parameter="balance" Type="System.Decimal" DbType="Money" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.[_SupplierDelete]" Method="_SupplierDelete">
@@ -4396,5 +4363,53 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.[_SalesReturnInsert]" Method="_SalesReturnInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="DeliverToID" Parameter="deliverToID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_SalesReturnUpdate]" Method="_SalesReturnUpdate">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="DeliverToID" Parameter="deliverToID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="PONo" Parameter="pONo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_invoicePaymentSalesReturnInsert]" Method="_invoicePaymentSalesReturnInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="SalesReturnID" Parameter="salesReturnID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_invoicePaymentSalesReturnUpdate]" Method="_invoicePaymentSalesReturnUpdate">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SalesReturnID" Parameter="salesReturnID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

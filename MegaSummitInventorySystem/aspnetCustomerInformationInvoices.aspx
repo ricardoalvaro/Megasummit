@@ -19,7 +19,7 @@
             <div class="inner">                    	
                 <div class="box-holder"> 
                     <div class="content tabular">                            	
-                        <table class="tblholder main unclickable">
+                        <table class="tblholder main unclickable" id="tblInvoices">
                             <thead>
                                 <tr>
                                     <th width="12%">Reference No.</th>
@@ -31,97 +31,25 @@
                                     <th width="10%">Balance</th>
                                 </tr>
                             </thead>
+
+                           
+
                             <tbody class="scroll">
-                            	<tr>
-                                    <td width="12%">here</td>
-                                    <td width="12%">here</td>
-                                    <td width="15%">here</td>
-                                    <td width="25%">here</td>
-                                    <td width="10%">here</td>
-                                    <td width="10%">here</td>
-                                    <td width="10%">here</td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="12%"></td>
-                                    <td width="12%"></td>
-                                    <td width="15%"></td>
-                                    <td width="25%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                    <td width="10%"></td>
-                                </tr>
+                                 <asp:Repeater runat="server" ID="repMain">
+                                <ItemTemplate>
+                            	    <tr>
+                                        <td width="12%"><%# Eval("RefNo").ToString() %></td>
+                                        <td width="12%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
+                                        <td width="15%"><%# Eval("Description").ToString() %></td>
+                                        <td width="25%"><%# Eval("Salesman").ToString() %></td>
+                                        <td width="10%"></td>
+                                        <td width="10%"><%# Decimal.Parse(Eval("TotalAmount").ToString()).ToString("N") %></td>
+                                        <td width="10%"><%# Decimal.Parse(Eval("Balance").ToString()).ToString("N") %></td>
+                                    </tr>
+                                  </ItemTemplate>
+                            </asp:Repeater>
+
+
                             </tbody>
                        </table>	
                     </div>  
@@ -138,6 +66,20 @@
             padding: 0;
         }
     </style>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            FillCustomerInvoicesDefault();
+        });
+
+        function FillCustomerInvoicesDefault() {
+            for (var i = 0; i < 50; i++) {
+                $('#tblInvoices tbody:last').append("<tr><td width='30%'></td><td width='15%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td></tr>");
+            }
+        }
+
+    </script>
 </asp:Content>
 
 
