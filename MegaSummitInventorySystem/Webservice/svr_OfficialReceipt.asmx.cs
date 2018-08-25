@@ -69,7 +69,7 @@ namespace MegaSummitInventorySystem.Webservice
 
                 if (compute > 0)
                 {
-                    ib.Add(new InvoiceBalance(_id, _refNo, _createdDate, _description, _salesman, _totalAmount, compute));
+                    ib.Add(new InvoiceBalance(_id, _refNo, _createdDate, _description, _salesman, _totalAmount, compute, int.Parse((DateTime.Now - _createdDate).Days.ToString())));
                 }
 
             }

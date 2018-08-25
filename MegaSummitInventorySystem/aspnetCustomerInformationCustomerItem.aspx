@@ -37,21 +37,15 @@
                                     <td width="10%"><%# Eval("refNo") %></td>
                                     <td width="18%"><%# DateTime.Parse(Eval("DateCreated").ToString()).ToString("MM/dd/yyyy") %></td>
                                     <td width="10%"><%# Decimal.Parse(Eval("Quantity").ToString()).ToString("N") %></td>
-                                    <td width="10%"><%# Eval("UnitName") %>UnitName</td>
+                                    <td width="10%"><%# Eval("UnitName") %></td>
                                     <td width="15%"><%# Decimal.Parse(Eval("UnitPrice").ToString()).ToString("N") %></td>
                                     <td width="10%"><%# Eval("Discount") %></td>
                                 </tr>
                             </ItemTemplate>
-  </asp:Repeater>
+                        </asp:Repeater>
                             
                                     </tbody>
                                </table>	
-                            
-                      
-                                             	
-                       
-                            	
-                           
                     </div> 
                     <div class="addup"><div class="space20"></div></div>   
                 </div>

@@ -92,7 +92,16 @@ public static class CustomerVM
     }
 
 
+}
 
 
-
+public class Customers
+{
+    public long ID { get; set; }
+    public string CustomerName { get; set; }
+    public string RegionName { get; set; }
+    public string Status { get; set; }
+    public decimal CreditLimit { get; set; }
+    public string Salesman { get; set; }
+    public decimal Balance { get; set; }
 }

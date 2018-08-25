@@ -275,7 +275,7 @@ namespace MegaSummitInventorySystem.Webservice
 
         // ------------------------------------------------------------------ Updating Product Information
         [WebMethod]
-        public bool UpdateProduct(long id,string product_picture, string product_name, string brand, string upc_sku, long product_department_id, long product_class_id, long location_id,  decimal reorder_point, decimal reorder_qty, string notes, long packing_id, long unit_id, long sub_unit_id, decimal price_a, decimal price_b, decimal price_c, decimal discount_a, decimal discount_b, decimal discount_c)
+        public string UpdateProduct(long id,string product_picture, string product_name, string brand, string upc_sku, long product_department_id, long product_class_id, long location_id,  decimal reorder_point, decimal reorder_qty, string notes, long packing_id, long unit_id, long sub_unit_id, decimal price_a, decimal price_b, decimal price_c, decimal discount_a, decimal discount_b, decimal discount_c)
         {
 
             try
@@ -285,14 +285,14 @@ namespace MegaSummitInventorySystem.Webservice
                     Database._ProductUpdate( id, product_picture, product_name, brand, upc_sku, product_department_id, product_class_id,location_id, reorder_point, reorder_qty, notes, packing_id, unit_id, sub_unit_id, price_a, price_b, price_c, discount_a, discount_b, discount_c);
 
 
-                return true;
+                    return id.ToString();
             }
             catch
             {
 
             }
 
-            return false;
+            return "0";
 
         }
 

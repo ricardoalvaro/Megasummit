@@ -129,7 +129,7 @@ function SelectSaleInvoice()
 
                 $("#reference_no option").filter(function() {return $(this).text() == data[i]["RefNo"]; }).prop('selected', true);
 
-                $('#reference_number').val(data[i]["ID"]);
+                $('#reference_number').val(data[i]["RefNoSerial"]);
 
                 $('#date').val(FormatDate(data[i]["CreatedDate"]));
                 $('#delivery_date').val(FormatDate(data[i]["DeliveryDate"]));
@@ -203,7 +203,7 @@ function SaveInvoice(me)
     {
         var pageUrl = '/Webservice/svr_Invoice.asmx';
 
-        var invoice_status = "Invoice";
+        var invoice_status = "Posted";
         var address = $('#address').val();
         var forwarder_to_id = $('#deliver_to').val();
         var salesman_id = $('#salesman').val();
@@ -340,7 +340,7 @@ function FillSalesOrder(customer_id)
                 var obj = "";
                 for (var i = 0; i < data.length; i++) {
                     //$('#tblSalesOrder tbody:last').append("<tr><td width='30%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["ProductName"] + "</div></td><td width='15%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["LocationName"] + "</div></td><td width='10%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["Quantity"] + "</div></td><td width='10%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["UnitName"] + "</div></td><td width='10%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["UnitPrice"] + "</td><td width='10%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["Discount"] + "</div></td><td width='10%'><div class='actioncClick' onclick=\"ServerdOrder('" + data[i]["ID"] + "')\">" + data[i]["Amount"] + "</div></td></tr>");
-                    $('#tblSalesOrder tbody:last').append("<tr onclick=\"FillSalesInvoiceDetail('" + data[i]["ID"] + "')\"><td width='30%'>" + data[i]["ProductName"] + "</td><td width='15%'>" + data[i]["LocationName"] + "</td><td width='10%'>" + data[i]["Quantity"] + "</td><td width='10%'>" + data[i]["UnitName"] + "</td><td width='10%'>" + data[i]["UnitPrice"] + "</td><td width='10%'>" + data[i]["Discount"] + "</td><td width='10%'>" + data[i]["Amount"] + "</td></tr>");
+                    $('#tblSalesOrder tbody:last').append("<tr onclick=\"FillSalesInvoiceDetail('" + data[i]["ID"] + "')\"><td width='30%'>" + data[i]["ProductName"] + "</td><td width='15%'>" + data[i]["LocationName"] + "</td><td width='10%'>" + data[i]["Balance"] + "</td><td width='10%'>" + data[i]["UnitName"] + "</td><td width='10%'>" + data[i]["UnitPrice"] + "</td><td width='10%'>" + data[i]["Discount"] + "</td><td width='10%'>" + data[i]["Amount"] + "</td></tr>");
                 }
 
                 FillSalesOrderDefault();
@@ -447,6 +447,9 @@ function GetProductDetails(product_id, me)
             $(me).closest("tr").find(".price").val(data[i]["Cost"]);
             $(me).closest("tr").find(".product_id").val(product_id);
             $(me).closest("tr").find(".unit").val(data[i]["UnitName"]);
+
+            $(me).closest("tr").find(".location").val(data[i]["LocationName"]);
+            $(me).closest("tr").find(".location_id").val(data[i]["LocationID"]);
 
             var pack = PackingData;
             for (var x = 0; x < pack.length; x++) {

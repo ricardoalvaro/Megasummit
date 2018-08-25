@@ -364,5 +364,14 @@ namespace MegaSummitInventorySystem.Webservice
 
         }
 
+
+        [WebMethod]
+        public string UpdateSalesOrderStatus(long id)//closed status
+        {
+            Database._SalesOrderUpdateStatus(id);
+
+            return id.ToString();
+        }
+
     }
 }

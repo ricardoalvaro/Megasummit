@@ -348,6 +348,8 @@ function GetProductDetails(product_id, me) {
             $(me).closest("tr").find(".price").val(data[i]["Cost"]);
             $(me).closest("tr").find(".product_id").val(product_id);
             $(me).closest("tr").find(".unit").val(data[i]["UnitName"]);
+            $(me).closest("tr").find(".location").val(data[i]["LocationName"]);
+            $(me).closest("tr").find(".location_id").val(data[i]["LocationID"]);
 
         }
     }

@@ -9,9 +9,9 @@
             <div class="ym-wbox"> 
        <uc1:CustomerSubMenuAjax ID="CustomerSubMenuAjax1" class="nopad" runat="server" />
   <ul class="suboptions">
-            <li class="active"><a href="#" onclick="DisplayData('All')">All</a></li>
-            <li><a href="#" onclick="DisplayData('Posted')">Posted</a></li>
-            <li><a href="#" onclick="DisplayData('Closed')">Closed</a></li>
+            <li><a href="javascript:void(0)" onclick="DisplayData('All')">All</a></li>
+            <li><a href="javascript:void(0)" onclick="DisplayData('Posted')">Posted</a></li>
+            <li><a href="javascript:void(0)" onclick="DisplayData('Closed')">Closed</a></li>
         </ul>
         <div class="container one-column">
             <div class="inner">                    	

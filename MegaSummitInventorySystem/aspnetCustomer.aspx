@@ -44,8 +44,8 @@
                                                 <td width="15%"><%# Eval("RegionName") %></td>
                                                 <td width="10%"><%# Eval("Status") %></td>
                                                 <td width="10%"><%# decimal.Parse(Eval("CreditLimit").ToString()).ToString("N") %></td>
-                                                <td width="10%"><%# Eval("EmployeeName") %></td>
-                                                <td width="10%">0</td>
+                                                <td width="10%"><%# Eval("Salesman") %></td>
+                                                <td width="10%"><%# decimal.Parse(Eval("Balance").ToString()).ToString("N") %> </td>
                                             </tr>
                                 </ItemTemplate>
                                 <FooterTemplate>

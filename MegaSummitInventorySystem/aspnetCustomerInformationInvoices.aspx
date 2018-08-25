@@ -11,9 +11,9 @@
        <uc1:CustomerSubMenuAjax ID="CustomerSubMenuAjax1" class="nopad" runat="server" />
   
             <ul class="suboptions">
-            <li class="active"><a href="#suboption-all">All</a></li>
-            <li><a href="#suboption-paid">Paid</a></li>
-            <li><a href="#suboption-unpaid">Unpaid</a></li>
+            <li><a href="javascript:void(0)" onclick="AllInvoices()">All</a></li>
+            <li><a href="javascript:void(0)" onclick="PaidInvoices()">Paid</a></li>
+            <li><a href="javascript:void(0)" onclick="UnpaidInvoices()">Unpaid</a></li>
         </ul>
         <div class="container one-column">
             <div class="inner">                    	
@@ -42,7 +42,7 @@
                                         <td width="12%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
                                         <td width="15%"><%# Eval("Description").ToString() %></td>
                                         <td width="25%"><%# Eval("Salesman").ToString() %></td>
-                                        <td width="10%"></td>
+                                        <td width="10%"><%# (DateTime.Now - DateTime.Parse(Eval("CreatedDate").ToString())  ).Days %></td>
                                         <td width="10%"><%# Decimal.Parse(Eval("TotalAmount").ToString()).ToString("N") %></td>
                                         <td width="10%"><%# Decimal.Parse(Eval("Balance").ToString()).ToString("N") %></td>
                                     </tr>
@@ -78,6 +78,52 @@
                 $('#tblInvoices tbody:last').append("<tr><td width='30%'></td><td width='15%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td></tr>");
             }
         }
+
+
+        function AllInvoices()
+        {
+            var data = CustomerData;
+            $('#tblInvoices tbody').empty();
+            for (var i = 0; i < data.length; i++) {
+                $('#tblInvoices tbody:last').append("<tr><td width='12%'>" + data[i]['RefNo']+ "</td><td width='12%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='15%'>" + data[i]['Description']+ "</td><td width='25%'>" + data[i]['Salesman']+ "</td><td width='10%'>" + data[i]['NoOfDays']+ "</td><td width='10%'>" + Number(data[i]['TotalAmount']).toFixed(2) + "</td><td width='10%'>" + Number(data[i]['Balance']).toFixed(2) + "</td></tr>");
+            }
+
+            FillCustomerInvoicesDefault();
+
+        }
+
+        function PaidInvoices(me)
+        {
+
+            var data = CustomerData;
+            $('#tblInvoices tbody').empty();
+            for (var i = 0; i < data.length; i++) {
+
+                if(Number(data[i]['Balance']) == 0)
+                {
+                    $('#tblInvoices tbody:last').append("<tr><td width='12%'>" + data[i]['RefNo']+ "</td><td width='12%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='15%'>" + data[i]['Description']+ "</td><td width='25%'>" + data[i]['Salesman']+ "</td><td width='10%'>" + data[i]['NoOfDays']+ "</td><td width='10%'>" + Number(data[i]['TotalAmount']).toFixed(2) + "</td><td width='10%'>" + Number(data[i]['Balance']).toFixed(2) + "</td></tr>");
+                }
+            }
+
+            FillCustomerInvoicesDefault();
+        }
+
+        function UnpaidInvoices()
+        {
+            var data = CustomerData;
+            $('#tblInvoices tbody').empty();
+            for (var i = 0; i < data.length; i++) {
+
+                if(Number(data[i]['Balance']) > 0)
+                {
+                    $('#tblInvoices tbody:last').append("<tr><td width='12%'>" + data[i]['RefNo']+ "</td><td width='12%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='15%'>" + data[i]['Description']+ "</td><td width='25%'>" + data[i]['Salesman']+ "</td><td width='10%'>" + data[i]['NoOfDays']+ "</td><td width='10%'>" + Number(data[i]['TotalAmount']).toFixed(2) + "</td><td width='10%'>" + Number(data[i]['Balance']).toFixed(2) + "</td></tr>");
+                }
+            }
+
+            FillCustomerInvoicesDefault();
+        }
+
+        var CustomerData = <%= CustomerData(long.Parse( (Request["customerID"] == null ? "0" : Request["customerID"])  )) %>;
 
     </script>
 </asp:Content>

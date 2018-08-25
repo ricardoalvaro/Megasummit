@@ -33,6 +33,34 @@ $(document).ready(function () {
     SelectSaleOrder();
 });
 
+
+function CloseStatus()
+{
+    if (SalesOrderID > 0)
+    {
+      
+        var pageUrl = '/Webservice/svr_SalesOrder.asmx';
+
+        $.ajax({
+            type: "POST",
+            url: pageUrl + "/UpdateSalesOrderStatus",
+            data: "{'id' :'" + SalesOrderID + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            crossdomain: true,
+            success: function (response) {
+
+                window.location = "aspnetSalesOrder.aspx?salesOrderID=" + response.d;
+                //alert(response.d);
+
+            },
+            error: function (response) {
+                alert(response.status);
+            }
+        });
+    }
+}
+
 function SelectSaleOrder() {
     if (SalesOrderID > 0) {
 
@@ -250,6 +278,8 @@ function GenerateDynamicAutoComplete() {
 
         $(this).find(".discount").change(function () { ComputeComponentAmount(this); });
 
+        $(this).find(".price").change(function () { ComputeComponentAmount(this); });
+
         $(this).find(".served").change(function () { ComputeComponentAmount(this); });
     });
 }
@@ -273,8 +303,10 @@ function GetProductDetails(product_id, me) {
 
             $(me).closest("tr").find(".price").val(data[i]["Cost"]);
             $(me).closest("tr").find(".product_id").val(product_id);
-            $(me).closest("tr").find(".unit").val(data[i]["UnitName"]);
-
+            $(me).closest("tr").find(".unit").val(data[i]["UnitName"]);           
+            $(me).closest("tr").find(".location").val(data[i]["LocationName"]).trigger('change');
+            $(me).closest("tr").find(".location_id").val(data[i]["LocationID"]);
+            
         }
     }
 }

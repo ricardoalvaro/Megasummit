@@ -35,7 +35,7 @@ namespace MegaSummitInventorySystem
                 long _id = i.ID;
                 string _refNo = i.RefNo;
                 DateTime _createdDate = i.CreatedDate.Value;
-                string _description = "Sales";
+                string _description = i.InvoiceStatus;
                 string _salesman = i.Salesman;
                 decimal _totalAmount = i.TotalAmount;
                 string _customerName = i.CustomerName;

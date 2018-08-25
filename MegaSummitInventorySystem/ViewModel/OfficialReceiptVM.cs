@@ -227,7 +227,7 @@ public class InvoiceBalance
     public decimal TotalAmount { get; set; }
     public decimal Balance { get; set; }
     public string Status { get; set; }
-
+    public int NoOfDays { get; set; }
   
 
     public InvoiceBalance()
@@ -235,7 +235,7 @@ public class InvoiceBalance
  
     }
 
-    public InvoiceBalance(long _id, string _refNo, DateTime _createdDate, string _description, string _salesman, decimal _totalAmount, decimal _balance)
+    public InvoiceBalance(long _id, string _refNo, DateTime _createdDate, string _description, string _salesman, decimal _totalAmount, decimal _balance, int _noOfDays)
     {
         ID = _id;
         RefNo = _refNo;
@@ -244,6 +244,7 @@ public class InvoiceBalance
         Salesman = _salesman;
         TotalAmount = _totalAmount;
         Balance = _balance;
+        NoOfDays = _noOfDays;
     }
 
 
