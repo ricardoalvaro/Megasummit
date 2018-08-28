@@ -63,7 +63,7 @@
                                         <img src="image/megasummit.jpg" alt="Megasummit"></a></li>
                                     <li class="" id="iCompany"><a href="aspnetCompany.aspx" class="item company " onclick="companyClick();">Company</a></li>
                                     <li class="" id="iCustomer"><a href="aspnetCustomer.aspx" class="item customers" onclick="customerClick();">Customer</a></li>
-                                    <li class="" id="iSupplier"><a href="aspnetSuppliers.aspx" class="item suppliers" onclick="supplierClick();">Suppliers</a></li>
+                                    <li class="" id="iSupplier"><a href="aspnetSupplier.aspx" class="item suppliers" onclick="supplierClick();">Suppliers</a></li>
                                     <%--<li class=""><a href="http://localhost:8181/megasummit/suppliers/suppliers/" class="item suppliers">Suppliers</a></li>--%>
                                     <li class="" id="iEmployee"><a href="aspnetEmployee.aspx" class="item employees" onclick="employeeClick();">Employees</a></li>
                                     <li class="" id="iProduct"><a href="aspnetProduct.aspx" class="item products" onclick="productClick();">Products</a></li>

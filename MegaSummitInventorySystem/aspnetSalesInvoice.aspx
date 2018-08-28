@@ -351,14 +351,14 @@
                                                                                         <td><input type="text" id="spnSubTotal" value="0.00" style="width: 100%;border: 1px solid transparent;text-align: right;color: #8c8686;"/></td>
                                                                                         <td><a href="#" class="view btnlink">
                                                                                             <img src="http://localhost:8181/megasummit/images/buttons/payment.png" width="71" height="20" alt="Payment" /></a></td>
-                                                                                        <td>0.00</td>
+                                                                                        <td><span id="spnPayment">0.00</span> </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td>Tax</td>
                                                                                         <td><span id="spnTax"></span></td>
                                                                                         <td><a href="#" class="form btnlink">
                                                                                             <img src="http://localhost:8181/megasummit/images/buttons/memo.png" width="71" height="20" alt="Memo" /></a></td>
-                                                                                        <td>0.00</td>
+                                                                                        <td><span id="spnSalesReturn">0.00</span></td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td><a href="#" class="form btnlink">

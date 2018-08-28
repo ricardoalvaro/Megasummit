@@ -171,7 +171,7 @@ namespace MegaSummitInventorySystem.Webservice
                     if (!string.IsNullOrEmpty(l))
                     {
                         string[] p = l.Split(',');
-                        long sale_order_id = long.Parse(p[0]);
+                       
                         string productID = p[2];
                         string locationID = p[4];
 
@@ -190,6 +190,7 @@ namespace MegaSummitInventorySystem.Webservice
                         }
                         else
                         {
+                            long sale_order_id = long.Parse(p[0]);
                             Database._SalesOrderDetailsUpdate(sale_order_id , id, product.ID, location.ID, qty, served, product.UnitID, price, discount, amount);
                         }
 

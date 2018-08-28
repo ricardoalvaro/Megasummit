@@ -5,7 +5,8 @@
 
 var CustomerID = 0;
 
-$(document).ready(function () {
+$(document).ready(function ()
+{
 
     Fill();
     var helper = new Helper();

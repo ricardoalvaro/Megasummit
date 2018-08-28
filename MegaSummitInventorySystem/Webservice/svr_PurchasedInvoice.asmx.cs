@@ -378,13 +378,13 @@ namespace MegaSummitInventorySystem.Webservice
 
         // --------------------------------------------------------------- Purchase Insert
         [WebMethod]
-        public string InsertPurchasedInvoice(long supplierID,string address,long deliveryToID,string salesman,string poNo,long termID,string refNo,string refNoSerial,DateTime createdDate,DateTime cancelDate,decimal subTotal,decimal paymentAmt,decimal memoAmt,string notes, string productList)
+        public string InsertPurchasedInvoice(long supplierID,string address,long deliveryToID,long salesman,string poNo,long termID,string refNo,string refNoSerial,DateTime createdDate,string cancelDate,decimal subTotal,string notes, string productList)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._PurchasedInvoiceInsert(ref id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes, "Invoice");
+                Database._PurchasedInvoiceInsert(ref id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, notes, "Purchase Invoice", "Posted");
 
 
                 string[] lines = productList.Split('^');
@@ -395,22 +395,22 @@ namespace MegaSummitInventorySystem.Webservice
                     {
                         string[] p = l.Split(',');
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        string productID = p[2];
+                        string locationID = p[4];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
                         var supplierName = Database._Suppliers.SingleOrDefault(x => x.ID == supplierID);
 
-                        decimal qty = decimal.Parse(p[2]);
-                        decimal price = decimal.Parse(p[4]);
-                        string discount = p[5];
-                        decimal amount = decimal.Parse(p[6]);
-                        decimal bonus = decimal.Parse(p[8]);
+                        decimal qty = decimal.Parse(p[5]);
+                        decimal price = decimal.Parse(p[8]);
+                        string discount = p[9];
+                        decimal amount = decimal.Parse(p[10]);
+                        decimal bonus = decimal.Parse(p[6]);
 
-                        if (p[7] != " " && p[7] != null && p[7] != "")
+                        if (p[0] != null && p[0].Trim() != "")
                         {
-                            Database._PurchasedOrderDetailsServedUpdate(long.Parse(p[7]), qty);
+                            Database._PurchasedOrderDetailsServedUpdate(long.Parse(p[0]), qty);
                         }
 
                         long? refID = 0;
@@ -549,12 +549,12 @@ namespace MegaSummitInventorySystem.Webservice
 
         // --------------------------------------------------------------- Purchased Update
         [WebMethod]
-        public bool UpdatePurchasedInvoice(long id, long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, DateTime cancelDate, decimal subTotal, decimal paymentAmt, decimal memoAmt, string notes, string productList)
+        public bool UpdatePurchasedInvoice(long id, long supplierID, string address, long deliveryToID, long salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, string cancelDate, decimal subTotal, string notes, string productList)
         {
             try
             {
                 Database = new DatabaseDataContext();
-                Database._PurchasedInvoiceUpdate( id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes);
+                Database._PurchasedInvoiceUpdate(id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, notes, "Purchase Invoice", "Posted");
 
                 #region Decreasing Stocks
                 var dataPurchaseProduct = Database._PurchasedInvoiceDetails.Where(x => x.PurchasedID == id);

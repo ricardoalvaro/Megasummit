@@ -63,7 +63,7 @@ namespace MegaSummitInventorySystem.Webservice
                 Database = new DatabaseDataContext();
                 var data = Database._ProductSelect(id, product_name);
 
-                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.None);
             }
             catch
             {

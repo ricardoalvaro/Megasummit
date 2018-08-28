@@ -123,13 +123,13 @@ namespace MegaSummitInventorySystem.Webservice
 
         // ------------------------------------------------------------------- Inserting Purchased Order
         [WebMethod]
-        public bool InsertPurchasedOrder(string purchasedOrderStatus,long supplierID,string address,long deliveryToID,string salesman,string poNo,long termID,string refNo,string refNoSerial,DateTime createdDate,DateTime cancelDate,string notes,decimal totalAmount,decimal totalServed,decimal balance, string productList)
+        public long InsertPurchasedOrder(string purchasedOrderStatus,long supplierID,string address,long deliveryToID,long salesman,string poNo,long termID,string refNo,string refNoSerial,DateTime createdDate,string cancelDate,string notes,decimal totalAmount,decimal totalServed, string productList)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._PurchasedOrderInsert(ref id, purchasedOrderStatus, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, notes, totalAmount, totalServed, balance);
+                Database._PurchasedOrderInsert(ref id, purchasedOrderStatus, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, notes, totalAmount, totalServed);
 
                 string[] lines = productList.Split('^');
 
@@ -139,23 +139,25 @@ namespace MegaSummitInventorySystem.Webservice
                     {
                         string[] p = l.Split(',');
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        string productID = p[2];
+                        string locationID = p[4];
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
 
-                        decimal qty = decimal.Parse(p[2]);
-                        decimal price = decimal.Parse(p[5]);
-                        string discount = p[6];
-                        decimal amount = decimal.Parse(p[7]);
-                        decimal bonus = decimal.Parse(p[8]);
+
+                        decimal qty = decimal.Parse(p[5]);
+                        decimal bonus = decimal.Parse(p[6]);
+                        decimal served = decimal.Parse(p[7]);
+                        decimal price = decimal.Parse(p[9]);
+                        string discount = p[10];
+                        decimal amount = decimal.Parse(p[11]);
 
                         long? refID = 0;
-                        Database._PurchasedOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, bonus, 0, product.UnitID, price, discount, amount);
+                        Database._PurchasedOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, bonus, served, product.UnitID, price, discount, amount);
                     }
                 }
-                return true;
+                return id.Value;
             }
             catch (Exception)
             {
@@ -163,7 +165,7 @@ namespace MegaSummitInventorySystem.Webservice
 
             }
 
-            return false;
+            return 0;
         }
 
         #endregion
@@ -172,14 +174,12 @@ namespace MegaSummitInventorySystem.Webservice
 
         // ------------------------------------------------------------------- Updating Purchased Order
         [WebMethod]
-        public bool UpdatePurchasedOrder(long id, string purchasedOrderStatus, long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, DateTime cancelDate, string notes, decimal totalAmount, decimal totalServed, decimal balance, string productList)
+        public long UpdatePurchasedOrder(long id, string purchasedOrderStatus, long supplierID, string address, long deliveryToID, long salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, string cancelDate, string notes, decimal totalAmount, decimal totalServed, string productList)
         {
             try
             {
                 Database = new DatabaseDataContext();
-                Database._PurchasedOrderUpdate(id, purchasedOrderStatus, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, notes, totalAmount, totalServed, balance);
-
-                Database._PurchasedOrderDetailsDeleteByPurchase(id);
+                Database._PurchasedOrderUpdate(id, purchasedOrderStatus, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, notes, totalAmount, totalServed);
 
                 string[] lines = productList.Split('^');
 
@@ -188,25 +188,36 @@ namespace MegaSummitInventorySystem.Webservice
                     if (!string.IsNullOrEmpty(l))
                     {
                         string[] p = l.Split(',');
+                      
+                        string productID = p[2];
+                        string locationID = p[4];
 
-                        string productCode = p[0];
-                        string locationCode = p[1];
+                        var product = Database._Products.SingleOrDefault(x => x.ID == long.Parse(productID));
+                        var location = Database._Locations.SingleOrDefault(x => x.ID == long.Parse(locationID));
 
-                        var product = Database._Products.SingleOrDefault(x => x.ProductName == productCode);
-                        var location = Database._Locations.SingleOrDefault(x => x.LocationName == locationCode);
 
-                        decimal qty = decimal.Parse(p[2]);
-                        decimal price = decimal.Parse(p[5]);
-                        string discount = p[6];
-                        decimal amount = decimal.Parse(p[7]);
-                        decimal bonus = decimal.Parse(p[8]);
+                        decimal qty = decimal.Parse(p[5]);
+                        decimal bonus = decimal.Parse(p[6]);
+                        decimal served = decimal.Parse(p[7]);
+                        decimal price = decimal.Parse(p[9]);
+                        string discount = p[10];
+                        decimal amount = decimal.Parse(p[11]);
 
-                        long? refID = 0;
-                        Database._PurchasedOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, bonus, 0, product.UnitID, price, discount, amount);
+                        if (p[0] == "0")
+                        {
+                            long? refID = 0;
+                            Database._PurchasedOrderDetailsInsert(ref refID, id, product.ID, location.ID, qty, bonus, served, product.UnitID, price, discount, amount);
+                        }
+                        else
+                        {
+                            long sale_order_id = long.Parse(p[0]);
+                            Database._PurchasedOrderDetailsUpdate(sale_order_id, product.ID, location.ID, qty, bonus, served, product.UnitID, price, discount, amount);
+                        }
+
                     }
                 }
 
-                return true;
+                return id;
             }
             catch (Exception)
             {
@@ -214,7 +225,14 @@ namespace MegaSummitInventorySystem.Webservice
 
             }
 
-            return false;
+            return 0;
+        }
+
+        [WebMethod]
+        public long UpdatePurchasedOrderStatus(long id)
+        {
+            Database._PurchasedOrderClosedStatus(id);
+            return id;
         }
 
         #endregion

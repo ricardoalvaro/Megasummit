@@ -22,30 +22,30 @@ namespace MegaSummitInventorySystem.Webservice
         private DatabaseDataContext Database = new DatabaseDataContext();
 
         [WebMethod]
-        public bool InsertSupplier(string supplier_name, string address, string contact_person, long region_province, long municipality, string business_phone1, string business_phone2, string fax, string mobile_phone, string notes, string reference_initial, string tin_number, string vat_number, string salesman, long terms)
+        public long InsertSupplier(string supplier_name, string address, string contact_person, long region_province, long municipality, string business_phone1, string business_phone2, string fax, string mobile_phone, string notes, string reference_initial, string tin_number, string vat_number, string salesman, long terms)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
                 Database._SupplierInsert(ref id, supplier_name, address, contact_person, region_province, municipality, business_phone1, business_phone2, fax, mobile_phone, notes, reference_initial, tin_number, vat_number, salesman, terms);
-                return true;
+                return id.Value;
             }
             catch (Exception)
             {
             }
 
-            return false;
+            return 0;
         }
 
         [WebMethod]
-        public bool UpdateSupplier(long id, string supplier_name, string address, string contact_person, long region_province, long municipality, string business_phone1, string business_phone2, string fax, string mobile_phone, string notes, string reference_initial, string tin_number, string vat_number, string salesman, long terms)
+        public long UpdateSupplier(long id, string supplier_name, string address, string contact_person, long region_province, long municipality, string business_phone1, string business_phone2, string fax, string mobile_phone, string notes, string reference_initial, string tin_number, string vat_number, string salesman, long terms)
         {
             try
             {
                 Database = new DatabaseDataContext();
                 Database._SupplierUpdate(id, supplier_name, address, contact_person, region_province, municipality, business_phone1, business_phone2, fax, mobile_phone, notes, reference_initial, tin_number, vat_number, salesman, terms);
-                return true;
+                return id;
             }
             catch (Exception)
             {
@@ -53,7 +53,7 @@ namespace MegaSummitInventorySystem.Webservice
 
             }
 
-            return false;
+            return 0;
         }
 
         [WebMethod]
@@ -342,110 +342,111 @@ namespace MegaSummitInventorySystem.Webservice
         }
 
         // --------------------------------------------------------------- Purchase Insert
-        [WebMethod]
-        public string InsertPurchasedInvoice(long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, DateTime cancelDate, decimal subTotal, decimal paymentAmt, decimal memoAmt, string notes, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
-        {
-            try
-            {
-                long? id = 0;
-                if (subTotal != 0)
-                {
-                    Database = new DatabaseDataContext();
-                    Database._PurchasedInvoiceInsert(ref id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes, "OpeningBalance");
+        //[WebMethod]
+        //public string InsertPurchasedInvoice(long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, DateTime cancelDate, decimal subTotal, decimal paymentAmt, decimal memoAmt, string notes, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
+        //{
+        //    try
+        //    {
+        //        long? id = 0;
+        //        if (subTotal != 0)
+        //        {
+        //            Database = new DatabaseDataContext();
+        //            Database._PurchasedInvoiceInsert(ref id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes, "OpeningBalance");
 
-                    if (balance != string.Empty && balance != "" && balance != " ")
-                    {
+        //            if (balance != string.Empty && balance != "" && balance != " ")
+        //            {
 
-                        decimal totalPaid = subTotal - decimal.Parse(balance);
+        //                decimal totalPaid = subTotal - decimal.Parse(balance);
 
-                        long? refID = 0;
-                        long? refID2 = 0;
-                        Database = new DatabaseDataContext();
-                        Database._PurchasedPaymentReferenceInsert(ref refID, id, "0", totalPaid, true);
-                        Database._PurchasedPaymentInsert(ref refID2, id, refID, totalPaid);
+        //                long? refID = 0;
+        //                long? refID2 = 0;
+        //                Database = new DatabaseDataContext();
+        //                Database._PurchasedPaymentReferenceInsert(ref refID, id, "0", totalPaid, true);
+        //                Database._PurchasedPaymentInsert(ref refID2, id, refID, totalPaid);
 
-                    }
+        //            }
 
-                }
+        //        }
 
-                #region Save Payment
-                if (checkID == 0)
-                {
-                    if (checkAmount != 0)
-                    {
-                        long? checkrefID = 0;
-                        Database._OpeningBalanceSupplierrCheckInsert(ref checkrefID, supplierID, bank_name, check_number, checkDate, checkt, checkAmount);
-                    }
-                }
-                else
-                {
-                    Database._OpeningBalanceSupplierCheckUpdate(checkID, bank_name, check_number, checkDate, checkt, checkAmount);
-                }
-                #endregion
-
-
-
-                return id.ToString();
-            }
-            catch (Exception)
-            {
+        //        #region Save Payment
+        //        if (checkID == 0)
+        //        {
+        //            if (checkAmount != 0)
+        //            {
+        //                long? checkrefID = 0;
+        //                Database._OpeningBalanceSupplierrCheckInsert(ref checkrefID, supplierID, bank_name, check_number, checkDate, checkt, checkAmount);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Database._OpeningBalanceSupplierCheckUpdate(checkID, bank_name, check_number, checkDate, checkt, checkAmount);
+        //        }
+        //        #endregion
 
 
-            }
 
-            return "0";
-        }
+        //        return id.ToString();
+        //    }
+        //    catch (Exception)
+        //    {
+
+
+        //    }
+
+        //    return "0";
+        //}
 
         // --------------------------------------------------------------- Purchased Update
-        [WebMethod]
-        public bool UpdatePurchasedInvoice(long id, long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, DateTime cancelDate, decimal subTotal, decimal paymentAmt, decimal memoAmt, string notes, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
-        {
-            try
-            {
-                Database = new DatabaseDataContext();
-                Database._PurchasedInvoiceUpdate(id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes);
+        //[WebMethod]
+        //public bool UpdatePurchasedInvoice(long id, long supplierID, string address, long deliveryToID, string salesman, string poNo, long termID, string refNo, string refNoSerial, DateTime createdDate, string cancelDate, decimal subTotal,  string notes, string balance, long bank_name, string check_number, DateTime checkDate, string checkt, decimal checkAmount, long checkID)
+        //{
+        //    try
+        //    {
+        //        Database = new DatabaseDataContext();
+        //        Database._PurchasedInvoiceUpdate(id, supplierID, address, deliveryToID, salesman, poNo, termID, refNo, refNoSerial, createdDate, cancelDate, subTotal, paymentAmt, memoAmt, notes);
 
-                if (balance != string.Empty && balance != "" && balance != " ")
-                {
+        //        if (balance != string.Empty && balance != "" && balance != " ")
+        //        {
 
-                    decimal totalPaid = subTotal - decimal.Parse(balance);
+        //            decimal totalPaid = subTotal - decimal.Parse(balance);
 
-                    //long? refID = 0;
-                    //long? refID2 = 0;
-                    //Database = new DatabaseDataContext();
-                    //Database._PurchasedPaymentReferenceInsert(ref refID, id, "0", totalPaid, true);
-                    //Database._PurchasedPaymentInsert(ref refID2, id, refID, totalPaid);
+        //            //long? refID = 0;
+        //            //long? refID2 = 0;
+        //            //Database = new DatabaseDataContext();
+        //            //Database._PurchasedPaymentReferenceInsert(ref refID, id, "0", totalPaid, true);
+        //            //Database._PurchasedPaymentInsert(ref refID2, id, refID, totalPaid);
 
-                }
+        //        }
 
-                #region Save Payment
-                if (checkID == 0)
-                {
-                    if (checkAmount != 0)
-                    {
-                        long? checkrefID = 0;
-                        Database._OpeningBalanceSupplierrCheckInsert(ref checkrefID, supplierID, bank_name, check_number, checkDate, checkt, checkAmount);
-                    }
-                }
-                else
-                {
-                    Database._OpeningBalanceSupplierCheckUpdate(checkID, bank_name, check_number, checkDate, checkt, checkAmount);
-                }
-                #endregion
-
-
-                return true;
-            }
-            catch (Exception)
-            {
+        //        #region Save Payment
+        //        if (checkID == 0)
+        //        {
+        //            if (checkAmount != 0)
+        //            {
+        //                long? checkrefID = 0;
+        //                Database._OpeningBalanceSupplierrCheckInsert(ref checkrefID, supplierID, bank_name, check_number, checkDate, checkt, checkAmount);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Database._OpeningBalanceSupplierCheckUpdate(checkID, bank_name, check_number, checkDate, checkt, checkAmount);
+        //        }
+        //        #endregion
 
 
-            }
+        //        return true;
+        //    }
+        //    catch (Exception)
+        //    {
 
-            return false;
-        }
+
+        //    }
+
+        //    return false;
+        //}
 
         
 
     }
 }
+

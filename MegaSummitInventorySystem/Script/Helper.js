@@ -22,9 +22,11 @@
 
     this.ActivateMenu = function ()
     {
+       
         $(function () {
             var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
 
+            
             if (pgurl == "aspnetCompany-Summary.aspx" ||
                 pgurl == "aspnetCompany-Calendar.aspx" || 
                 pgurl == "aspnetCompany-Defaults-Customer.aspx" ||
@@ -64,20 +66,24 @@
            
           
 
-            if (pgurl == "aspnetCustomer.aspx" ||
-                pgurl == "aspnetCustomerMemo.aspx" ||
-                pgurl == "aspnetCustomerOfficialReceipt.aspx" ||
-                pgurl == "aspnetCustomerSales.aspx" ||
-                pgurl == "aspnetCustomerSalesOrder.aspx" ||
-                pgurl == "aspnetCustomerSalesReturn.aspx" ||
-                pgurl == "aspnetSuppliers.aspx" ||
-                pgurl == "aspnetSuppliersMemo.aspx" ||
-                pgurl == "aspnetSuppliersPurchase.aspx" ||
-                pgurl == "aspnetSuppliersPurchaseOrder.aspx" ||
-                pgurl == "aspnetSuppliersPurchaseReturn.aspx" ||
-                pgurl == "aspnetSuppliersVoucher.aspx"
+            if (pgurl.indexOf("aspnetCustomer.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformation.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformationCustomerItem.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformationSalesOrder.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformationInvoices.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformationPayment.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerInformationMemo.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSales.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSalesInvoice.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSalesReturn.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSalesReturnInformation.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSalesOrder.aspx") >= 0 ||
+                pgurl.indexOf("aspnetSalesOrderInformation.aspx") >= 0 ||
+                pgurl.indexOf("aspnetOfficialReceipt.aspx") >= 0 ||
+                pgurl.indexOf("aspnetCustomerMemo.aspx") >= 0 
                 ) {
                 $("#iCustomer").addClass("active");
+                
             }
 
 
@@ -87,10 +93,15 @@
             }
 
 
-            else if (pgurl == "aspnetProduct.aspx" ||
-                     pgurl == "aspnetProductPreorder.aspx" ||
-                     pgurl == "aspnetProductAssembly.aspx" ||
-                     pgurl == "aspnetProductsAdjustment.aspx"
+            else if (pgurl.indexOf("aspnetProduct.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductInformation.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductInformationStockCard.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductInformationCustomerItem.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductInformationSupplierItem.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductInformationLocation.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductPreOrder.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductAssembly.aspx") >= 0 ||
+                pgurl.indexOf("aspnetProductAdjustment.aspx") >= 0 
                 ) {
                 $("#iProduct").addClass("active");
             }

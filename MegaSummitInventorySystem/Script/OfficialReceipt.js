@@ -204,8 +204,6 @@ function FillCustomerAutoComplete() {
 }
 
 
-
-
 function FillCustomerDetails(customer_id) {
 
     //load OR raise in this customer
@@ -216,6 +214,32 @@ function FillCustomerDetails(customer_id) {
     //------invoice look up-------
     //sales return
     //official receipt
+}
+
+function FillCustomer(customer_id) {
+    var pageUrl = '/Webservice/svr_OfficialReceipt.asmx';
+
+    $.ajax({
+        type: "POST", url: pageUrl + "/GetOfficialReceiptCustomer", data: "{'id':'0', 'customer_id':'" + customer_id + "' }",
+        contentType: "application/json; charset=utf-8", dataType: "json", crossdomain: true,
+        success: function (response) {
+
+            $('#ulCustomer').empty();
+            var data = eval(response.d);
+            for (var i = 0; i < data.length; i++) {
+
+                $('#customer').val(data[i]['CustomerName']);
+
+                $("#ulCustomer").append(ListOfficialReceipt(data[i]["ID"], data[i]['CustomerName'], data[i]['RefNo'], data[i]['TotalAmount']));
+            }
+
+            for (var i = 0; i < 20; i++) {
+                $("#ulCustomer").append("<li><a href='javascript:void(0);'  id='item-1' ><span class='name'>&nbsp;<span class='ym-clearfix'><span class='float-left'>&nbsp;</span><span class='float-right'>&nbsp;</span></span></span></a></li>");
+            }
+        },
+        error: function (response) {
+        }
+    });
 }
 
 function FillInvoiceList(customer_id) {
@@ -249,6 +273,8 @@ function FillInvoiceList(customer_id) {
 
 
 }
+
+
 
 function ApplyToAllCheck(me) {
 
@@ -353,31 +379,7 @@ function ListInvoiceFormat(invoice_id, ref_no, date, description, salesman, bala
 }
 
 
-function FillCustomer(customer_id) {
-    var pageUrl = '/Webservice/svr_OfficialReceipt.asmx';
 
-    $.ajax({
-        type: "POST", url: pageUrl + "/GetOfficialReceiptCustomer", data: "{'id':'0', 'customer_id':'" + customer_id + "' }",
-        contentType: "application/json; charset=utf-8", dataType: "json", crossdomain: true,
-        success: function (response) {
-
-            $('#ulCustomer').empty();
-            var data = eval(response.d);
-            for (var i = 0; i < data.length; i++) {
-
-                $('#customer').val(data[i]['CustomerName']);
-
-                $("#ulCustomer").append(ListOfficialReceipt(data[i]["ID"], data[i]['CustomerName'], data[i]['RefNo'], data[i]['TotalAmount']));
-            }
-
-            for (var i = 0; i < 20; i++) {
-                $("#ulCustomer").append("<li><a href='javascript:void(0);'  id='item-1' ><span class='name'>&nbsp;<span class='ym-clearfix'><span class='float-left'>&nbsp;</span><span class='float-right'>&nbsp;</span></span></span></a></li>");
-            }
-        },
-        error: function (response) {
-        }
-    });
-}
 
 function ListOfficialReceipt(official_receipt_id, customer_name, ref_no, amount) {
     return "<li><a href='javascript:void(0);'  id='item-1' onclick=\"SelectOfficialReceipt('" + official_receipt_id + "')\"><span class='name'>" + customer_name + "<span class='ym-clearfix'><span class='float-left'>" + ref_no + "</span><span class='float-right'>" + ((amount == '0') ? '' : Number(amount).toFixed(2)) + "</span></span></span></a></li>";
@@ -540,7 +542,7 @@ function CheckList() {
     $("#check tbody").empty();
 
     for (var i = 0; i < 20; i++) {
-        $("#check tbody").append(" <tr><td width='30%'><input type='text' class='bank' /><input type='hidden' class='bank_id' /></td> <td width='20%'><input type='text' class='check_no' /></td> <td width='15%'><input type='text' class='date _date' /></td> <td width='15%'><input type='text' class='amount' /></td></tr>");
+        $("#check tbody").append(" <tr><td width='30%'><input type='text' class='bank' /><input type='hidden' class='bank_id' /></td> <td width='20%'><input type='text' class='check_no' /></td> <td width='15%'><input type='text' name='date' class='date _date' /></td> <td width='15%'><input type='text' class='amount' /></td></tr>");
     }
 }
 
@@ -565,8 +567,8 @@ function FillBankAccountAutoComplete() {
 }
 
 function FillBankAccountDetail(account_id, me) {
-    var currentDate = new Date(); var day = currentDate.getDate(); var month = currentDate.getMonth() + 1; var year = currentDate.getFullYear();
-    $(me).closest("tr").find("._date").val("0" + month + "/" + day + "/" + year);
+   // var currentDate = new Date(); var day = currentDate.getDate(); var month = currentDate.getMonth() + 1; var year = currentDate.getFullYear();
+   // $(me).closest("tr").find("._date").val("0" + month + "/" + day + "/" + year);
 }
 
 function ExpirationDate() {

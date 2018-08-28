@@ -284,8 +284,6 @@ function GenerateDynamicAutoComplete() {
     });
 }
 
-
-
 function GenerateStaticInvoiceList() {
 
     
@@ -434,8 +432,6 @@ function FillCustomerDetails(customer_id) {
     //invoice balance
     //post dated check
     //available credit
-
-   
 
     var pageUrl = '/Webservice/svr_CustomerSales.asmx';
     $.ajax({

@@ -109,7 +109,8 @@ function SelectSaleInvoice()
 {
     if (SalesInvoiceID > 0)
     {
-       
+        $("#btn-save").addClass("disabled");
+        $("#btn-new").removeClass("disabled").click(function () { window.location = 'aspnetSalesInvoice.aspx'; });
 
         var data = SingleInvoiceData;
 
@@ -162,7 +163,12 @@ function SelectSaleInvoice()
 
 
                 $('#shipping').val(data[i]["ShippingAmt"]);
-                $('#spnTotalAmount').html(data[i]["TotalAmount"].toFixed(2));
+
+
+                $('#spnPayment').html(Number(data[i]["Payment"]).toFixed(2));
+                $('#spnSalesReturn').html(Number(data[i]["SalesReturn"]).toFixed(2));
+                $('#spnTotalAmount').html((Number(data[i]["TotalAmount"]) - (Number(data[i]["SalesReturn"]) + Number(data[i]["Payment"]))).toFixed(2));
+
 
                 var detail = SingleInvoiceDetailsData;
 

@@ -37,6 +37,7 @@
                                     </tr>
                                 
                                 </tbody>--%>
+                                
                            </table>	
                         </div>
                         <div class="addup"><div class="space20"></div></div>
@@ -77,11 +78,11 @@
             var data = checkData;
 
             $('#tblMain').empty();
-            $('#tblMain').append("<thead> <tr> <th width='20%'>Reference No.</th><th width='20%'>Date</th><th width='20%'>Bank</th><th width='20%'>Check No</th><th width='20%'>Check Data</th><th width='20%'>O.R. Amount</th><th width='20%'>Amount</th></tr></thead>");
+            $('#tblMain').append("<thead> <tr> <th width='15%'>Reference No.</th><th width='20%'>Date</th><th width='15%'>Bank</th><th width='15%'>Check No</th><th width='15%'>Check Data</th><th width='15%'>O.R. Amount</th><th width='10%'>Amount</th></tr></thead>");
             $('#tblMain').append("<tbody class='scroll'>");
 
             for (var i = 0; i < data.length; i++) {
-                $('#tblMain').append("<tr><td width='20%'>" + data[i]['RefNo'] + "</td><td width='20%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='20%'>" + data[i]['BankName'] + "</td><td width='20%'>" + data[i]['CheckNo'] + "</td><td width='20%'>" + FormatDate(data[i]['CheckDate']) + "</td><td width='20%'>" + data[i]['ORAmount'] + "</td><td width='20%'>" + data[i]['CashAmount'] + "</td></tr>");
+                $('#tblMain').append("<tr><td width='15%'>" + data[i]['RefNo'] + "</td><td width='15%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='15%'>" + data[i]['BankName'] + "</td><td width='15%'>" + data[i]['CheckNo'] + "</td><td width='15%'>" + FormatDate(data[i]['CheckDate']) + "</td><td width='15%'>" + data[i]['ORAmount'] + "</td><td width='10%'>" + data[i]['CheckAmount'] + "</td></tr>");
             }
 
             $('#tblMain').append("</tbody></table>");
@@ -92,11 +93,11 @@
             var data = creditData;
 
             $('#tblMain').empty();
-            $('#tblMain').append("<thead> <tr> <th width='20%'>Reference No.</th><th width='20%'>Date</th><th width='20%'>Card Type</th><th width='20%'>Card No</th><th width='20%'>Name</th><th width='20%'>Expiry</th><th width='20%'>Code</th><th width='20%'>O.R. Amount</th><th width='20%'>Amount</th></tr></thead>");
+            $('#tblMain').append("<thead> <tr> <th width='15%'>Reference No.</th><th width='10%'>Date</th><th width='10%'>Card Type</th><th width='15%'>Card No</th><th width='10%'>Name</th><th width='15%'>Expiry</th><th width='15%'>Code</th><th width='15%'>O.R. Amount</th><th width='10%'>Amount</th></tr></thead>");
             $('#tblMain').append("<tbody class='scroll'>");
 
             for (var i = 0; i < data.length; i++) {
-                $('#tblMain').append("<tr><td width='20%'>" + data[i]['RefNo'] + "</td><td width='20%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='20%'>" + data[i]['CardType'] + "</td><td width='20%'>" + data[i]['CardNumber'] + "</td><td width='20%'>" + data[i]['NameOnCard'] + "</td><td width='20%'>" + data[i]['Expiration'] + "</td><td width='20%'>" + data[i]['ApprovalCode'] + "</td><td width='20%'>" + data[i]['ORAmount'] + "</td><td width='20%'>" + data[i]['CashAmount'] + "</td></tr>");
+                $('#tblMain').append("<tr><td width='20%'>" + data[i]['RefNo'] + "</td><td width='20%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='20%'>" + data[i]['CardType'] + "</td><td width='20%'>" + data[i]['CardNumber'] + "</td><td width='20%'>" + data[i]['NameOnCard'] + "</td><td width='20%'>" + data[i]['Expiration'] + "</td><td width='20%'>" + data[i]['ApprovalCode'] + "</td><td width='20%'>" + data[i]['ORAmount'] + "</td><td width='20%'>" + data[i]['Amount'] + "</td></tr>");
             }
 
             $('#tblMain').append("</tbody></table>");
@@ -121,5 +122,8 @@
         .padding-0 {
             padding: 0;
         }
+        .tblholder .scroll {
+    height: 460px;
+}
     </style>
 </asp:Content>
