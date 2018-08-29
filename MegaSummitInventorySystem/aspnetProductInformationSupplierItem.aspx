@@ -34,7 +34,7 @@
                                 <tr>
                                     <td width="12%"><%# Eval("ReferenceNo") %></td>
                                     <td width="12%"><%# DateTime.Parse( Eval("CreatedDate").ToString()).ToString("mm/dd/yyyy") %></td>
-                                    <td width="15%"><%# Eval("CustomerName") %></td>
+                                    <td width="15%"><%# Eval("SupplierName") %></td>
                                     <td width="12%"><%# decimal.Parse(Eval("Quantity").ToString()).ToString("N") %></td>
                                     <td width="12%"><%# decimal.Parse(Eval("UnitPrice").ToString()).ToString("N") %></td>
                                     <td width="12%"><%# Eval("Discount") %></td>

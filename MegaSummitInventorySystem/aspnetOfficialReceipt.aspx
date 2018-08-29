@@ -419,27 +419,32 @@
     float: right !important;
         }
         .bank {
-            /*border: none;*/
+            border: none;
+            background: none;
             width: 96%;
         }
 
         .check_no {
-            /*border: none;*/
+            border: none;
+            background: none;
             width: 96%;
         }
 
         ._date {
-            /*border: none;*/
+            border: none;
+            background: none;
             width: 96%;
         }
 
         .check_type {
-            /*border: none;*/
+            border: none;
+            background: none;
             width: 96%;
         }
 
         .amount {
-            /*border: none;*/
+            border: none;
+            background: none;
             width: 96%;
         }
         input.apply {

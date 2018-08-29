@@ -73,7 +73,7 @@ namespace MegaSummitInventorySystem.Webservice
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._PurchasedPaymentCashInsert(ref id, purchased_id, amount);
+                //Database._PurchasedPaymentCashInsert(ref id, purchased_id, amount);
                 return true;
             }
             catch (Exception)

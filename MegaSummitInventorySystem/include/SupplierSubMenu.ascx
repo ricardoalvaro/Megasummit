@@ -10,7 +10,7 @@
                         <ul class="menu ym-clearfix">
                             <li class=""><a href="aspnetSupplier.aspx">Supplier</a></li>
                             <li class=""><a href="aspnetPurchaseInvoice.aspx">Purchase</a></li>
-                            <li class=""><a href="#">Purchase Return</a></li>
+                            <li class=""><a href="aspnetPurchaseReturn.aspx">Purchase Return</a></li>
                             <li class=""><a href="aspnetPurchaseOrder.aspx">Purchase Order</a></li>
                             <li class=""><a href="aspnetVoucher.aspx">Voucher</a></li>	
                             <li class=""><a href="#">Memo</a></li>	

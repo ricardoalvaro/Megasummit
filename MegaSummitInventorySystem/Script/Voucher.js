@@ -7,18 +7,16 @@ var VoucherID = 0;
 $(document).ready(function () {
 
     var helper = new Helper();
-    SupplierID = Number(helper.GetQuerystring()["customerID"]);
+    SupplierID = Number(helper.GetQuerystring()["SupplierID"]);
     if (!$.isNumeric(SupplierID) || SupplierID <= 0) {
         SupplierID = 0;
     }
 
+    $('#btn-save').removeClass('disabled');
 
-
-    //$('#btn-save').removeClass('disabled');
-
-    //$('#btn-save').click(function () {
-    //    SaveOfficialReceipt(this);
-    //});
+    $('#btn-save').click(function () {
+        SaveVoucher(this);
+    });
 
 
     $('#btn-new').click(function () {
@@ -37,11 +35,89 @@ $(document).ready(function () {
 
     Fill();
 
-    //if (CustomerID > 0) {
-    //    FillCustomerDetails(CustomerID);
-    //}
+    if (SupplierID > 0) {
+        FillSupplierDetails(SupplierID);
+    }
 
 });
+
+
+
+function SaveVoucher(me)
+{
+
+
+    if ($(me).hasClass("disabled") == false) {
+        var pageUrl = '/Webservice/svr_Voucher.asmx';
+        var apply_for = GetApplyToInvoice();
+        var cash = ($('#input_cash_amount').val() == '') ? '0' : $('#input_cash_amount').val();
+        var company_account_id = $('#bank_account').val();
+        var company_account_name = $('#bank_account option:selected').text();
+
+        var check_detail = CheckCollection();
+        var total_or = Number($('#input_cash_amount').val()) + Number($('#spnCheck').html());
+
+        var memo = '';
+        var supplier_id = SupplierID;
+        var ref_no = $('#reference_letter').val();
+        var ref_serial = $('#reference_number').val();
+        var created_date = $('#date').val();
+
+        if (VoucherID == 0) {
+
+            var data_transfer = "{ 'invoices_apply_for':'{0}',  'supplierID':'{1}',  'refNo':'{2}',  'refSerial':'{3}',  'createdDate':'{4}',  'totalAmount':'{5}',  'cash_amount':'{6}',  'companyBankAccountID':'{7}',  'accountName':'{8}',  'check_details':'{9}'}"
+            .f(apply_for, supplier_id, ref_no, ref_serial,
+            created_date, total_or, cash, company_account_id,
+            company_account_name, check_detail);
+
+
+
+            $.ajax({
+                type: "POST", url: pageUrl + "/InsertVoucher",
+                data: data_transfer,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json", crossdomain: true,
+                success: function (response) {
+                    window.location = "aspnetVoucher.aspx?supplierID=" + response.d;
+                },
+                error: function (response) {
+                    alert(response.status);
+                }
+            });
+        }
+        else { // update
+
+        }
+
+    }
+}
+
+function CheckCollection() {
+    var col = "";
+
+    $("#check tbody").find('tr').each(function () {
+        // !isNaN( $(this).closest('tr').find(".amount").val()) ||
+        if ($.trim($(this).closest('tr').find(".amount").val()) != '') {
+            col += ($(this).closest('tr').find(".bank").val()) + '^' + ($(this).closest('tr').find(".check_no").val()) + '^' + ($(this).closest('tr').find("._date").val()) + '^' + ($(this).closest('tr').find(".amount").val()) + '|';
+        }
+    });
+
+    return col;
+}
+
+function GetApplyToInvoice() {
+    var ret = '';
+    $("#tbl_apply_invoices tbody tr").find('td').each(function () {
+
+        if (!isNaN($(this).find(".apply").val())) {
+            if (Number($(this).find(".apply").val()) > 0) {
+                ret += $(this).closest('tr').find(".invoice_id").val() + '^' + $(this).find(".apply").val() + '|';
+            }
+        }
+    });
+
+    return ret;
+}
 
 function CheckList() {
     $("#check tbody").empty();
@@ -74,8 +150,6 @@ function PaymentType(me, ctrl) {
     });
 }
 
-
-
 function Fill() {
     FillCustomerAutoComplete();
     CreateDate();
@@ -84,7 +158,6 @@ function Fill() {
     FillBankAccountAutoComplete();
 
 }
-
 
 function FillCustomerAutoComplete() {
     $("#supplier").autocomplete({
@@ -97,11 +170,10 @@ function FillCustomerAutoComplete() {
     }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
 }
 
-
 function FillSupplierDetails(supplier_id) {
 
     //load OR raise in this customer
-    //FillSupplier(supplier_id);
+    FillSupplier(supplier_id);
 
     //load all invoices that are not paid
     FillInvoiceList(supplier_id);
@@ -111,30 +183,144 @@ function FillSupplierDetails(supplier_id) {
 }
 
 function FillSupplier(supplier_id) {
-    var pageUrl = '/Webservice/svr_OfficialReceipt.asmx';
+    var pageUrl = '/Webservice/svr_Voucher.asmx';
 
     $.ajax({
-        type: "POST", url: pageUrl + "/GetOfficialReceiptCustomer", data: "{'id':'0', 'customer_id':'" + customer_id + "' }",
+        type: "POST", url: pageUrl + "/GetVoucherSupplier", data: "{'id':'0', 'supplier_id':'" + supplier_id + "' }",
         contentType: "application/json; charset=utf-8", dataType: "json", crossdomain: true,
         success: function (response) {
 
-            $('#ulCustomer').empty();
+            $('#ulSupplier').empty();
             var data = eval(response.d);
             for (var i = 0; i < data.length; i++) {
 
-                $('#customer').val(data[i]['CustomerName']);
+                $('#supplier').val(data[i]['Supplier']).trigger('change');
 
-                $("#ulCustomer").append(ListOfficialReceipt(data[i]["ID"], data[i]['CustomerName'], data[i]['RefNo'], data[i]['TotalAmount']));
+                $("#ulSupplier").append(ListOfficialReceipt(data[i]["ID"], data[i]['SupplierName'], data[i]['RefNo'], data[i]['TotalAmount']));
             }
 
             for (var i = 0; i < 20; i++) {
-                $("#ulCustomer").append("<li><a href='javascript:void(0);'  id='item-1' ><span class='name'>&nbsp;<span class='ym-clearfix'><span class='float-left'>&nbsp;</span><span class='float-right'>&nbsp;</span></span></span></a></li>");
+                $("#ulSupplier").append("<li><a href='javascript:void(0);'  id='item-1' ><span class='name'>&nbsp;<span class='ym-clearfix'><span class='float-left'>&nbsp;</span><span class='float-right'>&nbsp;</span></span></span></a></li>");
             }
         },
         error: function (response) {
         }
     });
 }
+
+function ListOfficialReceipt(voucher_id, customer_name, ref_no, amount) {
+    return "<li><a href='javascript:void(0);'  id='item-1' onclick=\"SelectVoucher('" + voucher_id + "')\"><span class='name'>" + customer_name + "<span class='ym-clearfix'><span class='float-left'>" + ref_no + "</span><span class='float-right'>" + ((amount == '0') ? '' : Number(amount).toFixed(2)) + "</span></span></span></a></li>";
+}
+
+
+function SelectVoucher(voucher_id) {
+    $('#btn-save').addClass('disabled');
+    $('#btn-new').removeClass('disabled');
+
+
+    ResetPaymentAmounts();
+    VoucherID = voucher_id;
+    var pageUrl = '/Webservice/svr_Voucher.asmx';
+
+    $.ajax({
+        type: "POST", url: pageUrl + "/SelectVoucherDetail", data: "{'voucher_id':'" + VoucherID + "' }",
+        contentType: "application/json; charset=utf-8", dataType: "json", crossdomain: true,
+        success: function (response) {
+
+            var data = eval(response.d);
+
+            for (var i = 0; i < data.length; i++) {
+
+                //var id = data[i]['ID'];
+                var supplier_id = data[i]['SupplierID'];
+                var supplier_name = data[i]['SupplierName'];
+                var ref_no = data[i]['RefNo'];
+                var ref_serial = data[i]['RefNoSerial'];
+
+                //---------
+                SupplierID = supplier_id;
+                $('#supplier').val((supplier_name == '') ? '' : supplier_name);
+                $('#reference_letter').val((ref_no == '') ? '' : ref_no);
+                $('#reference_number').val((ref_serial == '') ? '' : ref_serial);
+                //$('#input_cash_amount').val( (cash_amount=='') ? '0' :  cash_amount ).trigger('change');
+                //$('#spnCash').html( (cash_amount=='') ? '0' :  cash_amount  );
+                //---------
+
+
+            }
+
+
+            var actualarray = $.parseJSON(response.d);
+            $.each(actualarray, function (i, v) {
+                var _cash = v.Cash;
+                for (var i = 0; i < _cash.length; i++) {
+                    var id = _cash[i]['ID'];
+                    $('#bank_account').val(id);
+                    $('#input_cash_amount').val(_cash[i]['Amount']).trigger('change');
+                }
+
+
+                var _check = v.Checks;
+                //alert(_check);
+                for (var i = 0; i < _check.length; i++) {
+                    var id = _check[i]['ID'];
+                    var bank_name = _check[i]['BankName'];
+                    var check_no = _check[i]['CheckNo'];
+                    var check_date = _check[i]['CheckDate'];
+                    var check_amount = _check[i]['Amount'];
+
+                    $("#check tbody tr").find('td').each(function () {
+
+                        if ($(this).find('.bank').val() == '') {
+                            $(this).closest('tr').find('.bank').val(bank_name);
+                            $(this).closest('tr').find('.check_no').val(check_no);
+                            $(this).closest('tr').find('._date').val(FormatDate(check_date));
+                            $(this).closest('tr').find('.amount').val(Number(check_amount).toFixed(2)).trigger('change');
+
+                            return false;
+                        }
+
+                    });
+
+                }
+
+
+
+                var _pay = v.Payments
+
+                $('#tbl_apply_invoices tbody').empty();
+                for (var i = 0; i < _pay.length; i++) {
+
+                    $("#tbl_apply_invoices tbody").append(ListInvoiceFormatEdit(_pay[i]['ID'], _pay[i]['RefNo'], FormatDate(_pay[i]['CreatedDate']), _pay[i]['Description'], _pay[i]['Salesman'], _pay[i]['TotalAmount'], _pay[i]['TotalPayment']));
+
+                }
+
+
+
+            });
+        },
+        error: function (response) {
+        }
+    });
+}
+
+
+function ResetPaymentAmounts() {
+    $('#spnCash').html('0.00');
+    $('#spnCheck').html('0.00');
+
+
+    $('#input_cash_amount').val('0');
+    $("#check tbody tr").find(':input').empty();
+   
+
+}
+
+
+function ListInvoiceFormatEdit(invoice_id, ref_no, date, description, salesman, total, payment) {
+    return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='15%'>" + date + "</td><td width='20%'>" + description + "</td><td width='20%'>" + salesman + "</td><td width='15%'><span class='spn_balance'>" + total + "</span></td><td width='15%'><input type='text' class='apply' value='" + payment + "' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
+}
+
 
 function FillInvoiceList(supplier_id) {
 
@@ -171,7 +357,6 @@ function FillInvoiceList(supplier_id) {
 function ListInvoiceFormat(invoice_id, ref_no, date, description, salesman, balance) {
     return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='15%'>" + date + "</td><td width='20%'>" + description + "</td><td width='15%'><span class='spn_balance'>" + balance + "</span></td><td width='15%'><input type='text' class='apply' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
 }
-
 
 function ApplyToAllCheck(me) {
 
@@ -303,7 +488,7 @@ function FillBankAccountAutoComplete() {
         $(this).find(".bank").autocomplete({
             source: BankAutoCompleteData, minLength: 0, minChars: 0, max: 12, autoFill: true, matchContains: false,
             select: function (a, b) {
-                FillBankAccountDetail(b.item.id, this);
+               // FillBankAccountDetail(b.item.id, this);
             }
         }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); })
             .change(function () { $(this).closest("tr").find(":input").val(''); });
@@ -327,7 +512,6 @@ function CheckAmountTotal() {
     });
     return check_amount;
 }
-
 
 function CreateDate() {
     var currentDate = new Date(); var day = currentDate.getDate(); var month = currentDate.getMonth() + 1; var year = currentDate.getFullYear();

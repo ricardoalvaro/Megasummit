@@ -258,9 +258,9 @@
                                                 <table class="tblholder">
                                                     <thead>
                                                         <tr>
-                                                            <th>Bank Name</th>
-                                                            <th>Account type</th>
-                                                            <th>Account Number</th>
+                                                            <th style="width: 33%;">Bank Name</th>
+                                                            <th style="width: 33%;">Account type</th>
+                                                            <th style="width: 34%;">Account Number</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="scroll">

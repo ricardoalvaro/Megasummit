@@ -274,16 +274,16 @@ namespace MegaSummitInventorySystem.Webservice
                 dt.Columns.Add("DatePay");
                 dt.Columns.Add("TotalAmount");
 
-                var data = Database._PurchasedPaymentSelectBySupplier(id);
-                foreach (var item in data)
-                {
-                    if (item.FromSystem.Value)
-                    {
-                        dt.Rows.Add(item.ID, item.ReferenceNo, item.PaymentDate.Value.ToShortDateString(), item.TotalAmount.Value.ToString("N"));
-                    }
-                }
+                //var data = Database._PurchasedPaymentSelectBySupplier(id);
+                //foreach (var item in data)
+                //{
+                //    if (item.FromSystem.Value)
+                //    {
+                //        dt.Rows.Add(item.ID, item.ReferenceNo, item.PaymentDate.Value.ToShortDateString(), item.TotalAmount.Value.ToString("N"));
+                //    }
+                //}
 
-                return JsonConvert.SerializeObject(dt, Newtonsoft.Json.Formatting.Indented);
+                //return JsonConvert.SerializeObject(dt, Newtonsoft.Json.Formatting.Indented);
             }
             catch
             {
@@ -301,9 +301,9 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._PurchasedPaymentReferences.Where(x => x.ID == id);
+                //var data = Database._PurchasedPaymentReferences.toli//.Where(x => x.ID == id);
 
-                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+                return JsonConvert.SerializeObject("", Newtonsoft.Json.Formatting.Indented);
             }
             catch (Exception)
             {
@@ -320,7 +320,7 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._PurchasedPaymentCashes.Where(x => x.PurchasedID == id);
+                var data = Database._PurchasedPaymentCashes.ToList();//.Where(x => x.PurchasedID == id);
 
                 return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
             }
@@ -339,9 +339,9 @@ namespace MegaSummitInventorySystem.Webservice
             try
             {
                 Database = new DatabaseDataContext();
-                var data = Database._PurchasedPaymentChecks.Where(x => x.PurchasedID == id);
+                //var data = Database._PurchasedPaymentChecks.Where(x => x.PurchasedID == id);
 
-                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+                return JsonConvert.SerializeObject("", Newtonsoft.Json.Formatting.Indented);
             }
             catch (Exception)
             {
@@ -450,33 +450,33 @@ namespace MegaSummitInventorySystem.Webservice
         {
             try
             {
-                long? refID = 0;
-                long? refID2 = 0;
-                Database = new DatabaseDataContext();
-                Database._PurchasedPaymentReferenceInsert(ref refID, invoiceid, refNo, totalAmount, true);
-                Database._PurchasedPaymentInsert(ref refID2, invoiceid, refID, totalAmount);
-                #region Cash Payment
-                if (amount != 0 && amount != null)
-                {
-                    long? idcash = 0;
-                    Database = new DatabaseDataContext();
-                    Database._PurchasedPaymentCashInsert(ref idcash, refID, amount);
-                }
-                #endregion
-                #region Check Payment
-                string[] lines = checkTable.Split('^');
+                //long? refID = 0;
+                //long? refID2 = 0;
+                //Database = new DatabaseDataContext();
+                //Database._PurchasedPaymentReferenceInsert(ref refID, invoiceid, refNo, totalAmount, true);
+                //Database._PurchasedPaymentInsert(ref refID2, invoiceid, refID, totalAmount);
+                //#region Cash Payment
+                //if (amount != 0 && amount != null)
+                //{
+                //    long? idcash = 0;
+                //    Database = new DatabaseDataContext();
+                //    Database._PurchasedPaymentCashInsert(ref idcash, refID, amount);
+                //}
+                //#endregion
+                //#region Check Payment
+                //string[] lines = checkTable.Split('^');
 
-                foreach (var l in lines)
-                {
-                    if (!string.IsNullOrEmpty(l))
-                    {
-                        string[] p = l.Split(',');
+                //foreach (var l in lines)
+                //{
+                //    if (!string.IsNullOrEmpty(l))
+                //    {
+                //        string[] p = l.Split(',');
 
-                        long? idcheck = 0;
-                        Database = new DatabaseDataContext();
-                        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), refID);
-                    }
-                }
+                //        long? idcheck = 0;
+                //        Database = new DatabaseDataContext();
+                //        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), refID);
+                //    }
+                //}
                 #endregion
                 return "";
             }
@@ -499,16 +499,16 @@ namespace MegaSummitInventorySystem.Webservice
                 Database._PurchasedPaymentReferenceInsert(ref refID, invoiceid, refNo, totalAmount, true);
 
                 #region Apply to Invoice
-                string[] lines2 = salesInvoice.Split('^');
+                //string[] lines2 = salesInvoice.Split('^');
 
-                foreach (var l in lines2)
-                {
-                    if (!string.IsNullOrEmpty(l))
-                    {
-                        string[] p = l.Split(',');
-                        Database._PurchasedPaymentInsert(ref refID2, long.Parse(p[1]), refID, long.Parse(p[0]));
-                    }
-                }
+                //foreach (var l in lines2)
+                //{
+                //    if (!string.IsNullOrEmpty(l))
+                //    {
+                //        string[] p = l.Split(',');
+                //        Database._PurchasedPaymentInsert(ref refID2, long.Parse(p[1]), refID, long.Parse(p[0]));
+                //    }
+                //}
                 #endregion
 
                 #region Cash Payment
@@ -516,23 +516,23 @@ namespace MegaSummitInventorySystem.Webservice
                 {
                     long? idcash = 0;
                     Database = new DatabaseDataContext();
-                    Database._PurchasedPaymentCashInsert(ref idcash, refID, amount);
+                    //Database._PurchasedPaymentCashInsert(ref idcash, refID, amount);
                 }
                 #endregion
                 #region Check Payment
-                string[] lines = checkTable.Split('^');
+                //string[] lines = checkTable.Split('^');
 
-                foreach (var l in lines)
-                {
-                    if (!string.IsNullOrEmpty(l))
-                    {
-                        string[] p = l.Split(',');
+                //foreach (var l in lines)
+                //{
+                //    if (!string.IsNullOrEmpty(l))
+                //    {
+                //        string[] p = l.Split(',');
 
-                        long? idcheck = 0;
-                        Database = new DatabaseDataContext();
-                        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), refID);
-                    }
-                }
+                //        long? idcheck = 0;
+                //        Database = new DatabaseDataContext();
+                //        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), refID);
+                //    }
+                //}
                 #endregion
                 return "";
             }
@@ -543,7 +543,7 @@ namespace MegaSummitInventorySystem.Webservice
             return "";
         }
 
-        #endregion
+        //#endregion
 
         #region Updating Data
 
@@ -640,19 +640,19 @@ namespace MegaSummitInventorySystem.Webservice
                 }
                 #endregion
                 #region Check Payment
-                string[] lines = checkTable.Split('^');
-                Database._PurchasedPaymentCheckDeletebyPayment(invoiceid);
-                foreach (var l in lines)
-                {
-                    if (!string.IsNullOrEmpty(l))
-                    {
-                        string[] p = l.Split(',');
+                //string[] lines = checkTable.Split('^');
+                //Database._PurchasedPaymentCheckDeletebyPayment(invoiceid);
+                //foreach (var l in lines)
+                //{
+                //    if (!string.IsNullOrEmpty(l))
+                //    {
+                //        string[] p = l.Split(',');
 
-                        long? idcheck = 0;
-                        Database = new DatabaseDataContext();
-                        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), invoiceid);
-                    }
-                }
+                //        long? idcheck = 0;
+                //        Database = new DatabaseDataContext();
+                //        Database._PurchasedPaymentCheckInsert(ref idcheck, p[0], p[1], DateTime.Parse(p[2]), p[3], decimal.Parse(p[4]), invoiceid);
+                //    }
+                //}
                 #endregion
             }
             catch (Exception)

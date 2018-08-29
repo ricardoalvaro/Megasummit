@@ -104,6 +104,8 @@
     <Content Include="aspnetPurchaseInvoiceInformation.aspx" />
     <Content Include="aspnetPurchaseOrder.aspx" />
     <Content Include="aspnetPurchaseOrderInformation.aspx" />
+    <Content Include="aspnetPurchaseReturn.aspx" />
+    <Content Include="aspnetPurchaseReturnInformation.aspx" />
     <Content Include="aspnetSales.aspx" />
     <Content Include="aspnetSalesInvoice.aspx" />
     <Content Include="aspnetSalesOrder.aspx" />
@@ -744,6 +746,20 @@
     <Compile Include="aspnetPurchaseOrderInformation.aspx.designer.cs">
       <DependentUpon>aspnetPurchaseOrderInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetPurchaseReturn.aspx.cs">
+      <DependentUpon>aspnetPurchaseReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetPurchaseReturn.aspx.designer.cs">
+      <DependentUpon>aspnetPurchaseReturn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetPurchaseReturnInformation.aspx.cs">
+      <DependentUpon>aspnetPurchaseReturnInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetPurchaseReturnInformation.aspx.designer.cs">
+      <DependentUpon>aspnetPurchaseReturnInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetSales.aspx.cs">
       <DependentUpon>aspnetSales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1087,6 +1103,7 @@
     <Compile Include="ViewModel\SalesReturnVM.cs" />
     <Compile Include="ViewModel\SalesVM.cs" />
     <Compile Include="ViewModel\SupplierVM.cs" />
+    <Compile Include="ViewModel\VoucherVM.cs" />
     <Compile Include="Webservice\CompanyImageUploader.ashx.cs">
       <DependentUpon>CompanyImageUploader.ashx</DependentUpon>
     </Compile>

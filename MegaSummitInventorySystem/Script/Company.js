@@ -378,7 +378,7 @@ function LoadBankAccount() {
             var obj = "";
             for (var i = 0; i < data.length; i++) {
 
-                $('#xBankAccount tbody:last').append("<tr><td><div onclick=\"ActionSelectBankAccount('" + data[i]["ID"] + "')\">" + data[i]["BankName"] + "</div></td><td>" + data[i]["AccountType"] + "</td><td>" + data[i]["AccountNo"] + "</td></tr>");
+                $('#xBankAccount tbody:last').append("<tr><td style='width: 33%;'><div onclick=\"ActionSelectBankAccount('" + data[i]["ID"] + "')\">" + data[i]["BankName"] + "</div></td><td style='width: 33%;'>" + data[i]["AccountType"] + "</td><td style='width: 34%;'>" + data[i]["AccountNo"] + "</td></tr>");
 
             }
         },

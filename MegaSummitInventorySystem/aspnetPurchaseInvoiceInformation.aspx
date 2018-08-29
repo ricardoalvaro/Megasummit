@@ -270,6 +270,41 @@
 
       </div>
 
+    <style>
+        .product {
+            border: none;
+            background: none;
+        }
+        .location {
+            border: none;
+            background: none;
+        }
+        .quantity {
+            border: none;
+            background: none;
+        }
+        .bonus {
+            border: none;
+            background: none;
+        }
+        .unit {
+            border: none;
+            background: none;
+        }
+        .price {
+            border: none;
+            background: none;
+        }
+        .discount {
+            border: none;
+            background: none;
+        }
+        .amount {
+            border: none;
+            background: none;
+        }
+    </style>
+
     <script src="Script/PurchaseInvoice.js"></script>
     <script type="text/javascript">
         var SinglePurchaseInvoiceData = <%= SupplierVM.SinglePurchaseInvoice(long.Parse( (Request["purchaseInvoiceID"] == null ? "0" : Request["purchaseInvoiceID"])  )) %>;

@@ -259,6 +259,10 @@
             width: 70%;
             float: left;
         }
+        .apply {
+    border: none;
+    background: none;
+}
         .product {
     border: none;
     background: none;

@@ -222,6 +222,48 @@
 </div>
     </div>
 
+    <style>
+        .ym-form input[type="text"]:disabled, .ym-form textarea:disabled {
+            background: none;
+        }
+        .product {
+            border: none;
+            background: none;
+        }
+        .location {
+            border: none;
+            background: none;
+        }
+        .quantity {
+            border: none;
+            background: none;
+        }
+        .bonus {
+            border: none;
+            background: none;
+        }
+        .served {
+            border: none;
+            background: none;
+        }
+        .unit {
+            border: none;
+            background: none;
+        }
+        .price {
+            border: none;
+            background: none;
+        }
+        .discount {
+            border: none;
+            background: none;
+        }
+        .amount {
+            border: none;
+            background: none;
+        }
+    </style>
+
     <script src="Script/SupplierPurchaseOrder.js"></script>
     <script type="text/javascript">
 

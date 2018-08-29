@@ -458,7 +458,7 @@ function SelectOfficialReceipt(official_receipt_id) {
 
                     $("#check tbody tr").find('td').each(function () {
 
-                        if ($(this).find('.bank').val() != '') {
+                        if ($(this).find('.bank').val() == '') {
                             $(this).closest('tr').find('.bank').val(bank_name);
                             $(this).closest('tr').find('.check_no').val(check_no);
                             $(this).closest('tr').find('._date').val(FormatDate(check_date));
