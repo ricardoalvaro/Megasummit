@@ -2,10 +2,10 @@
 <div class="submenu ajax padding-0">
 	<ul class="crossfade ym-clearfix">
         <li class=" "><a data="aspnetSupplierInformation.aspx" onclick="Redirect('aspnetSupplierInformation.aspx')" style="cursor:default">General Info</a></li>
-        <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Supplier Items</a></li>
-        <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Purchase Order</a></li>
-        <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Invoices</a></li>
-        <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Payments</a></li>
+        <li class=" "><a data="aspnetSupplierInformationSupplierItem.aspx" onclick="Redirect('aspnetSupplierInformationSupplierItem.aspx')" style="cursor:default">Supplier Items</a></li>
+        <li class=" "><a data="aspnetSupplierInformationPurchasedOrder.aspx" onclick="Redirect('aspnetSupplierInformationPurchasedOrder.aspx')" style="cursor:default">Purchase Order</a></li>
+        <li class=" "><a data="aspnetSupplierInformationInvoices.aspx" onclick="Redirect('aspnetSupplierInformationInvoices.aspx')" style="cursor:default">Invoices</a></li>
+        <li class=" "><a data="aspnetSupplierInformationPayments.aspx" onclick="Redirect('aspnetSupplierInformationPayments.aspx')" style="cursor:default">Payments</a></li>
         <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Memo</a></li>
     </ul>
     <div class="ym-ie-clearing">&nbsp;</div>
@@ -46,9 +46,9 @@
 
         var helper = new Helper();
 
-        var CustomerID = Number(helper.GetQuerystring()["supplierID"]);
-        if ($.isNumeric(CustomerID) || CustomerID > 0) {
-            window.location = location + "?supplierID=" + CustomerID;
+        var SupplierID = Number(helper.GetQuerystring()["supplierID"]);
+        if ($.isNumeric(SupplierID) || SupplierID > 0) {
+            window.location = location + "?supplierID=" + SupplierID;
         }
 
 

@@ -290,5 +290,11 @@
         <elementListCompartment Id="3a5b6879-18ee-4c9c-a920-fc50c0bc9655" absoluteBounds="4.5150000000000006, 5.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="0682a7e3-9559-4ab4-ae24-4b1749a0f779" absoluteBounds="6.875, 2.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DatabaseDataContext/_PurchasedPaymentReturn" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c23c5f11-7876-4209-8e8e-ff4c82e0a2e2" absoluteBounds="6.89, 2.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

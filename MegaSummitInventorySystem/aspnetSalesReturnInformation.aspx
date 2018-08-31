@@ -291,6 +291,12 @@
     border: none;
     background: none;
 }
+        input#applied {
+    float: right;
+    margin: 3px -1px 0 0;
+    z-index: 9;
+    display: inline;
+}
     </style>
     
 

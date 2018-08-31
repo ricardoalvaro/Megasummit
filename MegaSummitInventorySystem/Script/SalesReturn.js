@@ -322,7 +322,7 @@ function GenerateDynamicAutoComplete() {
 
         $(this).find(".quantity").change(function () { ComputeComponentAmount(this); });
 
-        $(this).find(".unit").change(function () { ComputeComponentAmount(this); });
+        $(this).find(".price").change(function () { ComputeComponentAmount(this); });
 
         $(this).find(".discount").change(function () { ComputeComponentAmount(this); });
 
@@ -584,12 +584,13 @@ function GetCurrentTotal() {
 }
 
 function Fill() {
+
     FillCustomerAutoComplete();
     FillForwarder();
     FillSalesman();
     FillTerm();
     FillDate();
-    FillDate();
+
 }
 
 function FillCustomerAutoComplete() {

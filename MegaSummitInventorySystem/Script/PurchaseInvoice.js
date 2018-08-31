@@ -70,14 +70,14 @@ function SelectPurchaseInvoice()
 {
     if (PurchaseInvoiceID != 0)
     {
-        var data = SingleSalesOrderData;
+        var data = SinglePurchaseInvoiceData;
 
         for (var i = 0; i < data.length; i++) {
 
-            if (data[i]["ID"] == SalesOrderID) {
+            if (data[i]["ID"] == PurchaseInvoiceID) {
 
-                CustomerID = data[i]["CustomerID"];
-                $("#customer").val(data[i]["CustomerName"]);
+                SupplierID = data[i]["SupplierID"];
+                $("#supplier").val(data[i]["SupplierName"]);
                 $('#address').val(data[i]["Address"]);
                 $('#deliver_to').val(data[i]["ForwarderToID"]);
                 $('#salesman').val(data[i]["SalesmanID"]);
@@ -94,16 +94,21 @@ function SelectPurchaseInvoice()
                 $('#notes').val(data[i]["Notes"]);
 
 
-                $('#spnTotal').html(data[i]["TotalAmount"]);
-                $('#spnServed').html(data[i]["TotalServed"]);
-                $('#spnBalance').html(data[i]["Balance"]);
+                var sub_total = Number(data[i]["SubTotal"]);
+                var payment = Number(data[i]["Payment"]);
+                var purchase_return = Number(data[i]["PurchaseReturn"]);
 
+                $('#spnSubTotal').html(sub_total.toFixed(2));
+                $('#spnTotalPayment').html(payment.toFixed(2)); // voucher
+                $('#spnMemo').html(purchase_return.toFixed(2)); //return payment
+                $('#spnAmountDue').html((sub_total - (payment + purchase_return)).toFixed(2)); //subtotal - (payment + memo )
+                
 
-                var detail = SingleSalesOrderDetailsData;
+                var detail = SinglePurchaseInvoiceDetailsData;
 
                 for (var d = 0; d < detail.length; d++) {
 
-                    $('#tblSalesOrder tbody tr').each(function (i) {
+                    $('#tblPurchaseInvoice tbody tr').each(function (i) {
 
                         var x2 = $(this).find("td .product").val();
                         if (x2 == "") {

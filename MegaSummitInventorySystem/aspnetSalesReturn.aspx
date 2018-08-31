@@ -33,21 +33,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="scroll">
-                                <asp:Repeater runat="server" ID="repMain">   
-                                    <ItemTemplate>
-                                            <tr id="rec-1" onclick="SelectSalesReturn('<%# Eval("ID").ToString() %> ')">
-                                                <td width="10%"><%# Eval("RefNo").ToString() %> </td>
-                                                <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
-                                                <td width="30%"><%# Eval("CustomerName").ToString() %></td>
-                                                <td width="15%"><%# Eval("Salesman").ToString() %></td>
-                                                <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
-                                                <td width="10%"><%# decimal.Parse( Eval("Balance").ToString()).ToString("N") %></td>
-                                                <td width="10%"><%# Eval("Status").ToString() %></td>
-                                            </tr>
-                                    </ItemTemplate>
-                                    
-                                        	
-                                </asp:Repeater>  </tbody>
+                                            <asp:Repeater runat="server" ID="repMain">   
+                                                <ItemTemplate>
+                                                        <tr id="rec-1" onclick="SelectSalesReturn('<%# Eval("ID").ToString() %> ')">
+                                                            <td width="10%"><%# Eval("RefNo").ToString() %> </td>
+                                                            <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
+                                                            <td width="30%"><%# Eval("CustomerName").ToString() %></td>
+                                                            <td width="15%"><%# Eval("Salesman").ToString() %></td>
+                                                            <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
+                                                            <td width="10%"><%# decimal.Parse( Eval("Balance").ToString()).ToString("N") %></td>
+                                                            <td width="10%"><%# Eval("Status").ToString() %></td>
+                                                        </tr>
+                                                </ItemTemplate>
+                                            </asp:Repeater>  
+
+                                            </tbody>
                                         </table>  
                                 
                             </div>

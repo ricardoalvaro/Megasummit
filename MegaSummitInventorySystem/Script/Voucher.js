@@ -7,7 +7,7 @@ var VoucherID = 0;
 $(document).ready(function () {
 
     var helper = new Helper();
-    SupplierID = Number(helper.GetQuerystring()["SupplierID"]);
+    SupplierID = Number(helper.GetQuerystring()["supplierID"]);
     if (!$.isNumeric(SupplierID) || SupplierID <= 0) {
         SupplierID = 0;
     }
@@ -34,8 +34,9 @@ $(document).ready(function () {
     CheckList();
 
     Fill();
-
+    //alert(SupplierID);
     if (SupplierID > 0) {
+        //alert(SupplierID);
         FillSupplierDetails(SupplierID);
     }
 
@@ -194,8 +195,9 @@ function FillSupplier(supplier_id) {
             var data = eval(response.d);
             for (var i = 0; i < data.length; i++) {
 
-                $('#supplier').val(data[i]['Supplier']).trigger('change');
+                $('#supplier').val(data[i]['SupplierName']).trigger('change');
 
+                //alert(data[i]['Supplier']);
                 $("#ulSupplier").append(ListOfficialReceipt(data[i]["ID"], data[i]['SupplierName'], data[i]['RefNo'], data[i]['TotalAmount']));
             }
 
@@ -239,7 +241,7 @@ function SelectVoucher(voucher_id) {
 
                 //---------
                 SupplierID = supplier_id;
-                $('#supplier').val((supplier_name == '') ? '' : supplier_name);
+                $('#supplier').val(supplier_name);
                 $('#reference_letter').val((ref_no == '') ? '' : ref_no);
                 $('#reference_number').val((ref_serial == '') ? '' : ref_serial);
                 //$('#input_cash_amount').val( (cash_amount=='') ? '0' :  cash_amount ).trigger('change');

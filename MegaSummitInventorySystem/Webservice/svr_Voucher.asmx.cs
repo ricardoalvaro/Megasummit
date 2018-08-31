@@ -56,12 +56,12 @@ namespace MegaSummitInventorySystem.Webservice
                 }
 
 
-                //var sales_return = Database._invoicePaymentSalesReturns.Where(x => x.InvoiceID == i.ID);
+                var sales_return = Database._PurchasedPaymentReturns.Where(x => x.PurchasedID == i.ID);
 
-                //foreach (var ret in sales_return)
-                //{
-                //    _balance += ret.Amount.Value;
-                //}
+                foreach (var ret in sales_return)
+                {
+                    _balance += ret.Amount.Value;
+                }
 
 
                 decimal compute = (_totalAmount - _balance);

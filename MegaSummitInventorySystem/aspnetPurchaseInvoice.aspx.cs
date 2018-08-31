@@ -29,11 +29,16 @@ namespace MegaSummitInventorySystem
             {
                 PurchaseInvoice p = new PurchaseInvoice();
                 p.ID = d.ID;
-                p.RefNo = d.RefNo;
+                p.RefNo = d.RefNo + d.RefNoSerial;
                 p.CreatedDate = d.CreatedDate.Value;
                 p.SupplierName = d.SupplierName;
                 p.Amount = d.SubTotal.Value;
-                p.Balance = 0;
+
+
+                var bal = d.SubTotal- (d.Payment + d.PurchaseReturn);
+
+
+                p.Balance = bal.Value;
                 p.Status = d.Status;
                 purchaseInvoice.Add(p);
             }
@@ -43,6 +48,9 @@ namespace MegaSummitInventorySystem
 
 
         }
+
+
+
 
     }
 }

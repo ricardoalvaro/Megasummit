@@ -49,7 +49,7 @@
                                                 <td class="lbl"><label for="salesman">Salesman</label></td>
                                                 <td class="obj">
                                                     <div class="select-arrow long">
-                                                                <select name="Salesman" id="supplier">
+                                                                <select id="salesman">
                                                                     <option value=""></option>                                                                                                                                     
                                                                 </select>
                                                             </div>
@@ -66,13 +66,7 @@
                                                             <label for="terms">*Terms</label>
                                                             <div class="select-arrow short">
                                                                 <select name="terms" id="terms">
-                                                                    <option value="COD">COD</option>
-                                                                    <option value="30">30</option>
-                                                                    <option value="60">60</option>
-                                                                    <option value="90">90</option>
-                                                                    <option value="120">120</option>
-                                                                    <option value="150">150</option> 
-                                                                    <option value="180">180</option>                                                                  
+                                                                                                                           
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -92,7 +86,7 @@
                                                     <td class="obj">
                                                         <div class="grid ym-clearfix">
                                                             <div class="col-left">
-                                                                <input type="text" autocorrect="off" spellcheck="false" id="reference_letter" name="reference_letter" class="xxshort" />
+                                                                <input type="text" autocorrect="off" spellcheck="false" id="reference_letter" name="reference_letter" class="xxshort" value="PR" />
                                                             </div>
                                                             <div class="col-left">
                                                                 &nbsp;&nbsp;
@@ -119,13 +113,15 @@
                             </div>
                             <div class="space5"></div>
                         </div>                                
-                        <%--<div id="content-holder" class="pane-holder">
-                        	<div class="rounded">
-                                <table class="tblholder unclickable">
+                        
+                        <div id="content-holder" class="pane-holder">
+
+                            <div class="rounded">
+                                <table class="tblholder unclickable" id="tblPurchaseReturn"><%-- style="height:250px"--%>
                                     <thead>
                                         <tr>
                                             <th width="20%">Product Name</th>
-                                            <th width="20%">Location</th>
+                                            <th width="10%">Location</th>
                                             <th width="10%">Quantity</th>
                                             <th width="10%">Unit</th>
                                             <th width="10%">Unit Price</th>
@@ -133,278 +129,43 @@
                                             <th width="10%">Amount</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="scroll custom" id="cheight-242">
-                                        <tr>
-                                            <td width="20%">here</td>
-                                            <td width="20%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="20%"></td>
-                                            <td width="20%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
+                                    <tbody class="scroll">
+                                        
                                     </tbody>
-                               </table>
+                                </table>
                             </div>
-                        </div>--%>
+                            <div class="rounded scroll-half movedown5" id="tblReference" style="display: none; margin: 6px 0 0;"">
+                                <table class="tblholder unclickable" id="tblPurchaseInvoice">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%">Reference No.</th>
+                                            <th width="10%">Date</th>
+                                            <th width="30%">Description</th>
+                                            <th width="12%">Balance</th>
+                                            <th width="12%">
+                                                <input type="checkbox" id="applied" class="lblleft" onchange="ApplyToAllCheck(this)" /><label for="apply">Apply</label></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="scroll">
+                                      <%--  <tr>
+                                            <td width="10%">
+                                                <input type="text" class="reference"></td>
+                                            <td width="10%">
+                                                <input type="text" class="date"></td>
+                                            <td width="30%">
+                                                <input type="text" class="description"></td>
+                                            <td width="12%">
+                                                <input type="text" class="balance"></td>
+                                            <td width="12%">
+                                                <input type="text" class="apply">
+                                                <input type="checkbox" class="chk" /></td>
+                                        </tr>--%>
 
-                        <div class="rounded scroll-half">
-    <table class="tblholder unclickable">
-        <thead>
-            <tr>
-                <th width="20%">Product Name</th>
-                <th width="20%">Location</th>
-                <th width="10%">Quantity</th>
-                <th width="10%">Unit</th>
-                <th width="10%">Unit Price</th>
-                <th width="10%">Discount</th>
-                <th width="10%">Amount</th>
-            </tr>
-        </thead>
-        <tbody class="scroll">
-            <tr>
-                <td width="20%">here</td>
-                <td width="20%">here</td>
-                <td width="10%">here</td>
-                <td width="10%">here</td>
-                <td width="10%">here</td>
-                <td width="10%">here</td>
-                <td width="10%">here</td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-            <tr>
-                <td width="20%"></td>
-                <td width="20%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="10%"></td>
-            </tr>
-        </tbody>
-   </table>
-</div>
-                        <div class="addup rounded scroll-half movedown5">
-    <table class="tblholder unclickable">
-        <thead>
-            <tr>
-                <th width="10%">Reference No.</th>
-                <th width="10%">Date</th>
-                <th width="30%">Description</th>
-                <th width="12%">Balance</th>
-                <th width="12%"><input type="checkbox" id="applied" class="lblleft" /><label for="apply">Apply</label></th>
-            </tr>
-        </thead>
-        <tbody class="scroll">
-            <tr>
-                <td width="10%">here</td>
-                <td width="10%">here</td>
-                <td width="30%">here</td>
-                <td width="12%">here</td>
-                <td width="12%">here</td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-            <tr>
-                <td width="10%"></td>
-                <td width="10%"></td>
-                <td width="30%"></td>
-                <td width="12%"></td>
-                <td width="12%"></td>
-            </tr>
-        </tbody>
-   </table>
-</div>
+                                    </tbody>
+                                </table>
+                            </div>
 
-
+                        </div>
                         <div class="space10"></div>
                         <div class="addup bottom-pane">
                             <div class="row1">
@@ -431,11 +192,11 @@
                                                     <table>
                                                         <tr>
                                                             <td>Total Amount</td>
-                                                            <td>1,500.00</td>
+                                                            <td><span id="spnTotal">0.00</span></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a href="apply-to-invoice" class="btnlink view"><img src="http://localhost:8181/megasummit/images/buttons/apply-invoice.png" width="87" height="20" alt="Void" /></a></td>
-                                                            <td>500.00</td>
+                                                            <td><a href="javascript:void(0)" id="applyToInvoice" class="btnlink view"><img src="http://localhost:8181/megasummit/images/buttons/apply-invoice.png" width="87" height="20" alt="Void" /></a></td>
+                                                            <td><span id="spnApplyToInvoice">0.00</span> </td>
                                                         </tr>                                                  
                                                     </table>
                                                 </div>
@@ -461,7 +222,7 @@
                                                     <table>
                                                         <tr>
                                                             <td>Balance&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                            <td>1,000.00</td>
+                                                            <td><span id="spnBalance">0.00</span></td>
                                                         </tr>                                                 
                                                     </table>
                                                 </div>
@@ -481,4 +242,38 @@
 </div>
 
     </div>
+
+    <style>
+        .chk {
+            float: right !important;
+    opacity: 1 !important;
+    display: inline !important;
+    margin: -9px 8px 0 0 !important;
+        }
+        input#applied {
+    float: right;
+    margin: 3px -1px 0 0;
+    z-index: 9;
+    display: inline;
+}
+    </style>
+
+    <script src="Script/PurchaseReturn.js"></script>
+    <script type="text/javascript">
+
+        var ProductAutoCompleteData = <%= ProductVM.AutoCompleteProduct %>;
+        var LocationAutoCompleteData = <%= LocationVM.AutoCompleteLocation %>;
+        var ProductDetailData = <%= ProductVM.ProductDetail %>;
+        var UnitData = <%= ProductVM.Units %>;
+        var SupplierData = <%= SupplierVM.AutoCompleteSupplier %>;
+        var ForwarderData = <%= CustomerVM.Forwarders %>;
+        var SalesmanData = <%= EmployeeVM.Employees(0, string.Empty, "Salesman") %>;
+        var TermData = <%= CustomerVM.Terms %>;
+        //var SalesReturnSingleData =  <%= SalesReturnVM.SelectSingleSalesReturn(long.Parse( (Request["salesReturnID"] == null ? "0" : Request["salesReturnID"])  )) %>;
+
+
+    </script>
+
+
+
 </asp:Content>

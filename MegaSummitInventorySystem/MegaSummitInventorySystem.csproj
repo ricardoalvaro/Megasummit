@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aspnetSupplierInformationPayments.aspx" />
     <Content Include="aspnetCompany-Calendar.aspx" />
     <Content Include="aspnetCompany-Defaults-Customer.aspx" />
     <Content Include="aspnetCompany-Defaults-Employee.aspx" />
@@ -114,6 +115,9 @@
     <Content Include="aspnetSalesReturnInformation.aspx" />
     <Content Include="aspnetSupplier.aspx" />
     <Content Include="aspnetSupplierInformation.aspx" />
+    <Content Include="aspnetSupplierInformationInvoices.aspx" />
+    <Content Include="aspnetSupplierInformationPurchasedOrder.aspx" />
+    <Content Include="aspnetSupplierInformationSupplierItem.aspx" />
     <Content Include="aspnetVoucher.aspx" />
     <Content Include="include\CustomerSubMenu.ascx" />
     <Content Include="include\CustomerSubMenuAjax.ascx" />
@@ -343,6 +347,7 @@
     <Content Include="Script\BackUp\ProductAssembly.js" />
     <Content Include="Script\OfficialReceipt.js" />
     <Content Include="Script\PurchaseInvoice.js" />
+    <Content Include="Script\PurchaseReturn.js" />
     <Content Include="Script\SalesInvoice.js" />
     <Content Include="Script\SalesOrder.js" />
     <Content Include="Script\SalesReturn.js" />
@@ -445,6 +450,13 @@
     <Content Include="_UnitTesting.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aspnetSupplierInformationPayments.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationPayments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationPayments.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationPayments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetCompany-Calendar.aspx.cs">
       <DependentUpon>aspnetCompany-Calendar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -816,6 +828,27 @@
     <Compile Include="aspnetSupplierInformation.aspx.designer.cs">
       <DependentUpon>aspnetSupplierInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetSupplierInformationInvoices.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationInvoices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationInvoices.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationInvoices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationPurchasedOrder.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationPurchasedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationPurchasedOrder.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationPurchasedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationSupplierItem.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationSupplierItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationSupplierItem.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationSupplierItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetVoucher.aspx.cs">
       <DependentUpon>aspnetVoucher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1098,6 +1131,8 @@
     <Compile Include="ViewModel\LocationVM.cs" />
     <Compile Include="ViewModel\OfficialReceiptVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
+    <Compile Include="ViewModel\PurchaseInvoiceVM.cs" />
+    <Compile Include="ViewModel\PurchaseOrderVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
     <Compile Include="ViewModel\SalesOrderVM.cs" />
     <Compile Include="ViewModel\SalesReturnVM.cs" />

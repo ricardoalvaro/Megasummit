@@ -76,7 +76,7 @@
                 if (data[i]["OrderStatus"] == status) {
                     $("#tblMain tbody").append("<tr><td width='15%'>" + data[i]["RefNo"] + "</td><td width='15%'>" + FormatDate(data[i]["CreatedDate"]) + "</td><td width='25%'>" + data[i]["Salesman"] + "</td><td width='15%'>" + Number(data[i]["TotalAmount"]).toFixed(2) + "</td><td width='15%'>" + Number(data[i]["Balance"]).toFixed(2) + "</td><td width='15%'>" + data[i]["OrderStatus"] + "</td></tr>");
                 }
-                else {
+                else if(status == 'All'){
                     $("#tblMain tbody").append("<tr><td width='15%'>" + data[i]["RefNo"] + "</td><td width='15%'>" + FormatDate(data[i]["CreatedDate"]) + "</td><td width='25%'>" + data[i]["Salesman"] + "</td><td width='15%'>" + Number(data[i]["TotalAmount"]).toFixed(2) + "</td><td width='15%'>" + Number(data[i]["Balance"]).toFixed(2) + "</td><td width='15%'>" + data[i]["OrderStatus"] + "</td></tr>");
                 }
             }

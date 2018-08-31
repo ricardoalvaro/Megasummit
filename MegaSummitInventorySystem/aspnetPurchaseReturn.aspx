@@ -16,7 +16,7 @@
                         </div>
                         <div id="tab-content-holder">
                             <div class="content tabular">                            	
-                                <table class="tblholder main">
+                                <table id="tblMain"  class="tblholder main">
                                     <thead>
                                         <tr>
                                             <th width="10%">Reference No.</th>
@@ -28,158 +28,18 @@
                                         </tr>
                                     </thead>
                                     <tbody class="scroll">                                            
-                                        <tr id="rec-1">
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="25%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                            <td width="10%">here</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="25%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                            <td width="10%"></td>
-                                        </tr>                                            
+                                           <asp:Repeater runat="server" ID="repMain">   
+                                                <ItemTemplate>
+                                                        <tr id="rec-1" onclick="SelectPurchaseReturn('<%# Eval("ID").ToString() %> ')">
+                                                            <td width="10%"><%# Eval("RefNo").ToString() %> </td>
+                                                            <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
+                                                            <td width="30%"><%# Eval("SupplierName").ToString() %></td>
+                                                            <td width="10%"><%# decimal.Parse( Eval("TotalAmount").ToString()).ToString("N") %></td>
+                                                            <td width="10%"><%# decimal.Parse( Eval("Balance").ToString()).ToString("N") %></td>
+                                                            <td width="10%"><%# Eval("Status").ToString() %></td>
+                                                        </tr>
+                                                </ItemTemplate>
+                                            </asp:Repeater>                    
                                     </tbody>
                                </table>	
                             </div>
@@ -192,4 +52,29 @@
     </div>
 
     </div>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            $('#btn-new').removeClass('disabled').click(function () {
+                window.location = "aspnetPurchaseReturnInformation.aspx";
+            });
+            FillSalesReturnDefault();
+        });
+
+        function SelectPurchaseReturn(id) {
+            window.location = "aspnetPurchaseReturnInformation.aspx?purchaseReturnID=" + id;
+        }
+
+
+        function FillSalesReturnDefault() {
+            for (var i = 0; i < 50; i++) {
+                $('#tblMain tbody:last').append("<tr><td width='30%'></td><td width='15%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td></tr>");
+            }
+        }
+
+
+    </script>
+
 </asp:Content>

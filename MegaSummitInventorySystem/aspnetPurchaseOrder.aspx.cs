@@ -32,7 +32,7 @@ namespace MegaSummitInventorySystem
                 _po.RefNo = p.RefNo + p.ID.ToString();
                 _po.Date = p.CreatedDate.Value;
                 _po.SupplierName = p.SupplierName;
-                //_po.DeliveryDate = p.
+                
                 _po.CancelDate = p.CancelDate;
                 _po.Amount = p.TotalAmount.Value;
                 _po.Balance = GetBalance(p.ID);
