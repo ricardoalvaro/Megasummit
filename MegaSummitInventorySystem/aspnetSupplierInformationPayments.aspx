@@ -14,9 +14,8 @@
 
         <div class="padding-0">
             <ul class="suboptions">
-                <li><a href="javascript:void(0)" onclick="DisplayData('Cash')">Cash</a></li>
-                <li><a href="javascript:void(0)" onclick="DisplayData('Check')">Check</a></li>
-                <li><a href="javascript:void(0)" onclick="DisplayData('Card')">Card</a></li>
+                <li><a href="javascript:void(0)" onclick="LoadCash()">Cash</a></li>
+                <li><a href="javascript:void(0)" onclick="LoadCheck()">Check</a></li>
             </ul>
         <div class="ym-ie-clearing">&nbsp;</div>
         </div>
@@ -28,29 +27,7 @@
                     <div id="content-holder">
                     	<div class="content tabular">                            	
                             <table class="tblholder main unclickable" id="tblMain">
-                               <thead>
-                                    <tr>
-                                        <th width="20%">Reference No.</th>
-                                        <th width="20%">Date</th>
-                                        <th width="20%">Voucher Amount</th>
-                                        <th width="20%">Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="scroll">
-                                       <asp:Repeater runat="server" ID="repMain">
-                                      <ItemTemplate>
-                                            <tr>
-                                                <td width="12%"><%# Eval("RefNo") %> </td>
-                                                <td width="12%"><%# DateTime.Parse(Eval("DateCreated").ToString()).ToString("MM/dd/yyyy") %> </td>
-                                                <td width="12%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %>  </td>
-                                                <td width="12%"><%# (Eval("CancelDate").ToString()) %> </td>
-                                                <td width="12%"><%# Decimal.Parse(Eval("TotalAmount").ToString()).ToString("N") %> </td>
-                                                <td width="12%"><%# Decimal.Parse(Eval("Balance").ToString()).ToString("N") %> </td>
-                                                <td width="12%"><%# Eval("PurchasedOrderStatus") %> </td>
-                                            </tr>
-                                   </ItemTemplate>
-                                    </asp:Repeater>
-                                </tbody>
+                             
                            </table>	
                         </div>
                         <div class="addup"><div class="space20"></div></div>
@@ -67,39 +44,62 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            FillSalesOrderDefault();
+            LoadCash();
         });
 
-        function DisplayData(status) {
-            $("#tblMain tbody").empty();
-            var data = SalesOrderDetails;
+
+        function LoadCash() {
+            var data = cashData;
+
+            $('#tblMain').empty();
+            $('#tblMain').append("<thead> <tr> <th width='20%'>Reference No.</th><th width='20%'>Date</th><th width='20%'>O.R. Amount</th><th width='20%'>Amount</th></tr></thead>");
+            $('#tblMain').append("<tbody class='scroll'>");
+
             for (var i = 0; i < data.length; i++) {
-                if (data[i]["OrderStatus"] == status) {
-                    $("#tblMain tbody").append("<tr><td width='15%'>" + data[i]["RefNo"] + "</td><td width='15%'>" + FormatDate(data[i]["CreatedDate"]) + "</td><td width='25%'>" + data[i]["Salesman"] + "</td><td width='15%'>" + Number(data[i]["TotalAmount"]).toFixed(2) + "</td><td width='15%'>" + Number(data[i]["Balance"]).toFixed(2) + "</td><td width='15%'>" + data[i]["OrderStatus"] + "</td></tr>");
-                }
-                else {
-                    $("#tblMain tbody").append("<tr><td width='15%'>" + data[i]["RefNo"] + "</td><td width='15%'>" + FormatDate(data[i]["CreatedDate"]) + "</td><td width='25%'>" + data[i]["Salesman"] + "</td><td width='15%'>" + Number(data[i]["TotalAmount"]).toFixed(2) + "</td><td width='15%'>" + Number(data[i]["Balance"]).toFixed(2) + "</td><td width='15%'>" + data[i]["OrderStatus"] + "</td></tr>");
-                }
+                $('#tblMain').append("<tr><td width='20%'>" + data[i]['RefNo'] + "</td><td width='20%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='20%'>" + data[i]['ORAmount'] + "</td><td width='20%'>" + data[i]['CashAmount'] + "</td></tr>");
             }
 
-            FillSalesOrderDefault();
+            $('#tblMain').append("</tbody></table>");
+            LoadExtraTR();
 
         }
 
-        function FillSalesOrderDefault() {
+
+        function LoadCheck() {
+            var data = checkData;
+
+            $('#tblMain').empty();
+            $('#tblMain').append("<thead> <tr> <th width='15%'>Reference No.</th><th width='20%'>Date</th><th width='15%'>Bank</th><th width='15%'>Check No</th><th width='15%'>Check Data</th><th width='15%'>O.R. Amount</th><th width='10%'>Amount</th></tr></thead>");
+            $('#tblMain').append("<tbody class='scroll'>");
+
+            for (var i = 0; i < data.length; i++) {
+                $('#tblMain').append("<tr><td width='15%'>" + data[i]['RefNo'] + "</td><td width='15%'>" + FormatDate(data[i]['CreatedDate']) + "</td><td width='15%'>" + data[i]['BankName'] + "</td><td width='15%'>" + data[i]['CheckNo'] + "</td><td width='15%'>" + FormatDate(data[i]['CheckDate']) + "</td><td width='15%'>" + data[i]['ORAmount'] + "</td><td width='10%'>" + data[i]['CheckAmount'] + "</td></tr>");
+            }
+
+            $('#tblMain').append("</tbody></table>");
+            LoadExtraTR();
+        }
+
+        function LoadExtraTR() {
+
             for (var i = 0; i < 50; i++) {
-                $('#tblMain tbody:last').append("<tr><td width='30%'></td><td width='15%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td><td width='10%'></td></tr>");
+                $('#tblMain tbody').append("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>");
             }
+
         }
 
-        var SalesOrderDetails =<%= SalesOrderVM.CustomerSalesOrderDetails(long.Parse( (Request["customerID"] == null ? "0" : Request["customerID"])  )) %>;  
+        var cashData = <%= PurchasePaymentVM.CashPayment(long.Parse( (Request["supplierID"] == null ? "0" : Request["supplierID"])  ))%>;
+        var checkData = <%= PurchasePaymentVM.CheckPayment(long.Parse( (Request["supplierID"] == null ? "0" : Request["supplierID"])  ))%>;
 
     </script>
 
 
-    <style>
+ <style>
         .padding-0 {
             padding: 0;
         }
+        .tblholder .scroll {
+    height: 460px;
+}
     </style>
 </asp:Content>

@@ -78,7 +78,7 @@ function SaveSupplier(supplier_id, me) {
                 type: "POST",url: pageUrl + "/InsertSupplier",data: data_transfer,contentType: "application/json; charset=utf-8",
                 dataType: "json",crossdomain: true,
                 success: function (response) {
-                    window.location = 'aspnetSupplierInformation.aspx?supplierID=' + response.d;
+                    window.location = 'aspnetSupplier.aspx';
 
                 },
                 error: function (response) {
@@ -97,7 +97,7 @@ function SaveSupplier(supplier_id, me) {
                 type: "POST", url: pageUrl + "/UpdateSupplier", data: data_transfer, contentType: "application/json; charset=utf-8",
                 dataType: "json", crossdomain: true,
                 success: function (response) {
-                    window.location = 'aspnetSupplierInformation.aspx?supplierID=' + response.d;
+                    window.location = 'aspnetSupplier.aspx';// window.location = 'aspnetSupplierInformation.aspx?supplierID=' + response.d;
                 },
                 error: function (response) {
                     alert(response.status);

@@ -1133,6 +1133,7 @@
     <Compile Include="ViewModel\ProductVM.cs" />
     <Compile Include="ViewModel\PurchaseInvoiceVM.cs" />
     <Compile Include="ViewModel\PurchaseOrderVM.cs" />
+    <Compile Include="ViewModel\PurchasePaymentVM.cs" />
     <Compile Include="ViewModel\RegionMunicipalityVM.cs" />
     <Compile Include="ViewModel\SalesOrderVM.cs" />
     <Compile Include="ViewModel\SalesReturnVM.cs" />

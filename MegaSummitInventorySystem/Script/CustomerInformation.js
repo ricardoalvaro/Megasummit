@@ -71,7 +71,7 @@ function SaveCustomer(customer_id, me)
                 dataType: "json", crossdomain: true,
                 success: function (response) {
 
-                    window.location.href = "aspnetCustomerInformation.aspx?customerID=" + response.d;
+                    window.location.href = 'aspnetCustomer.aspx';//"aspnetCustomerInformation.aspx?customerID=" + response.d;
 
                 }, error: function (response) { alert(response.status); }
             });
@@ -85,7 +85,7 @@ function SaveCustomer(customer_id, me)
                 dataType: "json", crossdomain: true,
                 success: function (response) {
                 
-                    window.location.href = "aspnetCustomerInformation.aspx?customerID=" + id;
+                    window.location.href = 'aspnetCustomer.aspx';//"aspnetCustomerInformation.aspx?customerID=" + id;
                 },
                 error: function (response) { alert(response.status); }
             });
