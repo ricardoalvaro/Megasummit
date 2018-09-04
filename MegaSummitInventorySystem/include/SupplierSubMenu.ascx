@@ -13,7 +13,7 @@
                             <li class=""><a href="aspnetPurchaseReturn.aspx">Purchase Return</a></li>
                             <li class=""><a href="aspnetPurchaseOrder.aspx">Purchase Order</a></li>
                             <li class=""><a href="aspnetVoucher.aspx">Voucher</a></li>	
-                            <li class=""><a href="#">Memo</a></li>	
+                            <li class=""><a href="aspnetSupplierMemo.aspx">Memo</a></li>	
                         </ul>
                         <div class="ym-ie-clearing">&nbsp;</div>
                     </div>

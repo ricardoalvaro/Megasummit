@@ -30,7 +30,7 @@
                                             <tr id="rec-1" onclick="RedirectToGeneralInfomation(<%# Eval("ID") %>)" >
                                                 <td width="10%"><%# Eval("RefNo").ToString() %></td>
                                                 <td width="10%"><%# DateTime.Parse(Eval("CreatedDate").ToString()).ToString("MM/dd/yyyy") %></td>
-                                                <td width="25%"><%# Eval("SupplierName").ToString() %></td>
+                                                <td width="25%"><%# Eval("SupplierName") %></td>
                                                 <td width="10%"><%# Decimal.Parse(Eval("Amount").ToString()).ToString("N") %></td>
                                                 <td width="10%"><%# Decimal.Parse(Eval("Balance").ToString()).ToString("N") %></td>
                                                 <td width="10%"><%# Eval("Status").ToString() %></td>

@@ -32,7 +32,7 @@ namespace MegaSummitInventorySystem.Webservice
 
 
             var invoices = Database._InvoiceSalesCustomerSelect(customer_id);
-            var payment = Database._InvoicePaymentSelect(0, customer_id);
+            //var payment = Database._InvoicePaymentSelect(0, customer_id);
 
 
             foreach (var i in invoices)
@@ -40,7 +40,7 @@ namespace MegaSummitInventorySystem.Webservice
                 long _id = i.ID;
                 string _refNo = i.RefNo;
                 DateTime _createdDate = i.CreatedDate.Value;
-                string _description = "Sales";
+                string _description =  i.InvoiceType;
                 string _salesman = i.Salesman;
                 decimal _totalAmount = i.TotalAmount;
 
@@ -61,6 +61,12 @@ namespace MegaSummitInventorySystem.Webservice
                 foreach (var ret in sales_return)
                 {
                     _balance += ret.Amount.Value;
+                }
+
+                var customer_memo = Database._InvoiceMemoDetails.Where(x => x.InvoiceID == i.ID);
+                foreach (var memo in customer_memo)
+                {
+                    _balance += memo.ApplyAmount.Value;
                 }
 
 

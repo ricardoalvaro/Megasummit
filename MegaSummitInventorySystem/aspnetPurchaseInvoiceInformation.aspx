@@ -231,11 +231,11 @@
                                                                         <td><span id="spnSubTotal">0.00</span></td>
                                                                     </tr>
                                                                     <tr>                                                                    
-                                                                        <td><a href="payment" class="view btnlink"><img src="http://localhost:8181/megasummit/images/buttons/payment.png" width="71" height="20" alt="Payment" /></a></td>
+                                                                        <td><a href="payment" class="view btnlink"><img src="image/payment.png" width="71" height="20" alt="Payment" /></a></td>
                                                                         <td><span id="spnTotalPayment">0.00</span></td>
                                                                     </tr> 
                                                                     <tr>
-                                                                        <td><a href="memo" class="form btnlink"><img src="http://localhost:8181/megasummit/images/buttons/memo.png" width="71" height="20" alt="Memo" /></a></td>
+                                                                        <td><a href="memo" class="form btnlink"><img src="image/memo.png" width="71" height="20" alt="Memo" /></a></td>
                                                                         <td><span id="spnMemo">0.00</span></td>
                                                                     </tr>                                                                                                           
                                                                 </table>

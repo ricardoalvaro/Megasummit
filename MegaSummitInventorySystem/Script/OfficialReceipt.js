@@ -6,10 +6,10 @@ var OfficialReceiptID = 0;
 $(document).ready(function () {
 
     var helper = new Helper();
-    CustomerID = Number(helper.GetQuerystring()["customerID"]);
-    if (!$.isNumeric(CustomerID) || CustomerID <= 0) {
-        CustomerID = 0;
-    }
+    //CustomerID = Number(helper.GetQuerystring()["customerID"]);
+    //if (!$.isNumeric(CustomerID) || CustomerID <= 0) {
+    //    CustomerID = 0;
+    //}
 
 
 
@@ -39,9 +39,9 @@ $(document).ready(function () {
 
     Fill();
 
-    if (CustomerID > 0) {
-        FillCustomerDetails(CustomerID);
-    }
+    //if (CustomerID > 0) {
+    //    FillCustomerDetails(CustomerID);
+    //}
 
 });
 
@@ -189,7 +189,7 @@ function ApplyTo(me, ctrl) {
 
 
 function Fill() {
-    FillCustomerAutoComplete(); CreateDate(); ExpirationDate(); FillBankAccountAutoComplete(); FillDefaultList();
+    FillCustomerAutoComplete(); CreateDate(); ExpirationDate(); FillBankAccountAutoComplete(); FillDefaultList(); FillCustomer(0);//all customer
 }
 
 function FillCustomerAutoComplete() {
@@ -207,7 +207,7 @@ function FillCustomerAutoComplete() {
 function FillCustomerDetails(customer_id) {
 
     //load OR raise in this customer
-    FillCustomer(customer_id);
+    //FillCustomer(customer_id);
 
     //load all invoices that are not paid
     FillInvoiceList(customer_id);
@@ -228,7 +228,7 @@ function FillCustomer(customer_id) {
             var data = eval(response.d);
             for (var i = 0; i < data.length; i++) {
 
-                $('#customer').val(data[i]['CustomerName']);
+               // $('#customer').val(data[i]['CustomerName']);
 
                 $("#ulCustomer").append(ListOfficialReceipt(data[i]["ID"], data[i]['CustomerName'], data[i]['RefNo'], data[i]['TotalAmount']));
             }

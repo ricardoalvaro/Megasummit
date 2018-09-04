@@ -50,7 +50,7 @@
                                         <td width="10%"><%# Decimal.Parse(Eval("QtyOrder").ToString()).ToString("N") %></td>
                                         <td width="8%"><%# Eval("UnitName") %></td>
                                         <td width="8%"><%# Decimal.Parse(Eval("Cost").ToString()).ToString("N") %></td>
-                                        <td width="8%"><%# Decimal.Parse(Eval("Discount").ToString()).ToString("N") %></td>
+                                        <td width="8%"><%# Eval("Discount") %></td>
                                         <td width="10%">Ave cost</td>
                                         <td width="10%"><%# Decimal.Parse(Eval("QtyDiff").ToString()).ToString("N") %></td>
                                     </tr>

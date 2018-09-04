@@ -185,7 +185,10 @@ public class PurchaseInvoice
 {
     public long ID { get; set; }
     public string RefNo { get; set; }
+    public string RefNoSerial { get; set; }
+    public long TermID { get; set; }
     public DateTime CreatedDate { get; set; }
+    public long SalesmanID { get; set; }
     public string SupplierName { get; set; }
     public decimal Amount { get; set; }
     public decimal Balance { get; set; }

@@ -92,9 +92,9 @@
                         <div class="ym-cbox"> 
                         	<div class="box-holder">
                             	<ul class="tabs crossfade">
-                                    <li id="pl" class="active form"><a onclick="SubMenuDisplay('pl')" class="save" style="cursor:default">Packing List</a></li>
-                                    <li id="pu" class="forview"><a onclick="SubMenuDisplay('pu')" class="save" style="cursor:default">Pick Up Slip</a></li>
-                                    <li id="cr" class="forview"><a onclick="SubMenuDisplay('cr')" class="save" style="cursor:default">Counter Receipt</a></li>
+                                    <li id="pl" class="active form"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('pl')" class="save" style="cursor:default">Packing List</a></li>
+                                    <li id="pu" class="view"  onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('pu')" class="save" style="cursor:default">Pick Up Slip</a></li>
+                                    <li id="cr" class="view"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('cr')" class="save" style="cursor:default">Counter Receipt</a></li>
                                 </ul>  
 
                     			<div id="tab-content-holder">
@@ -282,6 +282,16 @@
                 $("#action_counter_receipt").show();
 
             }
+
+        }
+
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
 
         }
 

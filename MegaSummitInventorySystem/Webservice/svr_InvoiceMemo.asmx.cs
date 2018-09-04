@@ -66,13 +66,109 @@ namespace MegaSummitInventorySystem.Webservice
         //}
 
         [WebMethod]
-        public bool InsertInvoiceMemo(long invoice_id, long account_name,decimal debit,decimal credit,string ref_no,string ref_no_serial,DateTime created_date)
+        public string SelectCustomerMemoPerCustomer(long invoice_memo_id)
+        {
+
+            try
+            {
+                Database = new DatabaseDataContext();
+
+                List<CustomerMemo> customer_memo = new List<CustomerMemo>();
+                var data = Database._InvoiceMemoDetails.Where(x => x.ID == invoice_memo_id);
+                
+                foreach (var d in data)
+                {
+                    CustomerMemo _memo = new CustomerMemo();
+
+                    var inv = Database._Invoices.Where(x => x.ID == d.InvoiceID);
+                    decimal invoice_amount = 0;
+                    decimal _balance = 0;
+
+                    foreach (var _i in inv)
+                    {
+                        _memo.RefNo = _i.RefNo + _i.RefNoSerial;
+                        _memo.InvoiceDate = _i.CreatedDate.Value;
+                        _memo.InvoiceType = _i.InvoiceType;
+                        invoice_amount = _i.TotalAmount.Value;
+                    }
+
+
+
+                    var invoice_payment = Database._InvoicePaymentSelectCustomer(0, 0, d.InvoiceID, d.CustomerID);
+
+                    foreach (var bal in invoice_payment)
+                    {
+                        _balance += (bal.Amount.Value);
+                    }
+
+
+                    var sales_return = Database._invoicePaymentSalesReturns.Where(x => x.InvoiceID == d.InvoiceID);
+
+                    foreach (var ret in sales_return)
+                    {
+                        _balance += ret.Amount.Value;
+                    }
+
+                    var customer_memo_payment = Database._InvoiceMemoDetails.Where(x => x.InvoiceID == d.InvoiceID);
+                    foreach (var memo in customer_memo_payment)
+                    {
+                        _balance += memo.ApplyAmount.Value;
+                    }
+
+
+                    _memo.Balance = (invoice_amount - _balance);
+                    _memo.ApplyAmount = d.ApplyAmount.Value;
+
+
+                    customer_memo.Add(_memo);
+                }
+
+
+
+
+                return JsonConvert.SerializeObject(customer_memo, Newtonsoft.Json.Formatting.Indented);
+            }
+            catch
+            {
+
+            }
+
+            return "";
+        }
+
+
+
+        [WebMethod]
+        public bool InsertInvoiceMemo(long customerID,string refNo,string refNoSerial,DateTime createdDate,long accountID,string accountName,decimal debit,decimal credit, string invoiceList)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._InvoiceMemoInsert(ref id, invoice_id, account_name, debit, credit, ref_no, ref_no_serial, created_date);
+                Database._InvoiceMemoInsert(ref id, customerID, refNo, refNoSerial, createdDate, accountID, accountName, debit, credit);
+
+                string[] _list = invoiceList.Split('|');
+
+                foreach (var i in _list)
+                {
+                    string[] col = i.Split('^');
+
+                    if (!string.IsNullOrEmpty(col[0]))
+                    {
+                        long? d_id = 0;
+                        var isDebit = Database._Accounts.SingleOrDefault(x => x.ID == accountID).isDebit.Value;
+
+                        var type = (isDebit) ? "Debit" : "Credit";
+
+                        Database._InvoiceMemoDetailInsert(ref d_id, id, customerID, refNo, refNoSerial, createdDate, accountID, type, long.Parse(col[0]), decimal.Parse(col[1]));
+                    }
+
+                    
+
+
+                }
+
+
                 return true;
             }
             catch (Exception)
@@ -123,4 +219,17 @@ namespace MegaSummitInventorySystem.Webservice
 
 
     }
+
+
+
+    public class CustomerMemo
+	{
+        public string RefNo { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public string InvoiceType { get; set; }
+        public decimal Balance { get; set; }
+        public decimal ApplyAmount { get; set; }
+
+	}
+
 }

@@ -142,6 +142,16 @@ namespace MegaSummitInventorySystem.Webservice
             }
         }
 
+
+        [WebMethod]
+        public bool InsertOpeningBalance(long customerID,string refNo,string refNoSerial,long salesmanID,long termID,DateTime createdDate,decimal commissionRate,decimal totalAmount)
+        {
+
+            Database._InvoiceOpeningBalanceInsert(customerID, refNo, refNoSerial, salesmanID, termID, createdDate, commissionRate, totalAmount, "Opening Balance", "Posted");
+            return true;
+        }
+
+
         [WebMethod]
         public bool UpdateInvoice(long id, string invoice_status, long customer_id, string address, long forwarder_to_id, long salesman_id, string po_no, long term_id, string ref_no, string ref_no_serial, DateTime created_date, DateTime delivery_date, string prepared_by, string checked_by, string delivered_by, string way_bill_no, string container_no, string bill_of_landing, decimal commission_rate, decimal commission_amt, long remarks_id, string notes, decimal sub_total_amt, decimal tax_amt, decimal shipping_amt, decimal payment_amt, decimal memo_amt, decimal adjustment_amt, string productList, string productListAD)
         {
@@ -466,9 +476,7 @@ namespace MegaSummitInventorySystem.Webservice
             }
             return "";
         }
-
-
-
+        
         [WebMethod]
         public string InvoiceVoid(long ID )
         {
@@ -534,5 +542,96 @@ namespace MegaSummitInventorySystem.Webservice
 
             return "";
         }
+
+
+        [WebMethod]
+        public string InvoiceOpeningBalanceSelect(long customer_id, long invoice_id)
+        { 
+     
+
+            List<InvoiceBalance> ib = new List<InvoiceBalance>();
+
+
+            var invoices = Database._InvoiceSalesCustomerSelect(customer_id).Where(x => x.InvoiceType == "Opening Balance"); ;
+            var payment = Database._InvoicePaymentSelect(0, 0);
+
+
+            foreach (var i in invoices)
+            {
+                long _id = i.ID;
+                string _refNo = i.RefNo;
+                string _refSerial = i.RefNoSerial;
+                DateTime _createdDate = i.CreatedDate.Value;
+                string _description = i.InvoiceStatus;
+                string _salesman = i.Salesman;
+                decimal _totalAmount = i.TotalAmount;
+                string _customerName = i.CustomerName;
+                string _status = i.InvoiceStatus;
+                decimal _comm_rate = i.CommissionRate.Value;
+                long _terms_id = i.TermID.Value;
+
+
+                decimal _balance = 0;
+
+                var invoice_payment = Database._InvoicePaymentSelectCustomer(0, 0, i.ID, 0);
+
+                foreach (var bal in invoice_payment)
+                {
+                    _balance += (bal.Amount.Value);
+                }
+
+
+                var sales_return = Database._invoicePaymentSalesReturns.Where(x => x.InvoiceID == i.ID);
+
+                foreach (var ret in sales_return)
+                {
+                    _balance += ret.Amount.Value;
+                }
+
+
+                decimal compute = (_totalAmount - _balance);
+
+
+                InvoiceBalance invBal = new InvoiceBalance();
+                invBal.ID = _id;
+                invBal.RefNo = _refNo;
+                invBal.RefSerial = _refSerial;
+                invBal.CreatedDate = _createdDate;
+                invBal.CustomerName = _customerName;
+                invBal.Description = _description;
+                invBal.Salesman = _salesman;
+                invBal.TotalAmount = _totalAmount;
+                invBal.Balance = compute;
+                invBal.Status = _status;
+                invBal.CommRate = _comm_rate;
+                invBal.TermID = _terms_id;
+
+                ib.Add(invBal);
+                //if (compute > 0)
+                //{
+                //    ib.Add(new InvoiceBalance(_id, _refNo, _createdDate, _description, _salesman, _totalAmount, compute));
+                //}
+
+            }
+
+            if (invoice_id > 0)
+            {
+
+                var ret = ib.Where(x=>x.ID == invoice_id);
+                return JsonConvert.SerializeObject(ret, Newtonsoft.Json.Formatting.Indented);
+            }
+
+            return JsonConvert.SerializeObject(ib, Newtonsoft.Json.Formatting.Indented);
+
+
+            //var data = ib;
+            //repMain.DataSource = data;
+            //repMain.DataBind();
+        
+        }
+
+
+
+
     }
 }

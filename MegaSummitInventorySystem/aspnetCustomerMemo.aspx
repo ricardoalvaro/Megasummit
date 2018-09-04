@@ -69,7 +69,7 @@
                                                     <td class="lbl"><label for="account_name">Account Name</label></td>
                                                     <td class="obj">
                                                         <div class="select-arrow fullwidth">
-                                                            <select id="account_name" name="account_name">
+                                                            <select id="account_name" name="account_name" onchange="CheckType(this)">
                                                                 <option value=""></option>	     
                                                             </select>
                                                         </div>
@@ -96,14 +96,16 @@
                                         <div class="space10"></div>
                                     </div>
                                     <div class="rounded">
-                                    	<table class="tblholder unclickable" id="tblList">
+                                    	<table class="tblholder unclickable" id="tbl_apply_invoices">
                                             <thead>
                                                 <tr>
                                                     <th width="15%">Reference No.</th>
                                                     <th width="10%">Date</th>
                                                     <th width="50%">Description</th>
                                                     <th width="10%">Balance</th>
-                                                    <th width="12%"><input type="checkbox" id="applied" class="lblleft" /><label for="apply">Apply</label></th>
+                                                    <th width="12%">
+                                                        <input type="checkbox" id="applied" class="lblleft" style="display:block !important ;opacity:1 !important; z-index:999 !important" onchange="ApplyToAllCheck(this)">
+                                                        <label for="apply">Apply</label></th>
                                                 </tr>
                                             </thead>
                                             <tbody class="scroll">
@@ -167,71 +169,62 @@
         </div>
     </div>
 </div>
-
-      <script type="text/javascript">
-          /// <reference path="js/jquery-3.3.1.slim.min.js" />
-          //--------Need refactoring----------
-          var CustomerID = 0;
-
-
-          $(document).ready(function () {
-
-             
-            
-              Fill();
-
-          });
-
-          function ListOfficialReceipt(customer_name , ref_no, amount)
-          {
-              return "<li><a href='javascript:;' id='item-1'><span class='name'>" + customer_name + "<span class='ym-clearfix'><span class='float-left'>" + ref_no + "</span><span class='float-right'>" + ((amount == '0') ? '' : Number(amount).toFixed(2)) + "</span></span></span></a></li>";
-          }
-
-
-
-          function Fill()
-          {
-              FillCustomerAutoComplete(); CreateDate(); FillDefaultList();
-          }
-
-          function FillCustomerAutoComplete() {
-              $("#customer").autocomplete({
-                  source: CustomerData, minLength: 0, minChars: 0, max: 12, autoFill: true,
-                  matchContains: false, select: function (a, b) {
-                      //customer information
-                      FillCustomerDetails(b.item.id);
-                      CustomerID = b.item.id;
-                  }
-              }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
-          }
-
-
-          function FillCustomerDetails(customer_id) {
-            
-              console.log(customer_id);
-          }
-
-          function CreateDate()
-          {
-              var currentDate = new Date(); var day = currentDate.getDate(); var month = currentDate.getMonth() + 1; var year = currentDate.getFullYear();
-              $('#date').val("0" + month + "/" + day + "/" + year);
-          }
-
-          function FillDefaultList()
-          {
-              for (var i = 0; i < 20; i++) {
-                  $("#tblList tbody").append("<tr><td width='15%'></td><td width='10%'></td><td width='23%'></td><td width='15%'></td><td width='12%'></td><td width='20%'></td></tr>");
-            
-                  $("#ulMemoList").append(ListOfficialReceipt('&nbsp;','&nbsp;','0') );
-              }
-
-          }
-
-       </script>
+    <script src="Script/CustomerMemo.js"></script>
 
      <script type="text/javascript">
 
          var CustomerData = <%= CustomerVM.CustomerAutoComplete %>;
+         var Account = <%= AccountsVM.Accounts %>;
+         var CustomerMemoList = <%= CustomerMemoVM.CustomerMemoList %>;
          
     </script>
+
+     <style>
+        input[type="radio"], input[type="checkbox"] {
+            display: inline !important;
+    opacity: 0 !important;
+    float: right !important;
+        }
+        .bank {
+            border: none;
+            background: none;
+            width: 96%;
+        }
+
+        .check_no {
+            border: none;
+            background: none;
+            width: 96%;
+        }
+
+        ._date {
+            border: none;
+            background: none;
+            width: 96%;
+        }
+
+        .check_type {
+            border: none;
+            background: none;
+            width: 96%;
+        }
+
+        .amount {
+            border: none;
+            background: none;
+            width: 96%;
+        }
+        input.apply {
+    width: 68%;
+    float: left;
+}
+        .apply {
+            border:none;
+            background:none;
+        }
+        input.chk {
+    opacity: 1 !important;
+    margin: 3.5px 7px;
+}
+    </style>
 </asp:Content>

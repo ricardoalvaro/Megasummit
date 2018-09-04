@@ -136,11 +136,11 @@
 
 
                                     <ul class="tabs crossfade">
-                                        <li class="active view"><a onclick="SubMenuDisplay('location')" style="cursor: default">Location</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('region_province')" style="cursor: default">Region Province</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('product_department')" style="cursor: default">Product Department</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('bank')" style="cursor: default">Bank</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('forwarder')" style="cursor: default">Forwarder</a></li>
+                                        <li class="active view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('location')" style="cursor: default">Location</a></li>
+                                        <li class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('region_province')" style="cursor: default">Region Province</a></li>
+                                        <li class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('product_department')" style="cursor: default">Product Department</a></li>
+                                        <li class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('bank')" style="cursor: default">Bank</a></li>
+                                        <li class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('forwarder')" style="cursor: default">Forwarder</a></li>
                                     </ul>
                                     <%-- Start Location --%>
                                     <div id="xLocation" style="display: none">
@@ -1137,6 +1137,16 @@
             SubMenuDisplay('location');
         });
 
+        
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
 
     </script>
 

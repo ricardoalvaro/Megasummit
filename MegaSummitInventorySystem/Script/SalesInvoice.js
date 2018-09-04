@@ -526,7 +526,7 @@ function ComputeCommissionRate()
 
     var comm_amount = (rate / 100) * total_amount;
 
-    $("#commission_amount").val(comm_amount);
+    $("#commission_amount").val(comm_amount.toFixed(2));
 }
 
 function ComputeTotalAmountDue() {

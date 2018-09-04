@@ -190,7 +190,7 @@
                                     <div class="ym-grid ym-equalize linearize-level-1">
                                         <div class="pane-left ym-gl">
                                             <div class="ym-gbox">
-                                                <a href="javascript:void(0)" onclick="CloseStatus()"><img src="http://localhost:8181/megasummit/images/buttons/close.png" width="71" height="20" alt="Void" /></a>&nbsp;
+                                                <a href="javascript:void(0)" onclick="CloseStatus()"><img src="image/close.png" width="71" height="20" alt="Void" /></a>&nbsp;
                                               <%--  <a href=""><img src="http://localhost:8181/megasummit/images/buttons/hold.png" width="71" height="20" alt="Hold" /></a>--%>
                                             </div>
                                         </div>

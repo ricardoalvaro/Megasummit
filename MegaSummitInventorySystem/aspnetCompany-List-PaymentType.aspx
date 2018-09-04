@@ -98,8 +98,8 @@
                             <div class="ym-cbox">
                                 <div class="box-holder">
                                     <ul class="tabs crossfade">
-                                        <li class="active view"><a onclick="SubMenuDisplay('check')" class="new-find" style="cursor: default">Check Type</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('card')" class="new-find" style="cursor: default">Card Type</a></li>
+                                        <li class="active view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('check')" class="new-find" style="cursor: default">Check Type</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('card')" class="new-find" style="cursor: default">Card Type</a></li>
                                     </ul>
                                     <div id="tab-content-holder">
 
@@ -569,6 +569,18 @@
 
 
         }
+
+        //onclick = 'ActivateForm(this);'
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
+
 
     </script>
 

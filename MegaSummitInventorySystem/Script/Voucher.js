@@ -7,10 +7,10 @@ var VoucherID = 0;
 $(document).ready(function () {
 
     var helper = new Helper();
-    SupplierID = Number(helper.GetQuerystring()["supplierID"]);
-    if (!$.isNumeric(SupplierID) || SupplierID <= 0) {
-        SupplierID = 0;
-    }
+    //SupplierID = Number(helper.GetQuerystring()["supplierID"]);
+    //if (!$.isNumeric(SupplierID) || SupplierID <= 0) {
+    //    SupplierID = 0;
+    //}
 
     $('#btn-save').removeClass('disabled');
 
@@ -34,11 +34,12 @@ $(document).ready(function () {
     CheckList();
 
     Fill();
+
     //alert(SupplierID);
-    if (SupplierID > 0) {
-        //alert(SupplierID);
-        FillSupplierDetails(SupplierID);
-    }
+    //if (SupplierID > 0) {
+    //    //alert(SupplierID);
+    //    FillSupplierDetails(SupplierID);
+    //}
 
 });
 
@@ -152,20 +153,21 @@ function PaymentType(me, ctrl) {
 }
 
 function Fill() {
-    FillCustomerAutoComplete();
+    FillSupplierAutoComplete();
     CreateDate();
     FillDefaultList();
-    FillBank();
+  
     FillBankAccountAutoComplete();
-
+    FillSupplier(0);
 }
 
-function FillCustomerAutoComplete() {
+function FillSupplierAutoComplete() {
     $("#supplier").autocomplete({
         source: SupplierData, minLength: 0, minChars: 0, max: 12, autoFill: true,
         matchContains: false, select: function (a, b) {
             //supplier information
             FillSupplierDetails(b.item.id);
+            FillBank();
             SupplierID = b.item.id;
         }
     }).on('focus', function (event) { var self = this; $(self).autocomplete("search", ""); });
@@ -174,7 +176,7 @@ function FillCustomerAutoComplete() {
 function FillSupplierDetails(supplier_id) {
 
     //load OR raise in this customer
-    FillSupplier(supplier_id);
+    //FillSupplier(supplier_id);
 
     //load all invoices that are not paid
     FillInvoiceList(supplier_id);
@@ -195,7 +197,7 @@ function FillSupplier(supplier_id) {
             var data = eval(response.d);
             for (var i = 0; i < data.length; i++) {
 
-                $('#supplier').val(data[i]['SupplierName']).trigger('change');
+                //$('#supplier').val(data[i]['SupplierName']).trigger('change');
 
                 //alert(data[i]['Supplier']);
                 $("#ulSupplier").append(ListOfficialReceipt(data[i]["ID"], data[i]['SupplierName'], data[i]['RefNo'], data[i]['TotalAmount']));

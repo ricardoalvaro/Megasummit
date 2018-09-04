@@ -118,11 +118,11 @@
                         <div class="ym-cbox"> 
                         	<div class="box-holder">
                             	<ul class="tabs crossfade">
-                                    <li id="sales" class="form active"><a onclick="SubMenuDisplay('s')" class="new-find" style="cursor:default">Sales</a></li>
-                                    <li id="sales_receipt" class="form"><a onclick="SubMenuDisplay('sr')" class="save" style="cursor:default">Sales Return</a></li>
-                                    <li id="sales_order" class="form"><a onclick="SubMenuDisplay('so')" class="save" style="cursor:default">Sales Order</a></li>
-                                    <li id="official_receipt" class="form"><a onclick="SubMenuDisplay('or')" class="save" style="cursor:default">Official Receipt</a></li>
-                                    <li id="customer_receipt" class="form"><a onclick="SubMenuDisplay('cm')" class="save" style="cursor:default">Memo</a></li>
+                                    <li id="sales" class="form active"  onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('s')" class="new-find" style="cursor:default">Sales</a></li>
+                                    <li id="sales_receipt" class="form" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('sr')" class="save" style="cursor:default">Sales Return</a></li>
+                                    <li id="sales_order" class="form" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('so')" class="save" style="cursor:default">Sales Order</a></li>
+                                    <li id="official_receipt" class="form" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('or')" class="save" style="cursor:default">Official Receipt</a></li>
+                                    <li id="customer_receipt" class="form" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('cm')" class="save" style="cursor:default">Memo</a></li>
                                 </ul>
                                 <div id="tab-content-holder">
 
@@ -559,6 +559,17 @@
         $(document).ready(function () {
             SubMenuDisplay('s');
         });
+
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
+
 
     </script>
 

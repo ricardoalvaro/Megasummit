@@ -114,10 +114,10 @@
                             <div class="ym-cbox">
                                 <div class="box-holder">
                                     <ul class="tabs crossfade">
-                                        <li class="active view"><a onclick="SubMenuDisplay('reason_of_adjustment')" class="new-find" style="cursor: default">Reason of Adjustment</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('reason_of_return')" class="new-find" style="cursor: default">Reason of Return</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('remarks')" class="new-find" style="cursor: default">Remarks</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('holiday')" class="new-find" style="cursor: default">Holiday</a></li>
+                                        <li class="active view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('reason_of_adjustment')" class="new-find" style="cursor: default">Reason of Adjustment</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('reason_of_return')" class="new-find" style="cursor: default">Reason of Return</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('remarks')" class="new-find" style="cursor: default">Remarks</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('holiday')" class="new-find" style="cursor: default">Holiday</a></li>
                                     </ul>
                                     <div id="tab-content-holder">
 
@@ -1147,6 +1147,19 @@
 
             }
         }
+
+
+        //onclick = 'ActivateForm(this);'
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
+
 
     </script>
 

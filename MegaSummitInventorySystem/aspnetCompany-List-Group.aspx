@@ -122,11 +122,11 @@
                         <div class="ym-cbox"> 
                         	<div class="box-holder">
                             	<ul class="tabs crossfade">
-                                    <li class="active view"><a onclick="SubMenuDisplay('user_type')"  class="new-find" style="cursor:default">User Type</a></li>
-                                    <li class="view"><a  onclick="SubMenuDisplay('position')"  class="new-find" style="cursor:default">Position</a></li>
-                                    <li class="view"><a  onclick="SubMenuDisplay('employee_class')" class="new-find" style="cursor:default">Employee Class</a></li>
-                                    <li class="view"><a  onclick="SubMenuDisplay('department')" class="new-find" style="cursor:default">Department</a></li>
-                                    <li class="view"><a  onclick="SubMenuDisplay('categories')" class="new-find" style="cursor:default">Categories</a></li>
+                                    <li class="active view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('user_type')"  class="new-find" style="cursor:default">User Type</a></li>
+                                    <li class="view" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('position')"  class="new-find" style="cursor:default">Position</a></li>
+                                    <li class="view" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('employee_class')" class="new-find" style="cursor:default">Employee Class</a></li>
+                                    <li class="view" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('department')" class="new-find" style="cursor:default">Department</a></li>
+                                    <li class="view" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('categories')" class="new-find" style="cursor:default">Categories</a></li>
                                 </ul>
 
                                  <%-- Start User Type --%>
@@ -1033,6 +1033,16 @@
     <script type="text/javascript">
 
 
+        //onclick = 'ActivateForm(this);'
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
  
         SubMenuDisplay('user_type');
         //------------------------

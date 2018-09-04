@@ -666,6 +666,75 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.[_Account]" Member="_Accounts">
+    <Type Name="_Account">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="isDebit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_InvoiceMemoDetail]" Member="_InvoiceMemoDetails">
+    <Type Name="_InvoiceMemoDetail">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InvoiceMemoID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ApplyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_InvoiceMemo]" Member="_InvoiceMemos">
+    <Type Name="_InvoiceMemo">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_PurchasedMemo]" Member="_PurchasedMemos">
+    <Type Name="_PurchasedMemo">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_PurchasedMemoDetail]" Member="_PurchasedMemoDetails">
+    <Type Name="_PurchasedMemoDetail">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PurchasedMemoID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InvoiceID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ApplyAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.[_BankDelete]" Method="_BankDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
@@ -2229,17 +2298,6 @@
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.[_InvoiceMemoInsert]" Method="_InvoiceMemoInsert">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="AccountName" Parameter="accountName" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Debit" Parameter="debit" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="Credit" Parameter="credit" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(1000)" />
-    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(1000)" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.[_InvoiceUpdate]" Method="_InvoiceUpdate">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
     <Parameter Name="InvoiceStatus" Parameter="invoiceStatus" Type="System.String" DbType="VarChar(50)" />
@@ -2550,17 +2608,6 @@
   </Function>
   <Function Name="dbo.[_PurchasedMemoDelete]" Method="_PurchasedMemoDelete">
     <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.[_PurchasedMemoInsert]" Method="_PurchasedMemoInsert">
-    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
-    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="AccountName" Parameter="accountName" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="Debit" Parameter="debit" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="Credit" Parameter="credit" Type="System.Decimal" DbType="Money" />
-    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
-    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.[_PurchasedMemoUpdate]" Method="_PurchasedMemoUpdate">
@@ -4566,6 +4613,119 @@
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="PurchasedOrderStatus1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_PurchasedInvoiceDetailsSelectBYID]" Method="_PurchasedInvoiceDetailsSelectBYID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="_PurchasedInvoiceDetailsSelectBYIDResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PurchasedID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LocationID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LocationName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="UnitID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UnitName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Discount" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_InvoiceOpeningBalanceInsert]" Method="_InvoiceOpeningBalanceInsert">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SalesmanID" Parameter="salesmanID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CommissionRate" Parameter="commissionRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="InvoiceType" Parameter="invoiceType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="InvoiceStatus" Parameter="invoiceStatus" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_PurchasedInvoiceOpeningBalance]" Method="_PurchasedInvoiceOpeningBalance">
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Salesman" Parameter="salesman" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TermID" Parameter="termID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SubTotal" Parameter="subTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="InvoiceType" Parameter="invoiceType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_InvoiceMemoDetailInsert]" Method="_InvoiceMemoDetailInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="InvoiceMemoID" Parameter="invoiceMemoID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="AccountType" Parameter="accountType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ApplyAmount" Parameter="applyAmount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_InvoiceMemoInsert]" Method="_InvoiceMemoInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Debit" Parameter="debit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Credit" Parameter="credit" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_PurchasedMemoInsert]" Method="_PurchasedMemoInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Debit" Parameter="debit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Credit" Parameter="credit" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_PurchasedMemoDetailInsert]" Method="_PurchasedMemoDetailInsert">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="PurchasedMemoID" Parameter="purchasedMemoID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RefNo" Parameter="refNo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RefNoSerial" Parameter="refNoSerial" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CreatedDate" Parameter="createdDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="AccountType" Parameter="accountType" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="InvoiceID" Parameter="invoiceID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ApplyAmount" Parameter="applyAmount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.[_InvoiceMemoSelect]" Method="_InvoiceMemoSelect">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="_InvoiceMemoSelectResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

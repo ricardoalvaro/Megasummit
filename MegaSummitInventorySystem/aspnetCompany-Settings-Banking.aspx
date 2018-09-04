@@ -26,7 +26,7 @@
                     <div class="block-left ym-gl">
                         <div class="ym-gbox">
                             <ul class="menu ym-clearfix">
-                                <li class="active"><a href="http://localhost:8181/megasummit/company/company/">Company</a></li>
+                                <li class="active"><a href="aspnetCompany.aspx">Company</a></li>
                                 <li class=""><a href="http://localhost:8181/megasummit/company/summary/">Summary</a></li>
                                 <li class=""><a href="http://localhost:8181/megasummit/company/reminders/">Reminders</a></li>
                                 <li class=""><a href="http://localhost:8181/megasummit/company/history/">History</a></li>
@@ -115,11 +115,11 @@
                             <div class="ym-cbox">
                                 <div class="box-holder">
                                     <ul class="tabs crossfade">
-                                        <li id="dp" class="active forview"><a onclick="SubMenuDisplay('dp')" class="save" style="cursor: default">Deposits</a></li>
-                                        <li id="wd" class="forview"><a onclick="SubMenuDisplay('wd')" class="save" style="cursor: default">Withdrawal</a></li>
-                                        <li id="rt" class="forview"><a onclick="SubMenuDisplay('rt')" class="save" style="cursor: default">Return</a></li>
-                                        <li id="ds" class="forview"><a onclick="SubMenuDisplay('ds')" class="save" style="cursor: default">Discounting</a></li>
-                                        <li id="bm" class="forview"><a onclick="SubMenuDisplay('bm')" class="save" style="cursor: default">Memo</a></li>
+                                        <li id="dp" class="active view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('dp')" class="save" style="cursor: default">Deposits</a></li>
+                                        <li id="wd" class="view"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('wd')" class="save" style="cursor: default">Withdrawal</a></li>
+                                        <li id="rt" class="view"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('rt')" class="save" style="cursor: default">Return</a></li>
+                                        <li id="ds" class="view"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('ds')" class="save" style="cursor: default">Discounting</a></li>
+                                        <li id="bm" class="view"   onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('bm')" class="save" style="cursor: default">Memo</a></li>
                                     </ul>
                                     <div id="tab-content-holder">
 
@@ -422,7 +422,15 @@
 
         ///////////////////////
 
-       
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
 
 
     </script>

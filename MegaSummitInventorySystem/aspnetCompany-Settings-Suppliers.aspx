@@ -102,10 +102,10 @@
                         <div class="ym-cbox"> 
                         	<div class="box-holder">
                             	<ul class="tabs crossfade">
-                                    <li id="pr" class="active form"><a   onclick="SubMenuDisplay('pr')" class="save" style="cursor:default">Purchase Return</a></li>
-                                    <li id="po" class="form"><a  onclick="SubMenuDisplay('po')" class="save" style="cursor:default">Purchase Order</a></li>
-                                    <li id="sv" class="form"><a  onclick="SubMenuDisplay('sv')" class="save" style="cursor:default">Voucher</a></li>
-                                    <li id="sm" class="form"><a  onclick="SubMenuDisplay('sm')" class="save" style="cursor:default">Memo</a></li>
+                                    <li id="pr" class="active form" onclick = 'ActivateForm(this);'><a   onclick="SubMenuDisplay('pr')" class="save" style="cursor:default">Purchase Return</a></li>
+                                    <li id="po" class="form" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('po')" class="save" style="cursor:default">Purchase Order</a></li>
+                                    <li id="sv" class="form" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('sv')" class="save" style="cursor:default">Voucher</a></li>
+                                    <li id="sm" class="form" onclick = 'ActivateForm(this);'><a  onclick="SubMenuDisplay('sm')" class="save" style="cursor:default">Memo</a></li>
                                 </ul>  
                                 <div id="tab-content-holder">
                                 	
@@ -334,6 +334,17 @@
 
 
         }
+
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
+
 
     </script>
 

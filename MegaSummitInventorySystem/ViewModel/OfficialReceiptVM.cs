@@ -220,6 +220,7 @@ public class InvoiceBalance
 {
     public long ID { get; set; }
     public string RefNo { get; set; }
+    public string RefSerial { get; set; }
     public DateTime CreatedDate { get; set; }
     public string CustomerName { get; set; }
     public string Description { get; set; }
@@ -228,7 +229,8 @@ public class InvoiceBalance
     public decimal Balance { get; set; }
     public string Status { get; set; }
     public int NoOfDays { get; set; }
-  
+    public decimal CommRate { get; set; }
+    public long TermID { get; set; }
 
     public InvoiceBalance()
     {

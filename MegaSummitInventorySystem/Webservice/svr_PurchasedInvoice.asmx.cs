@@ -164,6 +164,29 @@ namespace MegaSummitInventorySystem.Webservice
 
         }
 
+
+        [WebMethod]
+        public string PurchasedOrderDetailsInvoiceSelectByID(long id)
+        {
+
+            try
+            {
+                Database = new DatabaseDataContext();
+                var data = Database._PurchasedInvoiceDetailsSelectBYID(id);
+
+                return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+            }
+            catch
+            {
+
+            }
+
+            return "Error on returning data 5";
+
+        }
+
+
+
         // --------------------------------------------------------------- Selecing All Purchase Invoice 
         [WebMethod]
         public string PurchasedInvoiceSelect(long id)
@@ -205,6 +228,9 @@ namespace MegaSummitInventorySystem.Webservice
             return "Error on returning data 5";
 
         }
+
+
+  
 
         // --------------------------------------------------------------- Selecting Purchased Payment To Compute Balance
         [WebMethod]
@@ -541,6 +567,60 @@ namespace MegaSummitInventorySystem.Webservice
 
             }
             return "";
+        }
+
+
+
+
+        [WebMethod]
+        public bool PuchasedInsertOpeningBalance(long supplierID,string refNo,string refNoSerial,DateTime createdDate,long salesman,long termID,decimal subTotal)
+        {
+
+            Database._PurchasedInvoiceOpeningBalance(supplierID, refNo, refNoSerial, createdDate, salesman, termID, subTotal, "Opening Balance", "Posted");
+            return false;
+        }
+
+
+
+        [WebMethod]
+        public string PurchasedSelectOpeningBalance(long supplier_id, long invoice_id)
+        {
+            Database = new DatabaseDataContext();
+            var data = Database._PurchasedInvoiceSelect(0, supplier_id).Where(x => x.InvoiceType == "Opening Balance"); 
+            List<PurchaseInvoice> purchaseInvoice = new List<PurchaseInvoice>();
+
+            foreach (var d in data)
+            {
+                PurchaseInvoice p = new PurchaseInvoice();
+                p.ID = d.ID;
+                p.RefNo = d.RefNo ;
+                p.RefNoSerial = d.RefNoSerial;
+                p.CreatedDate = d.CreatedDate.Value;
+                p.SalesmanID = d.Salesman.Value;
+                p.TermID = d.TermID.Value;
+                p.SupplierName = d.SupplierName;
+                p.Amount = d.SubTotal.Value;
+
+
+                var bal = d.SubTotal - (d.Payment + d.PurchaseReturn);
+
+
+                p.Balance = bal.Value;
+                p.Status = d.Status;
+                purchaseInvoice.Add(p);
+            }
+
+
+            if (invoice_id > 0)
+            {
+
+                var ret = purchaseInvoice.Where(x => x.ID == invoice_id);
+                return JsonConvert.SerializeObject(ret, Newtonsoft.Json.Formatting.Indented);
+            }
+
+            return JsonConvert.SerializeObject(purchaseInvoice, Newtonsoft.Json.Formatting.Indented);
+
+
         }
 
         //#endregion

@@ -109,11 +109,11 @@
                             <div class="ym-cbox">
                                 <div class="box-holder">
                                     <ul class="tabs crossfade">
-                                        <li id="accnt" class="active form"><a onclick="SubMenuDisplay('accnt')" class="save" style="cursor: default">Accounting</a>
-                                            <li id="sales" class="form"><a onclick="SubMenuDisplay('sales')" class="save" style="cursor: default">Sales Tax</a>
-                                                <li id="bank_account" class="view"><a onclick="SubMenuDisplay('bank_account')" class="new-find" style="cursor: default">Bank Account</a>
-                                                    <li id="tax_exemption" class="view"><a onclick="SubMenuDisplay('tax_exemption')" class="new-find" style="cursor: default">Tax Exemption</aSubMenuDisplay('bank_account')">
-                                                        <li class="form"><a class="save">Back Up</a>
+                                        <li id="accnt" class="view active" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('accnt')" class="save" style="cursor: default">Accounting</a>
+                                        <li id="sales" class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('sales');" class="save" style="cursor: default">Sales Tax</a>
+                                        <li id="bank_account" class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('bank_account')" class="new-find" style="cursor: default">Bank Account</a>
+                                        <li id="tax_exemption" class="view" onclick='ActivateForm(this);'><a onclick="SubMenuDisplay('tax_exemption')" class="new-find" style="cursor: default">Tax Exemption</aSubMenuDisplay('bank_account')">
+                                        <li class="view" onclick='ActivateForm(this);'><a class="save">Back Up</a>
                                     </ul>
                                     <div id="tab-content-holder">
 
@@ -755,6 +755,18 @@
             SubMenuDisplay('accnt');
         });
 
+
+
+        function ActivateForm(me)
+        {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
 
         function SubMenuDisplay(display) {
 

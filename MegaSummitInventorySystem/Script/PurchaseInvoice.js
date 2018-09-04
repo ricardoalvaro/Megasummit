@@ -87,7 +87,7 @@ function SelectPurchaseInvoice()
                 //$('#reference_no').text().attr('selected',data[i]["RefNo"];
 
                 $("#reference_no").val(data[i]["RefNo"]);//.filter(function () { return $(this).text() == data[i]["RefNo"]; }).prop('selected', true);
-                $('#reference_number').val(data[i]["ID"]);
+                $('#reference_number').val(data[i]["RefNoSerial"]);
 
                 $('#date').val(FormatDate(data[i]["CreatedDate"]));
                 $('#cancel').val(FormatDate(data[i]["CancelDate"]));
@@ -401,7 +401,7 @@ function FillPurchaseOrderTable(purchase_id) {
                 var obj = "";
                 for (var i = 0; i < data.length; i++) {
                    
-                    $('#tblPurchaseOrder tbody:last').append("<tr onclick=\"FillPurchaseInvoiceDetail('" + data[i]["PurchasedID"] + "')\"><td width='15%'>" + data[i]['ProductName'] + "</td><td width='15%'>" + data[i]['LocationName'] + "</td><td width='10%'>" + data[i]['Quantity'] + "</td> <td width='10%'>" + data[i]['Bonus'] + "</td><td width='10%'>" + data[i]['UnitName'] + "</td><td width='10%'>" + data[i]['UnitPrice'] + "</td><td width='10%'>" + data[i]['Discount'] + "</td><td width='10%'>" + ComputeDiscountedAmount(Number(data[i]['Quantity']) * Number(data[i]['UnitPrice']), data[i]['Discount']) + "</td></tr>");
+                    $('#tblPurchaseOrder tbody:last').append("<tr onclick=\"FillPurchaseInvoiceDetail('" + data[i]["ID"] + "')\"><td width='15%'>" + data[i]['ProductName'] + "</td><td width='15%'>" + data[i]['LocationName'] + "</td><td width='10%'>" + data[i]['Quantity'] + "</td> <td width='10%'>" + data[i]['Bonus'] + "</td><td width='10%'>" + data[i]['UnitName'] + "</td><td width='10%'>" + data[i]['UnitPrice'] + "</td><td width='10%'>" + data[i]['Discount'] + "</td><td width='10%'>" + ComputeDiscountedAmount(Number(data[i]['Quantity']) * Number(data[i]['UnitPrice']), data[i]['Discount']) + "</td></tr>");
 
                 }
 
@@ -420,7 +420,7 @@ function FillPurchaseInvoiceDetail(ID) {
     var pageUrl = '/Webservice/svr_PurchasedInvoice.asmx';
     $.ajax({
         type: "POST",
-        url: pageUrl + "/PurchasedOrderDetailsInvoiceSelect",
+        url: pageUrl + "/PurchasedOrderDetailsInvoiceSelectByID",
         data: "{'id':'" + ID + "' }",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

@@ -195,7 +195,7 @@
                                                                 <td><span id="spnTotal">0.00</span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td><a href="#" id="applyToInvoice" class="view btnlink"><img src="http://localhost:8181/megasummit/images/buttons/apply-invoice.png" width="87" height="20" alt="Void"></a></td>
+                                                                <td><a href="#" id="applyToInvoice" class="view btnlink"><img src="images/apply-invoice.png" width="87" height="20" alt="Void"></a></td>
                                                                 <td><span id="spnApplyToInvoice">0.00</span></td>
                                                             </tr>                                                  
                                                         </table>

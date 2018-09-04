@@ -350,22 +350,22 @@
                                                                                         <td>Subtotal</td>
                                                                                         <td><input type="text" id="spnSubTotal" value="0.00" style="width: 100%;border: 1px solid transparent;text-align: right;color: #8c8686;"/></td>
                                                                                         <td><a href="#" class="view btnlink">
-                                                                                            <img src="http://localhost:8181/megasummit/images/buttons/payment.png" width="71" height="20" alt="Payment" /></a></td>
+                                                                                            <img src="image/payment.png" width="71" height="20" alt="Payment" /></a></td>
                                                                                         <td><span id="spnPayment">0.00</span> </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td>Tax</td>
                                                                                         <td><span id="spnTax"></span></td>
                                                                                         <td><a href="#" class="form btnlink">
-                                                                                            <img src="http://localhost:8181/megasummit/images/buttons/memo.png" width="71" height="20" alt="Memo" /></a></td>
+                                                                                            <img src="image/memo.png" width="71" height="20" alt="Memo" /></a></td>
                                                                                         <td><span id="spnSalesReturn">0.00</span></td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td><a href="#" class="form btnlink">
-                                                                                            <img src="http://localhost:8181/megasummit/images/buttons/shipping.png" width="71" height="21" alt="Shipping" /></a></td>
+                                                                                            <img src="image/shipping.png" width="71" height="21" alt="Shipping" /></a></td>
                                                                                         <td><input type="text" id="shipping" value="0.00" style="width: 100%;border: 1px solid transparent;text-align: right;color: #8c8686;"/></td>
                                                                                         <td><a href="#" class="view btnlink">
-                                                                                            <img src="http://localhost:8181/megasummit/images/buttons/adjustment.png" width="71" height="20" alt="Adjustment" /></a></td>
+                                                                                            <img src="image/adjustment.png" width="71" height="20" alt="Adjustment" /></a></td>
                                                                                         <td>0.00</td>
                                                                                     </tr>
                                                                                 </table>
@@ -474,9 +474,9 @@
                                                     <div class="pane-left ym-gl">
                                                         <div class="ym-gbox">
                                                             <a href="JavaScript:Void(0);" id="void">
-                                                                <img src="http://localhost:8181/megasummit/images/buttons/void.png" width="71" height="20" alt="Void" /></a>&nbsp;
+                                                                <img src="image/void.png" width="71" height="20" alt="Void" /></a>&nbsp;
                                                     <a href="JavaScript:Void(0);" id="hold">
-                                                        <img src="http://localhost:8181/megasummit/images/buttons/hold.png" width="71" height="20" alt="Hold" /></a>
+                                                        <img src="image/hold.png" width="71" height="20" alt="Hold" /></a>
                                                         </div>
                                                     </div>
                                                     <div class="pane-right ym-gr">
@@ -555,7 +555,7 @@
         var TermData = <%= CustomerVM.Terms %>;
         var RefNoData = <%= SalesVM.SalesSetting %>;
         var RemarksData = <%= SalesVM.Remarks %>; 
-        var EmployeeData = <%= EmployeeVM.Employees(0, string.Empty, "Employee") %>;
+        var EmployeeData = <%= EmployeeVM.Employees(0, string.Empty, "Salesman") %>;
         var CompanySalesTaxData = <%= CompanyVM.CompanySalesTax %>;
         var TaxDefault = <%=  CompanyVM.CompanyDefaultTax %>;
     </script>

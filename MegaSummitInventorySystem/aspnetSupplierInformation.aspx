@@ -206,7 +206,7 @@
                                             <div class="space10"></div>
                                             <div class="ym-clearfix">
                                                 <div class="float-right">
-                                                    <button type="submit" id="btn-opening-balance" class="submit small">Opening Balance</button>
+                                                    <button type="button" id="btn-opening-balance" class="submit small">Opening Balance</button>
                                                 </div>
                                             </div>
                                             <div class="space5"></div>

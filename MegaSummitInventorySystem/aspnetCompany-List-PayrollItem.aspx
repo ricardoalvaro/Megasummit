@@ -144,11 +144,11 @@
                             <div class="ym-cbox">
                                 <div class="box-holder">
                                     <ul class="tabs crossfade">
-                                        <li class="active view"><a onclick="SubMenuDisplay('wages')" class="new-find" style="cursor: default">Wages</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('benefits')" class="new-find" style="cursor: default">Benefits</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('deduction')" class="new-find" style="cursor: default">Deductions</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('contribution')" class="new-find" style="cursor: default">Contributions</a></li>
-                                        <li class="view"><a onclick="SubMenuDisplay('taxes')" style="cursor: default">Taxes</a></li>
+                                        <li class="active view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('wages')" class="new-find" style="cursor: default">Wages</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('benefits')" class="new-find" style="cursor: default">Benefits</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('deduction')" class="new-find" style="cursor: default">Deductions</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('contribution')" class="new-find" style="cursor: default">Contributions</a></li>
+                                        <li class="view" onclick = 'ActivateForm(this);'><a onclick="SubMenuDisplay('taxes')" style="cursor: default">Taxes</a></li>
                                     </ul>
                                     <div id="tab-content-holder">
 
@@ -1198,6 +1198,18 @@
         $(document).ready(function () {
             SubMenuDisplay('wages');
         });
+
+
+        //onclick = 'ActivateForm(this);'
+        function ActivateForm(me) {
+            $(me).closest('ul').find('li').each(function () {
+                $(this).removeClass('active');
+
+            });
+
+            $(me).addClass('active');
+
+        }
 
 
         function SubMenuDisplay(display) {

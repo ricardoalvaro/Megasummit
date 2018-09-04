@@ -40,7 +40,7 @@ namespace MegaSummitInventorySystem.Webservice
                 long _id = i.ID;
                 string _refNo = i.RefNo;
                 DateTime _createdDate = i.CreatedDate.Value;
-                string _description = "Purchase";
+                string _description = i.InvoiceType;
                 string _salesman = i.EmployeeName;
                 decimal _totalAmount = i.SubTotal.Value;
 

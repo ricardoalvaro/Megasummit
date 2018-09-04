@@ -35,9 +35,9 @@ $(document).ready(function () {
 
 
     $("#btn-opening-balance").click(function () {
-        //if (CustomerID > 0) {
-        //    window.location = "aspnetCustomerInformationOpeningBalance.aspx?customerID=" + CustomerID;
-        //}
+        if (SupplierID > 0) {
+           window.location = "aspnetSupplierInformationOpeningBalance.aspx?supplierID=" + SupplierID;
+        }
     });
 
 });

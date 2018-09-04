@@ -61,6 +61,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aspnetCustomerInformationOpeningBalance.aspx" />
+    <Content Include="aspnetSupplierInformationOpeningBalance.aspx" />
     <Content Include="aspnetSupplierInformationPayments.aspx" />
     <Content Include="aspnetCompany-Calendar.aspx" />
     <Content Include="aspnetCompany-Defaults-Customer.aspx" />
@@ -118,6 +120,7 @@
     <Content Include="aspnetSupplierInformationInvoices.aspx" />
     <Content Include="aspnetSupplierInformationPurchasedOrder.aspx" />
     <Content Include="aspnetSupplierInformationSupplierItem.aspx" />
+    <Content Include="aspnetSupplierMemo.aspx" />
     <Content Include="aspnetVoucher.aspx" />
     <Content Include="include\CustomerSubMenu.ascx" />
     <Content Include="include\CustomerSubMenuAjax.ascx" />
@@ -340,6 +343,7 @@
     <Content Include="Script\BackUp\Customer_old.js" />
     <Content Include="Script\BackUp\CustomerMemo.js" />
     <Content Include="Script\CustomerInformation.js" />
+    <Content Include="Script\CustomerMemo.js" />
     <Content Include="Script\Employee.js" />
     <Content Include="Script\Helper.js" />
     <Content Include="Script\jsPopDiv.js" />
@@ -362,6 +366,7 @@
     <Content Include="Script\BackUp\SupplierReturn.js" />
     <Content Include="Script\BackUp\SupplierVoucher.js" />
     <Content Include="Script\SupplierInformation.js" />
+    <Content Include="Script\SupplierMemo.js" />
     <Content Include="Script\SupplierPurchaseOrder.js" />
     <Content Include="Script\UserAccount.js" />
     <Content Include="Script\ValidateEntry.js" />
@@ -450,6 +455,20 @@
     <Content Include="_UnitTesting.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aspnetCustomerInformationOpeningBalance.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationOpeningBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationOpeningBalance.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationOpeningBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationOpeningBalance.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationOpeningBalance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationOpeningBalance.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationOpeningBalance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetSupplierInformationPayments.aspx.cs">
       <DependentUpon>aspnetSupplierInformationPayments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -849,6 +868,13 @@
     <Compile Include="aspnetSupplierInformationSupplierItem.aspx.designer.cs">
       <DependentUpon>aspnetSupplierInformationSupplierItem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetSupplierMemo.aspx.cs">
+      <DependentUpon>aspnetSupplierMemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierMemo.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierMemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetVoucher.aspx.cs">
       <DependentUpon>aspnetVoucher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1124,7 +1150,9 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AccountsVM.cs" />
     <Compile Include="ViewModel\CompanyVM.cs" />
+    <Compile Include="ViewModel\CustomerMemoVM.cs" />
     <Compile Include="ViewModel\CustomerVM.cs" />
     <Compile Include="ViewModel\EmplyeeVM.cs" />
     <Compile Include="ViewModel\InvoiceVM.cs" />

@@ -66,13 +66,32 @@ namespace MegaSummitInventorySystem.Webservice
         //}
 
         [WebMethod]
-        public bool InsertPurchasedMemo(long supplierID,long accountName,decimal debit,decimal credit,string refNo,string refNoSerial,DateTime createdDate)
+        public bool InsertPurchasedMemo(long supplierID,string refNo,string refNoSerial,DateTime createdDate,long accountID,string accountName,decimal debit,decimal credit, string invoiceList)
         {
             try
             {
                 long? id = 0;
                 Database = new DatabaseDataContext();
-                Database._PurchasedMemoInsert(ref id, supplierID, accountName, debit, credit, refNo, refNoSerial, createdDate);
+                Database._PurchasedMemoInsert(ref id, supplierID, refNo, refNoSerial, createdDate, accountID, accountName, debit, credit);
+
+
+                string[] _list = invoiceList.Split('|');
+
+
+                foreach (var i in _list)
+                {
+                    string[] col = i.Split('^');
+                    long? d_id = 0;
+
+                    var isDebit = Database._Accounts.SingleOrDefault(x => x.ID == accountID).isDebit.Value;
+                    var type = (isDebit) ? "Credit" : "Debit";
+
+                    Database._PurchasedMemoDetailInsert(ref d_id, id, supplierID, refNo, refNoSerial, createdDate, accountID, type, long.Parse(col[0]), decimal.Parse(col[1]));
+
+
+                }
+
+
                 return true;
             }
             catch (Exception)

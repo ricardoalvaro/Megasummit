@@ -30,7 +30,7 @@ public class PurchasePaymentVM
                 CashPayment _cash = new CashPayment();
 
                 _cash.ID = c.ID;
-                _cash.RefNo = or.RefNo + or.ID.ToString();
+                _cash.RefNo = or.RefNo;
                 _cash.CreatedDate = or.CreatedDate.Value;
                 _cash.ORAmount = or.TotalAmount.Value;
                 _cash.CashAmount = c.Amount.Value;
@@ -67,7 +67,7 @@ public class PurchasePaymentVM
                 CheckPayment _check = new CheckPayment();
 
                 _check.ID = c.ID;
-                _check.RefNo = or.RefNo + or.ID.ToString();
+                _check.RefNo = or.RefNo ;
                 _check.BankName = c.BankName;
                 _check.CheckNo = c.CheckNo;
                 _check.CheckDate = c.CheckDate.Value;
