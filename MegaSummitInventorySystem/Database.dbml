@@ -4728,4 +4728,22 @@
       <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.[_PurchasedMemoSelect]" Method="_PurchasedMemoSelect">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="SupplierID" Parameter="supplierID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="_PurchasedMemoSelectResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SupplierName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNoSerial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AccountID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

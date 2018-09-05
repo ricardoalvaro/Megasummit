@@ -127,7 +127,7 @@ function ApplyToAllCheck(me) {
         });
     }
 
-
+    ComputeOverall();
 
 }
 
@@ -218,7 +218,7 @@ function ValidateEntry(me) {
     }
 
     var current_total = GetCurrentTotal();// Number($('#input_cash_amount').val()) + Number($('#spnCheck').html()) + Number($('#spnCard').html()) + Number($('#spnAccount').html());
-    alert(current_total);
+   // alert(current_total);
     var bal = 0;
 
 
@@ -238,6 +238,8 @@ function ValidateEntry(me) {
         }
 
     }
+
+    ComputeOverall();
 
 
 }
@@ -365,6 +367,66 @@ function SelectSingleMemo(memo_id)
 
 function ListInvoiceFormatEdit(invoice_id, ref_no, date, description, balance, applyAmount) {
     return "<tr><td width='15%'><input type='hidden' class='invoice_id' value='" + invoice_id + "'/> " + ref_no + "</td><td width='10%'>" + date + "</td><td width='50%'>" + description + "</td><td width='10%'><span class='spn_balance'>" + balance + "</span></td><td width='12%'><input type='text' class='apply' value='" + applyAmount + "' /><input type='checkbox' class='chk' style='display:block;opacity:1;' onchange='ValidateEntry(this)'/> </td></tr>";
+}
+
+
+function isDebit()
+{
+
+    var account_id = $('#account_name').val();
+
+    var data = Account;
+
+    for (var i = 0; i < data.length; i++) {
+        if (account_id == data[i]['ID'])
+        {
+            if (data[i]['isDebit']) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    
+
+    return false;
+}
+
+function ComputeOverall()
+{
+    var invoice_amt = 0;
+    var apply_amt = 0;
+    var balance = 0;
+
+    $("#tbl_apply_invoices tbody tr").find('td').each(function () {
+
+        if (!isNaN($(this).find('.apply').val())) {
+         
+            if ($(this).find('.chk').is(':checked')) {
+                invoice_amt += Number($(this).closest('tr').find('.spn_balance').html());
+                apply_amt += Number($(this).closest('tr').find('.apply').val());
+            }
+        }
+
+
+    });
+
+    $('#spnInvoiceAmt').html(invoice_amt.toFixed(2));
+    $('#spnApplyAmt').html(apply_amt.toFixed(2));
+
+    if (isDebit()) {
+        balance = invoice_amt - apply_amt;
+        $('#spnBalance').html(balance.toFixed(2));
+
+    }
+    else {
+        balance = invoice_amt + apply_amt;
+        $('#spnBalance').html(balance.toFixed(2));
+    }
+
+
+    
 }
 
 

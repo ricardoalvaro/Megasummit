@@ -63,6 +63,20 @@ namespace MegaSummitInventorySystem.Webservice
                     _balance += ret.Amount.Value;
                 }
 
+                var supplier_memo_payment = Database._PurchasedMemoDetails.Where(x => x.InvoiceID == i.ID);
+                foreach (var memo in supplier_memo_payment)
+                {
+                    if (memo.AccountType == "Debit") //minus
+                    {
+                        _balance -= memo.ApplyAmount.Value;
+                    }
+                    else
+                    {
+                        _balance += memo.ApplyAmount.Value;
+                    }
+                }
+
+
 
                 decimal compute = (_totalAmount - _balance);
 

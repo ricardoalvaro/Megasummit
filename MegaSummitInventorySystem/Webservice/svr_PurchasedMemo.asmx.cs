@@ -65,6 +65,85 @@ namespace MegaSummitInventorySystem.Webservice
 
         //}
 
+
+        [WebMethod]
+        public string SelectPurchasedMemoPerSupplier(long purchase_memo_id)
+        {
+
+            try
+            {
+                Database = new DatabaseDataContext();
+
+                List<PurchaseMemo> supplier_memo = new List<PurchaseMemo>();
+                var data = Database._PurchasedMemoDetails.Where(x => x.ID == purchase_memo_id);
+
+                foreach (var d in data)
+                {
+                    PurchaseMemo _memo = new PurchaseMemo();
+
+                    var inv = Database._PurchasedInvoices.Where(x => x.ID == d.InvoiceID);
+                    decimal invoice_amount = 0;
+                    decimal _balance = 0;
+
+                    foreach (var _i in inv)
+                    {
+                        _memo.RefNo = _i.RefNo + _i.RefNoSerial;
+                        _memo.PurchaseDate = _i.CreatedDate.Value;
+                        _memo.PurchasedType = _i.InvoiceType;
+                        invoice_amount = _i.SubTotal.Value;
+                    }
+
+
+
+                    var purchase_payment = Database._PurchasedPayments.Where(x => x.PurchasedID == d.InvoiceID);
+
+                    foreach (var bal in purchase_payment)
+                    {
+                        _balance += (bal.Amount.Value);
+                    }
+
+
+                    var sales_return = Database._PurchasedPaymentReturns.Where(x => x.PurchasedID == d.InvoiceID);
+
+                    foreach (var ret in sales_return)
+                    {
+                        _balance += ret.Amount.Value;
+                    }
+
+                    var supplier_memo_payment = Database._PurchasedMemoDetails.Where(x => x.InvoiceID == d.InvoiceID);
+                    foreach (var memo in supplier_memo_payment)
+                    {
+                        if (memo.AccountType == "Debit") //minus
+                        {
+                            _balance -= memo.ApplyAmount.Value;
+                        }
+                        else
+                        {
+                            _balance += memo.ApplyAmount.Value;
+                        }
+                    }
+
+
+                    _memo.Balance = (invoice_amount + _balance);
+                    _memo.ApplyAmount = d.ApplyAmount.Value;
+
+
+                    supplier_memo.Add(_memo);
+                }
+
+
+
+
+                return JsonConvert.SerializeObject(supplier_memo, Newtonsoft.Json.Formatting.Indented);
+            }
+            catch
+            {
+
+            }
+
+            return "";
+        }
+
         [WebMethod]
         public bool InsertPurchasedMemo(long supplierID,string refNo,string refNoSerial,DateTime createdDate,long accountID,string accountName,decimal debit,decimal credit, string invoiceList)
         {
@@ -81,13 +160,17 @@ namespace MegaSummitInventorySystem.Webservice
                 foreach (var i in _list)
                 {
                     string[] col = i.Split('^');
-                    long? d_id = 0;
 
-                    var isDebit = Database._Accounts.SingleOrDefault(x => x.ID == accountID).isDebit.Value;
-                    var type = (isDebit) ? "Credit" : "Debit";
 
-                    Database._PurchasedMemoDetailInsert(ref d_id, id, supplierID, refNo, refNoSerial, createdDate, accountID, type, long.Parse(col[0]), decimal.Parse(col[1]));
+                    if (!string.IsNullOrEmpty(col[0]))
+                    {
+                        long? d_id = 0;
 
+                        var isDebit = Database._Accounts.SingleOrDefault(x => x.ID == accountID).isDebit.Value;
+                        var type = (isDebit) ? "Debit" : "Credit";
+
+                        Database._PurchasedMemoDetailInsert(ref d_id, id, supplierID, refNo, refNoSerial, createdDate, accountID, type, long.Parse(col[0]), decimal.Parse(col[1]));
+                    }
 
                 }
 
@@ -140,5 +223,15 @@ namespace MegaSummitInventorySystem.Webservice
         }
 
        
+    }
+
+    public class PurchaseMemo
+    {
+        public string RefNo { get; set; }
+        public DateTime PurchaseDate { get; set; }
+        public string PurchasedType { get; set; }
+        public decimal Balance { get; set; }
+        public decimal ApplyAmount { get; set; }
+
     }
 }

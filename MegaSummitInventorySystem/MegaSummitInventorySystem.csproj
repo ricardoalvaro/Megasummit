@@ -1159,6 +1159,7 @@
     <Compile Include="ViewModel\LocationVM.cs" />
     <Compile Include="ViewModel\OfficialReceiptVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
+    <Compile Include="ViewModel\PurchasedMemoVM.cs" />
     <Compile Include="ViewModel\PurchaseInvoiceVM.cs" />
     <Compile Include="ViewModel\PurchaseOrderVM.cs" />
     <Compile Include="ViewModel\PurchasePaymentVM.cs" />

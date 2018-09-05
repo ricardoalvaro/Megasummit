@@ -112,7 +112,16 @@ namespace MegaSummitInventorySystem.Webservice
                     var customer_memo_payment = Database._InvoiceMemoDetails.Where(x => x.InvoiceID == d.InvoiceID);
                     foreach (var memo in customer_memo_payment)
                     {
-                        _balance += memo.ApplyAmount.Value;
+
+                        if (memo.AccountType == "Debit")
+                        {
+                            _balance += memo.ApplyAmount.Value;
+                        }
+                        else
+                        {
+                            _balance -= memo.ApplyAmount.Value;
+                        }
+                        
                     }
 
 

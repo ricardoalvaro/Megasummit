@@ -93,19 +93,13 @@
         <div id="xEmployeeList" style="display: block">
             <div class="ym-wrapper">
                 <div class="ym-wbox">
-                   <div class="submenu nopad">
+             <%--      <div class="submenu nopad">
                     <ul class="crossfade ym-clearfix" style="border: none">
                         <li></li>
                     </ul>
                     <div class="ym-ie-clearing">&nbsp;</div>
-                </div>
-                <ul class="suboptions">
-                    <li><%--<div class="addup">--%>
-                            <%--<div class="pagination">--%>
-                                <%--<a href=""><<</a> | <a href="">< Previous</a>&nbsp;&nbsp;&nbsp;<a href="">Next ></a> | <a href="">>></a>--%>
-                            <%--</div><%--</div>--%>
-                    </li>
-                </ul>
+                </div>--%>
+        
                     <div class="container one-column">
                         <div class="inner">
                             <div class="box-holder">

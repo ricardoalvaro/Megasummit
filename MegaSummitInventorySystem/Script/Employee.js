@@ -1,5 +1,13 @@
 ﻿
-LoadEmployeeList();
+
+$(document).ready(function () {
+
+    LoadEmployeeList();
+
+});
+
+
+
 
 // ------------------------------------------- Create new Employee
 function NewEmployee() {
@@ -210,7 +218,7 @@ function SavingInvoice() {
     var sss_number = $('#sss_number').val();
     var status = $('#status').val();
     var philhealth_number = $('#philhealth_number').val();
-    var cash_bond = $('#cash_bond').val();
+    var cash_bond = ($('#cash_bond').val()=='') ? '0' : $('#cash_bond').val();
     var pagibig_number = $('#pagibig_number').val();
 
 

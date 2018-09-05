@@ -117,15 +117,15 @@
                                                     <table>
                                                         <tr>
                                                             <td width="50%">Invoice Amt.</td>
-                                                            <td  width="50%">2,000.00</td>
+                                                            <td  width="50%"><span id="spnInvoiceAmt">0.00</span></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Applied Amt.</td>
-                                                            <td>0.00</td>
+                                                            <td><span id="spnApplyAmt" >0.00</span></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Balance</td>
-                                                            <td>0.00</td>
+                                                            <td><span id="spnBalance">0.00</span> </td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -153,6 +153,7 @@
     <script type="text/javascript">
         var SupplierData = <%= SupplierVM.AutoCompleteSupplier %>;
         var Account = <%= AccountsVM.Accounts %>;
+        var SupplierMemoList = <%= PurchasedMemoVM.PurchasedMemoList %>;
     </script>
 
      <style>

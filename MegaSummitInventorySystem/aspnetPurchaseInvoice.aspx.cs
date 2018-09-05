@@ -38,6 +38,20 @@ namespace MegaSummitInventorySystem
                 var bal = d.SubTotal- (d.Payment + d.PurchaseReturn);
 
 
+                var supplier_memo_payment = Database._PurchasedMemoDetails.Where(x => x.InvoiceID == d.ID);
+                foreach (var memo in supplier_memo_payment)
+                {
+                    if (memo.AccountType == "Debit") //minus
+                    {
+                        bal -= memo.ApplyAmount.Value;
+                    }
+                    else
+                    {
+                        bal += memo.ApplyAmount.Value;
+                    }
+                }
+
+
                 p.Balance = bal.Value;
                 p.Status = d.Status;
                 purchaseInvoice.Add(p);
