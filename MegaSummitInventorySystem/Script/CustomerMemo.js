@@ -283,7 +283,7 @@ function FillAccounts() {
     var data = Account;
     $('#account_name').empty();
     $('#account_name').append("<option value='0'>" +  "</option>");
-        for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
         $('#account_name').append("<option value='" + data[i]['ID'] + "'>" + data[i]['AccountName'] + "</option>");
     }
 }

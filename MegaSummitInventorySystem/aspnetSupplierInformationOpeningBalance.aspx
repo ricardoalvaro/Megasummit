@@ -13,8 +13,8 @@
         <div class="padding-0">
             
          <ul class="suboptions">
-            <li class="active form"><a href="javascript:void(0)">Invoices</a></li>
-            <li class="form"><a href="javascript:void(0)">Payments</a></li>
+            <li class="active form" id="goto_invoice"><a href="javascript:void(0)">Invoices</a></li>
+            <li class="form" id="goto_payment"><a href="javascript:void(0)">Payments</a></li>
         </ul>
         <div class="ym-ie-clearing">&nbsp;</div>
         </div>
@@ -126,6 +126,11 @@
             if (!$.isNumeric(SupplierID) || SupplierID <= 0) {
                 SupplierID = 0;
             }
+
+
+            $('#goto_invoice').click(function () { window.location = 'aspnetSupplierInformationOpeningBalance.aspx?supplierID=' + SupplierID });
+            $('#goto_payment').click(function () { window.location = 'aspnetSupplierInformationOpeningBalancePayment.aspx?supplierID=' + SupplierID });
+
 
             $(':input').on('input', function(){ // do not allow single quote and double quote 
                 this.value = this.value.replace(/(['"])/g, '');//  /[^\w]/g,"");

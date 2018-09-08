@@ -445,7 +445,23 @@ namespace MegaSummitInventorySystem.Webservice
         //    return false;
         //}
 
-        
+
+        [WebMethod]
+        public bool InsertSupplierOpeningBalance(long supplierID, long bankID, string bankName, string checkNo, string createdDate, decimal amount)
+        {
+            long? ID = 0;
+            Database._OpeningBalanceSupplierPaymentInsert(ref ID, supplierID, bankID, bankName, checkNo, createdDate, amount);
+
+            return false;
+        }
+
+        [WebMethod]
+        public string SelectSupplierOpeningBalance(long ID, long SupplierID)
+        {
+            var data = Database._OpeningBalanceSupplierPaymentSelect(ID, SupplierID);
+
+            return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+        }
 
     }
 }

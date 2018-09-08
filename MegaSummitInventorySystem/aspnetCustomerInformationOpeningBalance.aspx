@@ -13,8 +13,8 @@
 <uc1:CustomerSubMenuAjax ID="CustomerSubMenuAjax1" runat="server" />
     <div class="ym-ie-clearing">&nbsp;</div>
 </div>        <ul class="suboptions">
-            <li class="active form"><a href="javascript:void(0)">Invoices</a></li>
-            <li class="form"><a href="javascript:void(0)">Payments</a></li>
+                  <li class="form active" id="goto_invoice"><a href="#">Invoices</a></li>
+            <li class="form" id="goto_payment"><a href="#">Payments</a></li>
         </ul>
         <div id="content-holder">
         	<div class="container two-column-sidebar style2 withbg">
@@ -130,7 +130,9 @@
         .padding-0 {
             padding: 0;
         }
-    </style>    <script type="text/javascript">
+    </style>
+
+    <script type="text/javascript">
         /// <reference path="js/jquery-3.3.1.slim.min.js" />
         //--------Need refactoring----------
 
@@ -145,6 +147,10 @@
             if (!$.isNumeric(CustomerID) || CustomerID <= 0) {
                 CustomerID = 0;
             }
+
+            $('#goto_invoice').click(function(){ window.location='aspnetCustomerInformationOpeningBalance.aspx?customerID=' + CustomerID });
+            $('#goto_payment').click(function(){ window.location='aspnetCustomerInformationOpeningBalancePayment.aspx?customerID=' + CustomerID });
+
 
             $(':input').on('input', function(){ // do not allow single quote and double quote 
                 this.value = this.value.replace(/(['"])/g, '');//  /[^\w]/g,"");
@@ -335,7 +341,9 @@
 
 
 
-    </script>
+    </script>
+
+
 
     <script type="text/javascript">
 

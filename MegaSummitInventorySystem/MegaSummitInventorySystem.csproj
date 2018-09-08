@@ -62,7 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aspnetCustomerInformationOpeningBalance.aspx" />
+    <Content Include="aspnetCustomerInformationOpeningBalancePayment.aspx" />
     <Content Include="aspnetSupplierInformationOpeningBalance.aspx" />
+    <Content Include="aspnetSupplierInformationOpeningBalancePayment.aspx" />
     <Content Include="aspnetSupplierInformationPayments.aspx" />
     <Content Include="aspnetCompany-Calendar.aspx" />
     <Content Include="aspnetCompany-Defaults-Customer.aspx" />
@@ -462,12 +464,26 @@
     <Compile Include="aspnetCustomerInformationOpeningBalance.aspx.designer.cs">
       <DependentUpon>aspnetCustomerInformationOpeningBalance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="aspnetCustomerInformationOpeningBalancePayment.aspx.cs">
+      <DependentUpon>aspnetCustomerInformationOpeningBalancePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetCustomerInformationOpeningBalancePayment.aspx.designer.cs">
+      <DependentUpon>aspnetCustomerInformationOpeningBalancePayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="aspnetSupplierInformationOpeningBalance.aspx.cs">
       <DependentUpon>aspnetSupplierInformationOpeningBalance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="aspnetSupplierInformationOpeningBalance.aspx.designer.cs">
       <DependentUpon>aspnetSupplierInformationOpeningBalance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationOpeningBalancePayment.aspx.cs">
+      <DependentUpon>aspnetSupplierInformationOpeningBalancePayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspnetSupplierInformationOpeningBalancePayment.aspx.designer.cs">
+      <DependentUpon>aspnetSupplierInformationOpeningBalancePayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="aspnetSupplierInformationPayments.aspx.cs">
       <DependentUpon>aspnetSupplierInformationPayments.aspx</DependentUpon>

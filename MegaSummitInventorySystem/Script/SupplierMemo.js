@@ -379,7 +379,7 @@ function ComputeOverall() {
 
     }
     else {
-        balance = invoice_amt + apply_amt;
+        balance = invoice_amt - apply_amt;
         $('#spnBalance').html(balance.toFixed(2));
     }
 

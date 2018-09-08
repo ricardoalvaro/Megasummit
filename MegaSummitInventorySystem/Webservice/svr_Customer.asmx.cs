@@ -576,5 +576,26 @@ namespace MegaSummitInventorySystem.Webservice
 
         #endregion
 
+
+        [WebMethod]
+        public bool InsertCustomerOpeningBalance(long customerID,long bankID,string bankName,string checkNo,string createdDate,decimal amount)
+        {
+            long? ID = 0;
+            Database._OpeningBalanceCustomerPaymentInsert(ref ID, customerID, bankID, bankName, checkNo, createdDate, amount);
+
+            return true;
+        }
+
+
+        [WebMethod]
+        public string SelectCustomerOpeningBalance(long ID, long customerID)
+        {
+            var data = Database._OpeningBalanceCustomerPaymentSelect(ID, customerID);
+
+            return JsonConvert.SerializeObject(data, Newtonsoft.Json.Formatting.Indented);
+        }
+
+
+
     }
 }

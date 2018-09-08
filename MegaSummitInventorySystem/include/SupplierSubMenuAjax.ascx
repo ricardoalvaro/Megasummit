@@ -6,7 +6,7 @@
         <li class=" "><a data="aspnetSupplierInformationPurchasedOrder.aspx" onclick="Redirect('aspnetSupplierInformationPurchasedOrder.aspx')" style="cursor:default">Purchase Order</a></li>
         <li class=" "><a data="aspnetSupplierInformationInvoices.aspx" onclick="Redirect('aspnetSupplierInformationInvoices.aspx')" style="cursor:default">Invoices</a></li>
         <li class=" "><a data="aspnetSupplierInformationPayments.aspx" onclick="Redirect('aspnetSupplierInformationPayments.aspx')" style="cursor:default">Payments</a></li>
-        <li class=" "><a data="#" onclick="Redirect('xxxx')" style="cursor:default">Memo</a></li>
+        <li class=" "><a data="aspnetSupplierInformationPayments.aspx" onclick="Redirect('xxxx')" style="cursor:default">Memo</a></li>
     </ul>
     <div class="ym-ie-clearing">&nbsp;</div>
 </div>
